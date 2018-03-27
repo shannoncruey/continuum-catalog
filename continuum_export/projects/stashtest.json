@@ -1,0 +1,45 @@
+{
+    "artifacts": [],
+    "description": "",
+    "mappings": [],
+    "name": "stashtest",
+    "notifications": {
+        "email": {
+            "addresses": ""
+        },
+        "enable": false,
+        "hipchat": {
+            "room": ""
+        },
+        "http": {
+            "data": "",
+            "url": ""
+        },
+        "on_failure": [],
+        "on_start": [],
+        "on_success": [],
+        "on_wait": [],
+        "slack": {
+            "channel": ""
+        }
+    },
+    "source": {
+        "directives": [
+            {
+                "details": {
+                    "definition": "Test",
+                    "group": "master",
+                    "instancename": "",
+                    "project": "",
+                    "project_version": ""
+                },
+                "type": "initiate_pipeline",
+                "when": "always"
+            }
+        ],
+        "group_source": "branch",
+        "interface": "webhook",
+        "type": "stash"
+    },
+    "type": "Source"
+}

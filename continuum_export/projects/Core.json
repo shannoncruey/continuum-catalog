@@ -1,0 +1,189 @@
+{
+    "actions": [
+        {
+            "args": {
+                "pipeline": "Core-Developing",
+                "project": "Core-Developing",
+                "story": "developing"
+            },
+            "icon": "40_48x48.png",
+            "method": "manual_initiate",
+            "name": "DEV PURPOSES ONLY - manually kick off the 'Core-Developing' pipeline.",
+            "plugin": "flow.pipeline",
+            "type": "plugin"
+        },
+        {
+            "args": {},
+            "icon": "19_48x48.png",
+            "name": "Initiate the 'Point Release' process.",
+            "task": "V1 Point Release",
+            "type": "task"
+        }
+    ],
+    "artifacts": [
+        {
+            "_id": "57616e95805479609578e33c",
+            "created_dt": "2015-03-20T16:08:26.423000",
+            "last_revision": 1819,
+            "last_revision_dt": "2016-01-29T22:50:44.570000",
+            "name": "VersionOne-Catalyst",
+            "project_id": "5437ebd07c1a7c5770ca1431",
+            "project_name": "Core"
+        },
+        {
+            "_id": "57616e95805479609578e340",
+            "created_dt": "2015-03-20T16:08:25.914000",
+            "last_revision": 1788,
+            "last_revision_dt": "2016-01-29T22:50:43.307000",
+            "name": "VersionOne-Enterprise",
+            "project_id": "5437ebd07c1a7c5770ca1431",
+            "project_name": "Core"
+        },
+        {
+            "_id": "57616e95805479609578e33f",
+            "created_dt": "2015-03-20T16:08:25.407000",
+            "last_revision": 1788,
+            "last_revision_dt": "2016-01-29T22:50:42.006000",
+            "name": "VersionOne-Team",
+            "project_id": "5437ebd07c1a7c5770ca1431",
+            "project_name": "Core"
+        },
+        {
+            "_id": "57616e95805479609578e33e",
+            "created_dt": "2015-03-20T16:08:24.898000",
+            "last_revision": 1788,
+            "last_revision_dt": "2016-01-29T22:50:40.662000",
+            "name": "VersionOne-Ultimate",
+            "project_id": "5437ebd07c1a7c5770ca1431",
+            "project_name": "Core"
+        }
+    ],
+    "desc": "",
+    "description": "",
+    "mappings": [
+        {
+            "_id": "55140bd87c1a7c485d2af927",
+            "dn_definition": "54fde1827c1a7c0638960ca4",
+            "dn_group": "",
+            "dn_project": "5437ebd07c1a7c5770ca1431",
+            "up_definition": "54c27a067c1a7c029985807e",
+            "up_group": "",
+            "up_project": "5437ebd07c1a7c5770ca1431"
+        },
+        {
+            "_id": "55e062a17c1a7c067c4b474e",
+            "dn_definition": "54fde1827c1a7c0638960ca4",
+            "dn_group": "",
+            "dn_project": "5437ebd07c1a7c5770ca1431",
+            "up_definition": "54c27a067c1a7c029985807e",
+            "up_group": "",
+            "up_project": "5437ebd07c1a7c5770ca1431"
+        },
+        {
+            "_id": "56a7c5007c1a7c19c0496bb6",
+            "dn_definition": "54fde1827c1a7c0638960ca4",
+            "dn_group": "",
+            "dn_project": "5437ebd07c1a7c5770ca1431",
+            "up_definition": "54c27a067c1a7c029985807e",
+            "up_group": "",
+            "up_project": "5437ebd07c1a7c5770ca1431"
+        }
+    ],
+    "name": "Core",
+    "notifications": {
+        "email": {
+            "addresses": "shannoncruey@clearcodelabs.com, tom.hall@versionone.com"
+        },
+        "enable": false,
+        "hipchat": {
+            "room": ""
+        },
+        "http": {
+            "data": "",
+            "url": ""
+        },
+        "on_failure": [
+            "email",
+            "slack"
+        ],
+        "on_start": [],
+        "on_success": [],
+        "on_wait": [
+            "email"
+        ],
+        "slack": {
+            "channel": "#ci-builds"
+        }
+    },
+    "source": {
+        "directives": [
+            {
+                "details": {
+                    "use_as_version": "branch",
+                    "use_as_version_lookup": ""
+                },
+                "evaluate": "re.match(\"^\\d\\d\\.\\d$|^developing$\", branch)",
+                "type": "assign_to_version",
+                "when": "evaluate"
+            },
+            {
+                "details": {
+                    "args": {
+                        "expression": "I-[0-9]{1,5}|B-[0-9]{1,5}|S-[0-9]{1,5}|D-[0-9]{1,5}|AT-[0-9]{1,5}",
+                        "fields": [
+                            "commit['message']"
+                        ],
+                        "push_link": false
+                    },
+                    "method": "identify_workitems",
+                    "plugin": "v1plugin.main"
+                },
+                "group": "^\\d\\d\\.\\d$|^developing$",
+                "type": "plugin_function",
+                "when": "group"
+            },
+            {
+                "details": {
+                    "definition": "Core-Developing",
+                    "group": "[$ branch $]",
+                    "instancename": "",
+                    "project": "Core",
+                    "project_version": "[$ branch $]"
+                },
+                "group": "^developing$",
+                "type": "initiate_pipeline",
+                "when": "group"
+            },
+            {
+                "details": {
+                    "definition": "Core-Release",
+                    "group": "[$ branch $]",
+                    "instancename": "",
+                    "project": "",
+                    "project_version": "[$ branch $]"
+                },
+                "group": "^\\d\\d\\.\\d$",
+                "type": "initiate_pipeline",
+                "when": "group"
+            },
+            {
+                "details": {
+                    "definition": "Core-Developing-PRs",
+                    "group": "prs",
+                    "instancename": "",
+                    "project": "",
+                    "project_version": ""
+                },
+                "evaluate": "pull_request and action in (\"opened\", \"synchronize\")",
+                "type": "initiate_pipeline",
+                "when": "evaluate"
+            }
+        ],
+        "group_source": "branch",
+        "interface": "webhook",
+        "type": "github"
+    },
+    "type": "Source",
+    "version": "developing",
+    "version_date": "2014-10-16 16:01:28"
+}

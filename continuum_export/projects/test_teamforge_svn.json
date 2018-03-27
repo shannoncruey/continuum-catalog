@@ -1,0 +1,50 @@
+{
+    "actions": [],
+    "artifacts": [],
+    "description": "",
+    "globals": {},
+    "mappings": [],
+    "name": "test_teamforge_svn",
+    "notifications": {
+        "email": {
+            "addresses": ""
+        },
+        "enable": false,
+        "hipchat": {
+            "room": ""
+        },
+        "http": {
+            "data": "",
+            "url": ""
+        },
+        "on_failure": [],
+        "on_start": [],
+        "on_success": [],
+        "on_wait": [],
+        "slack": {
+            "channel": ""
+        }
+    },
+    "source": {
+        "directives": [
+            {
+                "details": {
+                    "args": {},
+                    "instance_name": "",
+                    "on_error": "Continue Processing Directives"
+                },
+                "type": "teamforge_workitem_lookup",
+                "when": "always"
+            }
+        ],
+        "enable_polling": false,
+        "group_source": "branch",
+        "interface": "webhook",
+        "notify_unmanaged": false,
+        "notify_unmanaged_addl": "",
+        "repo_name": "",
+        "repo_server": "",
+        "type": "teamforgesvn"
+    },
+    "type": "Source"
+}

@@ -1,0 +1,691 @@
+{
+    "__assembled": true,
+    "actions": [
+        {
+            "definition": "Core-Developing-DeployToTest",
+            "details": {
+                "VERSION": "[$VERSION.strip()$]"
+            },
+            "group": "[$ github['branch'] $]",
+            "icon": "46_48x48.png",
+            "instancename": "",
+            "name": "Deploy to Builds Server",
+            "parameters": {},
+            "project": "Core",
+            "project_version": "",
+            "show": "success",
+            "type": "initiate_pipeline"
+        },
+        {
+            "icon": "38_48x48.png",
+            "name": "Retry",
+            "parameters": {},
+            "show": "failure",
+            "type": "retry_instance"
+        }
+    ],
+    "desc": "",
+    "description": "This pipeline runs through several Jenkins jobs for building, testing, packaging and deploying the code from the 'core' repository, 'developing' branch.",
+    "globals": {
+        "fio": "bar",
+        "het": "mar"
+    },
+    "name": "Core-Developing",
+    "phases": [
+        {
+            "name": "Shared-GitInfo",
+            "stages": [
+                {
+                    "description": "",
+                    "name": "Git-GetInfo",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {},
+                                "label": "GitHub - Show Summary",
+                                "method": "show_summary",
+                                "module": "main",
+                                "name": "github"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Core-Developing-Build",
+            "stages": [
+                {
+                    "description": "",
+                    "name": "Core-Developing-Build-Job",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "inherit": true,
+                                    "job": "Core-developing",
+                                    "params": {
+                                        "BRANCH": "[$ github['ref'] $]",
+                                        "COMMIT": "[$ github['after'] $]"
+                                    },
+                                    "token": "",
+                                    "wait": true
+                                },
+                                "method": "build",
+                                "module": "job",
+                                "name": "jenkins"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "BUILD",
+                                    "value": "[$ __FIRSTSTEPDATA['build'] $]"
+                                },
+                                "label": "Flow - Pipeline - Set Data",
+                                "method": "set_data",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "path": "/job/Core-developing/[$ BUILD $]/artifact/CORE_VERSION/*view*/",
+                                    "target": "VERSION"
+                                },
+                                "label": "Jenkins - Get URL",
+                                "method": "get_url",
+                                "module": "job",
+                                "name": "jenkins"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "VERSION",
+                                    "value": "[$ VERSION.strip() $]"
+                                },
+                                "label": "Flow - Pipeline - Set Data",
+                                "method": "set_data",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "BASEVERSION",
+                                    "value": "[$ '.'.join(VERSION.split('.')[:-2]) $]"
+                                },
+                                "label": "Flow - Pipeline - Set Data",
+                                "method": "set_data",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "name": "[$ VERSION $]"
+                                },
+                                "label": "Flow - Pipeline - Set Name",
+                                "method": "set_name",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "broid_target_key": "broid",
+                                    "build_project": "Core-Build",
+                                    "initial_status": "BuildStatus:196",
+                                    "name": "Pipeline: Core-Developing-Build (#[$ BUILD $])",
+                                    "reference": ""
+                                },
+                                "label": "VersionOne - Create BuildRun",
+                                "method": "create_buildrun",
+                                "module": "main",
+                                "name": "v1plugin"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Core-Developing-Slow",
+            "stages": [
+                {
+                    "description": "",
+                    "name": "Core-Developing-Slow-Job",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "inherit": true,
+                                    "job": "Core-developing-slow",
+                                    "token": "",
+                                    "wait": true
+                                },
+                                "method": "build",
+                                "module": "job",
+                                "name": "jenkins"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "SLOW",
+                                    "value": "[$ __FIRSTSTEPDATA['build'] $]"
+                                },
+                                "label": "Flow - Pipeline - Set Data",
+                                "method": "set_data",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Core-Developing-Package",
+            "stages": [
+                {
+                    "description": "",
+                    "name": "Core-Developing-Package-Job",
+                    "steps": [
+                        {
+                            "name": "Package Job",
+                            "plugin": {
+                                "args": {
+                                    "inherit": true,
+                                    "job": "Core-developing-package",
+                                    "token": "",
+                                    "wait": true
+                                },
+                                "method": "build",
+                                "module": "job",
+                                "name": "jenkins"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "Set PACKAGE variable",
+                            "plugin": {
+                                "args": {
+                                    "key": "PACKAGE",
+                                    "value": "[$ __FIRSTSTEPDATA['build'] $]"
+                                },
+                                "label": "Flow - Pipeline - Set Data",
+                                "method": "set_data",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "Get VERSION file from Jenkins",
+                            "plugin": {
+                                "args": {
+                                    "path": "/job/Core-developing-package/[$ PACKAGE $]/artifact/VERSION/*view*/",
+                                    "target": "VERSION"
+                                },
+                                "label": "Jenkins - Get URL",
+                                "method": "get_url",
+                                "module": "job",
+                                "name": "jenkins"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "Set VERSION in Workspace",
+                            "plugin": {
+                                "args": {
+                                    "key": "VERSION",
+                                    "value": "[$ VERSION.strip() $]"
+                                },
+                                "label": "Flow - Pipeline - Set Data",
+                                "method": "set_data",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "Register Ultimate Artifact",
+                            "plugin": {
+                                "args": {
+                                    "artifact_location": "VersionOne.Setup-Ultimate-[$VERSION$].exe",
+                                    "artifact_name": "VersionOne-Ultimate"
+                                },
+                                "label": "Flow - Pipeline - Register Artifact",
+                                "method": "register_artifact",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "Register Team Artifact",
+                            "plugin": {
+                                "args": {
+                                    "artifact_location": "VersionOne.Setup-Team-[$VERSION$].exe",
+                                    "artifact_name": "VersionOne-Team"
+                                },
+                                "label": "Flow - Pipeline - Register Artifact",
+                                "method": "register_artifact",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "Register Enterprise Artifact",
+                            "plugin": {
+                                "args": {
+                                    "artifact_location": "VersionOne.Setup-Enterprise-[$VERSION$].exe",
+                                    "artifact_name": "VersionOne-Enterprise"
+                                },
+                                "label": "Flow - Pipeline - Register Artifact",
+                                "method": "register_artifact",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "Register Catalyst Artifact",
+                            "plugin": {
+                                "args": {
+                                    "artifact_location": "VersionOne.Setup-Catalyst-[$VERSION$].exe",
+                                    "artifact_name": "VersionOne-Catalyst"
+                                },
+                                "label": "Flow - Pipeline - Register Artifact",
+                                "method": "register_artifact",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "Update the BuildRun Status",
+                            "plugin": {
+                                "args": {
+                                    "build_run": "[$broid$]",
+                                    "complete_workitems": true,
+                                    "status": "BuildStatus:195"
+                                },
+                                "label": "VersionOne - Set BuildRun Status",
+                                "method": "set_buildrun_status",
+                                "module": "main",
+                                "name": "v1plugin"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "Which Staging Instance to publish to?",
+                            "plugin": {
+                                "args": {
+                                    "key": "PUBLISH_TO",
+                                    "value": "PerformanceCI"
+                                },
+                                "label": "Flow - Pipeline - Set Data",
+                                "method": "set_data",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Core-Developing-Finalize",
+            "stages": [
+                {
+                    "description": "",
+                    "name": "Core-ActivityStreamTests-Job",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "inherit": true,
+                                    "job": "ActivityStreamTests",
+                                    "token": "",
+                                    "wait": true
+                                },
+                                "label": "Jenkins - Build",
+                                "method": "build",
+                                "module": "job",
+                                "name": "jenkins"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "description": "",
+                    "name": "Core-Developing-Chocolatey-Job",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "job": "Core-developing-chocolatey-package",
+                                    "wait": true
+                                },
+                                "method": "build",
+                                "module": "job",
+                                "name": "jenkins"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "description": "",
+                    "name": "Core-Developing-Deploy-Job",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "broid_target_key": "dttid",
+                                    "build_project": "Core-DeployToTest",
+                                    "initial_status": "BuildStatus:196",
+                                    "name": "Pipeline: Core-Developing-DeployToTest (#[$ BUILD $])",
+                                    "reference": ""
+                                },
+                                "label": "VersionOne - Create BuildRun",
+                                "method": "create_buildrun",
+                                "module": "main",
+                                "name": "v1plugin"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "inherit": true,
+                                    "job": "Core-developing-deploy",
+                                    "token": "",
+                                    "wait": true
+                                },
+                                "label": "Jenkins - Build",
+                                "method": "build",
+                                "module": "job",
+                                "name": "jenkins"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "DEPLOY",
+                                    "value": "[$ __PREVSTEPDATA['build'] $]"
+                                },
+                                "label": "Flow - Pipeline - Set Data",
+                                "method": "set_data",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "artifact": "VersionOne-Ultimate",
+                                    "asset": "",
+                                    "description": "",
+                                    "environment": "",
+                                    "host": "",
+                                    "instance": "",
+                                    "name": "Ultimate/[$VERSION$]",
+                                    "path": "",
+                                    "service": "",
+                                    "target_type": "custom",
+                                    "url": "http://builds.versionone.net/[$ VERSION $]"
+                                },
+                                "label": "Flow - Deploy Artifact",
+                                "method": "deploy_artifact",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "artifact": "VersionOne-Team",
+                                    "asset": "",
+                                    "description": "",
+                                    "environment": "",
+                                    "host": "",
+                                    "instance": "",
+                                    "name": "Team/[$VERSION$]",
+                                    "path": "",
+                                    "service": "",
+                                    "target_type": "custom",
+                                    "url": "http://team.versionone.net/Team-[$ VERSION $]"
+                                },
+                                "label": "Flow - Deploy Artifact",
+                                "method": "deploy_artifact",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "artifact": "VersionOne-Catalyst",
+                                    "asset": "",
+                                    "description": "",
+                                    "environment": "",
+                                    "host": "",
+                                    "instance": "",
+                                    "name": "Catalyst/[$VERSION$]",
+                                    "path": "",
+                                    "service": "",
+                                    "target_type": "custom",
+                                    "url": "http://catalyst.versionone.net/Catalyst-[$ VERSION $]"
+                                },
+                                "label": "Flow - Deploy Artifact",
+                                "method": "deploy_artifact",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "build_run": "[$dttid$]",
+                                    "complete_workitems": true,
+                                    "status": "BuildStatus:195"
+                                },
+                                "label": "VersionOne - Set BuildRun Status",
+                                "method": "set_buildrun_status",
+                                "module": "main",
+                                "name": "v1plugin"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Core-Publish-To-PerformanceCI",
+            "stages": [
+                {
+                    "description": "",
+                    "name": "Core-Promote-And-Publish",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "broid_target_key": "dtsid",
+                                    "build_project": "Core-DeployToStaging",
+                                    "initial_status": "BuildStatus:196",
+                                    "name": "Pipeline: Core-Developing-DeployToStaging (#[$ BUILD $])",
+                                    "reference": ""
+                                },
+                                "label": "VersionOne - Create BuildRun",
+                                "method": "create_buildrun",
+                                "module": "main",
+                                "name": "v1plugin"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "Copy All Editions to Staging",
+                            "plugin": {
+                                "args": {
+                                    "parameters": [
+                                        {
+                                            "name": "base_version",
+                                            "values": [
+                                                "[$ BASEVERSION $]"
+                                            ]
+                                        },
+                                        {
+                                            "name": "full_version",
+                                            "values": [
+                                                "[$ VERSION $]"
+                                            ]
+                                        }
+                                    ],
+                                    "task": "Copy Edition to Staging"
+                                },
+                                "label": "Automate - Run Task",
+                                "method": "runtask",
+                                "module": "task",
+                                "name": "automate"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "Update the specified Hostess instance",
+                            "plugin": {
+                                "args": {
+                                    "parameters": [
+                                        {
+                                            "name": "target_name",
+                                            "values": [
+                                                "[$ PUBLISH_TO $]"
+                                            ]
+                                        }
+                                    ],
+                                    "task": "Trigger Hostess Update"
+                                },
+                                "label": "Automate - Run Task",
+                                "method": "runtask",
+                                "module": "task",
+                                "name": "automate"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "build_run": "[$dtsid$]",
+                                    "complete_workitems": true,
+                                    "status": "BuildStatus:195"
+                                },
+                                "label": "VersionOne - Set BuildRun Status",
+                                "method": "set_buildrun_status",
+                                "module": "main",
+                                "name": "v1plugin"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                },
+                {
+                    "description": "",
+                    "name": "Core-Developing-AddToPackage",
+                    "steps": [
+                        {
+                            "name": "Add our manifest to a Package representing the development",
+                            "plugin": {
+                                "args": {
+                                    "create": true,
+                                    "globals_key": "",
+                                    "package": "Developing [$ BASEVERSION $]"
+                                },
+                                "label": "Utility - Bucket - Add Manifest",
+                                "method": "add_to_bucket",
+                                "module": "bucket",
+                                "name": "utility"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "product_id": "543fe8a37c1a7c67c7dcb133",
+    "product_name": "VersionOne",
+    "product_workflow_step": "",
+    "signature": {
+        "ref": "refs/heads/developing",
+        "repository": {
+            "name": "Core",
+            "url": "https://github.com/versionone/Core"
+        }
+    },
+    "signature_type": "git",
+    "summary": [
+        {
+            "label": "",
+            "show": "success",
+            "value": "<a target=\"_blank\" href=\"[$ artifacts['VersionOne-Ultimate']['target_url'] $]\">Ultimate</a>"
+        },
+        {
+            "label": "",
+            "show": "success",
+            "value": "<a target=\"_blank\" href=\"[$ artifacts['VersionOne-Team']['target_url'] $]\">Team</a>"
+        },
+        {
+            "label": "",
+            "show": "success",
+            "value": "<a target=\"_blank\" href=\"[$ artifacts['VersionOne-Catalyst']['target_url'] $]\">Catalyst</a>"
+        }
+    ],
+    "tags": [
+        "VersionOne"
+    ]
+}

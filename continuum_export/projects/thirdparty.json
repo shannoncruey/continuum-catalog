@@ -1,0 +1,102 @@
+{
+    "actions": [],
+    "artifacts": [
+        {
+            "_id": "576aea123ed4d26d72ab7637",
+            "created_dt": "2015-06-12T16:15:12.474000",
+            "last_revision": 446,
+            "last_revision_dt": "2016-09-01T18:58:55.298000",
+            "name": "thirdparty",
+            "project_id": "5579efce3ed4d21ed5535fb1",
+            "project_name": "thirdparty"
+        }
+    ],
+    "description": "",
+    "globals": {
+        "jenkins_job": "thirdpartybuild"
+    },
+    "lifecycle": "",
+    "mappings": [
+        {
+            "_id": "57c70d1e3ed4d210cddc6610",
+            "dn_definition": "56e02a6b3ed4d23ee2617e06",
+            "dn_group": "master",
+            "dn_project": "56e027b93ed4d23ee2617def",
+            "up_definition": "56e02fa63ed4d23ee2617e15",
+            "up_group": "master",
+            "up_project": "5579efce3ed4d21ed5535fb1"
+        }
+    ],
+    "name": "thirdparty",
+    "notifications": {
+        "email": {
+            "addresses": "patrick.dunnigan@versionone.com,shannon.cruey@versionone.com"
+        },
+        "enable": true,
+        "hipchat": {
+            "room": ""
+        },
+        "http": {
+            "data": "",
+            "url": ""
+        },
+        "on_failure": [
+            "email"
+        ],
+        "on_start": [],
+        "on_success": [],
+        "on_wait": [],
+        "slack": {
+            "channel": ""
+        }
+    },
+    "source": {
+        "directives": [
+            {
+                "details": {
+                    "args": {},
+                    "instance_name": ""
+                },
+                "type": "lifecycle_workitem_lookup",
+                "when": "always"
+            },
+            {
+                "details": {
+                    "definition": "Build",
+                    "group": "[$ branch $]",
+                    "includechanges": "",
+                    "instancename": "",
+                    "project": "",
+                    "project_version": ""
+                },
+                "evaluate": "len(commits) > 0 and branch == \"master\"",
+                "type": "initiate_pipeline",
+                "when": "evaluate"
+            },
+            {
+                "details": {
+                    "definition": "Pre Merge Build",
+                    "group": "[$ branch $]",
+                    "includechanges": "",
+                    "instancename": "",
+                    "project": "",
+                    "project_version": ""
+                },
+                "evaluate": "len(commits) > 0 and branch != \"master\"",
+                "type": "initiate_pipeline",
+                "when": "evaluate"
+            }
+        ],
+        "enable_polling": false,
+        "group_source": "branch",
+        "interface": "webhook",
+        "notify_unmanaged": false,
+        "notify_unmanaged_addl": "",
+        "repo_name": "",
+        "repo_server": "",
+        "type": "github"
+    },
+    "type": "Source",
+    "version": "16.2.5",
+    "version_date": "2016-08-18 17:37:24"
+}

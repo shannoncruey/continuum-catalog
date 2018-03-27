@@ -1,0 +1,109 @@
+{
+    "Category": null,
+    "Code": "test",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "generate_password",
+                        "length": {
+                            "__input_type": "text",
+                            "__label": "Length",
+                            "length": ""
+                        },
+                        "variable": {
+                            "__input_type": "text",
+                            "__label": "Variable Name",
+                            "variable": ""
+                        }
+                    },
+                    "FunctionName": "generate_password",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "store_private_key",
+                        "__snip": "name",
+                        "cloud_name": {
+                            "__input_type": "text",
+                            "__label": "Cloud Name",
+                            "cloud_name": ""
+                        },
+                        "name": {
+                            "__input_type": "text",
+                            "__label": "Keypair Name",
+                            "name": ""
+                        },
+                        "private_key": {
+                            "__class": "w50pct",
+                            "__input_type": "textarea",
+                            "__label": "Private Key",
+                            "__rows": "1",
+                            "__style": "height:18px;vertical-align:bottom;",
+                            "private_key": ""
+                        }
+                    },
+                    "FunctionName": "store_private_key",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "get_shared_cred",
+                        "alias": {
+                            "__input_type": "text",
+                            "__label": "Alias",
+                            "__required": "true",
+                            "alias": ""
+                        },
+                        "domain": {
+                            "__input_type": "text",
+                            "__label": "Domain Variable",
+                            "domain": ""
+                        },
+                        "password": {
+                            "__input_type": "text",
+                            "__label": "Password Variable",
+                            "password": ""
+                        },
+                        "userid": {
+                            "__input_type": "text",
+                            "__label": "User ID Variable",
+                            "userid": ""
+                        }
+                    },
+                    "FunctionName": "get_shared_cred",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "test",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.000"
+}

@@ -1,0 +1,146 @@
+{
+    "__assembled": true,
+    "actions": [],
+    "description": "Used to build various Velocity modules.",
+    "globals": {},
+    "name": "Velocity Common Build",
+    "phases": [
+        {
+            "name": "Collect Git Info",
+            "stages": [
+                {
+                    "description": "",
+                    "name": "Collect Git Info",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {},
+                                "label": "GitHub - Show Summary",
+                                "method": "show_summary",
+                                "module": "main",
+                                "name": "github"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "message": "Starting pipeline instance for project __PROJECTNAME",
+                                    "room": "ClearCode"
+                                },
+                                "label": "HipChat - Send Notification",
+                                "method": "send",
+                                "module": "notification",
+                                "name": "hipchatplugin"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Build and Unit Test Common",
+            "stages": [
+                {
+                    "description": "",
+                    "name": "Build Jenkins Common RH",
+                    "steps": [
+                        {
+                            "name": "Jenkins",
+                            "plugin": {
+                                "args": {
+                                    "inherit": true,
+                                    "job": "common_redhat",
+                                    "params": {
+                                        "BRANCH": "[$ github['ref'] $]",
+                                        "COMMIT": "[$ github['after'] $]"
+                                    },
+                                    "token": "",
+                                    "wait": true
+                                },
+                                "method": "build",
+                                "module": "job",
+                                "name": "jenkins"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "jenkins_build_number_rh",
+                                    "value": {
+                                        "Ref": "__PREVSTEPDATA['build']"
+                                    }
+                                },
+                                "method": "set_data",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "never"
+                        }
+                    ]
+                },
+                {
+                    "description": "",
+                    "name": "Build Jenkins Common Ub",
+                    "steps": [
+                        {
+                            "name": "Jenkins",
+                            "plugin": {
+                                "args": {
+                                    "inherit": true,
+                                    "job": "common_ubuntu",
+                                    "params": {
+                                        "BRANCH": "[$ github['ref'] $]",
+                                        "COMMIT": "[$ github['after'] $]"
+                                    },
+                                    "token": "",
+                                    "wait": true
+                                },
+                                "method": "build",
+                                "module": "job",
+                                "name": "jenkins"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "jenkins_build_number_ub",
+                                    "value": {
+                                        "Ref": "__PREVSTEPDATA['build']"
+                                    }
+                                },
+                                "method": "set_data",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "never"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "product_id": "542ef5ad5e1497307173c009",
+    "product_name": "Velocity",
+    "product_workflow_step": "Development",
+    "signature": {
+        "ref": "refs/heads/master",
+        "repository": {
+            "name": "deploy",
+            "url": "https://github.com/cloudsidekick/deploy"
+        }
+    },
+    "signature_type": "git",
+    "summary": [],
+    "tags": [
+        "Velocity"
+    ]
+}

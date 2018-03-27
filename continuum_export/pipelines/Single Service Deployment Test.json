@@ -1,0 +1,134 @@
+{
+    "__assembled": true,
+    "actions": "",
+    "description": "",
+    "globals": {
+        "downstream_pipeline": "Deploy to Staging Cluster"
+    },
+    "name": "Single Service Deployment Test",
+    "phases": [
+        {
+            "name": "Deploy and Test Service",
+            "stages": [
+                {
+                    "description": "",
+                    "name": "Deploy and Test Service",
+                    "steps": [
+                        {
+                            "name": "deploy server",
+                            "plugin": {
+                                "args": {
+                                    "params": {
+                                        "DeploymentParamsVals": [],
+                                        "SequenceParamsVals": [],
+                                        "Services": [
+                                            {
+                                                "ServiceName": "Customers",
+                                                "Transitions": [
+                                                    {
+                                                        "Parameters": [],
+                                                        "Step": 1
+                                                    },
+                                                    {
+                                                        "Parameters": [
+                                                            {
+                                                                "name": "artifact",
+                                                                "values": "[$artifacts']['jarfile']['location']$]"
+                                                            }
+                                                        ],
+                                                        "Step": 2
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "template": "Customers REST",
+                                    "version": 1
+                                },
+                                "method": "deploy",
+                                "module": "deployment",
+                                "name": "deploy"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "artifact": "jarfile",
+                                    "asset": "",
+                                    "description": "",
+                                    "environment": "[$ __PREVSTEPDATA['deployment_name'] $]",
+                                    "host": "",
+                                    "instance": "Customers 1",
+                                    "name": "",
+                                    "path": "",
+                                    "service": "Customers",
+                                    "target_type": "service_instance",
+                                    "url": ""
+                                },
+                                "label": "Flow - Deploy Artifact",
+                                "method": "deploy_artifact",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "run tests",
+                            "plugin": {
+                                "args": {
+                                    "deployment": "",
+                                    "sequence": "Tests"
+                                },
+                                "method": "run_sequence",
+                                "module": "deployment",
+                                "name": "deploy"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "terminate server",
+                            "plugin": {
+                                "args": {},
+                                "method": "terminate",
+                                "module": "deployment",
+                                "name": "deploy"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Initiate Next Pipeline",
+            "stages": [
+                {
+                    "description": "",
+                    "name": "Initiate Next Pipeline",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "group": "master",
+                                    "pipeline": "[$ globals[\"downstream_pipeline\"] $]",
+                                    "project": "customers-microservice"
+                                },
+                                "label": "Flow - Pipeline - Initiate",
+                                "method": "initiate",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "signature": "",
+    "signature_type": "git",
+    "summary": []
+}

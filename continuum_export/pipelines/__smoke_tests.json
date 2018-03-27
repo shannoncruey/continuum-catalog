@@ -1,0 +1,40 @@
+{
+    "__assembled": true,
+    "actions": [],
+    "dependencies": [],
+    "desc": "",
+    "description": "Doesn't actually deploy code, just makes relationships.\n",
+    "globals": {},
+    "interactive": false,
+    "name": "__smoke_tests",
+    "phases": [
+        {
+            "name": "",
+            "stages": [
+                {
+                    "name": "",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "initial_data": "",
+                                    "task": "run smoke tests",
+                                    "version": ""
+                                },
+                                "label": "Automate - Run Task",
+                                "method": "runtask",
+                                "module": "task",
+                                "name": "automate"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "summary": [],
+    "warnings": []
+}

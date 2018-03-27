@@ -1,0 +1,74 @@
+{
+    "Category": null,
+    "Code": "0",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "run_task",
+                        "handle": {
+                            "handle": ""
+                        },
+                        "on_error": {
+                            "on_error": ""
+                        },
+                        "on_success": {
+                            "on_success": ""
+                        },
+                        "parameters": {
+                            "parameters": ""
+                        },
+                        "task_name": {
+                            "task_name": "~json test"
+                        },
+                        "time_to_wait": {
+                            "time_to_wait": ""
+                        },
+                        "version": {
+                            "version": ""
+                        }
+                    },
+                    "FunctionName": "run_task",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "subtask",
+                        "task_name": {
+                            "task_name": "dummy"
+                        },
+                        "version": {
+                            "version": ""
+                        }
+                    },
+                    "FunctionName": "subtask",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": "None",
+    "Description": "",
+    "IsDefaultVersion": true,
+    "MaxVersion": "3.000",
+    "Name": "0copyme3",
+    "NextMajorVersion": "4.000",
+    "NextMinorVersion": "3.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [],
+    "QueueDepth": "None",
+    "Status": "Development",
+    "Version": "3.000"
+}

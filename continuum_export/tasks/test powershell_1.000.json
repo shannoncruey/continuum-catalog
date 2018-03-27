@@ -1,0 +1,122 @@
+{
+    "Category": "General",
+    "Code": "test",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "new_connection",
+                        "asset": {
+                            "asset": "address=lifecycle.versionone.acme.demo user=Administrator password=Demo1234"
+                        },
+                        "cloud_name": {
+                            "cloud_name": ""
+                        },
+                        "conn_name": {
+                            "conn_name": "CONN1"
+                        },
+                        "conn_type": {
+                            "conn_type": "winrm"
+                        },
+                        "debug": {
+                            "debug": ""
+                        },
+                        "initial_prompt": {
+                            "initial_prompt": ""
+                        }
+                    },
+                    "FunctionName": "new_connection",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_variable",
+                        "variables": {
+                            "Item::variable::0": {
+                                "modifier": {
+                                    "modifier": "TO_JSON"
+                                },
+                                "name": {
+                                    "name": "myvar"
+                                },
+                                "value": {
+                                    "value": "{\"foo\": \"\\\\\\\\bar\"}"
+                                }
+                            },
+                            "__is_array": "true"
+                        }
+                    },
+                    "FunctionName": "set_variable",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "winrm_psh",
+                        "__parse_method": "2",
+                        "command": {
+                            "command": "$foo = ConvertFrom-Json -InputObject ['{\"foo\": \"\\\\\\\\bar\"}']\nWrite-Output $foo"
+                        },
+                        "conn_name": {
+                            "conn_name": "CONN1"
+                        },
+                        "result_variable": {
+                            "result_variable": ""
+                        },
+                        "return_code": {
+                            "return_code": ""
+                        },
+                        "timeout": {
+                            "timeout": ""
+                        }
+                    },
+                    "FunctionName": "winrm_psh",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "message": {
+                            "message": "[$ myvar $]"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "test powershell",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.000"
+}

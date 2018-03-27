@@ -1,0 +1,114 @@
+{
+    "Category": null,
+    "Code": "ldap",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_debug_level",
+                        "debug_level": {
+                            "debug_level": "10"
+                        }
+                    },
+                    "FunctionName": "set_debug_level",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "new_connection",
+                        "asset": {
+                            "asset": "V1-ActiveDirectory"
+                        },
+                        "cloud_name": {
+                            "cloud_name": ""
+                        },
+                        "conn_name": {
+                            "conn_name": "CONN1"
+                        },
+                        "conn_type": {
+                            "conn_type": "ldap"
+                        },
+                        "debug": {
+                            "debug": ""
+                        },
+                        "initial_prompt": {
+                            "initial_prompt": ""
+                        }
+                    },
+                    "FunctionName": "new_connection",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "ldap_ext.ldapcmds",
+                        "__name": "ldap_query",
+                        "attributes": {
+                            "attributes": ""
+                        },
+                        "base_dn": {
+                            "base_dn": "ou=Users V1, dc=corp, dc=versionone, dc=net"
+                        },
+                        "conn_name": {
+                            "conn_name": "CONN1"
+                        },
+                        "filter": {
+                            "filter": "cn=*sarah*"
+                        },
+                        "result": {
+                            "result": "r"
+                        },
+                        "scope": {
+                            "scope": "SubTree"
+                        }
+                    },
+                    "FunctionName": "ldap_query",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "message": {
+                            "message": "[$ r[:] $]"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "ldap test",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.000"
+}

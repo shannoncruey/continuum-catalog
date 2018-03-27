@@ -1,0 +1,163 @@
+{
+    "__assembled": true,
+    "actions": [
+        {
+            "icon": "38_48x48.png",
+            "name": "Retry",
+            "parameters": {},
+            "show": "failure",
+            "type": "retry_instance"
+        },
+        {
+            "definition": "Package Continuum (pre repo merge)",
+            "details": null,
+            "group": "master",
+            "icon": "",
+            "instancename": "",
+            "name": "Trigger Package Continuum",
+            "on": "instance",
+            "parameters": {},
+            "project": "Continuum",
+            "project_version": "",
+            "show": "success",
+            "type": "initiate_pipeline"
+        }
+    ],
+    "category": "",
+    "dependencies": [],
+    "description": "Used to build various Velocity modules.",
+    "globals": {},
+    "interactive": false,
+    "name": "Build",
+    "phases": [
+        {
+            "name": "Build and Unit Test",
+            "stages": [
+                {
+                    "name": "Build Jenkins",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "broid_target_key": "build_run_id",
+                                    "build_project": "Continuum Repo",
+                                    "initial_status": "In Progress",
+                                    "instance_name": "",
+                                    "name": "",
+                                    "reference": ""
+                                },
+                                "label": "VersionOne - Create BuildRun",
+                                "method": "create_buildrun",
+                                "module": "main",
+                                "name": "v1plugin"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "artifact_name": "",
+                                    "artifact_regex": "",
+                                    "inherit": "true",
+                                    "instance_name": "",
+                                    "job": "[$ projectglobals['jenkins_job'] $]",
+                                    "params": {
+                                        "BRANCH": "[$ __WORKSPACE.get('github').get('ref') $]",
+                                        "COMMIT": "[$ __WORKSPACE.get('github').get('after') $]",
+                                        "PI": "__PIID"
+                                    },
+                                    "result_key": "",
+                                    "wait": "true"
+                                },
+                                "label": "Jenkins - Build",
+                                "method": "build",
+                                "module": "job",
+                                "name": "jenkins"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "build_step",
+                                    "value": "__PREVSTEPNUM"
+                                },
+                                "label": "Flow - Pipeline - Set Data",
+                                "method": "set_data",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "action": "set",
+                                    "create": "true",
+                                    "name": "master_artifacts",
+                                    "path": "__PROJECTNAME",
+                                    "value": "https://s3.amazonaws.com/builds.continuum.versionone.com/__PROJECTNAME/__PROJECTNAME-[$ __STAGEDATA[ '[$ build_step $]' ]['build'] $].tar.gz"
+                                },
+                                "label": "Utility - Set Registry",
+                                "method": "set_registry",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "action": "set",
+                                    "create": "true",
+                                    "name": "master_builds",
+                                    "path": "__PROJECTNAME",
+                                    "value": "[$ __STAGEDATA[ '[$ build_step $]' ]['build'] $]"
+                                },
+                                "label": "Utility - Set Registry",
+                                "method": "set_registry",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "group": "__GROUP",
+                                    "pipeline": "Build Continuum",
+                                    "project": "continuum",
+                                    "start_now": "false"
+                                },
+                                "label": "Flow - Pipeline - Initiate",
+                                "method": "initiate",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "product_id": "542ef5ad5e1497307173c009",
+    "product_name": "Continuum",
+    "product_workflow_step": "Development",
+    "signature": {
+        "ref": "refs/heads/master",
+        "repository": {
+            "name": "deploy",
+            "url": "https://github.com/cloudsidekick/deploy"
+        }
+    },
+    "signature_type": "git",
+    "summary": []
+}

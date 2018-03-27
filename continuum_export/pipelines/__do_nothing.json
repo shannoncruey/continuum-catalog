@@ -1,0 +1,76 @@
+{
+    "actions": [
+        {
+            "args": {},
+            "icon": "",
+            "name": "hello",
+            "parameters": {},
+            "task": "~hello",
+            "type": "task",
+            "version": ""
+        }
+    ],
+    "category": "",
+    "dependencies": [],
+    "description": "",
+    "globals": {},
+    "interactive": false,
+    "name": "__do_nothing",
+    "phases": [
+        {
+            "name": "",
+            "stages": [
+                {
+                    "name": "",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "status": "end-canceled"
+                                },
+                                "label": "Utility - End",
+                                "method": "end",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "SETVERSION",
+                                    "package": "aaa",
+                                    "revision": "[$ initiator['package_revision']['revision'] $]",
+                                    "value": "9.8.7"
+                                },
+                                "label": "Flow - Package - Set Global",
+                                "method": "set_global",
+                                "module": "package",
+                                "name": "flow"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "details": "because I want to stop the flow",
+                                    "result": "fail"
+                                },
+                                "label": "Flow - Package - Set All Activity Controls",
+                                "method": "set_all_activity_controls",
+                                "module": "package",
+                                "name": "flow"
+                            },
+                            "when": "never"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "summary": []
+}

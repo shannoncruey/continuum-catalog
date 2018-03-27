@@ -1,0 +1,62 @@
+{
+    "actions": [],
+    "dependencies": [],
+    "description": "",
+    "globals": {},
+    "interactive": false,
+    "name": "__do_something_automatic",
+    "phases": [
+        {
+            "name": "",
+            "stages": [
+                {
+                    "name": "",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "initialarray",
+                                    "value": "[{}"
+                                },
+                                "label": "Flow - Pipeline - Set Data",
+                                "method": "set_data",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "message": "Ha! I did something."
+                                },
+                                "label": "Utility - Log",
+                                "method": "insert_log",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "seconds": "500"
+                                },
+                                "label": "Utility - Sleep",
+                                "method": "sleep",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "never"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "summary": []
+}

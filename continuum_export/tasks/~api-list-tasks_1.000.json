@@ -1,0 +1,352 @@
+{
+    "Category": null,
+    "Code": "000",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "new_connection",
+                        "asset": {
+                            "asset": ""
+                        },
+                        "cloud_name": {
+                            "cloud_name": ""
+                        },
+                        "conn_name": {
+                            "conn_name": "CONN1"
+                        },
+                        "conn_type": {
+                            "conn_type": "ssh"
+                        },
+                        "debug": {
+                            "debug": ""
+                        },
+                        "initial_prompt": {
+                            "initial_prompt": ""
+                        }
+                    },
+                    "FunctionName": "new_connection",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_debug_level",
+                        "debug_level": {
+                            "__dataset": "ddDataSource_GetDebugLevels",
+                            "__datasource": "function",
+                            "__input_type": "dropdown",
+                            "__label": "Logging Level",
+                            "debug_level": "10"
+                        }
+                    },
+                    "FunctionName": "set_debug_level",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "cato_web_service",
+                        "__variables": "true",
+                        "host": {
+                            "__class": "w95pct",
+                            "__input_type": "text",
+                            "__label": "Host",
+                            "host": "https://localhost:4001"
+                        },
+                        "method": {
+                            "__class": "w95pct",
+                            "__input_type": "text",
+                            "__label": "Method",
+                            "__required": "true",
+                            "method": "list_tasks"
+                        },
+                        "pairs": {
+                            "Item::pair::0": {
+                                "__label": "Parameter",
+                                "key": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "key": "output_format"
+                                },
+                                "value": {
+                                    "__class": "w50pct",
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "value": "json"
+                                }
+                            },
+                            "__is_array": "true",
+                            "__label": "Parameters"
+                        },
+                        "password": {
+                            "__input_type": "text",
+                            "__label": "Password",
+                            "__required": "true",
+                            "password": "c4t4lyss"
+                        },
+                        "result_var": {
+                            "__input_type": "text",
+                            "__label": "Result Variable",
+                            "result_var": "response"
+                        },
+                        "userid": {
+                            "__input_type": "text",
+                            "__label": "UserId",
+                            "__required": "true",
+                            "userid": "administrator"
+                        }
+                    },
+                    "FunctionName": "cato_web_service",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "deploymentslist is an object variable from JSON - a list of deployment objects",
+                    "FunctionDefinition": {
+                        "__name": "set_variable",
+                        "variables": {
+                            "__label": "Variables",
+                            "variable": {
+                                "__label": "Variable",
+                                "modifier": {
+                                    "__input_type": "select",
+                                    "__label": "Modifier",
+                                    "modifier": "FROM_JSON"
+                                },
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "tasklist"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "value": "[[$tmp:Response]]"
+                                }
+                            }
+                        }
+                    },
+                    "FunctionName": "set_variable",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "__snip": "message",
+                        "message": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Log",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "2",
+                            "message": "[[$tasklist:*]]\n\n"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "testing nested object lookups",
+                    "FunctionDefinition": {
+                        "__name": "loop",
+                        "action": {
+                            "function": {
+                                "__name": "log_msg",
+                                "__snip": "message",
+                                "message": {
+                                    "__class": "w95pct",
+                                    "__input_type": "textarea",
+                                    "__label": "Log",
+                                    "__label_style": "display: block;",
+                                    "__required": "true",
+                                    "__rows": "2",
+                                    "message": "[[$tasklist:$[[[X]]].Name]]"
+                                }
+                            }
+                        },
+                        "compare_to": {
+                            "__input_type": "text",
+                            "compare_to": "[[$tasklist:*]]"
+                        },
+                        "counter": {
+                            "__input_type": "text",
+                            "counter": "X"
+                        },
+                        "increment": {
+                            "__input_type": "text",
+                            "increment": "1"
+                        },
+                        "max": {
+                            "__input_type": "text",
+                            "max": "100"
+                        },
+                        "start": {
+                            "__input_type": "text",
+                            "start": "0"
+                        },
+                        "test": {
+                            "__input_type": "select",
+                            "test": "<="
+                        }
+                    },
+                    "FunctionName": "loop",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "This loop will turn the list of objects into a standard Task variable array, of task objects.  Why?  Because I can't figure out how to do nested [[[[object:key]]:key]] lookups.",
+                    "FunctionDefinition": {
+                        "__name": "loop",
+                        "action": {
+                            "function": {
+                                "__name": "set_variable",
+                                "variables": {
+                                    "__label": "Variables",
+                                    "variable": {
+                                        "__label": "Variable",
+                                        "modifier": {
+                                            "__input_type": "select",
+                                            "__label": "Modifier",
+                                            "modifier": "FROM_JSON"
+                                        },
+                                        "name": {
+                                            "__input_type": "text",
+                                            "__label": "Name",
+                                            "name": "tasks,[[X]]"
+                                        },
+                                        "value": {
+                                            "__input_type": "text",
+                                            "__label": "Value",
+                                            "value": "[[tasklist:[[X]]]]"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "compare_to": {
+                            "__input_type": "text",
+                            "compare_to": "[[$tasklist:*]]"
+                        },
+                        "counter": {
+                            "__input_type": "text",
+                            "counter": "X"
+                        },
+                        "increment": {
+                            "__input_type": "text",
+                            "increment": "1"
+                        },
+                        "max": {
+                            "__input_type": "text",
+                            "max": "100"
+                        },
+                        "start": {
+                            "__input_type": "text",
+                            "start": "1"
+                        },
+                        "test": {
+                            "__input_type": "select",
+                            "test": "<="
+                        }
+                    },
+                    "FunctionName": "loop",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "loop",
+                        "action": {
+                            "function": {
+                                "__name": "log_msg",
+                                "__snip": "message",
+                                "message": {
+                                    "__class": "w95pct",
+                                    "__input_type": "textarea",
+                                    "__label": "Log",
+                                    "__label_style": "display: block;",
+                                    "__required": "true",
+                                    "__rows": "2",
+                                    "message": "[[[[tasks,[[Y]]]]:Name]]"
+                                }
+                            }
+                        },
+                        "compare_to": {
+                            "__input_type": "text",
+                            "compare_to": "[[tasks,*]]"
+                        },
+                        "counter": {
+                            "__input_type": "text",
+                            "counter": "Y"
+                        },
+                        "increment": {
+                            "__input_type": "text",
+                            "increment": "1"
+                        },
+                        "max": {
+                            "__input_type": "text",
+                            "max": "100"
+                        },
+                        "start": {
+                            "__input_type": "text",
+                            "start": "1"
+                        },
+                        "test": {
+                            "__input_type": "select",
+                            "test": "<="
+                        }
+                    },
+                    "FunctionName": "loop",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "~api-list-tasks",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.000"
+}

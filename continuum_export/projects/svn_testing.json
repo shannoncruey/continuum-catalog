@@ -1,0 +1,43 @@
+{
+    "actions": [],
+    "artifacts": [],
+    "desc": "",
+    "description": "",
+    "lifecycle": "",
+    "mappings": [],
+    "name": "svn_testing",
+    "notifications": {
+        "email": {
+            "addresses": ""
+        },
+        "enable": false,
+        "hipchat": {
+            "room": ""
+        },
+        "http": {
+            "data": "",
+            "url": ""
+        },
+        "on_failure": [],
+        "on_start": [],
+        "on_success": [],
+        "on_wait": [],
+        "slack": {
+            "channel": ""
+        }
+    },
+    "source": {
+        "directives": [],
+        "enable_polling": true,
+        "group_source": "branch",
+        "interface": "poller",
+        "notify_unmanaged": false,
+        "notify_unmanaged_addl": "",
+        "repo_name": "petclinic",
+        "repo_server": "assembla",
+        "type": "subversion"
+    },
+    "type": "Source",
+    "version": "1",
+    "version_date": "2015-10-23 13:25:50"
+}

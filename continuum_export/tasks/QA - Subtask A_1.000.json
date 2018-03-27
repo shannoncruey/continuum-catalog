@@ -1,0 +1,46 @@
+{
+    "Category": null,
+    "Code": "QA - Subtask A",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "subtask",
+                        "original_task_id": {
+                            "__input_type": "text",
+                            "original_task_id": "9c6eb168-a265-4065-9f30-41058adeb22c"
+                        },
+                        "task_name": {
+                            "task_name": "QA - Subtask B"
+                        },
+                        "version": {
+                            "__input_type": "text",
+                            "version": ""
+                        }
+                    },
+                    "FunctionName": "subtask",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "Calls a Subtask.",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "QA - Subtask A",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.000"
+}

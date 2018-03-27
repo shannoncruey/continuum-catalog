@@ -1,0 +1,55 @@
+{
+    "actions": "",
+    "category": "General",
+    "dependencies": [],
+    "description": "",
+    "globals": {},
+    "interactive": false,
+    "name": "Test Lifecycle-ReadOnly",
+    "phases": [
+        {
+            "name": "",
+            "stages": [
+                {
+                    "name": "",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "instance_name": "",
+                                    "number": "E-06227"
+                                },
+                                "label": "VersionOne - Get Epic Workitems",
+                                "method": "get_epic_workitems",
+                                "module": "main",
+                                "name": "v1plugin",
+                                "type": "external"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "fail_on_no_match": "true",
+                                    "instance_name": "",
+                                    "key": "D-12849",
+                                    "status": "Done"
+                                },
+                                "label": "VersionOne - Verify Workitem Status",
+                                "method": "check_for_status",
+                                "module": "main",
+                                "name": "v1plugin",
+                                "type": "external"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "summary": []
+}

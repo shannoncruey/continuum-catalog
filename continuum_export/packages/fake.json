@@ -1,0 +1,97 @@
+{
+    "actions": [],
+    "artifacts": [],
+    "description": "",
+    "globals": {},
+    "name": "fake",
+    "progression": {
+        "name": "bogus",
+        "phases": [
+            {
+                "autopromote": false,
+                "delivery_category": "Developing",
+                "directives": [
+                    {
+                        "category": null,
+                        "controls": [],
+                        "description": "",
+                        "details": {
+                            "definition": "omg",
+                            "group": "testg",
+                            "initial_data": {}
+                        },
+                        "directives": [
+                            {
+                                "category": null,
+                                "controls": [
+                                    {
+                                        "description": "",
+                                        "details": {},
+                                        "index": "0",
+                                        "name": "SSWD",
+                                        "required": false
+                                    },
+                                    {
+                                        "description": "",
+                                        "details": {},
+                                        "index": "1",
+                                        "name": "MSWD",
+                                        "required": false
+                                    }
+                                ],
+                                "description": "",
+                                "details": {
+                                    "assignto": "shannon",
+                                    "tags": "billingops",
+                                    "text": "Describe how to do some shit",
+                                    "title": "Do Some Shit"
+                                },
+                                "estimated_touch_time": "",
+                                "index": "0_0",
+                                "interactive": true,
+                                "name": "DSS",
+                                "type": "manual_activity"
+                            }
+                        ],
+                        "estimated_touch_time": "",
+                        "index": "0",
+                        "interactive": false,
+                        "name": "foo",
+                        "type": "initiate_pipeline"
+                    }
+                ],
+                "name": "p1"
+            },
+            {
+                "autopromote": true,
+                "delivery_category": "Packaged",
+                "directives": [
+                    {
+                        "category": null,
+                        "controls": [],
+                        "description": "bar",
+                        "details": {
+                            "group": "",
+                            "initial_data": {
+                                "hort": null,
+                                "newKey": null
+                            }
+                        },
+                        "estimated_touch_time": "",
+                        "index": "0",
+                        "interactive": false,
+                        "name": "foo",
+                        "type": "initiate_pipeline"
+                    }
+                ],
+                "name": "p2"
+            },
+            {
+                "autopromote": false,
+                "delivery_category": "Packaged",
+                "directives": [],
+                "name": "p3"
+            }
+        ]
+    }
+}

@@ -1,0 +1,1479 @@
+{
+    "Category": null,
+    "Code": "00000",
+    "Codeblocks": [
+        {
+            "Name": "setupcerts",
+            "Steps": [
+                {
+                    "Codeblock": "setupcerts",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "cmd_line",
+                        "__parse_method": "2",
+                        "__variables": "true",
+                        "command": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Command",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "3",
+                            "command": "sudo mozroots --import --machine --sync"
+                        },
+                        "conn_name": {
+                            "__break_after": "true",
+                            "__connection_picker": "true",
+                            "__input_type": "text",
+                            "__label": "Connection",
+                            "__required": "true",
+                            "conn_name": "CONN1"
+                        },
+                        "negative_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Negative Response",
+                            "__option_tab": "Options",
+                            "negative_response": ""
+                        },
+                        "positive_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Positive Response",
+                            "__option_tab": "Options",
+                            "positive_response": ""
+                        },
+                        "timeout": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Timeout",
+                            "__option_tab": "Options",
+                            "timeout": ""
+                        }
+                    },
+                    "FunctionName": "cmd_line",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "setupcerts",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "cmd_line",
+                        "__parse_method": "2",
+                        "__variables": "true",
+                        "command": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Command",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "3",
+                            "command": "sudo certmgr -ssl -m https://ec2.[[region]].amazonaws.com"
+                        },
+                        "conn_name": {
+                            "__break_after": "true",
+                            "__connection_picker": "true",
+                            "__input_type": "text",
+                            "__label": "Connection",
+                            "__required": "true",
+                            "conn_name": "CONN1"
+                        },
+                        "negative_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Negative Response",
+                            "__option_tab": "Options",
+                            "negative_response": ""
+                        },
+                        "positive_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Positive Response",
+                            "__option_tab": "Options",
+                            "positive_response": "store \\?|PROMPT>"
+                        },
+                        "step_variables": {
+                            "Item::variable::0": {
+                                "name": {
+                                    "name": "test"
+                                },
+                                "regex": {
+                                    "regex": "Import this certificate"
+                                },
+                                "type": {
+                                    "type": "regex"
+                                }
+                            }
+                        },
+                        "timeout": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Timeout",
+                            "__option_tab": "Options",
+                            "timeout": ""
+                        }
+                    },
+                    "FunctionName": "cmd_line",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "setupcerts",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "while",
+                        "action": {
+                            "function": {
+                                "__name": "cmd_line",
+                                "__parse_method": "2",
+                                "__variables": "true",
+                                "command": {
+                                    "__class": "w95pct",
+                                    "__input_type": "textarea",
+                                    "__label": "command",
+                                    "__label_style": "display: block;",
+                                    "__required": "true",
+                                    "__rows": "3",
+                                    "command": "yes"
+                                },
+                                "conn_name": {
+                                    "__break_after": "true",
+                                    "__connection_picker": "true",
+                                    "__input_type": "text",
+                                    "__label": "connection",
+                                    "__required": "true",
+                                    "conn_name": "conn1"
+                                },
+                                "negative_response": {
+                                    "__break_after": "true",
+                                    "__input_type": "text",
+                                    "__label": "negative response",
+                                    "__option_tab": "options",
+                                    "negative_response": ""
+                                },
+                                "positive_response": {
+                                    "__break_after": "true",
+                                    "__input_type": "text",
+                                    "__label": "positive response",
+                                    "__option_tab": "options",
+                                    "positive_response": "store ?|prompt>"
+                                },
+                                "step_variables": {
+                                    "Item::variable::0": {
+                                        "name": {
+                                            "name": "test"
+                                        },
+                                        "regex": {
+                                            "regex": "import this certificate"
+                                        },
+                                        "type": {
+                                            "type": "regex"
+                                        }
+                                    }
+                                },
+                                "timeout": {
+                                    "__break_after": "true",
+                                    "__input_type": "text",
+                                    "__label": "timeout",
+                                    "__option_tab": "options",
+                                    "timeout": ""
+                                }
+                            }
+                        },
+                        "test": {
+                            "__input_type": "text",
+                            "test": "{[[test]]} > {}"
+                        }
+                    },
+                    "FunctionName": "while",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "setupcerts",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "sleep",
+                        "seconds": {
+                            "__input_type": "text",
+                            "__label": "Sleep",
+                            "seconds": "1"
+                        }
+                    },
+                    "FunctionName": "sleep",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "setupcerts",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "cmd_line",
+                        "__parse_method": "2",
+                        "__variables": "true",
+                        "command": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Command",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "3",
+                            "command": "yes"
+                        },
+                        "conn_name": {
+                            "__break_after": "true",
+                            "__connection_picker": "true",
+                            "__input_type": "text",
+                            "__label": "Connection",
+                            "__required": "true",
+                            "conn_name": "CONN1"
+                        },
+                        "negative_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Negative Response",
+                            "__option_tab": "Options",
+                            "negative_response": ""
+                        },
+                        "positive_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Positive Response",
+                            "__option_tab": "Options",
+                            "positive_response": "AddressBook store ?"
+                        },
+                        "timeout": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Timeout",
+                            "__option_tab": "Options",
+                            "timeout": ""
+                        }
+                    },
+                    "FunctionName": "cmd_line",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "setupcerts",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "sleep",
+                        "seconds": {
+                            "__input_type": "text",
+                            "__label": "Sleep",
+                            "seconds": "1"
+                        }
+                    },
+                    "FunctionName": "sleep",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "setupcerts",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "cmd_line",
+                        "__parse_method": "2",
+                        "__variables": "true",
+                        "command": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Command",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "3",
+                            "command": "yes"
+                        },
+                        "conn_name": {
+                            "__break_after": "true",
+                            "__connection_picker": "true",
+                            "__input_type": "text",
+                            "__label": "Connection",
+                            "__required": "true",
+                            "conn_name": "CONN1"
+                        },
+                        "negative_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Negative Response",
+                            "__option_tab": "Options",
+                            "negative_response": ""
+                        },
+                        "positive_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Positive Response",
+                            "__option_tab": "Options",
+                            "positive_response": ""
+                        },
+                        "timeout": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Timeout",
+                            "__option_tab": "Options",
+                            "timeout": ""
+                        }
+                    },
+                    "FunctionName": "cmd_line",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        },
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_variable",
+                        "variables": {
+                            "variable": {
+                                "modifier": {
+                                    "__input_type": "select",
+                                    "modifier": "DEFAULT"
+                                },
+                                "name": {
+                                    "__input_type": "text",
+                                    "name": "GROUP_NAME"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "value": "csk_cato_dev"
+                                }
+                            }
+                        }
+                    },
+                    "FunctionName": "set_variable",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "message": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Log",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "2",
+                            "message": "Installing Cato on architecture [[architecture]], release [[release]], region [[region]]"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_variable",
+                        "variables": {
+                            "variable": {
+                                "__label": "Variable",
+                                "modifier": {
+                                    "__input_type": "select",
+                                    "__label": "Modifier",
+                                    "modifier": "DEFAULT"
+                                },
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "image"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "value": "ami-3fec7956"
+                                }
+                            }
+                        }
+                    },
+                    "FunctionName": "set_variable",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "AddressingType": {
+                            "AddressingType": "",
+                            "__input_type": "text",
+                            "__option_tab": "Options"
+                        },
+                        "BlockDeviceMapping.n": {
+                            "Item::BlockDeviceMapping::0": {
+                                "DeviceName": {
+                                    "DeviceName": "",
+                                    "__input_type": "text"
+                                },
+                                "Ebs": {
+                                    "DeleteOnTermination": {
+                                        "DeleteOnTermination": "",
+                                        "__input_type": "text"
+                                    },
+                                    "SnapshotId": {
+                                        "SnapshotId": "",
+                                        "__input_type": "text"
+                                    },
+                                    "VolumeSize": {
+                                        "VolumeSize": "",
+                                        "__input_type": "text"
+                                    }
+                                },
+                                "NoDevice": {
+                                    "NoDevice": "",
+                                    "__input_type": "text"
+                                },
+                                "VirtualName": {
+                                    "VirtualName": "",
+                                    "__input_type": "text"
+                                }
+                            },
+                            "__is_array": "true",
+                            "__option_tab": "Options"
+                        },
+                        "ClientToken": {
+                            "ClientToken": "",
+                            "__input_type": "text",
+                            "__option_tab": "Options"
+                        },
+                        "DisableApiTermination": {
+                            "DisableApiTermination": "",
+                            "__input_type": "text",
+                            "__option_tab": "Options"
+                        },
+                        "ImageId": {
+                            "ImageId": "[[image]]",
+                            "__input_type": "text"
+                        },
+                        "InstanceInitiatedShutdownBehavior": {
+                            "InstanceInitiatedShutdownBehavior": "",
+                            "__input_type": "text",
+                            "__option_tab": "Options"
+                        },
+                        "InstanceType": {
+                            "InstanceType": "t1.medium",
+                            "__input_type": "text"
+                        },
+                        "KernelId": {
+                            "KernelId": "",
+                            "__input_type": "text",
+                            "__option_tab": "Options"
+                        },
+                        "KeyName": {
+                            "KeyName": "[[pk_name]]",
+                            "__break_before": "true",
+                            "__input_type": "text"
+                        },
+                        "MaxCount": {
+                            "MaxCount": "1",
+                            "__input_type": "text"
+                        },
+                        "MinCount": {
+                            "MinCount": "1",
+                            "__input_type": "text"
+                        },
+                        "Monitoring": {
+                            "Enabled": {
+                                "Enabled": "",
+                                "__input_type": "text"
+                            },
+                            "__option_tab": "Options"
+                        },
+                        "Placement": {
+                            "AvailabilityZone": {
+                                "AvailabilityZone": "",
+                                "__input_type": "text"
+                            },
+                            "GroupName": {
+                                "GroupName": "",
+                                "__input_type": "text"
+                            },
+                            "Tenancy": {
+                                "Tenancy": "",
+                                "__input_type": "text"
+                            },
+                            "__option_tab": "Options"
+                        },
+                        "PrivateIpAddress": {
+                            "PrivateIpAddress": "",
+                            "__input_type": "text",
+                            "__option_tab": "Options"
+                        },
+                        "RamdiskId": {
+                            "RamdiskId": "",
+                            "__input_type": "text",
+                            "__option_tab": "Options"
+                        },
+                        "SecurityGroup.n": {
+                            "Item::SecurityGroup::0": {
+                                "SecurityGroup": "[[GROUP_NAME]]",
+                                "__input_type": "text"
+                            },
+                            "__is_array": "true"
+                        },
+                        "SecurityGroupId.n": {
+                            "Item::SecurityGroupId::0": {
+                                "SecurityGroupId": "",
+                                "__input_type": "text"
+                            },
+                            "__is_array": "true",
+                            "__option_tab": "Options"
+                        },
+                        "SubnetId": {
+                            "SubnetId": "",
+                            "__input_type": "text",
+                            "__option_tab": "Options"
+                        },
+                        "UserData": {
+                            "UserData": "",
+                            "__break_after": "true",
+                            "__break_before": "true",
+                            "__input_type": "textarea",
+                            "__rows": "2",
+                            "__style": "width: 95%"
+                        },
+                        "__name": "aws_ec2_RunInstances",
+                        "aws_region": {
+                            "__class": "combo w300px",
+                            "__dataset": "ddDataSource_GetAWSClouds",
+                            "__datasource": "function",
+                            "__input_type": "dropdown",
+                            "__label": "AWS Region",
+                            "aws_region": "[[region]]"
+                        },
+                        "result_name": {
+                            "__hr_after": "true",
+                            "__input_type": "text",
+                            "__label": "Result Variable",
+                            "result_name": "result"
+                        }
+                    },
+                    "FunctionName": "aws_ec2_RunInstances",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "new_connection",
+                        "asset": {
+                            "__input_type": "text",
+                            "asset": "ubuntu@[[result.//instanceId]]"
+                        },
+                        "cloud_name": {
+                            "cloud_name": ""
+                        },
+                        "conn_name": {
+                            "__class": "w200px",
+                            "__help": "Name this connection for reference in the Task.",
+                            "__input_type": "text",
+                            "__label": "as",
+                            "__required": "true",
+                            "conn_name": "CONN1"
+                        },
+                        "conn_type": {
+                            "__input_type": "select",
+                            "conn_type": "ssh - ec2"
+                        }
+                    },
+                    "FunctionName": "new_connection",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "cmd_line",
+                        "__parse_method": "2",
+                        "__variables": "true",
+                        "command": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Command",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "3",
+                            "command": "while [ ! -e /tmp/catoinstalled ]; do\n sleep 10\ndone"
+                        },
+                        "conn_name": {
+                            "__break_after": "true",
+                            "__connection_picker": "true",
+                            "__input_type": "text",
+                            "__label": "Connection",
+                            "__required": "true",
+                            "conn_name": "CONN1"
+                        },
+                        "negative_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Negative Response",
+                            "__option_tab": "Options",
+                            "negative_response": ""
+                        },
+                        "positive_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Positive Response",
+                            "__option_tab": "Options",
+                            "positive_response": ""
+                        },
+                        "timeout": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Timeout",
+                            "__option_tab": "Options",
+                            "timeout": "600"
+                        }
+                    },
+                    "FunctionName": "cmd_line",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "subtask",
+                        "original_task_id": {
+                            "__input_type": "text",
+                            "original_task_id": "aa3966ed-8911-4c9d-be72-1741ca877bad"
+                        },
+                        "task_name": {
+                            "task_name": "Get Timezone for Region"
+                        },
+                        "version": {
+                            "__input_type": "text",
+                            "version": ""
+                        }
+                    },
+                    "FunctionName": "subtask",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "cmd_line",
+                        "__parse_method": "2",
+                        "__variables": "true",
+                        "command": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Command",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "3",
+                            "command": "curl -L -o /tmp/cato.tar.gz https://api.github.com/repos/cloudsidekick/cato/tarball/[[release]]"
+                        },
+                        "conn_name": {
+                            "__break_after": "true",
+                            "__connection_picker": "true",
+                            "__input_type": "text",
+                            "__label": "Connection",
+                            "__required": "true",
+                            "conn_name": "CONN1"
+                        },
+                        "negative_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Negative Response",
+                            "__option_tab": "Options",
+                            "negative_response": ""
+                        },
+                        "positive_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Positive Response",
+                            "__option_tab": "Options",
+                            "positive_response": ":"
+                        },
+                        "timeout": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Timeout",
+                            "__option_tab": "Options",
+                            "timeout": "60"
+                        }
+                    },
+                    "FunctionName": "cmd_line",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "cmd_line",
+                        "__parse_method": "2",
+                        "__snip": "command",
+                        "__variables": "true",
+                        "command": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Command",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "3",
+                            "command": "[[github_pass]]"
+                        },
+                        "conn_name": {
+                            "__break_after": "true",
+                            "__connection_picker": "true",
+                            "__input_type": "text",
+                            "__label": "Connection",
+                            "__required": "true",
+                            "conn_name": "CONN1"
+                        },
+                        "negative_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Negative Response",
+                            "__option_tab": "Options",
+                            "negative_response": ""
+                        },
+                        "positive_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Positive Response",
+                            "__option_tab": "Options",
+                            "positive_response": ""
+                        },
+                        "timeout": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Timeout",
+                            "__option_tab": "Options",
+                            "timeout": ""
+                        }
+                    },
+                    "FunctionName": "cmd_line",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "cmd_line",
+                        "__parse_method": "2",
+                        "__snip": "command",
+                        "__variables": "true",
+                        "command": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Command",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "3",
+                            "command": "export CATOHOME=/opt/cato"
+                        },
+                        "conn_name": {
+                            "__break_after": "true",
+                            "__connection_picker": "true",
+                            "__input_type": "text",
+                            "__label": "Connection",
+                            "__required": "true",
+                            "conn_name": "CONN1"
+                        },
+                        "negative_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Negative Response",
+                            "__option_tab": "Options",
+                            "negative_response": ""
+                        },
+                        "positive_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Positive Response",
+                            "__option_tab": "Options",
+                            "positive_response": ""
+                        },
+                        "timeout": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Timeout",
+                            "__option_tab": "Options",
+                            "timeout": ""
+                        }
+                    },
+                    "FunctionName": "cmd_line",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "cmd_line",
+                        "__parse_method": "2",
+                        "__snip": "command",
+                        "__variables": "true",
+                        "command": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Command",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "3",
+                            "command": "/bin/bash <<EOF\nsudo mkdir $CATOHOME\nsudo /bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=1024\nsudo /sbin/mkswap /var/swap.1\nsudo /sbin/swapon /var/swap.1\necho \"[[tz]]\" | sudo tee /etc/timezone\nsudo dpkg-reconfigure --frontend noninteractive tzdata\nsudo tar -xzf /tmp/cato.tar.gz -C $CATOHOME --strip-components=1\ncd $CATOHOME\nsudo ./install.sh\nsudo apt-get install -y unzip  libaio1\nsudo chown -R ubuntu:ubuntu $CATOHOME\nsudo chown -R ubuntu:ubuntu  /var/cato\n/opt/cato/services/start_services.sh\nsleep 10\n/opt/cato/services/start_services.sh\nsleep 10\nps -eafl | grep cato_ | grep -v grep\nrm /tmp/cato.tar.gz\nEOF"
+                        },
+                        "conn_name": {
+                            "__break_after": "true",
+                            "__connection_picker": "true",
+                            "__input_type": "text",
+                            "__label": "Connection",
+                            "__required": "true",
+                            "conn_name": "CONN1"
+                        },
+                        "negative_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Negative Response",
+                            "__option_tab": "Options",
+                            "negative_response": ""
+                        },
+                        "positive_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Positive Response",
+                            "__option_tab": "Options",
+                            "positive_response": ""
+                        },
+                        "timeout": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Timeout",
+                            "__option_tab": "Options",
+                            "timeout": "600"
+                        }
+                    },
+                    "FunctionName": "cmd_line",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "Filter.n": {
+                            "Item::Filter::0": {
+                                "Name": {
+                                    "Name": "",
+                                    "__input_type": "text"
+                                },
+                                "Value.m": {
+                                    "Item::Value::0": {
+                                        "Value": "",
+                                        "__input_type": "text"
+                                    },
+                                    "__is_array": "true"
+                                }
+                            },
+                            "__is_array": "true"
+                        },
+                        "InstanceId.n": {
+                            "Item::InstanceId::0": {
+                                "InstanceId": "[[result.//instanceId]]",
+                                "__input_type": "text"
+                            },
+                            "__is_array": "true"
+                        },
+                        "__name": "aws_ec2_DescribeInstances",
+                        "aws_region": {
+                            "__hr_after": "true",
+                            "__input_type": "text",
+                            "__label": "AWS Region",
+                            "aws_region": "[[region]]"
+                        },
+                        "result_name": {
+                            "__input_type": "text",
+                            "result_name": "new_instance"
+                        }
+                    },
+                    "FunctionName": "aws_ec2_DescribeInstances",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_variable",
+                        "variables": {
+                            "variable": {
+                                "modifier": {
+                                    "__input_type": "select",
+                                    "modifier": "DEFAULT"
+                                },
+                                "name": {
+                                    "__input_type": "text",
+                                    "name": "instance"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "value": "[[result.//instanceId]]"
+                                }
+                            }
+                        }
+                    },
+                    "FunctionName": "set_variable",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "message": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Log",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "2",
+                            "message": "New Instance DNS: [[new_instance.//dnsName]]"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "drop_connection",
+                        "conn_name": {
+                            "__input_type": "text",
+                            "__label": "Connection",
+                            "conn_name": "CONN1"
+                        }
+                    },
+                    "FunctionName": "drop_connection",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "add_summary_item",
+                        "detail": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Detail",
+                            "__rows": "3",
+                            "__style": "display: block;",
+                            "detail": "[[new_instance.//instanceId]]"
+                        },
+                        "name": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Item Name",
+                            "__style": "display: block;",
+                            "name": "Instance"
+                        }
+                    },
+                    "FunctionName": "add_summary_item",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "add_summary_item",
+                        "detail": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Detail",
+                            "__rows": "3",
+                            "__style": "display: block;",
+                            "detail": "[[new_instance.//dnsName]]"
+                        },
+                        "name": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Item Name",
+                            "__style": "display: block;",
+                            "name": "New Instance DNS"
+                        }
+                    },
+                    "FunctionName": "add_summary_item",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        },
+        {
+            "Name": "setupmysql",
+            "Steps": [
+                {
+                    "Codeblock": "setupmysql",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "cmd_line",
+                        "__parse_method": "2",
+                        "__variables": "true",
+                        "command": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Command",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "3",
+                            "command": "export DEBIAN_FRONTEND=noninteractive; echo \"mysql-server mysql-server/root_password select [[rootdbpass]]\" | sudo debconf-set-selections;echo \"mysql-server mysql-server/root_password_again select [[rootdbpass]]\" | sudo debconf-set-selections; sudo apt-get -y -q=2 install mysql-server"
+                        },
+                        "conn_name": {
+                            "__break_after": "true",
+                            "__connection_picker": "true",
+                            "__input_type": "text",
+                            "__label": "Connection",
+                            "__required": "true",
+                            "conn_name": "CONN1"
+                        },
+                        "negative_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Negative Response",
+                            "__option_tab": "Options",
+                            "negative_response": ""
+                        },
+                        "positive_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Positive Response",
+                            "__option_tab": "Options",
+                            "positive_response": ""
+                        },
+                        "timeout": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Timeout",
+                            "__option_tab": "Options",
+                            "timeout": "600"
+                        }
+                    },
+                    "FunctionName": "cmd_line",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "setupmysql",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "cmd_line",
+                        "__parse_method": "2",
+                        "__variables": "true",
+                        "command": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Command",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "3",
+                            "command": "mysqladmin -u root -p[[rootdbpass]] create cato"
+                        },
+                        "conn_name": {
+                            "__break_after": "true",
+                            "__connection_picker": "true",
+                            "__input_type": "text",
+                            "__label": "Connection",
+                            "__required": "true",
+                            "conn_name": "CONN1"
+                        },
+                        "negative_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Negative Response",
+                            "__option_tab": "Options",
+                            "negative_response": ""
+                        },
+                        "positive_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Positive Response",
+                            "__option_tab": "Options",
+                            "positive_response": ""
+                        },
+                        "timeout": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Timeout",
+                            "__option_tab": "Options",
+                            "timeout": ""
+                        }
+                    },
+                    "FunctionName": "cmd_line",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "setupmysql",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "cmd_line",
+                        "__parse_method": "2",
+                        "__variables": "true",
+                        "command": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Command",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "3",
+                            "command": "mysql -u root -p[[rootdbpass]]"
+                        },
+                        "conn_name": {
+                            "__break_after": "true",
+                            "__connection_picker": "true",
+                            "__input_type": "text",
+                            "__label": "Connection",
+                            "__required": "true",
+                            "conn_name": "CONN1"
+                        },
+                        "negative_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Negative Response",
+                            "__option_tab": "Options",
+                            "negative_response": ""
+                        },
+                        "positive_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Positive Response",
+                            "__option_tab": "Options",
+                            "positive_response": "mysql>"
+                        },
+                        "timeout": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Timeout",
+                            "__option_tab": "Options",
+                            "timeout": "120"
+                        }
+                    },
+                    "FunctionName": "cmd_line",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "setupmysql",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "cmd_line",
+                        "__parse_method": "2",
+                        "__variables": "true",
+                        "command": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Command",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "3",
+                            "command": "GRANT EXECUTE, SELECT, INSERT, UPDATE, DELETE, LOCK TABLES, CREATE TEMPORARY TABLES ON `cato`.* TO 'cato'@'localhost' IDENTIFIED BY '[[catopass]]';"
+                        },
+                        "conn_name": {
+                            "__break_after": "true",
+                            "__connection_picker": "true",
+                            "__input_type": "text",
+                            "__label": "Connection",
+                            "__required": "true",
+                            "conn_name": "CONN1"
+                        },
+                        "negative_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Negative Response",
+                            "__option_tab": "Options",
+                            "negative_response": ""
+                        },
+                        "positive_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Positive Response",
+                            "__option_tab": "Options",
+                            "positive_response": "mysql>"
+                        },
+                        "timeout": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Timeout",
+                            "__option_tab": "Options",
+                            "timeout": ""
+                        }
+                    },
+                    "FunctionName": "cmd_line",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "setupmysql",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "cmd_line",
+                        "__parse_method": "2",
+                        "__variables": "true",
+                        "command": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Command",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "3",
+                            "command": "FLUSH PRIVILEGES;"
+                        },
+                        "conn_name": {
+                            "__break_after": "true",
+                            "__connection_picker": "true",
+                            "__input_type": "text",
+                            "__label": "Connection",
+                            "__required": "true",
+                            "conn_name": "CONN1"
+                        },
+                        "negative_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Negative Response",
+                            "__option_tab": "Options",
+                            "negative_response": ""
+                        },
+                        "positive_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Positive Response",
+                            "__option_tab": "Options",
+                            "positive_response": "mysql>"
+                        },
+                        "timeout": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Timeout",
+                            "__option_tab": "Options",
+                            "timeout": ""
+                        }
+                    },
+                    "FunctionName": "cmd_line",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "setupmysql",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "cmd_line",
+                        "__parse_method": "2",
+                        "__variables": "true",
+                        "command": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Command",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "3",
+                            "command": "exit"
+                        },
+                        "conn_name": {
+                            "__break_after": "true",
+                            "__connection_picker": "true",
+                            "__input_type": "text",
+                            "__label": "Connection",
+                            "__required": "true",
+                            "conn_name": "CONN1"
+                        },
+                        "negative_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Negative Response",
+                            "__option_tab": "Options",
+                            "negative_response": ""
+                        },
+                        "positive_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Positive Response",
+                            "__option_tab": "Options",
+                            "positive_response": ""
+                        },
+                        "timeout": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Timeout",
+                            "__option_tab": "Options",
+                            "timeout": ""
+                        }
+                    },
+                    "FunctionName": "cmd_line",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.002",
+    "Name": "Create a blank instance for install test",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.003",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [
+        {
+            "encrypt": "false",
+            "name": "release",
+            "present_as": "value",
+            "prompt": "true",
+            "required": "true",
+            "values": [
+                "master"
+            ]
+        },
+        {
+            "encrypt": "false",
+            "name": "architecture",
+            "present_as": "dropdown",
+            "prompt": "true",
+            "required": "true",
+            "values": [
+                "x86_64",
+                "i386"
+            ]
+        },
+        {
+            "encrypt": "false",
+            "name": "region",
+            "present_as": "dropdown",
+            "prompt": "true",
+            "required": "true",
+            "values": [
+                "us-east-1",
+                "us-west-1",
+                "ap-northeast-1",
+                "ap-southeast-1",
+                "eu-west-1",
+                "us-west-2"
+            ]
+        },
+        {
+            "encrypt": "false",
+            "name": "ubuntu_release",
+            "present_as": "value",
+            "prompt": "true",
+            "required": "true",
+            "values": [
+                "precise"
+            ]
+        },
+        {
+            "encrypt": "false",
+            "name": "storage_type",
+            "present_as": "dropdown",
+            "prompt": "true",
+            "required": "true",
+            "values": [
+                "ebs",
+                "instance-store"
+            ]
+        },
+        {
+            "encrypt": "false",
+            "name": "github_user",
+            "present_as": "value",
+            "prompt": "true",
+            "required": "false",
+            "values": [
+                ""
+            ]
+        },
+        {
+            "encrypt": "false",
+            "name": "github_pass",
+            "present_as": "value",
+            "prompt": "true",
+            "required": "false",
+            "values": [
+                ""
+            ]
+        }
+    ],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.002"
+}

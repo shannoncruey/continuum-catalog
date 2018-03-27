@@ -1,0 +1,166 @@
+{
+    "Category": null,
+    "Code": "QA - Loop",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_variable",
+                        "variables": {
+                            "variable": {
+                                "modifier": {
+                                    "__input_type": "select",
+                                    "modifier": "DEFAULT"
+                                },
+                                "name": {
+                                    "__input_type": "text",
+                                    "name": "a,2"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "value": "3"
+                                }
+                            }
+                        }
+                    },
+                    "FunctionName": "set_variable",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "message": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Log",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "2",
+                            "message": "a0=[$ a[0] $]\na1=[$ a[1] $]\na2=[$ a[2] $]\n"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "loop",
+                        "action": {
+                            "function": {
+                                "__name": "log_msg",
+                                "message": {
+                                    "__class": "w95pct",
+                                    "__input_type": "textarea",
+                                    "__label": "Log",
+                                    "__label_style": "display: block;",
+                                    "__required": "true",
+                                    "__rows": "2",
+                                    "message": "x=[$x$]\na=[$a,[$x$]$]\na=[$a,2$]"
+                                }
+                            }
+                        },
+                        "compare_to": {
+                            "__input_type": "text",
+                            "compare_to": "[$ len(a) $]"
+                        },
+                        "counter": {
+                            "__input_type": "text",
+                            "counter": "x"
+                        },
+                        "increment": {
+                            "__input_type": "text",
+                            "increment": "1"
+                        },
+                        "max": {
+                            "__input_type": "text",
+                            "max": "10"
+                        },
+                        "start": {
+                            "__input_type": "text",
+                            "start": "1"
+                        },
+                        "test": {
+                            "__input_type": "select",
+                            "test": "<="
+                        }
+                    },
+                    "FunctionName": "loop",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "loop",
+                        "action": {
+                            "function": {
+                                "__name": "log_msg",
+                                "message": {
+                                    "message": "[$y$]"
+                                }
+                            }
+                        },
+                        "compare_to": {
+                            "__input_type": "text",
+                            "compare_to": "10"
+                        },
+                        "counter": {
+                            "__input_type": "text",
+                            "counter": "y"
+                        },
+                        "increment": {
+                            "__input_type": "text",
+                            "increment": "1"
+                        },
+                        "max": {
+                            "__input_type": "text",
+                            "max": "10"
+                        },
+                        "start": {
+                            "__input_type": "text",
+                            "start": "1"
+                        },
+                        "test": {
+                            "__input_type": "select",
+                            "test": "<="
+                        }
+                    },
+                    "FunctionName": "loop",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "Tests the Loop command, the Break Loop command, Variable arrays, and the Variable array 'count' property.",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "QA - Loop Test",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.000"
+}

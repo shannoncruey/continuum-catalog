@@ -1,0 +1,112 @@
+{
+    "actions": [],
+    "artifacts": [
+        {
+            "_id": "57b362463ed4d20c312dc773",
+            "created_dt": "2016-08-16T18:58:14.310000",
+            "name": "foo",
+            "project_id": "54d8c4ea3ed4d26970b7d5be",
+            "project_name": "myapp1"
+        }
+    ],
+    "description": "",
+    "globals": {},
+    "mappings": [],
+    "name": "test_gitflow",
+    "notifications": {
+        "email": {
+            "addresses": ""
+        },
+        "enable": false,
+        "hipchat": {
+            "room": ""
+        },
+        "http": {
+            "data": "",
+            "url": ""
+        },
+        "on_failure": [],
+        "on_start": [],
+        "on_success": [],
+        "on_wait": [],
+        "slack": {
+            "channel": ""
+        }
+    },
+    "source": {
+        "directives": [
+            {
+                "details": {
+                    "args": {},
+                    "method": "identify_artifacts",
+                    "on_error": "Continue Processing Directives",
+                    "plugin": "teamforgeplugin.trackerapp"
+                },
+                "type": "plugin_function",
+                "when": "always"
+            },
+            {
+                "details": {},
+                "type": "stop_processing",
+                "when": "always"
+            },
+            {
+                "details": {
+                    "args": {},
+                    "instance_name": "",
+                    "on_error": "continue"
+                },
+                "type": "lifecycle_workitem_lookup",
+                "when": "always"
+            },
+            {
+                "details": {
+                    "package_name": "aaa",
+                    "phase": "Regression",
+                    "use_as_version": "branch",
+                    "use_as_version_lookup": ""
+                },
+                "type": "package_revision",
+                "when": "always"
+            },
+            {
+                "details": {
+                    "package_name": "aaa",
+                    "phase": "Branch Test",
+                    "use_as_version": "branch",
+                    "use_as_version_lookup": ""
+                },
+                "type": "package_revision",
+                "when": "never"
+            },
+            {
+                "details": {
+                    "package_name": "aaa",
+                    "phase": "Merged",
+                    "use_as_version": "branch",
+                    "use_as_version_lookup": ""
+                },
+                "type": "package_revision",
+                "when": "never"
+            },
+            {
+                "details": {
+                    "args": {},
+                    "instance_name": "",
+                    "on_error": "Continue Processing Directives"
+                },
+                "type": "teamforge_workitem_lookup",
+                "when": "always"
+            }
+        ],
+        "enable_polling": false,
+        "group_source": "branch",
+        "interface": "webhook",
+        "notify_unmanaged": false,
+        "notify_unmanaged_addl": "",
+        "repo_name": "",
+        "repo_server": "",
+        "type": "gitlab"
+    },
+    "type": "Source"
+}

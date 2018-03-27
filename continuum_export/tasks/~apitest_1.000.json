@@ -1,0 +1,584 @@
+{
+    "Category": null,
+    "Code": "",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_debug_level",
+                        "debug_level": {
+                            "__dataset": "ddDataSource_GetDebugLevels",
+                            "__datasource": "function",
+                            "__input_type": "dropdown",
+                            "__label": "Logging Level",
+                            "debug_level": "10"
+                        }
+                    },
+                    "FunctionName": "set_debug_level",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "http",
+                        "__parse_method": "2",
+                        "__snip": "url",
+                        "__variables": "true",
+                        "data": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Data",
+                            "__label_style": "display: block;",
+                            "__rows": "3",
+                            "data": ""
+                        },
+                        "headers": {
+                            "Item::pair::0": {
+                                "__label": "Key and Values",
+                                "key": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "key": ""
+                                },
+                                "value": {
+                                    "__class": "w50pct",
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "value": ""
+                                }
+                            },
+                            "__is_array": "true",
+                            "__label": "Header Fields"
+                        },
+                        "response_body": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Response Body Variable ",
+                            "__option_tab": "Options",
+                            "response_body": "bv"
+                        },
+                        "response_header": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Response Header Variable",
+                            "__option_tab": "Options",
+                            "response_header": ""
+                        },
+                        "response_time_ms": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Response Time ms Variable",
+                            "__option_tab": "Options",
+                            "response_time_ms": ""
+                        },
+                        "retries": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Retries",
+                            "__option_tab": "Options",
+                            "retries": "1"
+                        },
+                        "status_code": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Status Code Variable",
+                            "__option_tab": "Options",
+                            "status_code": ""
+                        },
+                        "status_msg": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Status Message Variable",
+                            "__option_tab": "Options",
+                            "status_msg": ""
+                        },
+                        "timeout": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Timeout",
+                            "__option_tab": "Options",
+                            "timeout": "10"
+                        },
+                        "type": {
+                            "__dataset": "GET|POST|DELETE|PUT|HEADER",
+                            "__datasource": "local",
+                            "__input_type": "dropdown",
+                            "__label": "Request Type",
+                            "type": "GET"
+                        },
+                        "url": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "URL",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "1",
+                            "url": "http://www.w3schools.com/xml/simple.xml"
+                        }
+                    },
+                    "FunctionName": "http",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "__snip": "message",
+                        "message": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Log",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "2",
+                            "message": "[$bv$]"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "codeblock",
+                        "codeblock": {
+                            "codeblock": ""
+                        }
+                    },
+                    "FunctionName": "codeblock",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "new_connection",
+                        "__snip": "conn_name",
+                        "asset": {
+                            "__input_type": "text",
+                            "asset": "asset=AluminumOverdrive initial_prompt=\"~ $|\\$ $\""
+                        },
+                        "cloud_name": {
+                            "__input_type": "dropdown",
+                            "__style": "combo",
+                            "cloud_name": ""
+                        },
+                        "conn_name": {
+                            "__class": "w200px",
+                            "__help": "Name this connection for reference in the Task.",
+                            "__input_type": "text",
+                            "__label": "Connection Name",
+                            "__required": "true",
+                            "conn_name": "CONN1"
+                        },
+                        "conn_type": {
+                            "__input_type": "select",
+                            "conn_type": "ssh"
+                        },
+                        "debug": {
+                            "__break_after": "true",
+                            "__input_type": "checkbox",
+                            "__label": "Debug",
+                            "debug": ""
+                        }
+                    },
+                    "FunctionName": "new_connection",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "new_connection",
+                        "__snip": "conn_name",
+                        "asset": {
+                            "__input_type": "text",
+                            "asset": "address=192.168.0.5 userid=administrator password=nowayn"
+                        },
+                        "cloud_name": {
+                            "__input_type": "dropdown",
+                            "__style": "combo",
+                            "cloud_name": ""
+                        },
+                        "conn_name": {
+                            "__class": "w200px",
+                            "__help": "Name this connection for reference in the Task.",
+                            "__input_type": "text",
+                            "__label": "Connection Name",
+                            "__required": "true",
+                            "conn_name": "winrmconn"
+                        },
+                        "conn_type": {
+                            "__input_type": "select",
+                            "conn_type": "winrm"
+                        },
+                        "debug": {
+                            "__break_after": "true",
+                            "__input_type": "checkbox",
+                            "__label": "Debug",
+                            "debug": "1"
+                        }
+                    },
+                    "FunctionName": "new_connection",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_variable",
+                        "variables": {
+                            "__label": "Variables",
+                            "variable": {
+                                "__label": "Variable",
+                                "modifier": {
+                                    "__input_type": "select",
+                                    "__label": "Modifier",
+                                    "modifier": "TO_BASE64_UTF16"
+                                },
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "ps"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "value": "Get-Service"
+                                }
+                            }
+                        }
+                    },
+                    "FunctionName": "set_variable",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "winrm_cmd",
+                        "__parse_method": "2",
+                        "__snip": "command",
+                        "__variables": "true",
+                        "command": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Command",
+                            "__rows": "3",
+                            "__style": "display: block;",
+                            "command": "powershell -encodedcommand [[ps]]"
+                        },
+                        "conn_name": {
+                            "__connection_picker": "true",
+                            "__input_type": "text",
+                            "__label": "Connection",
+                            "conn_name": "winrmconn"
+                        },
+                        "return_code": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Return Code",
+                            "__option_tab": "Options",
+                            "return_code": ""
+                        },
+                        "timeout": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Timeout",
+                            "__option_tab": "Options",
+                            "timeout": ""
+                        }
+                    },
+                    "FunctionName": "winrm_cmd",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "new_connection",
+                        "__snip": "conn_name",
+                        "asset": {
+                            "__input_type": "text",
+                            "asset": "server=192.168.0.5\\SQLEXPRESS user=safety password=c4t4lyss db_name=ActiveCompliance"
+                        },
+                        "cloud_name": {
+                            "__input_type": "dropdown",
+                            "__style": "combo",
+                            "cloud_name": ""
+                        },
+                        "conn_name": {
+                            "__class": "w200px",
+                            "__help": "Name this connection for reference in the Task.",
+                            "__input_type": "text",
+                            "__label": "Connection Name",
+                            "__required": "true",
+                            "conn_name": "sqlconn"
+                        },
+                        "conn_type": {
+                            "__input_type": "select",
+                            "conn_type": "sqlserver"
+                        },
+                        "debug": {
+                            "__break_after": "true",
+                            "__input_type": "checkbox",
+                            "__label": "Debug",
+                            "debug": ""
+                        }
+                    },
+                    "FunctionName": "new_connection",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "new_connection",
+                        "__snip": "conn_name",
+                        "asset": {
+                            "__input_type": "text",
+                            "asset": "asset=\"VM Sql Server\""
+                        },
+                        "cloud_name": {
+                            "__input_type": "dropdown",
+                            "__style": "combo",
+                            "cloud_name": ""
+                        },
+                        "conn_name": {
+                            "__class": "w200px",
+                            "__help": "Name this connection for reference in the Task.",
+                            "__input_type": "text",
+                            "__label": "Connection Name",
+                            "__required": "true",
+                            "conn_name": "sqlconn"
+                        },
+                        "conn_type": {
+                            "__input_type": "select",
+                            "conn_type": "sqlserver"
+                        },
+                        "debug": {
+                            "__break_after": "true",
+                            "__input_type": "checkbox",
+                            "__label": "Debug",
+                            "debug": ""
+                        }
+                    },
+                    "FunctionName": "new_connection",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "sql_exec",
+                        "__parse_method": "1",
+                        "__snip": "sql",
+                        "__variables": "true",
+                        "conn_name": {
+                            "__connection_picker": "true",
+                            "__input_type": "text",
+                            "conn_name": "sqlconn"
+                        },
+                        "handle": {
+                            "__input_type": "text",
+                            "handle": ""
+                        },
+                        "mode": {
+                            "__input_type": "select",
+                            "mode": "SQL"
+                        },
+                        "pairs": {
+                            "__label": "Bind Variables",
+                            "pair": {
+                                "key": {
+                                    "__input_type": "text",
+                                    "__label": "Bind",
+                                    "key": ""
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "value": ""
+                                }
+                            }
+                        },
+                        "sql": {
+                            "__input_type": "text",
+                            "sql": "select * from users"
+                        }
+                    },
+                    "FunctionName": "sql_exec",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 1,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "cmd_line",
+                        "__parse_method": "2",
+                        "__snip": "command",
+                        "__variables": "true",
+                        "command": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Command",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "3",
+                            "command": "ls -l"
+                        },
+                        "conn_name": {
+                            "__break_after": "true",
+                            "__connection_picker": "true",
+                            "__input_type": "text",
+                            "__label": "Connection",
+                            "__required": "true",
+                            "conn_name": "CONN1"
+                        },
+                        "negative_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Negative Response",
+                            "__option_tab": "Options",
+                            "negative_response": ""
+                        },
+                        "positive_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Positive Response",
+                            "__option_tab": "Options",
+                            "positive_response": ""
+                        },
+                        "result_variable": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Timeout",
+                            "__option_tab": "Options",
+                            "result_variable": "all"
+                        },
+                        "timeout": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Timeout",
+                            "__option_tab": "Options",
+                            "timeout": ""
+                        }
+                    },
+                    "FunctionName": "cmd_line",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_variable",
+                        "variables": {
+                            "Item::variable::0": {
+                                "__label": "Variable",
+                                "modifier": {
+                                    "__input_type": "select",
+                                    "__label": "Modifier",
+                                    "modifier": "DEFAULT"
+                                },
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "row"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "value": "[$all.split(\"\\n\")$]"
+                                }
+                            },
+                            "__is_array": "true",
+                            "__label": "Variables"
+                        }
+                    },
+                    "FunctionName": "set_variable",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "__snip": "message",
+                        "message": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Log",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "2",
+                            "message": "[$row[2]$]"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "a description\nwith\nline breaks '\"' & special \u00e5<chars>\u222b\nand \"stuff\"",
+    "IsDefaultVersion": false,
+    "MaxVersion": "2.000",
+    "Name": "~apitest",
+    "NextMajorVersion": "3.000",
+    "NextMinorVersion": "2.001",
+    "NumberOfApprovedVersions": 2,
+    "Parameters": [],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.000"
+}

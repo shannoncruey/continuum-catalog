@@ -1,0 +1,35 @@
+{
+    "actions": [],
+    "description": "use this pipeline to force a revision into a delivered state, use with caution",
+    "globals": {},
+    "name": "Force Deliver Revision",
+    "phases": [
+        {
+            "name": "",
+            "stages": [
+                {
+                    "name": "",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "full_version": "",
+                                    "package": "Continuum",
+                                    "revision": ""
+                                },
+                                "label": "Flow - Package - Deliver Revision",
+                                "method": "deliver",
+                                "module": "package",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "summary": []
+}

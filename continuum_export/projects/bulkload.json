@@ -1,0 +1,84 @@
+{
+    "actions": [],
+    "artifacts": [
+        {
+            "_id": "578d4be780547901e2aa4df7",
+            "created_dt": "2016-07-18T21:36:39.881000",
+            "name": "orbital",
+            "project_id": "578d410380547901e2aa4c81"
+        }
+    ],
+    "description": "",
+    "globals": {},
+    "mappings": [],
+    "name": "bulkload",
+    "notifications": {
+        "email": {
+            "addresses": ""
+        },
+        "enable": false,
+        "hipchat": {
+            "room": ""
+        },
+        "http": {
+            "data": "",
+            "url": ""
+        },
+        "on_failure": [],
+        "on_start": [],
+        "on_success": [],
+        "on_wait": [],
+        "slack": {
+            "channel": ""
+        }
+    },
+    "source": {
+        "directives": [
+            {
+                "details": {
+                    "args": {
+                        "instance_name": "vbdemo"
+                    },
+                    "method": "identify_workitems",
+                    "on_error": "continue",
+                    "plugin": "v1plugin.main"
+                },
+                "type": "plugin_function",
+                "when": "always"
+            },
+            {
+                "details": {
+                    "definition": "Test",
+                    "group": "",
+                    "includechanges": "",
+                    "instancename": "",
+                    "project": "test_gitflow",
+                    "project_version": ""
+                },
+                "type": "initiate_pipeline",
+                "when": "always"
+            },
+            {
+                "details": {
+                    "definition": "demodataload",
+                    "group": "master",
+                    "includechanges": "",
+                    "instancename": "",
+                    "project": "",
+                    "project_version": ""
+                },
+                "type": "initiate_pipeline",
+                "when": "always"
+            }
+        ],
+        "enable_polling": false,
+        "group_source": "branch",
+        "interface": "webhook",
+        "notify_unmanaged": false,
+        "notify_unmanaged_addl": "",
+        "repo_name": "",
+        "repo_server": "",
+        "type": "github"
+    },
+    "type": "Source"
+}

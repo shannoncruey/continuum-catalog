@@ -1,0 +1,358 @@
+{
+    "actions": [],
+    "artifacts": [
+        {
+            "name": "stores-ui",
+            "project_name": "stores-ui"
+        }
+    ],
+    "description": "",
+    "globals": {},
+    "name": "webstore",
+    "progression": {
+        "name": "Ecommerce App",
+        "phases": [
+            {
+                "autopromote": true,
+                "delivery_category": "Developing",
+                "directives": [
+                    {
+                        "category": "va",
+                        "controls": [],
+                        "description": "",
+                        "details": {
+                            "definition": "Merge Build",
+                            "group": "",
+                            "initial_data": {},
+                            "project": "stores-ui"
+                        },
+                        "estimated_touch_time": "1",
+                        "index": "0",
+                        "interactive": false,
+                        "name": "Build",
+                        "type": "initiate_pipeline"
+                    },
+                    {
+                        "category": "nva_necessary",
+                        "controls": [
+                            {
+                                "description": "",
+                                "details": {},
+                                "index": "0",
+                                "name": "Ready for Acceptance",
+                                "required": false
+                            }
+                        ],
+                        "description": "",
+                        "details": {
+                            "definition": "Ready for Acceptance",
+                            "group": "",
+                            "initial_data": {},
+                            "project": "stores-ui"
+                        },
+                        "estimated_touch_time": "",
+                        "index": "1",
+                        "interactive": true,
+                        "name": "Check for Readiness",
+                        "type": "initiate_pipeline"
+                    }
+                ],
+                "name": "Build"
+            },
+            {
+                "autopromote": true,
+                "delivery_category": "Packaged",
+                "directives": [
+                    {
+                        "category": null,
+                        "controls": [],
+                        "description": "",
+                        "details": {
+                            "definition": "Deploy and Test",
+                            "group": "",
+                            "initial_data": {},
+                            "project": "stores-ui"
+                        },
+                        "directives": [
+                            {
+                                "category": null,
+                                "controls": [
+                                    {
+                                        "description": "",
+                                        "details": {},
+                                        "index": "0",
+                                        "name": "Build of Release Branch is Successful",
+                                        "required": false
+                                    }
+                                ],
+                                "description": "",
+                                "details": {
+                                    "definition": "Deploy and Test",
+                                    "group": "",
+                                    "initial_data": {},
+                                    "project": "stores-ui"
+                                },
+                                "directives": [
+                                    {
+                                        "category": null,
+                                        "controls": [
+                                            {
+                                                "description": "",
+                                                "details": {},
+                                                "index": "0",
+                                                "name": "Is Revision Promotable?",
+                                                "required": false
+                                            }
+                                        ],
+                                        "description": "",
+                                        "details": {
+                                            "definition": "Perform Tests",
+                                            "group": "",
+                                            "initial_data": {},
+                                            "project": "stores-ui"
+                                        },
+                                        "estimated_touch_time": "",
+                                        "index": "0_0_0",
+                                        "interactive": false,
+                                        "name": "Evaluate Promotability",
+                                        "type": "initiate_pipeline"
+                                    }
+                                ],
+                                "estimated_touch_time": "",
+                                "index": "0_0",
+                                "interactive": false,
+                                "name": "Build Release Branch",
+                                "type": "initiate_pipeline"
+                            }
+                        ],
+                        "estimated_touch_time": "",
+                        "index": "0",
+                        "interactive": false,
+                        "name": "Merge into Release Branch",
+                        "type": "initiate_pipeline"
+                    }
+                ],
+                "name": "Acceptance Test"
+            },
+            {
+                "autopromote": true,
+                "delivery_category": "Packaged",
+                "directives": [
+                    {
+                        "category": null,
+                        "controls": [
+                            {
+                                "description": "",
+                                "details": {},
+                                "index": "0",
+                                "name": "Number of Failing Tests Has Not Increased",
+                                "required": false
+                            }
+                        ],
+                        "description": "",
+                        "details": {
+                            "definition": "Deploy and Test",
+                            "group": "",
+                            "initial_data": {
+                                "control_name": ""
+                            },
+                            "project": "stores-ui"
+                        },
+                        "estimated_touch_time": "",
+                        "index": "0",
+                        "interactive": false,
+                        "name": "Api Test Suite",
+                        "type": "initiate_pipeline"
+                    },
+                    {
+                        "category": null,
+                        "controls": [],
+                        "description": "",
+                        "details": {
+                            "definition": "Deploy and Test",
+                            "group": "",
+                            "initial_data": {},
+                            "project": "stores-ui"
+                        },
+                        "directives": [
+                            {
+                                "category": null,
+                                "controls": [
+                                    {
+                                        "description": "",
+                                        "details": {},
+                                        "index": "0",
+                                        "name": "Smoke Test Passed",
+                                        "required": false
+                                    }
+                                ],
+                                "description": "",
+                                "details": {
+                                    "definition": "Deploy and Test",
+                                    "group": "",
+                                    "initial_data": {},
+                                    "project": "stores-ui"
+                                },
+                                "directives": [
+                                    {
+                                        "category": null,
+                                        "controls": [
+                                            {
+                                                "description": "",
+                                                "details": {},
+                                                "index": "0",
+                                                "name": "Is Revision Promotable?",
+                                                "required": false
+                                            }
+                                        ],
+                                        "description": "",
+                                        "details": {
+                                            "definition": "Perform Tests",
+                                            "group": "",
+                                            "initial_data": {},
+                                            "project": "stores-ui"
+                                        },
+                                        "estimated_touch_time": "",
+                                        "index": "1_0_0",
+                                        "interactive": false,
+                                        "name": "Evaluate Promotability",
+                                        "type": "initiate_pipeline"
+                                    }
+                                ],
+                                "estimated_touch_time": "",
+                                "index": "1_0",
+                                "interactive": false,
+                                "name": "API Integration Testing",
+                                "type": "initiate_pipeline"
+                            }
+                        ],
+                        "estimated_touch_time": "",
+                        "index": "1",
+                        "interactive": false,
+                        "name": "UI Test Suite",
+                        "type": "initiate_pipeline"
+                    }
+                ],
+                "name": "Regression Test"
+            },
+            {
+                "autopromote": true,
+                "delivery_category": "Packaged",
+                "directives": [
+                    {
+                        "category": null,
+                        "controls": [
+                            {
+                                "description": "",
+                                "details": {},
+                                "index": "0",
+                                "name": "PT Deployment is Successful",
+                                "required": false
+                            }
+                        ],
+                        "description": "",
+                        "details": {
+                            "definition": "Deploy and Test",
+                            "group": "",
+                            "initial_data": {},
+                            "project": "stores-ui"
+                        },
+                        "directives": [
+                            {
+                                "category": null,
+                                "controls": [
+                                    {
+                                        "description": "",
+                                        "details": {},
+                                        "index": "0",
+                                        "name": "Is Revision Promotable?",
+                                        "required": false
+                                    }
+                                ],
+                                "description": "",
+                                "details": {
+                                    "definition": "Perform Tests",
+                                    "group": "",
+                                    "initial_data": {},
+                                    "project": "stores-ui"
+                                },
+                                "estimated_touch_time": "",
+                                "index": "0_0",
+                                "interactive": false,
+                                "name": "Evaluate Promotability",
+                                "type": "initiate_pipeline"
+                            }
+                        ],
+                        "estimated_touch_time": "",
+                        "index": "0",
+                        "interactive": false,
+                        "name": "Run the PT Deploy Script",
+                        "type": "initiate_pipeline"
+                    }
+                ],
+                "name": "Performance Test"
+            },
+            {
+                "autopromote": true,
+                "delivery_category": "Packaged",
+                "directives": [
+                    {
+                        "category": null,
+                        "controls": [
+                            {
+                                "description": "",
+                                "details": {},
+                                "index": "0",
+                                "name": "Salesforce Testing is Successful",
+                                "required": false
+                            }
+                        ],
+                        "description": "",
+                        "details": {
+                            "definition": "Deploy and Test",
+                            "group": "",
+                            "initial_data": {},
+                            "project": "stores-ui"
+                        },
+                        "estimated_touch_time": "",
+                        "index": "0",
+                        "interactive": false,
+                        "name": "Salesforce Integration Testing",
+                        "type": "initiate_pipeline"
+                    },
+                    {
+                        "category": null,
+                        "controls": [
+                            {
+                                "description": "",
+                                "details": {},
+                                "index": "0",
+                                "name": "Is Revision Promotable?",
+                                "required": false
+                            }
+                        ],
+                        "description": "",
+                        "details": {
+                            "definition": "Perform Tests",
+                            "group": "",
+                            "initial_data": {},
+                            "project": "stores-ui"
+                        },
+                        "estimated_touch_time": "",
+                        "index": "1",
+                        "interactive": false,
+                        "name": "Evaluate Promotability",
+                        "type": "initiate_pipeline"
+                    }
+                ],
+                "name": "Ready for Delivery"
+            },
+            {
+                "autopromote": true,
+                "delivery_category": "Packaged",
+                "directives": [],
+                "name": "Canary Release"
+            }
+        ]
+    }
+}

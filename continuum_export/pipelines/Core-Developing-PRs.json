@@ -1,0 +1,116 @@
+{
+    "__assembled": true,
+    "actions": [],
+    "desc": "",
+    "description": "This pipeline runs through several Jenkins jobs for building, testing, packaging and deploying the code from the 'core' repository, 'developing' branch.",
+    "globals": "",
+    "name": "Core-Developing-PRs",
+    "phases": [
+        {
+            "name": "Shared-GitInfo",
+            "stages": [
+                {
+                    "description": "",
+                    "name": "Git-GetInfo",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {},
+                                "label": "GitHub - Show Summary",
+                                "method": "show_summary",
+                                "module": "main",
+                                "name": "github"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Core-Developing-Build-PRs",
+            "stages": [
+                {
+                    "description": "",
+                    "name": "Core-Developing-Build-PRs-Job",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "job": "Core-developing-PRs",
+                                    "wait": true
+                                },
+                                "method": "build",
+                                "module": "job",
+                                "name": "jenkins"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Core-Developing-Slow-PRs",
+            "stages": [
+                {
+                    "description": "",
+                    "name": "Core-Developing-Slow-PRs-Job",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "job": "Core-developing-slow-PRs",
+                                    "wait": true
+                                },
+                                "method": "build",
+                                "module": "job",
+                                "name": "jenkins"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Core-Developing-Package-PRs",
+            "stages": [
+                {
+                    "description": "",
+                    "name": "Core-Developing-Package-PRs-Job",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "job": "Core-developing-package-PRs",
+                                    "wait": true
+                                },
+                                "method": "build",
+                                "module": "job",
+                                "name": "jenkins"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "product_id": "543fe8a37c1a7c67c7dcb133",
+    "product_name": "VersionOne",
+    "product_workflow_step": "",
+    "signature": {
+        "ref": "refs/heads/developing",
+        "repository": {
+            "name": "Core",
+            "url": "https://github.com/versionone/Core"
+        }
+    },
+    "signature_type": "git",
+    "summary": [],
+    "tags": [
+        "VersionOne"
+    ]
+}

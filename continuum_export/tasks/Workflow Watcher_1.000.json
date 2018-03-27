@@ -1,0 +1,553 @@
+{
+    "Category": null,
+    "Code": "workflow 2",
+    "Codeblocks": [
+        {
+            "Name": "complete_story",
+            "Steps": [
+                {
+                    "Codeblock": "complete_story",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "datastore_update",
+                        "collection": {
+                            "__input_type": "text",
+                            "__label": "Collection",
+                            "__required": "true",
+                            "collection": "stories"
+                        },
+                        "columns": {
+                            "Item::column::0": {
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "status"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "__style": "width: 50%;",
+                                    "value": "completed"
+                                }
+                            },
+                            "__is_array": "true"
+                        },
+                        "query": {
+                            "__class": "w90pct",
+                            "__input_type": "textarea",
+                            "__label": "Query",
+                            "__label_style": "display: block;",
+                            "__rows": "1",
+                            "query": "{\"story\" : \"[[story,[[ii]]]]\"}"
+                        },
+                        "upsert": {
+                            "__input_type": "checkbox",
+                            "__label": "Upsert?",
+                            "upsert": ""
+                        }
+                    },
+                    "FunctionName": "datastore_update",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        },
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "while",
+                        "__snip": "test",
+                        "action": {
+                            "function": {
+                                "__name": "codeblock",
+                                "__snip": "codeblock",
+                                "codeblock": {
+                                    "__input_type": "text",
+                                    "codeblock": "monitorstories"
+                                }
+                            }
+                        },
+                        "test": {
+                            "__input_type": "text",
+                            "test": "True"
+                        }
+                    },
+                    "FunctionName": "while",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        },
+        {
+            "Name": "notify_qa",
+            "Steps": [
+                {
+                    "Codeblock": "notify_qa",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "__snip": "message",
+                        "message": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Log",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "2",
+                            "message": "notify qa here"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        },
+        {
+            "Name": "monitorstories",
+            "Steps": [
+                {
+                    "Codeblock": "monitorstories",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_debug_level",
+                        "debug_level": {
+                            "__dataset": "ddDataSource_GetDebugLevels",
+                            "__datasource": "function",
+                            "__input_type": "dropdown",
+                            "__label": "Logging Level",
+                            "debug_level": "50"
+                        }
+                    },
+                    "FunctionName": "set_debug_level",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "monitorstories",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "datastore_query",
+                        "collection": {
+                            "__input_type": "text",
+                            "__label": "Collection",
+                            "collection": "stories"
+                        },
+                        "columns": {
+                            "Item::column::0": {
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Column Name",
+                                    "name": "story"
+                                },
+                                "variable": {
+                                    "__input_type": "text",
+                                    "__label": "Variable Name",
+                                    "variable": "story"
+                                }
+                            },
+                            "Item::column::1": {
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Column Name",
+                                    "name": "stage"
+                                },
+                                "variable": {
+                                    "__input_type": "text",
+                                    "__label": "Variable Name",
+                                    "variable": "stage"
+                                }
+                            },
+                            "Item::column::2": {
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Column Name",
+                                    "name": "workflow"
+                                },
+                                "variable": {
+                                    "__input_type": "text",
+                                    "__label": "Variable Name",
+                                    "variable": "workflow"
+                                }
+                            },
+                            "__is_array": "true"
+                        },
+                        "query": {
+                            "__class": "w90pct",
+                            "__input_type": "textarea",
+                            "__label": "Query",
+                            "__label_style": "display: block;",
+                            "__rows": "1",
+                            "query": "{\"status\" : \"in process\", \"stage_status\" : \"completed\"}"
+                        }
+                    },
+                    "FunctionName": "datastore_query",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "monitorstories",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "if",
+                        "tests": {
+                            "test": {
+                                "action": {
+                                    "function": {
+                                        "__name": "set_debug_level",
+                                        "debug_level": {
+                                            "__dataset": "ddDataSource_GetDebugLevels",
+                                            "__datasource": "function",
+                                            "__input_type": "dropdown",
+                                            "__label": "Logging Level",
+                                            "debug_level": "10"
+                                        }
+                                    }
+                                },
+                                "eval": {
+                                    "eval": "[[story,*]] > 0"
+                                }
+                            }
+                        }
+                    },
+                    "FunctionName": "if",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "monitorstories",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "__snip": "message",
+                        "message": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Log",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "2",
+                            "message": "Number of stage 1 stories complete to process: [[story,*]]"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "monitorstories",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "loop",
+                        "action": {
+                            "function": {
+                                "__name": "codeblock",
+                                "__snip": "codeblock",
+                                "codeblock": {
+                                    "__input_type": "text",
+                                    "codeblock": "processstage"
+                                }
+                            }
+                        },
+                        "compare_to": {
+                            "__input_type": "text",
+                            "compare_to": "[[story,*]]"
+                        },
+                        "counter": {
+                            "__input_type": "text",
+                            "counter": "ii"
+                        },
+                        "increment": {
+                            "__input_type": "text",
+                            "increment": "1"
+                        },
+                        "max": {
+                            "__input_type": "text",
+                            "max": ""
+                        },
+                        "start": {
+                            "__input_type": "text",
+                            "start": "1"
+                        },
+                        "test": {
+                            "__input_type": "select",
+                            "test": "<="
+                        }
+                    },
+                    "FunctionName": "loop",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "monitorstories",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "sleep",
+                        "__snip": "seconds",
+                        "seconds": {
+                            "__input_type": "text",
+                            "__label": "Sleep",
+                            "seconds": "10"
+                        }
+                    },
+                    "FunctionName": "sleep",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        },
+        {
+            "Name": "notify_lead",
+            "Steps": [
+                {
+                    "Codeblock": "notify_lead",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "__snip": "message",
+                        "message": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Log",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "2",
+                            "message": "send lead email here"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        },
+        {
+            "Name": "processstage",
+            "Steps": [
+                {
+                    "Codeblock": "processstage",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "datastore_query",
+                        "collection": {
+                            "__input_type": "text",
+                            "__label": "Collection",
+                            "collection": "workflow_stages"
+                        },
+                        "columns": {
+                            "Item::column::0": {
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Column Name",
+                                    "name": "codeblock"
+                                },
+                                "variable": {
+                                    "__input_type": "text",
+                                    "__label": "Variable Name",
+                                    "variable": "cb"
+                                }
+                            },
+                            "Item::column::1": {
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Column Name",
+                                    "name": "next_stage"
+                                },
+                                "variable": {
+                                    "__input_type": "text",
+                                    "__label": "Variable Name",
+                                    "variable": "nstage"
+                                }
+                            },
+                            "Item::column::2": {
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Column Name",
+                                    "name": "next_status"
+                                },
+                                "variable": {
+                                    "__input_type": "text",
+                                    "__label": "Variable Name",
+                                    "variable": "nstatus"
+                                }
+                            },
+                            "__is_array": "true"
+                        },
+                        "query": {
+                            "__class": "w90pct",
+                            "__input_type": "textarea",
+                            "__label": "Query",
+                            "__label_style": "display: block;",
+                            "__rows": "1",
+                            "query": "{\"workflow\" : \"[[workflow,[[ii]]]]\", \"stage\" : \"[[stage,[[ii]]]]\", \"status\" : \"completed\"}"
+                        }
+                    },
+                    "FunctionName": "datastore_query",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "processstage",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "__snip": "message",
+                        "message": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Log",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "2",
+                            "message": "codeblock [[cb]], next stage [[nstage]], next status [[nstatus]]"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "processstage",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "if",
+                        "tests": {
+                            "test": {
+                                "action": {
+                                    "function": {
+                                        "__name": "codeblock",
+                                        "__snip": "codeblock",
+                                        "codeblock": {
+                                            "__input_type": "text",
+                                            "codeblock": "[[cb]]"
+                                        }
+                                    }
+                                },
+                                "eval": {
+                                    "eval": "\"[[cb]]\" > \"\""
+                                }
+                            }
+                        }
+                    },
+                    "FunctionName": "if",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "processstage",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "if",
+                        "tests": {
+                            "test": {
+                                "action": {
+                                    "function": {
+                                        "__name": "datastore_update",
+                                        "collection": {
+                                            "__input_type": "text",
+                                            "__label": "Collection",
+                                            "__required": "true",
+                                            "collection": "stories"
+                                        },
+                                        "columns": {
+                                            "Item::column::0": {
+                                                "name": {
+                                                    "__input_type": "text",
+                                                    "__label": "Name",
+                                                    "name": "stage"
+                                                },
+                                                "value": {
+                                                    "__input_type": "text",
+                                                    "__label": "Value",
+                                                    "__style": "width: 50%;",
+                                                    "value": "[[nstage]]"
+                                                }
+                                            },
+                                            "Item::column::1": {
+                                                "name": {
+                                                    "__input_type": "text",
+                                                    "__label": "Name",
+                                                    "name": "stage_status"
+                                                },
+                                                "value": {
+                                                    "__input_type": "text",
+                                                    "__label": "Value",
+                                                    "__style": "width: 50%;",
+                                                    "value": "[[nstatus]]"
+                                                }
+                                            },
+                                            "__is_array": "true"
+                                        },
+                                        "query": {
+                                            "__class": "w90pct",
+                                            "__input_type": "textarea",
+                                            "__label": "Query",
+                                            "__label_style": "display: block;",
+                                            "__rows": "1",
+                                            "query": "{\"story\" : \"[[story,[[ii]]]]\"}"
+                                        },
+                                        "upsert": {
+                                            "__input_type": "checkbox",
+                                            "__label": "Upsert?",
+                                            "upsert": ""
+                                        }
+                                    }
+                                },
+                                "eval": {
+                                    "eval": "\"[[nstage]]\" > \"\" < \"[[nstatus]]\""
+                                }
+                            }
+                        }
+                    },
+                    "FunctionName": "if",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "Workflow Watcher",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.000"
+}

@@ -1,0 +1,227 @@
+{
+    "Category": null,
+    "Code": "util 002",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "datastore_create_collection",
+                        "collection": {
+                            "__input_type": "text",
+                            "__label": "Collection",
+                            "collection": "service_instance_cpu"
+                        }
+                    },
+                    "FunctionName": "datastore_create_collection",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "datastore_create_index",
+                        "collection": {
+                            "__input_type": "text",
+                            "__label": "Collection",
+                            "collection": "service_instance_cpu"
+                        },
+                        "columns": {
+                            "Item::column::0": {
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "instance_id"
+                                }
+                            },
+                            "__is_array": "true"
+                        },
+                        "unique": {
+                            "__dataset": "no|yes",
+                            "__datasource": "local",
+                            "__input_type": "dropdown",
+                            "__label": "Unique?",
+                            "unique": "no"
+                        }
+                    },
+                    "FunctionName": "datastore_create_index",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "datastore_create_collection",
+                        "collection": {
+                            "__input_type": "text",
+                            "__label": "Collection",
+                            "collection": "service_instance_mem"
+                        }
+                    },
+                    "FunctionName": "datastore_create_collection",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "datastore_create_index",
+                        "collection": {
+                            "__input_type": "text",
+                            "__label": "Collection",
+                            "collection": "service_instance_mem"
+                        },
+                        "columns": {
+                            "Item::column::0": {
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "instance_id"
+                                }
+                            },
+                            "__is_array": "true"
+                        },
+                        "unique": {
+                            "__dataset": "no|yes",
+                            "__datasource": "local",
+                            "__input_type": "dropdown",
+                            "__label": "Unique?",
+                            "unique": "no"
+                        }
+                    },
+                    "FunctionName": "datastore_create_index",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "datastore_create_collection",
+                        "collection": {
+                            "__input_type": "text",
+                            "__label": "Collection",
+                            "collection": "instance_properties"
+                        }
+                    },
+                    "FunctionName": "datastore_create_collection",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "datastore_create_index",
+                        "collection": {
+                            "__input_type": "text",
+                            "__label": "Collection",
+                            "collection": "instance_properties"
+                        },
+                        "columns": {
+                            "Item::column::0": {
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "instance_id"
+                                }
+                            },
+                            "__is_array": "true"
+                        },
+                        "unique": {
+                            "__dataset": "no|yes",
+                            "__datasource": "local",
+                            "__input_type": "dropdown",
+                            "__label": "Unique?",
+                            "unique": "yes"
+                        }
+                    },
+                    "FunctionName": "datastore_create_index",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "datastore_create_collection",
+                        "collection": {
+                            "__input_type": "text",
+                            "__label": "Collection",
+                            "collection": "ps_running_services"
+                        }
+                    },
+                    "FunctionName": "datastore_create_collection",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "datastore_create_index",
+                        "collection": {
+                            "__input_type": "text",
+                            "__label": "Collection",
+                            "collection": "ps_running_services"
+                        },
+                        "columns": {
+                            "Item::column::0": {
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "instance_id"
+                                }
+                            },
+                            "__is_array": "true"
+                        },
+                        "unique": {
+                            "__dataset": "no|yes",
+                            "__datasource": "local",
+                            "__input_type": "dropdown",
+                            "__label": "Unique?",
+                            "unique": "no"
+                        }
+                    },
+                    "FunctionName": "datastore_create_index",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "This task will create standard service instance collections in the Maestro datastore",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "Create Service Instance Collections",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.000"
+}

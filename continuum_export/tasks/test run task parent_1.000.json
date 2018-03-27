@@ -1,0 +1,111 @@
+{
+    "Category": null,
+    "Code": "test",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_debug_level",
+                        "debug_level": {
+                            "debug_level": "10"
+                        }
+                    },
+                    "FunctionName": "set_debug_level",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "run_task",
+                        "handle": {
+                            "handle": "myhandle"
+                        },
+                        "on_error": {
+                            "on_error": ""
+                        },
+                        "on_success": {
+                            "on_success": ""
+                        },
+                        "parameters": {
+                            "parameters": ""
+                        },
+                        "task_name": {
+                            "task_name": "test run task child"
+                        },
+                        "time_to_wait": {
+                            "time_to_wait": ""
+                        },
+                        "version": {
+                            "version": ""
+                        }
+                    },
+                    "FunctionName": "run_task",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "message": {
+                            "message": "Task Instance [$_TASK_INSTANCE$]\nTask Instance URL [$_TASK_INSTANCE_URL$]\nTask ID [$_TASK_ID$]\nTask Name [$_TASK_NAME$]\nVersion [$_TASK_VERSION$]\nCloud Name [$_CLOUD_NAME$]\nCloud Login Pass [$_CLOUD_LOGIN_PASS$]\nCloud Login ID [$_CLOUD_LOGIN_ID$]\nCloud Providers [$_CLOUD_PROVIDER$]\nSubmitted By Email [$_SUBMITTED_BY_EMAIL$]\nSubmitted By [$_SUBMITTED_BY$]\nLast HTTP Response [$_HTTP_RESPONSE$]\nAssets [$_ASSET$]\nOptions [$_OPTIONS$]\n"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "wait_for_tasks",
+                        "handles": {
+                            "Item::handle::0": {
+                                "name": {
+                                    "name": "myhandle"
+                                }
+                            },
+                            "Item::handle::1": {
+                                "name": {
+                                    "name": "bogus"
+                                }
+                            },
+                            "__is_array": "true"
+                        }
+                    },
+                    "FunctionName": "wait_for_tasks",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": "None",
+    "Description": "",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "test run task parent",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [],
+    "QueueDepth": "None",
+    "Status": "Development",
+    "Version": "1.000"
+}

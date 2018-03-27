@@ -1,0 +1,643 @@
+{
+    "Category": null,
+    "Code": "QA",
+    "Codeblocks": [
+        {
+            "Name": "CONTROL",
+            "Steps": [
+                {
+                    "Codeblock": "CONTROL",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "run_task",
+                        "asset_id": {
+                            "__input_type": "text",
+                            "asset_id": ""
+                        },
+                        "handle": {
+                            "__input_type": "text",
+                            "handle": "IN_PROGRESS"
+                        },
+                        "on_error": {
+                            "__input_type": "text",
+                            "on_error": ""
+                        },
+                        "on_success": {
+                            "__input_type": "text",
+                            "on_success": ""
+                        },
+                        "parameters": {
+                            "parameters": ""
+                        },
+                        "task_name": {
+                            "__input_type": "text",
+                            "task_name": "QA - Wait For Tasks"
+                        },
+                        "time_to_wait": {
+                            "__input_type": "text",
+                            "time_to_wait": ""
+                        },
+                        "version": {
+                            "__input_type": "text",
+                            "version": ""
+                        }
+                    },
+                    "FunctionName": "run_task",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "CONTROL",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "codeblock",
+                        "__snip": "codeblock",
+                        "codeblock": {
+                            "__input_type": "text",
+                            "codeblock": "check_status"
+                        }
+                    },
+                    "FunctionName": "codeblock",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        },
+        {
+            "Name": "INTERACT",
+            "Steps": [
+                {
+                    "Codeblock": "INTERACT",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "run_task",
+                        "asset_id": {
+                            "__input_type": "text",
+                            "asset_id": ""
+                        },
+                        "handle": {
+                            "__input_type": "text",
+                            "handle": "IN_PROGRESS"
+                        },
+                        "on_error": {
+                            "__input_type": "text",
+                            "on_error": ""
+                        },
+                        "on_success": {
+                            "__input_type": "text",
+                            "on_success": ""
+                        },
+                        "parameters": {
+                            "parameters": ""
+                        },
+                        "task_name": {
+                            "__input_type": "text",
+                            "task_name": "QA - HTTP"
+                        },
+                        "time_to_wait": {
+                            "__input_type": "text",
+                            "time_to_wait": ""
+                        },
+                        "version": {
+                            "__input_type": "text",
+                            "version": ""
+                        }
+                    },
+                    "FunctionName": "run_task",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "INTERACT",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "codeblock",
+                        "__snip": "codeblock",
+                        "codeblock": {
+                            "__input_type": "text",
+                            "codeblock": "check_status"
+                        }
+                    },
+                    "FunctionName": "codeblock",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        },
+        {
+            "Name": "FLOW",
+            "Steps": [
+                {
+                    "Codeblock": "FLOW",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "run_task",
+                        "asset_id": {
+                            "__input_type": "text",
+                            "asset_id": ""
+                        },
+                        "handle": {
+                            "__input_type": "text",
+                            "handle": "IN_PROGRESS"
+                        },
+                        "on_error": {
+                            "__input_type": "text",
+                            "on_error": ""
+                        },
+                        "on_success": {
+                            "__input_type": "text",
+                            "on_success": ""
+                        },
+                        "parameters": {
+                            "parameters": ""
+                        },
+                        "task_name": {
+                            "__input_type": "text",
+                            "task_name": "QA - Loop Test"
+                        },
+                        "time_to_wait": {
+                            "__input_type": "text",
+                            "time_to_wait": ""
+                        },
+                        "version": {
+                            "__input_type": "text",
+                            "version": ""
+                        }
+                    },
+                    "FunctionName": "run_task",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "FLOW",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "codeblock",
+                        "__snip": "codeblock",
+                        "codeblock": {
+                            "__input_type": "text",
+                            "codeblock": "check_status"
+                        }
+                    },
+                    "FunctionName": "codeblock",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "FLOW",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "run_task",
+                        "asset_id": {
+                            "__input_type": "text",
+                            "asset_id": ""
+                        },
+                        "handle": {
+                            "__input_type": "text",
+                            "handle": "IN_PROGRESS"
+                        },
+                        "on_error": {
+                            "__input_type": "text",
+                            "on_error": ""
+                        },
+                        "on_success": {
+                            "__input_type": "text",
+                            "on_success": ""
+                        },
+                        "parameters": {
+                            "parameters": ""
+                        },
+                        "task_name": {
+                            "__input_type": "text",
+                            "task_name": "QA - Subtask A"
+                        },
+                        "time_to_wait": {
+                            "__input_type": "text",
+                            "time_to_wait": ""
+                        },
+                        "version": {
+                            "__input_type": "text",
+                            "version": ""
+                        }
+                    },
+                    "FunctionName": "run_task",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "FLOW",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "codeblock",
+                        "__snip": "codeblock",
+                        "codeblock": {
+                            "__input_type": "text",
+                            "codeblock": "check_status"
+                        }
+                    },
+                    "FunctionName": "codeblock",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "FLOW",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "run_task",
+                        "asset_id": {
+                            "__input_type": "text",
+                            "asset_id": ""
+                        },
+                        "handle": {
+                            "__input_type": "text",
+                            "handle": "IN_PROGRESS"
+                        },
+                        "on_error": {
+                            "__input_type": "text",
+                            "on_error": ""
+                        },
+                        "on_success": {
+                            "__input_type": "text",
+                            "on_success": ""
+                        },
+                        "parameters": {
+                            "parameters": ""
+                        },
+                        "task_name": {
+                            "__input_type": "text",
+                            "task_name": "QA - While"
+                        },
+                        "time_to_wait": {
+                            "__input_type": "text",
+                            "time_to_wait": ""
+                        },
+                        "version": {
+                            "__input_type": "text",
+                            "version": ""
+                        }
+                    },
+                    "FunctionName": "run_task",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "FLOW",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "codeblock",
+                        "__snip": "codeblock",
+                        "codeblock": {
+                            "__input_type": "text",
+                            "codeblock": "check_status"
+                        }
+                    },
+                    "FunctionName": "codeblock",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        },
+        {
+            "Name": "VARIABLE",
+            "Steps": [
+                {
+                    "Codeblock": "VARIABLE",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "run_task",
+                        "asset_id": {
+                            "__input_type": "text",
+                            "asset_id": ""
+                        },
+                        "handle": {
+                            "__input_type": "text",
+                            "handle": "IN_PROGRESS"
+                        },
+                        "on_error": {
+                            "__input_type": "text",
+                            "on_error": ""
+                        },
+                        "on_success": {
+                            "__input_type": "text",
+                            "on_success": ""
+                        },
+                        "parameters": {
+                            "parameters": ""
+                        },
+                        "task_name": {
+                            "__input_type": "text",
+                            "task_name": "QA - Wait For Tasks"
+                        },
+                        "time_to_wait": {
+                            "__input_type": "text",
+                            "time_to_wait": ""
+                        },
+                        "version": {
+                            "__input_type": "text",
+                            "version": ""
+                        }
+                    },
+                    "FunctionName": "run_task",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "VARIABLE",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "codeblock",
+                        "__snip": "codeblock",
+                        "codeblock": {
+                            "__input_type": "text",
+                            "codeblock": "check_status"
+                        }
+                    },
+                    "FunctionName": "codeblock",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        },
+        {
+            "Name": "check_status",
+            "Steps": [
+                {
+                    "Codeblock": "check_status",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "__snip": "message",
+                        "message": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Log",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "2",
+                            "message": "checking status of [[#IN_PROGRESS.TASK_NAME]] ... [[#IN_PROGRESS.STATUS]]"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "check_status",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "sleep",
+                        "__snip": "seconds",
+                        "seconds": {
+                            "__input_type": "text",
+                            "__label": "Sleep",
+                            "seconds": "5"
+                        }
+                    },
+                    "FunctionName": "sleep",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "check_status",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "if",
+                        "else": {
+                            "__input_type": "text",
+                            "function": {
+                                "__name": "log_msg",
+                                "message": {
+                                    "message": "Task - [$ #IN_PROGRESS.TASK_NAME $] - [$ #IN_PROGRESS.STATUS $]"
+                                }
+                            }
+                        },
+                        "tests": {
+                            "test": {
+                                "action": {
+                                    "function": {
+                                        "__name": "codeblock",
+                                        "__snip": "codeblock",
+                                        "codeblock": {
+                                            "__input_type": "text",
+                                            "codeblock": "check_status"
+                                        }
+                                    }
+                                },
+                                "eval": {
+                                    "eval": "\"[$ #IN_PROGRESS.STATUS $]\" in (\"Submitted\", \"Staged\", \"Processing\", \"Aborting\", \"Queued\")"
+                                }
+                            }
+                        }
+                    },
+                    "FunctionName": "if",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        },
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "comment",
+                        "comment": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Comment",
+                            "__rows": "3",
+                            "__style": "display: block;",
+                            "comment": "This QA Task will test all commands via the Run Task command.  There are tasks representing 'most' of the available commands.  Some commands don't have a separate task, as they're included here in the master task.  (Run Task, If, Log Message, Codeblock, End, Comment, Add Summary Item, Set Logging Level)"
+                        }
+                    },
+                    "FunctionName": "comment",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_debug_level",
+                        "debug_level": {
+                            "__dataset": "ddDataSource_GetDebugLevels",
+                            "__datasource": "function",
+                            "__input_type": "dropdown",
+                            "__label": "Logging Level",
+                            "debug_level": "20"
+                        }
+                    },
+                    "FunctionName": "set_debug_level",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "__snip": "message",
+                        "message": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Log",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "2",
+                            "message": "Starting QA test..."
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "codeblock",
+                        "__snip": "codeblock",
+                        "codeblock": {
+                            "__input_type": "text",
+                            "codeblock": "FLOW"
+                        }
+                    },
+                    "FunctionName": "codeblock",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "codeblock",
+                        "__snip": "codeblock",
+                        "codeblock": {
+                            "__input_type": "text",
+                            "codeblock": "CONTROL"
+                        }
+                    },
+                    "FunctionName": "codeblock",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "codeblock",
+                        "__snip": "codeblock",
+                        "codeblock": {
+                            "__input_type": "text",
+                            "codeblock": "INTERACT"
+                        }
+                    },
+                    "FunctionName": "codeblock",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "codeblock",
+                        "__snip": "codeblock",
+                        "codeblock": {
+                            "__input_type": "text",
+                            "codeblock": "VARIABLE"
+                        }
+                    },
+                    "FunctionName": "codeblock",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "end",
+                        "__snip": "status",
+                        "message": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Message",
+                            "__label_style": "display: block;",
+                            "__rows": "3",
+                            "message": "All done!"
+                        },
+                        "status": {
+                            "__dataset": "Completed|Error|Cancelled",
+                            "__datasource": "local",
+                            "__input_type": "dropdown",
+                            "__label": "Status",
+                            "status": "Completed"
+                        }
+                    },
+                    "FunctionName": "end",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "The master control Task for testing all task commands.",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "QA - Main",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.000"
+}

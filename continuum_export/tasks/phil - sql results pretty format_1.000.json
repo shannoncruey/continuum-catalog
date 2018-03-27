@@ -1,0 +1,134 @@
+{
+    "Category": null,
+    "Code": "phil",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_debug_level",
+                        "debug_level": {
+                            "debug_level": "10"
+                        }
+                    },
+                    "FunctionName": "set_debug_level",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "new_connection",
+                        "asset": {
+                            "asset": "LocalMySql"
+                        },
+                        "cloud_name": {
+                            "cloud_name": ""
+                        },
+                        "conn_name": {
+                            "conn_name": "CONN1"
+                        },
+                        "conn_type": {
+                            "conn_type": "mysql"
+                        },
+                        "debug": {
+                            "debug": ""
+                        }
+                    },
+                    "FunctionName": "new_connection",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "sql_exec",
+                        "__parse_method": "1",
+                        "conn_name": {
+                            "conn_name": "CONN1"
+                        },
+                        "handle": {
+                            "handle": ""
+                        },
+                        "mode": {
+                            "mode": "SQL"
+                        },
+                        "pairs": {
+                            "pair": {
+                                "key": {
+                                    "key": ""
+                                },
+                                "value": {
+                                    "value": ""
+                                }
+                            }
+                        },
+                        "result_variable": {
+                            "result_variable": "ROWS"
+                        },
+                        "sql": {
+                            "sql": "select username, full_name from users"
+                        }
+                    },
+                    "FunctionName": "sql_exec",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 1,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "utility.utility",
+                        "__name": "exec_python",
+                        "code": {
+                            "code": "rows = VARS.get(\"ROWS\")\n\ntrs = \"\"\nfor row in rows:\n    tr = \"\"\n    for col in row:\n        tr += \"<td>%s</td>\" % (col)\n    trs += \"<tr>%s</tr>\" % (tr)\n\n# now, save the 'data' into the runtime VARS so we can access it in another step\nVARS.set(\"TABLEROWS\", trs)\n"
+                        }
+                    },
+                    "FunctionName": "exec_python",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "message": {
+                            "message": "<table>\n    <thead>\n        <th>date</th>\n        <th>count</th>\n    </thead>\n    <tbody>\n[$ TABLEROWS $]\n    </tbody>\n</table>"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "phil - sql results pretty format",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.000"
+}

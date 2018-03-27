@@ -1,0 +1,598 @@
+{
+    "Category": null,
+    "Code": "102",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "datastore_drop_collection",
+                        "collection": {
+                            "__input_type": "text",
+                            "__label": "Collection",
+                            "collection": "stories"
+                        }
+                    },
+                    "FunctionName": "datastore_drop_collection",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "loop",
+                        "action": {
+                            "function": {
+                                "__name": "datastore_insert",
+                                "collection": {
+                                    "__input_type": "text",
+                                    "__label": "Collection",
+                                    "collection": "stories"
+                                },
+                                "object_id": {
+                                    "__input_type": "text",
+                                    "__label": "ObjectId Variable",
+                                    "object_id": ""
+                                },
+                                "pairs": {
+                                    "Item::pair::0": {
+                                        "name": {
+                                            "__input_type": "text",
+                                            "__label": "Name",
+                                            "name": "project"
+                                        },
+                                        "value": {
+                                            "__input_type": "text",
+                                            "__label": "Value",
+                                            "__style": "width: 50%;",
+                                            "value": "repo_a"
+                                        }
+                                    },
+                                    "Item::pair::1": {
+                                        "name": {
+                                            "__input_type": "text",
+                                            "__label": "Name",
+                                            "name": "jenkins_job"
+                                        },
+                                        "value": {
+                                            "__input_type": "text",
+                                            "__label": "Value",
+                                            "__style": "width: 50%;",
+                                            "value": "jenkins_[[x]]"
+                                        }
+                                    },
+                                    "Item::pair::2": {
+                                        "name": {
+                                            "__input_type": "text",
+                                            "__label": "Name",
+                                            "name": "story"
+                                        },
+                                        "value": {
+                                            "__input_type": "text",
+                                            "__label": "Value",
+                                            "__style": "width: 50%;",
+                                            "value": "story_[[x]]"
+                                        }
+                                    },
+                                    "Item::pair::3": {
+                                        "name": {
+                                            "__input_type": "text",
+                                            "__label": "Name",
+                                            "name": "build_num"
+                                        },
+                                        "value": {
+                                            "__input_type": "text",
+                                            "__label": "Value",
+                                            "__style": "width: 50%;",
+                                            "value": "123"
+                                        }
+                                    },
+                                    "Item::pair::4": {
+                                        "name": {
+                                            "__input_type": "text",
+                                            "__label": "Name",
+                                            "name": "status"
+                                        },
+                                        "value": {
+                                            "__input_type": "text",
+                                            "__label": "Value",
+                                            "__style": "width: 50%;",
+                                            "value": "in process"
+                                        }
+                                    },
+                                    "Item::pair::5": {
+                                        "name": {
+                                            "__input_type": "text",
+                                            "__label": "Name",
+                                            "name": "stage"
+                                        },
+                                        "value": {
+                                            "__input_type": "text",
+                                            "__label": "Value",
+                                            "__style": "width: 50%;",
+                                            "value": "stage 1"
+                                        }
+                                    },
+                                    "Item::pair::6": {
+                                        "name": {
+                                            "__input_type": "text",
+                                            "__label": "Name",
+                                            "name": "stage_status"
+                                        },
+                                        "value": {
+                                            "__input_type": "text",
+                                            "__label": "Value",
+                                            "__style": "width: 50%;",
+                                            "value": "completed"
+                                        }
+                                    },
+                                    "Item::pair::7": {
+                                        "name": {
+                                            "__input_type": "text",
+                                            "__label": "Name",
+                                            "name": "workflow"
+                                        },
+                                        "value": {
+                                            "__input_type": "text",
+                                            "__label": "Value",
+                                            "__style": "width: 50%;",
+                                            "value": "workflow1"
+                                        }
+                                    },
+                                    "Item::pair::8": {
+                                        "name": {
+                                            "__input_type": "text",
+                                            "__label": "Name",
+                                            "name": "start_dt"
+                                        },
+                                        "value": {
+                                            "__input_type": "text",
+                                            "__label": "Value",
+                                            "__style": "width: 50%;",
+                                            "value": "2013-10-10 15:30:45"
+                                        }
+                                    },
+                                    "__is_array": "true"
+                                }
+                            }
+                        },
+                        "compare_to": {
+                            "__input_type": "text",
+                            "compare_to": "1"
+                        },
+                        "counter": {
+                            "__input_type": "text",
+                            "counter": "x"
+                        },
+                        "increment": {
+                            "__input_type": "text",
+                            "increment": "1"
+                        },
+                        "max": {
+                            "__input_type": "text",
+                            "max": "1"
+                        },
+                        "start": {
+                            "__input_type": "text",
+                            "start": "1"
+                        },
+                        "test": {
+                            "__input_type": "select",
+                            "test": "<="
+                        }
+                    },
+                    "FunctionName": "loop",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "datastore_insert",
+                        "collection": {
+                            "__input_type": "text",
+                            "__label": "Collection",
+                            "collection": "stories"
+                        },
+                        "object_id": {
+                            "__input_type": "text",
+                            "__label": "ObjectId Variable",
+                            "object_id": ""
+                        },
+                        "pairs": {
+                            "Item::pair::0": {
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "project"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "__style": "width: 50%;",
+                                    "value": "repo_a"
+                                }
+                            },
+                            "Item::pair::1": {
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "jenkins_job"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "__style": "width: 50%;",
+                                    "value": "jenkins_a"
+                                }
+                            },
+                            "Item::pair::2": {
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "story"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "__style": "width: 50%;",
+                                    "value": "story_a"
+                                }
+                            },
+                            "Item::pair::3": {
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "build_num"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "__style": "width: 50%;",
+                                    "value": "123"
+                                }
+                            },
+                            "Item::pair::4": {
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "stage_1"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "__style": "width: 50%;",
+                                    "value": "approved"
+                                }
+                            },
+                            "Item::pair::5": {
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "stage_2"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "__style": "width: 50%;",
+                                    "value": ""
+                                }
+                            },
+                            "Item::pair::6": {
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "stage_3"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "__style": "width: 50%;",
+                                    "value": ""
+                                }
+                            },
+                            "Item::pair::7": {
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "stage_4"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "__style": "width: 50%;",
+                                    "value": ""
+                                }
+                            },
+                            "__is_array": "true"
+                        }
+                    },
+                    "FunctionName": "datastore_insert",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "datastore_insert",
+                        "collection": {
+                            "__input_type": "text",
+                            "__label": "Collection",
+                            "collection": "stories"
+                        },
+                        "object_id": {
+                            "__input_type": "text",
+                            "__label": "ObjectId Variable",
+                            "object_id": ""
+                        },
+                        "pairs": {
+                            "Item::pair::0": {
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "project"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "__style": "width: 50%;",
+                                    "value": "repo_b"
+                                }
+                            },
+                            "Item::pair::1": {
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "jenkins_job"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "__style": "width: 50%;",
+                                    "value": "jenkins_b"
+                                }
+                            },
+                            "Item::pair::2": {
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "story"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "__style": "width: 50%;",
+                                    "value": "story_b"
+                                }
+                            },
+                            "Item::pair::3": {
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "build_num"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "__style": "width: 50%;",
+                                    "value": "234"
+                                }
+                            },
+                            "Item::pair::4": {
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "stage_1"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "__style": "width: 50%;",
+                                    "value": "approved"
+                                }
+                            },
+                            "Item::pair::5": {
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "stage_2"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "__style": "width: 50%;",
+                                    "value": ""
+                                }
+                            },
+                            "Item::pair::6": {
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "stage_3"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "__style": "width: 50%;",
+                                    "value": ""
+                                }
+                            },
+                            "Item::pair::7": {
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "stage_4"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "__style": "width: 50%;",
+                                    "value": ""
+                                }
+                            },
+                            "__is_array": "true"
+                        }
+                    },
+                    "FunctionName": "datastore_insert",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "datastore_insert",
+                        "collection": {
+                            "__input_type": "text",
+                            "__label": "Collection",
+                            "collection": "stories"
+                        },
+                        "object_id": {
+                            "__input_type": "text",
+                            "__label": "ObjectId Variable",
+                            "object_id": ""
+                        },
+                        "pairs": {
+                            "Item::pair::0": {
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "project"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "__style": "width: 50%;",
+                                    "value": "repo_c"
+                                }
+                            },
+                            "Item::pair::1": {
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "jenkins_job"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "__style": "width: 50%;",
+                                    "value": "jenkins_c"
+                                }
+                            },
+                            "Item::pair::2": {
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "story"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "__style": "width: 50%;",
+                                    "value": "story_c"
+                                }
+                            },
+                            "Item::pair::3": {
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "build_num"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "__style": "width: 50%;",
+                                    "value": "345"
+                                }
+                            },
+                            "Item::pair::4": {
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "stage_1"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "__style": "width: 50%;",
+                                    "value": "approved"
+                                }
+                            },
+                            "Item::pair::5": {
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "stage_2"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "__style": "width: 50%;",
+                                    "value": ""
+                                }
+                            },
+                            "Item::pair::6": {
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "stage_3"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "__style": "width: 50%;",
+                                    "value": ""
+                                }
+                            },
+                            "Item::pair::7": {
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "stage_4"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "__style": "width: 50%;",
+                                    "value": ""
+                                }
+                            },
+                            "__is_array": "true"
+                        }
+                    },
+                    "FunctionName": "datastore_insert",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "Demo Story Setup",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.000"
+}

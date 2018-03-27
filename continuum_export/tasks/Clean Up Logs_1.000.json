@@ -1,0 +1,51 @@
+{
+    "Category": null,
+    "Code": "Util",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "utility.utility",
+                        "__name": "clean_logfiles",
+                        "se_keep": {
+                            "se_keep": "5"
+                        },
+                        "svc_keep": {
+                            "svc_keep": "0"
+                        },
+                        "te_keep": {
+                            "te_keep": "5"
+                        },
+                        "ti_size": {
+                            "ti_size": "25"
+                        },
+                        "tilog_size": {
+                            "tilog_size": "25"
+                        }
+                    },
+                    "FunctionName": "clean_logfiles",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "Cleans up logfile directories and tables of old content, using a utility extension.",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "Clean Up Logs",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.000"
+}

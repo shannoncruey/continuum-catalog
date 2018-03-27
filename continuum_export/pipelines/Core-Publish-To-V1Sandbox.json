@@ -1,0 +1,62 @@
+{
+    "__assembled": true,
+    "actions": [],
+    "description": "",
+    "globals": {},
+    "name": "Core-Publish-To-V1Sandbox",
+    "phases": [
+        {
+            "name": "Core-Publish-To-V1Sandbox",
+            "stages": [
+                {
+                    "description": "",
+                    "name": "Core-Promote-And-Publish-v1Sandbox",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "name": "[$ VERSION $]"
+                                },
+                                "label": "Flow - Pipeline - Set Name",
+                                "method": "set_name",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "inherit": true,
+                                    "instance_name": "",
+                                    "job": "V1Sandbox Refresh",
+                                    "params": {
+                                        "BASEVERSION": "[$ BASEVERSION $]",
+                                        "VERSION": "[$ VERSION $]"
+                                    },
+                                    "token": "",
+                                    "wait": true
+                                },
+                                "label": "Jenkins - Build",
+                                "method": "build",
+                                "module": "job",
+                                "name": "jenkins"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "product_id": "543fe8a37c1a7c67c7dcb133",
+    "product_name": "VersionOne",
+    "product_workflow_step": "",
+    "summary": [],
+    "tags": [
+        "VersionOne"
+    ]
+}

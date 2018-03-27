@@ -1,0 +1,54 @@
+{
+    "actions": [
+        {
+            "definition": "__do_something_manual",
+            "details": null,
+            "group": "master",
+            "icon": "",
+            "instancename": "",
+            "isOpen": "",
+            "name": "run do nothing",
+            "parameters": {},
+            "project": "",
+            "project_version": "",
+            "type": "initiate_pipeline"
+        }
+    ],
+    "artifacts": [],
+    "description": "",
+    "globals": {},
+    "mappings": [],
+    "name": "__test_project",
+    "notifications": {
+        "email": {
+            "addresses": ""
+        },
+        "enable": false,
+        "hipchat": {
+            "room": ""
+        },
+        "http": {
+            "data": "",
+            "url": ""
+        },
+        "on_failure": [],
+        "on_start": [],
+        "on_success": [],
+        "on_wait": [],
+        "slack": {
+            "channel": ""
+        }
+    },
+    "source": {
+        "directives": [],
+        "enable_polling": true,
+        "group_source": "branch",
+        "interface": "webhook",
+        "notify_unmanaged": false,
+        "notify_unmanaged_addl": "",
+        "repo_name": "hooktesting",
+        "repo_server": "tfssl",
+        "type": "other"
+    },
+    "type": "Source"
+}

@@ -1,0 +1,268 @@
+{
+    "Category": null,
+    "Code": "053",
+    "Codeblocks": [
+        {
+            "Name": "doservice",
+            "Steps": [
+                {
+                    "Codeblock": "doservice",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_variable",
+                        "variables": {
+                            "__label": "Variables",
+                            "variable": {
+                                "__label": "Variable",
+                                "modifier": {
+                                    "__input_type": "select",
+                                    "__label": "Modifier",
+                                    "modifier": "DEFAULT"
+                                },
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "x2"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "value": "[[x.//Services/Service,[[z]]]]"
+                                }
+                            }
+                        }
+                    },
+                    "FunctionName": "set_variable",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "doservice",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "__snip": "message",
+                        "message": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Log",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "2",
+                            "message": "[[s]] - [[x2]]"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "doservice",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "loop",
+                        "action": {
+                            "function": {
+                                "__name": "set_variable",
+                                "variables": {
+                                    "__label": "Variables",
+                                    "variable": {
+                                        "__label": "Variable",
+                                        "modifier": {
+                                            "__input_type": "select",
+                                            "__label": "Modifier",
+                                            "modifier": "DEFAULT"
+                                        },
+                                        "name": {
+                                            "__input_type": "text",
+                                            "__label": "Name",
+                                            "name": "out"
+                                        },
+                                        "value": {
+                                            "__input_type": "text",
+                                            "__label": "Value",
+                                            "value": "[[out]][[s]] - [[x2.//Instances/Instance/Label,[[y]]]]\n"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "compare_to": {
+                            "__input_type": "text",
+                            "compare_to": "[[x2.count(//Instances/Instance)]]"
+                        },
+                        "counter": {
+                            "__input_type": "text",
+                            "counter": "y"
+                        },
+                        "increment": {
+                            "__input_type": "text",
+                            "increment": "1"
+                        },
+                        "max": {
+                            "__input_type": "text",
+                            "max": ""
+                        },
+                        "start": {
+                            "__input_type": "text",
+                            "start": "1"
+                        },
+                        "test": {
+                            "__input_type": "select",
+                            "test": "<="
+                        }
+                    },
+                    "FunctionName": "loop",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        },
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_variable",
+                        "variables": {
+                            "__label": "Variables",
+                            "variable": {
+                                "__label": "Variable",
+                                "modifier": {
+                                    "__input_type": "select",
+                                    "__label": "Modifier",
+                                    "modifier": "DEFAULT"
+                                },
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "x"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "value": "<apiResponse>\n    <method>depMethods/get_service_instances</method>\n    <response>\n        <Services>\n            <Service>\n                <Instances>\n                    <Instance>\n                        <Status>idle</Status>\n                        <Address />\n                        <HostName />\n                        <Description>The Application Server</Description>\n                        <InstanceID>f24df723-241b-4049-b8df-20343fa5e7b7</InstanceID>\n                        <RunLevel>0</RunLevel>\n                        <Options />\n                        <Health>None</Health>\n                        <CurrentState>Running</CurrentState>\n                        <Deployment>None</Deployment>\n                        <Datastore>None</Datastore>\n                        <Label>App Server 1</Label>\n                        <ID>5bdb958c-d2a4-11e2-9163-c8bcc89c1491</ID>\n                        <DocumentID>None</DocumentID>\n                        <Name>App Server</Name>\n                    </Instance>\n                    <ServiceName>App Server</ServiceName>\n                </Instances>\n                <Instances>\n                    <Instance>\n                        <Status>idle</Status>\n                        <Address />\n                        <HostName />\n                        <Description>The Application Server</Description>\n                        <InstanceID>1af92f46-4c9d-43b6-aac7-3f7cf4ff3d36</InstanceID>\n                        <RunLevel>0</RunLevel>\n                        <Options />\n                        <Health>None</Health>\n                        <CurrentState>Running</CurrentState>\n                        <Deployment>None</Deployment>\n                        <Datastore>None</Datastore>\n                        <Label>App Server 2</Label>\n                        <ID>5bdb958c-d2a4-11e2-9163-c8bcc89c1491</ID>\n                        <DocumentID>None</DocumentID>\n                        <Name>App Server</Name>\n                    </Instance>\n                    <ServiceName>App Server</ServiceName>\n                </Instances>\n                <ID>5bdb958c-d2a4-11e2-9163-c8bcc89c1491</ID>\n                <Name>App Server</Name>\n            </Service>\n            <Service>\n                <Instances>\n                    <Instance>\n                        <Status>idle</Status>\n                        <Address />\n                        <HostName />\n                        <Description>The Database</Description>\n                        <InstanceID>009ec1cc-d917-4c5d-aeff-42d139636e40</InstanceID>\n                        <RunLevel>2</RunLevel>\n                        <Options />\n                        <Health>None</Health>\n                        <CurrentState>Running</CurrentState>\n                        <Deployment>None</Deployment>\n                        <Datastore>None</Datastore>\n                        <Label>Database 1</Label>\n                        <ID>5bdeae70-d2a4-11e2-8e47-c8bcc89c1491</ID>\n                        <DocumentID>None</DocumentID>\n                        <Name>Database</Name>\n                    </Instance>\n                    <ServiceName>Database</ServiceName>\n                </Instances>\n                <Instances>\n                    <Instance>\n                        <Status>idle</Status>\n                        <Address />\n                        <HostName />\n                        <Description>The Database</Description>\n                        <InstanceID>64f030ee-9b92-4973-8a33-e14f2bd4d78f</InstanceID>\n                        <RunLevel>2</RunLevel>\n                        <Options />\n                        <Health>None</Health>\n                        <CurrentState>Running</CurrentState>\n                        <Deployment>None</Deployment>\n                        <Datastore>None</Datastore>\n                        <Label>Database 2</Label>\n                        <ID>5bdeae70-d2a4-11e2-8e47-c8bcc89c1491</ID>\n                        <DocumentID>None</DocumentID>\n                        <Name>Database</Name>\n                    </Instance>\n                    <ServiceName>Database</ServiceName>\n                </Instances>\n                <ID>5bdeae70-d2a4-11e2-8e47-c8bcc89c1491</ID>\n                <Name>Database</Name>\n            </Service>\n            <Service>\n                <Instances>\n                    <Instance>\n                        <Status>idle</Status>\n                        <Address />\n                        <HostName />\n                        <Description>The Webserver Service</Description>\n                        <InstanceID>55a5d9b4-3d1e-418e-aba8-1fb067cf2b4e</InstanceID>\n                        <RunLevel>0</RunLevel>\n                        <Options />\n                        <Health>None</Health>\n                        <CurrentState>Running</CurrentState>\n                        <Deployment>None</Deployment>\n                        <Datastore>None</Datastore>\n                        <Label>PIA (Webserver) 1</Label>\n                        <ID>5bd0a280-d2a4-11e2-8934-c8bcc89c1491</ID>\n                        <DocumentID>None</DocumentID>\n                        <Name>PIA (Webserver)</Name>\n                    </Instance>\n                    <ServiceName>PIA (Webserver)</ServiceName>\n                </Instances>\n                <Instances>\n                    <Instance>\n                        <Status>idle</Status>\n                        <Address />\n                        <HostName />\n                        <Description>The Webserver Service</Description>\n                        <InstanceID>6d048ffc-a4ba-4453-b714-a4121ee6cb53</InstanceID>\n                        <RunLevel>0</RunLevel>\n                        <Options />\n                        <Health>None</Health>\n                        <CurrentState>Running</CurrentState>\n                        <Deployment>None</Deployment>\n                        <Datastore>None</Datastore>\n                        <Label>PIA (Webserver) 2</Label>\n                        <ID>5bd0a280-d2a4-11e2-8934-c8bcc89c1491</ID>\n                        <DocumentID>None</DocumentID>\n                        <Name>PIA (Webserver)</Name>\n                    </Instance>\n                    <ServiceName>PIA (Webserver)</ServiceName>\n                </Instances>\n                <ID>5bd0a280-d2a4-11e2-8934-c8bcc89c1491</ID>\n                <Name>PIA (Webserver)</Name>\n            </Service>\n            <Service>\n                <Instances>\n                    <Instance>\n                        <Status>idle</Status>\n                        <Address />\n                        <HostName />\n                        <Description>The Process Scheduler Server</Description>\n                        <InstanceID>dc017665-47b6-44e6-b43d-93ebcb121f95</InstanceID>\n                        <RunLevel>1</RunLevel>\n                        <Options />\n                        <Health>None</Health>\n                        <CurrentState>Active</CurrentState>\n                        <Deployment>None</Deployment>\n                        <Datastore>None</Datastore>\n                        <Label>Process Scheduler 1</Label>\n                        <ID>5bcdbd0c-d2a4-11e2-bed5-c8bcc89c1491</ID>\n                        <DocumentID>None</DocumentID>\n                        <Name>Process Scheduler</Name>\n                    </Instance>\n                    <ServiceName>Process Scheduler</ServiceName>\n                </Instances>\n                <Instances>\n                    <Instance>\n                        <Status>idle</Status>\n                        <Address />\n                        <HostName />\n                        <Description>The Process Scheduler Server</Description>\n                        <InstanceID>400e8da3-b77b-4d5d-b178-5e99241157f6</InstanceID>\n                        <RunLevel>1</RunLevel>\n                        <Options />\n                        <Health>None</Health>\n                        <CurrentState>Active</CurrentState>\n                        <Deployment>None</Deployment>\n                        <Datastore>None</Datastore>\n                        <Label>Process Scheduler 2</Label>\n                        <ID>5bcdbd0c-d2a4-11e2-bed5-c8bcc89c1491</ID>\n                        <DocumentID>None</DocumentID>\n                        <Name>Process Scheduler</Name>\n                    </Instance>\n                    <ServiceName>Process Scheduler</ServiceName>\n                </Instances>\n                <ID>5bcdbd0c-d2a4-11e2-bed5-c8bcc89c1491</ID>\n                <Name>Process Scheduler</Name>\n            </Service>\n        </Services>\n    </response>\n</apiResponse>"
+                                }
+                            }
+                        }
+                    },
+                    "FunctionName": "set_variable",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "__snip": "message",
+                        "message": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Log",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "2",
+                            "message": "number of services - [[x.count(//Services/Service)]]"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "loop",
+                        "action": {
+                            "function": {
+                                "__name": "codeblock",
+                                "__snip": "codeblock",
+                                "codeblock": {
+                                    "__input_type": "text",
+                                    "codeblock": "doservice"
+                                }
+                            }
+                        },
+                        "compare_to": {
+                            "__input_type": "text",
+                            "compare_to": "[[x.count(//Services/Service)]]"
+                        },
+                        "counter": {
+                            "__input_type": "text",
+                            "counter": "z"
+                        },
+                        "increment": {
+                            "__input_type": "text",
+                            "increment": "1"
+                        },
+                        "max": {
+                            "__input_type": "text",
+                            "max": ""
+                        },
+                        "start": {
+                            "__input_type": "text",
+                            "start": "1"
+                        },
+                        "test": {
+                            "__input_type": "select",
+                            "test": "<="
+                        }
+                    },
+                    "FunctionName": "loop",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "__snip": "message",
+                        "message": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Log",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "2",
+                            "message": "[[out]]"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": 0,
+    "Description": "",
+    "IsDefaultVersion": false,
+    "MaxVersion": "1.001",
+    "Name": "test xml",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.002",
+    "NumberOfApprovedVersions": 1,
+    "Parameters": [],
+    "QueueDepth": 0,
+    "Status": "Development",
+    "Version": "1.001"
+}

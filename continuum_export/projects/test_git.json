@@ -1,0 +1,67 @@
+{
+    "actions": [],
+    "artifacts": [],
+    "description": "For testing git post-receive hooks using our special hook.",
+    "globals": {},
+    "mappings": [],
+    "name": "test_git",
+    "notifications": {
+        "email": {
+            "addresses": ""
+        },
+        "enable": false,
+        "hipchat": {
+            "room": ""
+        },
+        "http": {
+            "data": "",
+            "url": ""
+        },
+        "on_failure": [],
+        "on_start": [],
+        "on_success": [],
+        "on_wait": [],
+        "slack": {
+            "channel": ""
+        }
+    },
+    "source": {
+        "directives": [
+            {
+                "details": {
+                    "definition": "",
+                    "group": "",
+                    "includeChanges": "",
+                    "instancename": "",
+                    "isOpen": "",
+                    "project": "",
+                    "project_version": ""
+                },
+                "type": "lifecycle_workitem_lookup",
+                "when": "always"
+            },
+            {
+                "details": {
+                    "definition": "test_directive",
+                    "group": "master",
+                    "includeChanges": "",
+                    "instancename": "",
+                    "isOpen": true,
+                    "project": "test_project",
+                    "project_version": ""
+                },
+                "type": "initiate_pipeline",
+                "when": "always"
+            }
+        ],
+        "enable_polling": false,
+        "group_source": "branch",
+        "interface": "postreceivehook",
+        "notify_unmanaged": false,
+        "notify_unmanaged_addl": "",
+        "repo_name": "",
+        "repo_server": "",
+        "type": "git"
+    },
+    "type": "Source"
+}

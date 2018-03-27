@@ -1,0 +1,148 @@
+{
+    "Category": null,
+    "Code": "",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "loop",
+                        "action": {
+                            "action": ""
+                        },
+                        "compare_to": {
+                            "compare_to": ""
+                        },
+                        "counter": {
+                            "counter": ""
+                        },
+                        "increment": {
+                            "increment": "1"
+                        },
+                        "max": {
+                            "max": ""
+                        },
+                        "start": {
+                            "start": "1"
+                        },
+                        "test": {
+                            "test": "<="
+                        }
+                    },
+                    "FunctionName": "loop",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__col_delimiter": "0",
+                        "__name": "cmd_line",
+                        "__parse_method": "2",
+                        "__row_delimiter": "0",
+                        "command": {
+                            "command": "123"
+                        },
+                        "conn_name": {
+                            "conn_name": ""
+                        },
+                        "negative_response": {
+                            "negative_response": ""
+                        },
+                        "positive_response": {
+                            "positive_response": ""
+                        },
+                        "result_variable": {
+                            "result_variable": ""
+                        },
+                        "step_variables": {
+                            "Item::variable::0": {
+                                "name": {
+                                    "name": "woo"
+                                },
+                                "position": {
+                                    "position": "1"
+                                },
+                                "type": {
+                                    "type": "delimited"
+                                }
+                            },
+                            "Item::variable::1": {
+                                "name": {
+                                    "name": "hoo"
+                                },
+                                "position": {
+                                    "position": "2"
+                                },
+                                "type": {
+                                    "type": "delimited"
+                                }
+                            }
+                        },
+                        "timeout": {
+                            "timeout": ""
+                        }
+                    },
+                    "FunctionName": "cmd_line",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "new_connection",
+                        "asset": {
+                            "asset": ""
+                        },
+                        "cloud_name": {
+                            "cloud_name": ""
+                        },
+                        "conn_name": {
+                            "conn_name": "CONN1"
+                        },
+                        "conn_type": {
+                            "conn_type": "ssh"
+                        },
+                        "debug": {
+                            "debug": ""
+                        }
+                    },
+                    "FunctionName": "new_connection",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "task-a94faf2ca128a624",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [
+        {
+            "name": "i_am_required",
+            "present_as": "value",
+            "values": [
+                "bar"
+            ]
+        }
+    ],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.000"
+}

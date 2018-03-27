@@ -1,0 +1,34 @@
+{
+    "__assembled": true,
+    "actions": [],
+    "description": "",
+    "globals": {},
+    "name": "Build Install",
+    "phases": [
+        {
+            "name": "Build Install",
+            "stages": [
+                {
+                    "name": "Build Install",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "message": "Installer checked in"
+                                },
+                                "label": "Utility - Insert Log",
+                                "method": "insert_log",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "summary": []
+}

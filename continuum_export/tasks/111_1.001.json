@@ -1,0 +1,44 @@
+{
+    "Category": null,
+    "Code": "111 01",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "message": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Log",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "2",
+                            "message": "this is v1.001\n"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "",
+    "IsDefaultVersion": false,
+    "MaxVersion": "1.001",
+    "Name": "111",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.002",
+    "NumberOfApprovedVersions": 1,
+    "Parameters": [],
+    "QueueDepth": null,
+    "Status": "Approved",
+    "Version": "1.001"
+}

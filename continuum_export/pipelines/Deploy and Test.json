@@ -1,0 +1,36 @@
+{
+    "actions": [],
+    "dependencies": [],
+    "description": "",
+    "globals": {},
+    "interactive": false,
+    "name": "Deploy and Test",
+    "phases": [
+        {
+            "name": "",
+            "stages": [
+                {
+                    "name": "",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "details": "Testing confirmed everything is complete and satisfactory.",
+                                    "result": "pass"
+                                },
+                                "label": "Flow - Package - Set All Activity Controls",
+                                "method": "set_all_activity_controls",
+                                "module": "package",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "summary": []
+}

@@ -1,0 +1,132 @@
+{
+    "__assembled": true,
+    "actions": [],
+    "description": "Publish the output artifact from a 'developing' pipeline to the PerformanceCI instance.",
+    "globals": {
+        "DEV_INSTANCE": "PerformanceDev",
+        "STAGING_INSTANCE": "PerformanceCI"
+    },
+    "name": "Core-Publish-to-PerformanceCI",
+    "phases": [
+        {
+            "name": "Core-Publish-To-PerformanceCI",
+            "stages": [
+                {
+                    "description": "",
+                    "name": "Core-Promote-And-Publish",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "broid_target_key": "dtsid",
+                                    "build_project": "Core-DeployToStaging",
+                                    "initial_status": "BuildStatus:196",
+                                    "name": "Pipeline: Core-Developing-DeployToStaging (#[$ BUILD $])",
+                                    "reference": ""
+                                },
+                                "label": "VersionOne - Create BuildRun",
+                                "method": "create_buildrun",
+                                "module": "main",
+                                "name": "v1plugin"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "Copy All Editions to Staging",
+                            "plugin": {
+                                "args": {
+                                    "parameters": [
+                                        {
+                                            "name": "base_version",
+                                            "values": [
+                                                "[$ BASEVERSION $]"
+                                            ]
+                                        },
+                                        {
+                                            "name": "full_version",
+                                            "values": [
+                                                "[$ VERSION $]"
+                                            ]
+                                        }
+                                    ],
+                                    "task": "Copy Edition to Staging"
+                                },
+                                "label": "Automate - Run Task",
+                                "method": "runtask",
+                                "module": "task",
+                                "name": "automate"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "Update the specified Hostess instance",
+                            "plugin": {
+                                "args": {
+                                    "parameters": [
+                                        {
+                                            "name": "target_name",
+                                            "values": [
+                                                "[$ PUBLISH_TO $]"
+                                            ]
+                                        }
+                                    ],
+                                    "task": "Trigger Hostess Update"
+                                },
+                                "label": "Automate - Run Task",
+                                "method": "runtask",
+                                "module": "task",
+                                "name": "automate"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "build_run": "[$dtsid$]",
+                                    "complete_workitems": true,
+                                    "status": "BuildStatus:195"
+                                },
+                                "label": "VersionOne - Set BuildRun Status",
+                                "method": "set_buildrun_status",
+                                "module": "main",
+                                "name": "v1plugin"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                },
+                {
+                    "description": "",
+                    "name": "Core-Developing-AddToPackage",
+                    "steps": [
+                        {
+                            "name": "Add our manifest to a Package representing the development",
+                            "plugin": {
+                                "args": {
+                                    "create": true,
+                                    "globals_key": "",
+                                    "package": "Developing [$ BASEVERSION $]"
+                                },
+                                "label": "Utility - Bucket - Add Manifest",
+                                "method": "add_to_bucket",
+                                "module": "bucket",
+                                "name": "utility"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "product_id": "543fe8a37c1a7c67c7dcb133",
+    "product_name": "VersionOne",
+    "product_workflow_step": "",
+    "summary": [],
+    "tags": [
+        "VersionOne"
+    ]
+}

@@ -1,0 +1,249 @@
+{
+    "Category": null,
+    "Code": "db",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "new_connection",
+                        "__snip": "conn_name",
+                        "asset": {
+                            "__input_type": "text",
+                            "asset": "LocalMySql"
+                        },
+                        "cloud_name": {
+                            "__input_type": "dropdown",
+                            "__style": "combo",
+                            "cloud_name": ""
+                        },
+                        "conn_name": {
+                            "__class": "w200px",
+                            "__help": "Name this connection for reference in the Task.",
+                            "__input_type": "text",
+                            "__label": "Connection Name",
+                            "__required": "true",
+                            "conn_name": "CONN1"
+                        },
+                        "conn_type": {
+                            "__input_type": "select",
+                            "conn_type": "mysql"
+                        },
+                        "debug": {
+                            "__break_after": "true",
+                            "__input_type": "checkbox",
+                            "__label": "Debug",
+                            "debug": ""
+                        }
+                    },
+                    "FunctionName": "new_connection",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__col_delimiter": "0",
+                        "__name": "sql_exec",
+                        "__parse_method": "1",
+                        "__row_delimiter": "0",
+                        "__snip": "sql",
+                        "__variables": "true",
+                        "conn_name": {
+                            "__connection_picker": "true",
+                            "__input_type": "text",
+                            "conn_name": "CONN1"
+                        },
+                        "handle": {
+                            "__input_type": "text",
+                            "handle": ""
+                        },
+                        "mode": {
+                            "__input_type": "select",
+                            "mode": "SQL"
+                        },
+                        "pairs": {
+                            "__label": "Bind Variables",
+                            "pair": {
+                                "key": {
+                                    "__input_type": "text",
+                                    "__label": "Bind",
+                                    "key": ""
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "value": ""
+                                }
+                            }
+                        },
+                        "sql": {
+                            "__input_type": "text",
+                            "sql": "select metric from _foo"
+                        },
+                        "step_variables": {
+                            "Item::variable::0": {
+                                "name": {
+                                    "name": "metric_var"
+                                },
+                                "position": {
+                                    "position": "0"
+                                },
+                                "type": {
+                                    "type": "delimited"
+                                }
+                            }
+                        }
+                    },
+                    "FunctionName": "sql_exec",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 1,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "utility.utility",
+                        "__name": "exec_python",
+                        "code": {
+                            "__input_type": "textarea",
+                            "__label": "Code",
+                            "code": "import json\n\n\"\"\"\nWe'll work with native python types (which is what we'll find in VARS),\nthen dump them as json at the very end.\n\"\"\"\n\ntry:\n    x = VARS.get_all(\"metric_var\")\n\n    # ASSUMPTION! x is a LIST of individual values \n    # (which it should be if it came from the SQL command) \n    \n    # this creates an OBJECT (dictionary) called 'data'\n    # notice the 'item' property is a blank list\n    data = {\n\t\t\"item\": [],\n\t\t\"settings\": {\n\t\t\t\"axisx\": [],\n\t\t\t\"axisy\": [],\n\t\t\t\"colour\": \"\"\n\t\t}\n\t}\n\n    # let's append the values we got from the SQL into the 'data' object\n    for v in x:\n        data[\"item\"].append(v)\n\n\n    # now, save the 'data' into the runtime VARS so we can access it in another step\n    VARS.set(\"CHART_DATA\", json.dumps(data))\n    \nexcept Exception as ex:\n    AUDIT(\"\", ex)\n"
+                        }
+                    },
+                    "FunctionName": "exec_python",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "http",
+                        "__parse_method": "2",
+                        "__snip": "url",
+                        "__variables": "true",
+                        "data": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Data",
+                            "__label_style": "display: block;",
+                            "__rows": "3",
+                            "data": "{\n\t\"api_key\": \"62ba3bde54cfc0755159ef6d17c13af1\",\n\t\"data\": [[CHART_DATA]]\n}"
+                        },
+                        "headers": {
+                            "Item::pair::0": {
+                                "__label": "Key and Values",
+                                "key": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "key": ""
+                                },
+                                "value": {
+                                    "__class": "w50pct",
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "value": ""
+                                }
+                            },
+                            "__is_array": "true",
+                            "__label": "Header Fields"
+                        },
+                        "response_body": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Response Body Variable ",
+                            "__option_tab": "Options",
+                            "response_body": ""
+                        },
+                        "response_header": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Response Header Variable",
+                            "__option_tab": "Options",
+                            "response_header": ""
+                        },
+                        "response_time_ms": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Response Time ms Variable",
+                            "__option_tab": "Options",
+                            "response_time_ms": ""
+                        },
+                        "retries": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Retries",
+                            "__option_tab": "Options",
+                            "retries": "1"
+                        },
+                        "status_code": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Status Code Variable",
+                            "__option_tab": "Options",
+                            "status_code": ""
+                        },
+                        "status_msg": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Status Message Variable",
+                            "__option_tab": "Options",
+                            "status_msg": ""
+                        },
+                        "timeout": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Timeout",
+                            "__option_tab": "Options",
+                            "timeout": "10"
+                        },
+                        "type": {
+                            "__dataset": "GET|POST|DELETE|PUT|HEADER",
+                            "__datasource": "local",
+                            "__input_type": "dropdown",
+                            "__label": "Request Type",
+                            "type": "POST"
+                        },
+                        "url": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "URL",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "1",
+                            "url": "https://push.geckoboard.com/v1/send/55777-fe58c49d-3d22-44be-9244-010c85d46d4c"
+                        }
+                    },
+                    "FunctionName": "http",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "use the Python Script command to work over a set of sql results.",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "Python Script command DB",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.000"
+}

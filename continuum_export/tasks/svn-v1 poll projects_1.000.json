@@ -1,0 +1,472 @@
+{
+    "Category": null,
+    "Code": "svn",
+    "Codeblocks": [
+        {
+            "Name": "create_repo",
+            "Steps": [
+                {
+                    "Codeblock": "create_repo",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "message": {
+                            "message": "creating [$ proj[\"Custom_RepoName\"] $] ..."
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "create_repo",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "cmd_line",
+                        "__parse_method": "2",
+                        "command": {
+                            "command": "sudo svnadmin create /var/lib/svn/[$ proj[\"Custom_RepoName\"] $]\n"
+                        },
+                        "conn_name": {
+                            "conn_name": "svnvm"
+                        },
+                        "negative_response": {
+                            "negative_response": ""
+                        },
+                        "positive_response": {
+                            "positive_response": ""
+                        },
+                        "result_variable": {
+                            "result_variable": ""
+                        },
+                        "timeout": {
+                            "timeout": ""
+                        }
+                    },
+                    "FunctionName": "cmd_line",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "create_repo",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "cmd_line",
+                        "__parse_method": "2",
+                        "command": {
+                            "command": "sudo chown -R www-data:www-data /var/lib/svn\n"
+                        },
+                        "conn_name": {
+                            "conn_name": "svnvm"
+                        },
+                        "negative_response": {
+                            "negative_response": ""
+                        },
+                        "positive_response": {
+                            "positive_response": ""
+                        },
+                        "result_variable": {
+                            "result_variable": ""
+                        },
+                        "timeout": {
+                            "timeout": ""
+                        }
+                    },
+                    "FunctionName": "cmd_line",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "create_repo",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "cmd_line",
+                        "__parse_method": "2",
+                        "command": {
+                            "command": "sudo apachectl -k graceful"
+                        },
+                        "conn_name": {
+                            "conn_name": "svnvm"
+                        },
+                        "negative_response": {
+                            "negative_response": ""
+                        },
+                        "positive_response": {
+                            "positive_response": ""
+                        },
+                        "result_variable": {
+                            "result_variable": ""
+                        },
+                        "timeout": {
+                            "timeout": ""
+                        }
+                    },
+                    "FunctionName": "cmd_line",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "create_repo",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "versionone.v1commands",
+                        "__name": "v1_restapi_post",
+                        "asset_path": {
+                            "asset_path": "[$ projid.replace(\":\", \"/\") $]"
+                        },
+                        "conn_name": {
+                            "conn_name": "V1"
+                        },
+                        "result_var": {
+                            "result_var": ""
+                        },
+                        "xmldata": {
+                            "xmldata": "<Asset>\n  <Attribute name=\"Custom_RepoCreated\" act=\"set\">[$ UTCNOW $]</Attribute>\n</Asset>"
+                        }
+                    },
+                    "FunctionName": "v1_restapi_post",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        },
+        {
+            "Name": "get_repos",
+            "Steps": [
+                {
+                    "Codeblock": "get_repos",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "cmd_line",
+                        "__parse_method": "2",
+                        "command": {
+                            "command": "ls -1 /var/lib/svn"
+                        },
+                        "conn_name": {
+                            "conn_name": "svnvm"
+                        },
+                        "negative_response": {
+                            "negative_response": ""
+                        },
+                        "positive_response": {
+                            "positive_response": ""
+                        },
+                        "result_variable": {
+                            "result_variable": "repos_ls"
+                        },
+                        "timeout": {
+                            "timeout": ""
+                        }
+                    },
+                    "FunctionName": "cmd_line",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "get_repos",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_variable",
+                        "variables": {
+                            "Item::variable::0": {
+                                "modifier": {
+                                    "modifier": "DEFAULT"
+                                },
+                                "name": {
+                                    "name": "REPOS"
+                                },
+                                "value": {
+                                    "value": "[$ repos_ls.split(\"\\n\") $]"
+                                }
+                            },
+                            "__is_array": "true"
+                        }
+                    },
+                    "FunctionName": "set_variable",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        },
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_debug_level",
+                        "debug_level": {
+                            "debug_level": "10"
+                        }
+                    },
+                    "FunctionName": "set_debug_level",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_variable",
+                        "variables": {
+                            "Item::variable::0": {
+                                "modifier": {
+                                    "modifier": "DEFAULT"
+                                },
+                                "name": {
+                                    "name": "UTCNOW"
+                                },
+                                "value": {
+                                    "value": "[$ str(datetime.utcnow()) $]"
+                                }
+                            },
+                            "__is_array": "true"
+                        }
+                    },
+                    "FunctionName": "set_variable",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "new_connection",
+                        "asset": {
+                            "asset": "osboxVM"
+                        },
+                        "cloud_name": {
+                            "cloud_name": ""
+                        },
+                        "conn_name": {
+                            "conn_name": "svnvm"
+                        },
+                        "conn_type": {
+                            "conn_type": "ssh"
+                        },
+                        "debug": {
+                            "debug": ""
+                        },
+                        "initial_prompt": {
+                            "initial_prompt": ""
+                        }
+                    },
+                    "FunctionName": "new_connection",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "codeblock",
+                        "codeblock": {
+                            "codeblock": "get_repos"
+                        }
+                    },
+                    "FunctionName": "codeblock",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "versionone.v1commands",
+                        "__name": "v1_api_connection",
+                        "conn_name": {
+                            "conn_name": "V1"
+                        },
+                        "password": {
+                            "password": "Demo1234"
+                        },
+                        "url": {
+                            "url": "http://versiononealm.acme.demo/VersionOne"
+                        },
+                        "user": {
+                            "user": "admin"
+                        }
+                    },
+                    "FunctionName": "v1_api_connection",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "versionone.v1commands",
+                        "__name": "v1_query",
+                        "conn_name": {
+                            "conn_name": "V1"
+                        },
+                        "query": {
+                            "query": "from: Scope\nselect: \n  - Name\n  - Custom_RepoName\nfilter:\n  - +Custom_RepoName\n  - -Custom_RepoCreated"
+                        },
+                        "result_var": {
+                            "result_var": "projects"
+                        }
+                    },
+                    "FunctionName": "v1_query",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "loop",
+                        "action": {
+                            "function": {
+                                "__name": "codeblock",
+                                "codeblock": {
+                                    "codeblock": "consider_project"
+                                }
+                            }
+                        },
+                        "compare_to": {
+                            "compare_to": "[$ len(projects[0]) $]"
+                        },
+                        "counter": {
+                            "counter": "x"
+                        },
+                        "increment": {
+                            "increment": "1"
+                        },
+                        "max": {
+                            "max": "100"
+                        },
+                        "start": {
+                            "start": "0"
+                        },
+                        "test": {
+                            "test": "<"
+                        }
+                    },
+                    "FunctionName": "loop",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        },
+        {
+            "Name": "consider_project",
+            "Steps": [
+                {
+                    "Codeblock": "consider_project",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_variable",
+                        "variables": {
+                            "Item::variable::0": {
+                                "modifier": {
+                                    "modifier": "DEFAULT"
+                                },
+                                "name": {
+                                    "name": "proj"
+                                },
+                                "value": {
+                                    "value": "[$ projects[0][ [$x$] ] $]"
+                                }
+                            },
+                            "Item::variable::1": {
+                                "modifier": {
+                                    "modifier": "DEFAULT"
+                                },
+                                "name": {
+                                    "name": "projid"
+                                },
+                                "value": {
+                                    "value": "[$ proj[\"_oid\"] $]"
+                                }
+                            },
+                            "__is_array": "true"
+                        }
+                    },
+                    "FunctionName": "set_variable",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "consider_project",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "if",
+                        "else": {
+                            "__input_type": "text",
+                            "function": {
+                                "__name": "log_msg",
+                                "message": {
+                                    "message": "[$ proj[\"Custom_RepoName\"] $] repo already exists."
+                                }
+                            }
+                        },
+                        "tests": {
+                            "test": {
+                                "action": {
+                                    "function": {
+                                        "__name": "codeblock",
+                                        "codeblock": {
+                                            "codeblock": "create_repo"
+                                        }
+                                    }
+                                },
+                                "eval": {
+                                    "eval": "\"[$ proj[\"Custom_RepoName\"] $]\" not in [$ REPOS[:] $]"
+                                }
+                            }
+                        }
+                    },
+                    "FunctionName": "if",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "polls projects defined to have a repo",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "svn-v1 poll projects",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.000"
+}

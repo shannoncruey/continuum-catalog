@@ -1,0 +1,128 @@
+{
+    "Category": null,
+    "Code": "001test",
+    "Codeblocks": [
+        {
+            "Name": "foo",
+            "Steps": [
+                {
+                    "Codeblock": "foo",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "message": {
+                            "message": "[$ __LOOPITEM[\"a\"] $]"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        },
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "message": {
+                            "message": ""
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_debug_level",
+                        "debug_level": {
+                            "debug_level": "10"
+                        }
+                    },
+                    "FunctionName": "set_debug_level",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_variable",
+                        "variables": {
+                            "Item::variable::0": {
+                                "modifier": {
+                                    "modifier": ""
+                                },
+                                "name": {
+                                    "name": "foo"
+                                },
+                                "value": {
+                                    "value": "[{\"a\":1},{\"a\":2},{\"a\":3}]"
+                                }
+                            },
+                            "__is_array": "true"
+                        }
+                    },
+                    "FunctionName": "set_variable",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "foreach",
+                        "action": {
+                            "function": {
+                                "__name": "codeblock",
+                                "codeblock": {
+                                    "codeblock": "foo"
+                                }
+                            }
+                        },
+                        "loopitemvar": {
+                            "loopitemvar": "__LOOPITEM"
+                        },
+                        "test": {
+                            "test": "[$ foo $]"
+                        },
+                        "variable": {
+                            "variable": "[$ foo $]"
+                        }
+                    },
+                    "FunctionName": "foreach",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "001test Description",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "001test",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.000"
+}

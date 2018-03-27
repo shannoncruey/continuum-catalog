@@ -1,0 +1,140 @@
+{
+    "__assembled": true,
+    "actions": "",
+    "category": "",
+    "dependencies": [],
+    "description": "Test the Jenkins interface features in the lab.",
+    "globals": {},
+    "interactive": false,
+    "name": "Test Jenkins",
+    "phases": [
+        {
+            "name": "Test Jenkins Build",
+            "stages": [
+                {
+                    "name": "Test Jenkins Build",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "VAR2SEND",
+                                    "value": "__PINUMBER"
+                                },
+                                "label": "Flow - Pipeline - Set Data",
+                                "method": "set_data",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "artifact_name": "",
+                                    "artifact_regex": "",
+                                    "inherit": "true",
+                                    "instance_name": "",
+                                    "job": "continuum-test-job",
+                                    "params": {
+                                        "INPUT_VARIABLE": "[$ VAR2SEND $]"
+                                    },
+                                    "result_key": "BUILDRESULTS",
+                                    "wait": "true"
+                                },
+                                "label": "Jenkins - Build",
+                                "method": "build",
+                                "module": "job",
+                                "name": "jenkins"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "artifact_name": "",
+                                    "artifact_regex": "",
+                                    "build_number": "[$ BUILDRESULTS['build'] $]",
+                                    "inherit": "true",
+                                    "instance_name": "",
+                                    "job": "continuum-test-job",
+                                    "result_key": "GETRESULTS",
+                                    "wait": "true"
+                                },
+                                "label": "Jenkins - Get Build Info",
+                                "method": "get_build",
+                                "module": "job",
+                                "name": "jenkins"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "instance_name": "",
+                                    "job": "continuum-test-job",
+                                    "path": "output.txt",
+                                    "target": "FILE_CONTENTS"
+                                },
+                                "label": "Jenkins - Read Workspace File",
+                                "method": "read_workspace_file",
+                                "module": "job",
+                                "name": "jenkins"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "status": "end-failure"
+                                },
+                                "label": "Utility - End",
+                                "method": "end",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "conditionally",
+                            "when_condition": "FILE_CONTENTS != __PINUMBER"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "instance_name": "",
+                                    "path": "/job/continuum-test-job/ws/output.txt",
+                                    "target": "GET_URL"
+                                },
+                                "label": "Jenkins - Get URL",
+                                "method": "get_url",
+                                "module": "job",
+                                "name": "jenkins"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "status": "end-failure"
+                                },
+                                "label": "Utility - End",
+                                "method": "end",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "conditionally",
+                            "when_condition": "GET_FILE != __PINUMBER"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "summary": [],
+    "warnings": []
+}

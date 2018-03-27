@@ -1,0 +1,294 @@
+{
+    "Category": null,
+    "Code": "vsvm",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_variable",
+                        "variables": {
+                            "Item::variable::0": {
+                                "modifier": {
+                                    "modifier": "DEFAULT"
+                                },
+                                "name": {
+                                    "name": "build"
+                                },
+                                "value": {
+                                    "value": "3"
+                                }
+                            },
+                            "Item::variable::1": {
+                                "__label": "Variable",
+                                "modifier": {
+                                    "__input_type": "select",
+                                    "__label": "Modifier",
+                                    "modifier": "DEFAULT"
+                                },
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "version"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "value": "9.0.1"
+                                }
+                            },
+                            "__is_array": "true"
+                        }
+                    },
+                    "FunctionName": "set_variable",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "message": {
+                            "message": "PARAMS WE RECEIVED:\n[$reponame$]\n[$sha$]\n[$build$]\n[$version$]\n"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_variable",
+                        "variables": {
+                            "Item::variable::0": {
+                                "modifier": {
+                                    "modifier": "DEFAULT"
+                                },
+                                "name": {
+                                    "name": "tag"
+                                },
+                                "value": {
+                                    "value": "[$version$].[$build$]"
+                                }
+                            },
+                            "__is_array": "true"
+                        }
+                    },
+                    "FunctionName": "set_variable",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "get_asset",
+                        "address_out": {
+                            "address_out": "organization"
+                        },
+                        "asset": {
+                            "asset": "GitHub"
+                        },
+                        "conn_string_out": {
+                            "conn_string_out": ""
+                        },
+                        "db_out": {
+                            "db_out": ""
+                        },
+                        "pass_out": {
+                            "pass_out": "token"
+                        },
+                        "port_out": {
+                            "port_out": ""
+                        },
+                        "user_out": {
+                            "user_out": ""
+                        }
+                    },
+                    "FunctionName": "get_asset",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "http",
+                        "__parse_method": "2",
+                        "cookie_out": {
+                            "cookie_out": ""
+                        },
+                        "data": {
+                            "data": ""
+                        },
+                        "headers": {
+                            "Item::pair::0": {
+                                "key": {
+                                    "key": "Authorization"
+                                },
+                                "value": {
+                                    "value": "token [$token$]"
+                                }
+                            },
+                            "__is_array": "true"
+                        },
+                        "response_body": {
+                            "response_body": ""
+                        },
+                        "response_header": {
+                            "response_header": ""
+                        },
+                        "response_time_ms": {
+                            "response_time_ms": ""
+                        },
+                        "retries": {
+                            "retries": "1"
+                        },
+                        "status_code": {
+                            "status_code": ""
+                        },
+                        "status_msg": {
+                            "status_msg": ""
+                        },
+                        "timeout": {
+                            "timeout": "10"
+                        },
+                        "type": {
+                            "type": "DELETE"
+                        },
+                        "url": {
+                            "url": "https://api.github.com/repos/[$organization$]/[$reponame$]/git/refs/tags/[$tag$]"
+                        }
+                    },
+                    "FunctionName": "http",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "http",
+                        "__parse_method": "2",
+                        "cookie_out": {
+                            "cookie_out": ""
+                        },
+                        "data": {
+                            "data": "{\n  \"ref\": \"refs/tags/[$tag$]\",\n  \"sha\": \"[$sha$]\"\n}"
+                        },
+                        "headers": {
+                            "Item::pair::0": {
+                                "key": {
+                                    "key": "Content-Type"
+                                },
+                                "value": {
+                                    "value": "application/json"
+                                }
+                            },
+                            "Item::pair::1": {
+                                "key": {
+                                    "key": "Authorization"
+                                },
+                                "value": {
+                                    "value": "token [$token$]"
+                                }
+                            },
+                            "__is_array": "true"
+                        },
+                        "response_body": {
+                            "response_body": ""
+                        },
+                        "response_header": {
+                            "response_header": ""
+                        },
+                        "response_time_ms": {
+                            "response_time_ms": ""
+                        },
+                        "retries": {
+                            "retries": "1"
+                        },
+                        "status_code": {
+                            "status_code": ""
+                        },
+                        "status_msg": {
+                            "status_msg": ""
+                        },
+                        "timeout": {
+                            "timeout": "10"
+                        },
+                        "type": {
+                            "type": "POST"
+                        },
+                        "url": {
+                            "url": "https://api.github.com/repos/[$organization$]/[$reponame$]/git/refs"
+                        }
+                    },
+                    "FunctionName": "http",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "aws_s3.aws_s3",
+                        "__name": "s3_copy_file",
+                        "acl": {
+                            "acl": ""
+                        },
+                        "from_bucket": {
+                            "from_bucket": "dev.artifacts"
+                        },
+                        "from_file": {
+                            "from_file": "foo.jpg"
+                        },
+                        "storage": {
+                            "storage": "STANDARD"
+                        },
+                        "to_bucket": {
+                            "to_bucket": "prod.artifacts"
+                        },
+                        "to_file": {
+                            "to_file": ""
+                        }
+                    },
+                    "FunctionName": "s3_copy_file",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "Will grab the artifact Jenkins built, and publish it to S3, tag GitHub, and update the App Catalog.",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "Publish VS Client",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.000"
+}

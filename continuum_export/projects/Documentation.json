@@ -1,0 +1,59 @@
+{
+    "artifacts": [],
+    "description": "",
+    "mappings": [],
+    "name": "Documentation",
+    "notifications": {
+        "email": {
+            "addresses": ""
+        },
+        "enable": false,
+        "hipchat": {
+            "room": ""
+        },
+        "http": {
+            "data": "",
+            "url": ""
+        },
+        "on_failure": [],
+        "on_start": [],
+        "on_success": [],
+        "on_wait": [],
+        "slack": {
+            "channel": ""
+        }
+    },
+    "source": {
+        "directives": [
+            {
+                "details": {
+                    "args": {
+                        "expression": "[A-Z]{4}-[0-9]{1,}",
+                        "fields": [
+                            "message"
+                        ]
+                    },
+                    "method": "identify_issues",
+                    "plugin": "jiraplugin.issue"
+                },
+                "type": "plugin_function",
+                "when": "always"
+            },
+            {
+                "details": {
+                    "definition": "Build and Test Docs",
+                    "group": "[$ branch $]",
+                    "instancename": "",
+                    "project": "",
+                    "project_version": ""
+                },
+                "type": "initiate_pipeline",
+                "when": "always"
+            }
+        ],
+        "group_source": "branch",
+        "interface": "webhook",
+        "type": "github"
+    },
+    "type": "Source"
+}

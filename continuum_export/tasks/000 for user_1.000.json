@@ -1,0 +1,120 @@
+{
+    "Category": null,
+    "Code": "0",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "new_connection",
+                        "asset": {
+                            "asset": ""
+                        },
+                        "cloud_name": {
+                            "cloud_name": ""
+                        },
+                        "conn_name": {
+                            "conn_name": "CONN1"
+                        },
+                        "conn_type": {
+                            "conn_type": "ssh"
+                        },
+                        "debug": {
+                            "debug": ""
+                        },
+                        "initial_prompt": {
+                            "initial_prompt": ""
+                        }
+                    },
+                    "FunctionName": "new_connection",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__col_delimiter": "0",
+                        "__name": "sql_exec",
+                        "__parse_method": "1",
+                        "__row_delimiter": "0",
+                        "as_dict": {
+                            "as_dict": ""
+                        },
+                        "conn_name": {
+                            "conn_name": "conn2"
+                        },
+                        "handle": {
+                            "handle": ""
+                        },
+                        "mode": {
+                            "mode": "SQL"
+                        },
+                        "pairs": {
+                            "pair": {
+                                "key": {
+                                    "key": ""
+                                },
+                                "value": {
+                                    "value": ""
+                                }
+                            }
+                        },
+                        "result_variable": {
+                            "result_variable": ""
+                        },
+                        "sql": {
+                            "sql": ""
+                        },
+                        "step_variables": {
+                            "Item::variable::0": {
+                                "name": {
+                                    "name": "foo"
+                                },
+                                "position": {
+                                    "position": "1"
+                                },
+                                "type": {
+                                    "type": "delimited"
+                                }
+                            },
+                            "Item::variable::1": {
+                                "name": {
+                                    "name": "bar"
+                                },
+                                "position": {
+                                    "position": "2"
+                                },
+                                "type": {
+                                    "type": "delimited"
+                                }
+                            }
+                        }
+                    },
+                    "FunctionName": "sql_exec",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 1,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "",
+    "IsDefaultVersion": false,
+    "MaxVersion": "1.002",
+    "Name": "000 for user",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.003",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.000"
+}

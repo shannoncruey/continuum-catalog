@@ -1,0 +1,86 @@
+{
+    "__assembled": true,
+    "actions": [],
+    "desc": "",
+    "description": "",
+    "globals": "",
+    "name": "Petclinic Chef",
+    "phases": [
+        {
+            "name": "Collect Git Info",
+            "stages": [
+                {
+                    "description": "",
+                    "name": "Collect Git Info",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {},
+                                "label": "GitHub - Show Summary",
+                                "method": "show_summary",
+                                "module": "main",
+                                "name": "github"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "message": "Starting pipeline instance for project __PROJECTNAME",
+                                    "room": "ClearCode"
+                                },
+                                "label": "HipChat - Send Notification",
+                                "method": "send",
+                                "module": "notification",
+                                "name": "hipchatplugin"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Trigger Pipeline",
+            "stages": [
+                {
+                    "description": "",
+                    "name": "Trigger Petclinic Pipeline",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "group": "master",
+                                    "pipeline": "Nightly Petclinic Merge",
+                                    "project": "Petclinic App"
+                                },
+                                "method": "initiate",
+                                "module": "pipeline",
+                                "name": "flow"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "product_id": "5447f2483ed4d26b0b3d8368",
+    "product_name": "Pet Clinic",
+    "product_workflow_step": "QA",
+    "signature": {
+        "ref": "refs/heads/master",
+        "repository": {
+            "name": "petclinic-chef",
+            "url": "https://github.com/cloudsidekick/petclinic-chef"
+        }
+    },
+    "signature_type": "git",
+    "summary": [],
+    "tags": [
+        "PetClinic"
+    ]
+}

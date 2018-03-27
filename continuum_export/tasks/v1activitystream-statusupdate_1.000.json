@@ -1,0 +1,357 @@
+{
+    "Category": null,
+    "Code": "demo",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_debug_level",
+                        "debug_level": {
+                            "debug_level": "10"
+                        }
+                    },
+                    "FunctionName": "set_debug_level",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "versionone.v1commands",
+                        "__name": "v1_api_connection",
+                        "conn_name": {
+                            "conn_name": "v1conn"
+                        },
+                        "password": {
+                            "password": "admin"
+                        },
+                        "url": {
+                            "url": "https://www12.v1host.com/cloudsidekick"
+                        },
+                        "user": {
+                            "user": "admin"
+                        }
+                    },
+                    "FunctionName": "v1_api_connection",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "versionone.v1commands",
+                        "__name": "v1_restapi_post",
+                        "asset_path": {
+                            "asset_path": "Link"
+                        },
+                        "conn_name": {
+                            "conn_name": "v1conn"
+                        },
+                        "result_var": {
+                            "result_var": ""
+                        },
+                        "xmldata": {
+                            "xmldata": "<Asset>\n  <Attribute name=\"OnMenu\" act=\"set\">true</Attribute>\n  <Attribute name=\"Name\" act=\"set\">mylink</Attribute>\n  <Attribute name=\"URL\" act=\"set\">//www.yahoo.com</Attribute>\n  <Relation name=\"Asset\" act=\"set\">\n    <Asset href=\"/cloudsidekick/[$ assetUrl $]\" idref=\"[$ object[\"id\"] $]\"></Asset>\n  </Relation>\n</Asset>"
+                        }
+                    },
+                    "FunctionName": "v1_restapi_post",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "versionone.v1commands",
+                        "__name": "v1_restapi_post",
+                        "asset_path": {
+                            "asset_path": "[$ object[\"id\"].replace(\":\", \"/\") $]"
+                        },
+                        "conn_name": {
+                            "conn_name": "v1conn"
+                        },
+                        "result_var": {
+                            "result_var": ""
+                        },
+                        "xmldata": {
+                            "xmldata": "<Asset id=\"[$ object[\"id\"] $]\">\n  <Relation name=\"Status\" act=\"set\">\n    <Asset idref=\"StoryStatus:133\" />\n  </Relation>\n</Asset>\n"
+                        }
+                    },
+                    "FunctionName": "v1_restapi_post",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "gitHUB - get head ref",
+                    "FunctionDefinition": {
+                        "__name": "http",
+                        "__parse_method": "2",
+                        "cookie_out": {
+                            "cookie_out": ""
+                        },
+                        "data": {
+                            "data": ""
+                        },
+                        "headers": {
+                            "Item::pair::0": {
+                                "key": {
+                                    "key": "Authorization"
+                                },
+                                "value": {
+                                    "value": "token 2b8b8d651bd1ac4afe10be32f1ec6b917a98a91e"
+                                }
+                            },
+                            "Item::pair::1": {
+                                "key": {
+                                    "key": "Content-Type"
+                                },
+                                "value": {
+                                    "value": "application/json"
+                                }
+                            },
+                            "__is_array": "true"
+                        },
+                        "response_body": {
+                            "response_body": "REFDOC"
+                        },
+                        "response_header": {
+                            "response_header": ""
+                        },
+                        "response_time_ms": {
+                            "response_time_ms": ""
+                        },
+                        "retries": {
+                            "retries": "1"
+                        },
+                        "status_code": {
+                            "status_code": ""
+                        },
+                        "status_msg": {
+                            "status_msg": ""
+                        },
+                        "timeout": {
+                            "timeout": "10"
+                        },
+                        "type": {
+                            "type": "GET"
+                        },
+                        "url": {
+                            "url": "https://api.github.com/repos/cloudsidekick/spring-petclinic/git/refs/heads/master"
+                        }
+                    },
+                    "FunctionName": "http",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "gitHUB - create a branch",
+                    "FunctionDefinition": {
+                        "__name": "http",
+                        "__parse_method": "2",
+                        "cookie_out": {
+                            "cookie_out": ""
+                        },
+                        "data": {
+                            "data": "{\n  \"ref\": \"refs/heads/[$ object[\"number\"] $]\",\n  \"sha\": \"[$ REFDOC.get(\"object\", {}).get(\"sha\") $]\"\n}"
+                        },
+                        "headers": {
+                            "Item::pair::0": {
+                                "key": {
+                                    "key": "Authorization"
+                                },
+                                "value": {
+                                    "value": "token 2b8b8d651bd1ac4afe10be32f1ec6b917a98a91e"
+                                }
+                            },
+                            "Item::pair::1": {
+                                "key": {
+                                    "key": "Content-Type"
+                                },
+                                "value": {
+                                    "value": "application/json"
+                                }
+                            },
+                            "__is_array": "true"
+                        },
+                        "response_body": {
+                            "response_body": ""
+                        },
+                        "response_header": {
+                            "response_header": ""
+                        },
+                        "response_time_ms": {
+                            "response_time_ms": ""
+                        },
+                        "retries": {
+                            "retries": "1"
+                        },
+                        "status_code": {
+                            "status_code": ""
+                        },
+                        "status_msg": {
+                            "status_msg": ""
+                        },
+                        "timeout": {
+                            "timeout": "10"
+                        },
+                        "type": {
+                            "type": "POST"
+                        },
+                        "url": {
+                            "url": "https://api.github.com/repos/cloudsidekick/spring-petclinic/git/refs"
+                        }
+                    },
+                    "FunctionName": "http",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "gitLAB - get head ref",
+                    "FunctionDefinition": {
+                        "__name": "http",
+                        "__parse_method": "2",
+                        "cookie_out": {
+                            "cookie_out": ""
+                        },
+                        "data": {
+                            "data": ""
+                        },
+                        "headers": {
+                            "Item::pair::0": {
+                                "key": {
+                                    "key": "Content-Type"
+                                },
+                                "value": {
+                                    "value": "application/json"
+                                }
+                            },
+                            "__is_array": "true"
+                        },
+                        "response_body": {
+                            "response_body": "REFDOC"
+                        },
+                        "response_header": {
+                            "response_header": ""
+                        },
+                        "response_time_ms": {
+                            "response_time_ms": ""
+                        },
+                        "retries": {
+                            "retries": "1"
+                        },
+                        "status_code": {
+                            "status_code": ""
+                        },
+                        "status_msg": {
+                            "status_msg": ""
+                        },
+                        "timeout": {
+                            "timeout": "10"
+                        },
+                        "type": {
+                            "type": "GET"
+                        },
+                        "url": {
+                            "url": "http://54.84.223.206/api/v3/projects/1/repository/branches/master?private_token=xrboBiNA8gtkxSUR619e"
+                        }
+                    },
+                    "FunctionName": "http",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "gitHUB - create a branch",
+                    "FunctionDefinition": {
+                        "__name": "http",
+                        "__parse_method": "2",
+                        "cookie_out": {
+                            "cookie_out": ""
+                        },
+                        "data": {
+                            "data": "{\n  \"branch_name\": \"[$ object[\"number\"] $]\",\n  \"ref\": \"[$ REFDOC.get(\"commit\", {}).get(\"id\") $]\"\n}"
+                        },
+                        "headers": {
+                            "Item::pair::0": {
+                                "key": {
+                                    "key": "Content-Type"
+                                },
+                                "value": {
+                                    "value": "application/json"
+                                }
+                            },
+                            "__is_array": "true"
+                        },
+                        "response_body": {
+                            "response_body": ""
+                        },
+                        "response_header": {
+                            "response_header": ""
+                        },
+                        "response_time_ms": {
+                            "response_time_ms": ""
+                        },
+                        "retries": {
+                            "retries": "1"
+                        },
+                        "status_code": {
+                            "status_code": ""
+                        },
+                        "status_msg": {
+                            "status_msg": ""
+                        },
+                        "timeout": {
+                            "timeout": "10"
+                        },
+                        "type": {
+                            "type": "POST"
+                        },
+                        "url": {
+                            "url": "http://54.84.223.206/api/v3/projects/1/repository/branches?private_token=xrboBiNA8gtkxSUR619e"
+                        }
+                    },
+                    "FunctionName": "http",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "This is run from a webhook, and the payload should identify a VersionOne Asset Status Change.  We will turn around and push a link onto that Asset.",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "v1activitystream-statusupdate",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.000"
+}

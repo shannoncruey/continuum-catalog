@@ -1,0 +1,56 @@
+{
+    "__assembled": true,
+    "actions": [],
+    "category": "",
+    "dependencies": [],
+    "description": "",
+    "globals": {
+        "slayers": [
+            {
+                "name": "Buffy"
+            },
+            {
+                "name": "Faith"
+            },
+            {
+                "name": "Kendra"
+            }
+        ]
+    },
+    "interactive": false,
+    "name": "Test Find-in-Array",
+    "phases": [
+        {
+            "name": "",
+            "stages": [
+                {
+                    "name": "",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "array_expression": "pipelineglobals['slayers']",
+                                    "find_expression": "__ITEM.get(\"name\").lower() == \"buffy\"",
+                                    "match_index": "best_slayer_idx",
+                                    "notify_cc": "someone.else@example.com",
+                                    "notify_contributor": true,
+                                    "notify_message": "some message",
+                                    "notify_subject": "some subject",
+                                    "target": "best_slayer"
+                                },
+                                "label": "Utility - Find in Array",
+                                "method": "find_in_array",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "summary": []
+}

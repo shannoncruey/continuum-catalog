@@ -1,0 +1,206 @@
+{
+    "__assembled": true,
+    "actions": [],
+    "description": "Petclinic CD Pipeline",
+    "globals": {
+        "jenkins_job": "petclinic"
+    },
+    "name": "Nightly Petclinic Merge",
+    "phases": [
+        {
+            "name": "Integration Test",
+            "stages": [
+                {
+                    "description": "build integration test server",
+                    "name": "Build Test Server",
+                    "steps": [
+                        {
+                            "name": "deploy server",
+                            "plugin": {
+                                "args": {
+                                    "params": {
+                                        "DeploymentParamsVals": [],
+                                        "SequenceParamsVals": [],
+                                        "Services": [
+                                            {
+                                                "ServiceName": "Server",
+                                                "Transitions": [
+                                                    {
+                                                        "Parameters": [],
+                                                        "Step": 1
+                                                    },
+                                                    {
+                                                        "Parameters": [
+                                                            {
+                                                                "name": "artifact",
+                                                                "values": "[$inputs['artifacts']['warfile']['location']$]"
+                                                            }
+                                                        ],
+                                                        "Step": 2
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "template": "petclinic",
+                                    "version": 1
+                                },
+                                "method": "deploy",
+                                "module": "deployment",
+                                "name": "deploy"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "run tests",
+                            "plugin": {
+                                "args": {
+                                    "deployment": "",
+                                    "sequence": "Tests"
+                                },
+                                "method": "run_sequence",
+                                "module": "deployment",
+                                "name": "deploy"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "terminate server",
+                            "plugin": {
+                                "args": {},
+                                "method": "terminate",
+                                "module": "deployment",
+                                "name": "deploy"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Automated User Acceptance",
+            "stages": [
+                {
+                    "description": "build integration test server",
+                    "name": "Build AUA Env",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "build_run": "",
+                                    "complete_workitems": true,
+                                    "instance_name": "",
+                                    "status": ""
+                                },
+                                "label": "VersionOne - Set BuildRun Status",
+                                "method": "set_buildrun_status",
+                                "module": "main",
+                                "name": "v1plugin"
+                            },
+                            "when": "conditionally"
+                        },
+                        {
+                            "name": "deploy aua server",
+                            "plugin": {
+                                "args": {
+                                    "datastore": "",
+                                    "params": {
+                                        "DeploymentParamsVals": [],
+                                        "SequenceParamsVals": [],
+                                        "Services": [
+                                            {
+                                                "ServiceName": "Server",
+                                                "Transitions": [
+                                                    {
+                                                        "Parameters": [],
+                                                        "Step": 1
+                                                    },
+                                                    {
+                                                        "Parameters": [
+                                                            {
+                                                                "name": "warfile",
+                                                                "values": "[$inputs['artifacts']['warfile']['location']$]"
+                                                            }
+                                                        ],
+                                                        "Step": 2
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "sequence_data": "",
+                                    "template": "petclinic",
+                                    "version": 1
+                                },
+                                "method": "deploy",
+                                "module": "deployment",
+                                "name": "deploy"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "run automated acceptance tests",
+                            "plugin": {
+                                "args": {
+                                    "deployment": "",
+                                    "params": "",
+                                    "sequence": "Tests",
+                                    "sequence_data": ""
+                                },
+                                "method": "run_sequence",
+                                "module": "deployment",
+                                "name": "deploy"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "terminate uau server",
+                            "plugin": {
+                                "args": {},
+                                "method": "terminate",
+                                "module": "deployment",
+                                "name": "deploy"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Push Artifact Downstream",
+            "stages": [
+                {
+                    "description": "",
+                    "name": "Push Artifact Downstream",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "artifact_location": "[$inputs['artifacts']['warfile']['location']$]",
+                                    "artifact_name": "warfile"
+                                },
+                                "method": "register_artifact",
+                                "module": "pipeline",
+                                "name": "flow"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "product_id": "5447f2483ed4d26b0b3d8368",
+    "product_name": "Pet Clinic",
+    "product_workflow_step": "Merge",
+    "signature": "",
+    "signature_type": "git",
+    "summary": [],
+    "tags": [
+        "PetClinic"
+    ]
+}

@@ -1,0 +1,37 @@
+{
+    "actions": "",
+    "dependencies": [],
+    "description": "",
+    "globals": {},
+    "interactive": false,
+    "name": "test_github_pr_mergeability",
+    "phases": [
+        {
+            "name": "",
+            "stages": [
+                {
+                    "name": "",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "pr_number": "4",
+                                    "repository": "continuum-tools",
+                                    "response_key": "RESPONSE"
+                                },
+                                "label": "GitHub - Wait for PR Mergeability",
+                                "method": "wait_for_pr_mergeability",
+                                "module": "main",
+                                "name": "github"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "summary": []
+}

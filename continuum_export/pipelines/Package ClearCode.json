@@ -1,0 +1,376 @@
+{
+    "__assembled": true,
+    "actions": [
+        {
+            "definition": "__DEFINITIONNAME",
+            "details": null,
+            "group": "__GROUP",
+            "icon": "20_48x48.png",
+            "instancename": "",
+            "name": "Run the Package Pipeline",
+            "on": "group",
+            "parameters": {},
+            "project": "__PROJECTNAME",
+            "project_version": "",
+            "type": "initiate_pipeline"
+        }
+    ],
+    "desc": "",
+    "description": "",
+    "globals": {
+        "jenkins_job": "velocity_package4"
+    },
+    "name": "Package ClearCode",
+    "phases": [
+        {
+            "name": "Package Velocity",
+            "stages": [
+                {
+                    "description": "",
+                    "name": "Package Velocity",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "broid_target_key": "build_run_id",
+                                    "build_project": "Continuum Installer",
+                                    "initial_status": "In Progress",
+                                    "instance_name": "",
+                                    "name": "",
+                                    "reference": ""
+                                },
+                                "label": "VersionOne - Create BuildRun",
+                                "method": "create_buildrun",
+                                "module": "main",
+                                "name": "v1plugin"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "artifact_name": "",
+                                    "artifact_regex": "",
+                                    "inherit": true,
+                                    "instance_name": "",
+                                    "job": "[$ pipelineglobals['jenkins_job'] $]",
+                                    "params": {
+                                        "AUTOMATE_ART": "[$inputs['artifacts']['automate']['location']$]",
+                                        "CANVAS_ART": "[$inputs['artifacts']['canvas']['location']$]",
+                                        "CLIENT_ART": "[$inputs['artifacts']['client']['location']$]",
+                                        "COMMON_ART": "[$inputs['artifacts']['common']['location']$]",
+                                        "DEPLOY_ART": "[$inputs['artifacts']['deploy']['location']$]",
+                                        "FLOW_ART": "[$inputs['artifacts']['flow']['location']$]",
+                                        "INSTANCE_NUMBER": "__PINUMBER",
+                                        "THIRDPARTY_ART": "[$inputs['artifacts']['thirdparty']['location']$]",
+                                        "VELOCITY_ART": "[$inputs['artifacts']['velocity']['location']$]"
+                                    },
+                                    "token": "",
+                                    "wait": true
+                                },
+                                "label": "Jenkins - Build",
+                                "method": "build",
+                                "module": "job",
+                                "name": "jenkins"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "jenkins_build_number",
+                                    "value": {
+                                        "Ref": "__PREVSTEPDATA['build']"
+                                    }
+                                },
+                                "label": "Flow - Pipeline - Set Data",
+                                "method": "set_data",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "never"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Test Deploy",
+            "stages": [
+                {
+                    "description": "",
+                    "name": "Test Velocity Ubuntu",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "datastore": "",
+                                    "params": {
+                                        "DeploymentParamsVals": [],
+                                        "SequenceParamsVals": [],
+                                        "Services": [
+                                            {
+                                                "ServiceName": "Server",
+                                                "Transitions": [
+                                                    {
+                                                        "Parameters": [],
+                                                        "Step": 1
+                                                    },
+                                                    {
+                                                        "Parameters": [
+                                                            {
+                                                                "name": "artifact",
+                                                                "values": "[$artifacts['velocityapp']['location']$]"
+                                                            }
+                                                        ],
+                                                        "Step": 2
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "sequence_data": "",
+                                    "template": "Velocity Ubuntu",
+                                    "version": 1
+                                },
+                                "label": "Deploy - Deploy an Application",
+                                "method": "deploy",
+                                "module": "deployment",
+                                "name": "deploy"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "artifact": "velocityapp",
+                                    "asset": "",
+                                    "description": "",
+                                    "environment": "[$ __PREVSTEPDATA['deployment_name'] $]",
+                                    "host": "",
+                                    "instance": "Server 1",
+                                    "name": "",
+                                    "path": "",
+                                    "service": "Server",
+                                    "target_type": "service_instance",
+                                    "url": "",
+                                    "zone": "AWS"
+                                },
+                                "label": "Flow - Deploy Artifact",
+                                "method": "deploy_artifact",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "deployment": "",
+                                    "params": "",
+                                    "sequence": "Tests",
+                                    "sequence_data": ""
+                                },
+                                "label": "Deploy - Run Sequence",
+                                "method": "run_sequence",
+                                "module": "deployment",
+                                "name": "deploy"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "deployment": "",
+                                    "params": "",
+                                    "sequence": "Test Deploy",
+                                    "sequence_data": ""
+                                },
+                                "label": "Deploy - Run Sequence",
+                                "method": "run_sequence",
+                                "module": "deployment",
+                                "name": "deploy"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {},
+                                "label": "Deploy - Terminate",
+                                "method": "terminate",
+                                "module": "deployment",
+                                "name": "deploy"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                },
+                {
+                    "description": "",
+                    "name": "Test Velocity RHEL",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "datastore": "",
+                                    "params": {
+                                        "DeploymentParamsVals": [],
+                                        "SequenceParamsVals": [],
+                                        "Services": [
+                                            {
+                                                "ServiceName": "Server",
+                                                "Transitions": [
+                                                    {
+                                                        "Parameters": [],
+                                                        "Step": 1
+                                                    },
+                                                    {
+                                                        "Parameters": [
+                                                            {
+                                                                "name": "artifact",
+                                                                "values": "[$artifacts['velocityapp']['location']$]"
+                                                            }
+                                                        ],
+                                                        "Step": 2
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "sequence_data": "",
+                                    "template": "Velocity RHEL",
+                                    "version": 1
+                                },
+                                "label": "Deploy - Deploy an Application",
+                                "method": "deploy",
+                                "module": "deployment",
+                                "name": "deploy"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "artifact": "velocityapp",
+                                    "asset": "",
+                                    "description": "",
+                                    "environment": "[$ __PREVSTEPDATA['deployment_name'] $]",
+                                    "host": "",
+                                    "instance": "Server 1",
+                                    "name": "",
+                                    "path": "",
+                                    "service": "Server",
+                                    "target_type": "service_instance",
+                                    "url": "",
+                                    "zone": "AWS"
+                                },
+                                "label": "Flow - Deploy Artifact",
+                                "method": "deploy_artifact",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "deployment": "",
+                                    "params": "",
+                                    "sequence": "Tests",
+                                    "sequence_data": ""
+                                },
+                                "label": "Deploy - Run Sequence",
+                                "method": "run_sequence",
+                                "module": "deployment",
+                                "name": "deploy"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {},
+                                "label": "Deploy - Terminate",
+                                "method": "terminate",
+                                "module": "deployment",
+                                "name": "deploy"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Finalize Package",
+            "stages": [
+                {
+                    "description": "",
+                    "name": "Bump Package Version",
+                    "steps": [
+                        {
+                            "name": "Rename the Instance to the version",
+                            "plugin": {
+                                "args": {
+                                    "name": "__PROJECTVERSION.__PINUMBER"
+                                },
+                                "label": "Flow - Pipeline - Set Name",
+                                "method": "set_name",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "initial_data": {
+                                        "version": "__PROJECTVERSION.__PINUMBER"
+                                    },
+                                    "parameters": "",
+                                    "task": "Update Continuum Staging to Version"
+                                },
+                                "label": "Automate - Run Task",
+                                "method": "runtask",
+                                "module": "task",
+                                "name": "automate"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "Put this manifest in a Package representing this Version",
+                            "plugin": {
+                                "args": {
+                                    "bucket": "ClearCode __PROJECTVERSION",
+                                    "create": true,
+                                    "globals_key": ""
+                                },
+                                "label": "Utility - Bucket - Add Manifest",
+                                "method": "add_to_bucket",
+                                "module": "bucket",
+                                "name": "utility"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "signature": "",
+    "signature_type": "",
+    "summary": []
+}

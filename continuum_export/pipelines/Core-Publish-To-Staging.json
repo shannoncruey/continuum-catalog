@@ -1,0 +1,191 @@
+{
+    "__assembled": true,
+    "actions": [
+        {
+            "definition": "__DEFINITIONNAME",
+            "details": null,
+            "group": "__GROUP",
+            "icon": "43_48x48.png",
+            "instancename": "",
+            "name": "Deploy Latest Build (Release Candidate) to Staging",
+            "on": "group",
+            "parameters": [
+                {
+                    "name": "VERSION",
+                    "required": "true"
+                }
+            ],
+            "project": "__PROJECTNAME",
+            "project_version": "",
+            "type": "initiate_pipeline"
+        }
+    ],
+    "description": "Publish a version and edition to the specified Staging instance.",
+    "globals": {},
+    "name": "Core-Publish-To-Staging",
+    "phases": [
+        {
+            "name": "Core-Release-PTS-Setup",
+            "stages": [
+                {
+                    "description": "",
+                    "name": "Core-Release-PTS-Setup",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "PUBLISH_TO",
+                                    "value": "stage[$'__GROUP'.replace('.','')$]"
+                                },
+                                "label": "Flow - Pipeline - Set Data",
+                                "method": "set_data",
+                                "module": "pipeline",
+                                "name": "flow"
+                            }
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "BASEVERSION",
+                                    "value": "__GROUP"
+                                },
+                                "label": "Flow - Pipeline - Set Data",
+                                "method": "set_data",
+                                "module": "pipeline",
+                                "name": "flow"
+                            }
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "ARTIFACT",
+                                    "value": "[$ inputs.get('artifacts', {}).get('VersionOne-Ultimate', {}).get('location') $]"
+                                },
+                                "label": "Flow - Pipeline - Set Data",
+                                "method": "set_data",
+                                "module": "pipeline",
+                                "name": "flow"
+                            }
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "VERSION",
+                                    "value": "[$ re.search('\\d+.\\d+.\\d+.\\d+', '[$ ARTIFACT $]').group(0) $]"
+                                },
+                                "label": "Flow - Pipeline - Set Data",
+                                "method": "set_data",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Core-Publish-To-Staging",
+            "stages": [
+                {
+                    "description": "",
+                    "name": "Core-Promote-And-Publish",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "broid_target_key": "dtsid",
+                                    "build_project": "Core-DeployToStaging",
+                                    "initial_status": "BuildStatus:196",
+                                    "name": "Pipeline: Core-Developing-DeployToStaging (#[$ BUILD $])",
+                                    "reference": ""
+                                },
+                                "label": "VersionOne - Create BuildRun",
+                                "method": "create_buildrun",
+                                "module": "main",
+                                "name": "v1plugin"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "Copy All Editions to Staging",
+                            "plugin": {
+                                "args": {
+                                    "parameters": [
+                                        {
+                                            "name": "base_version",
+                                            "values": [
+                                                "[$ BASEVERSION $]"
+                                            ]
+                                        },
+                                        {
+                                            "name": "full_version",
+                                            "values": [
+                                                "[$ VERSION $]"
+                                            ]
+                                        }
+                                    ],
+                                    "task": "Copy Edition to Staging"
+                                },
+                                "label": "Automate - Run Task",
+                                "method": "runtask",
+                                "module": "task",
+                                "name": "automate"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "Update the specified Hostess instance",
+                            "plugin": {
+                                "args": {
+                                    "parameters": [
+                                        {
+                                            "name": "target_name",
+                                            "values": [
+                                                "[$ PUBLISH_TO $]"
+                                            ]
+                                        }
+                                    ],
+                                    "task": "Trigger Hostess Update"
+                                },
+                                "label": "Automate - Run Task",
+                                "method": "runtask",
+                                "module": "task",
+                                "name": "automate"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "build_run": "[$dtsid$]",
+                                    "complete_workitems": true,
+                                    "status": "BuildStatus:195"
+                                },
+                                "label": "VersionOne - Set BuildRun Status",
+                                "method": "set_buildrun_status",
+                                "module": "main",
+                                "name": "v1plugin"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "product_id": "543fe8a37c1a7c67c7dcb133",
+    "product_name": "VersionOne",
+    "product_workflow_step": "",
+    "summary": [],
+    "tags": [
+        "VersionOne"
+    ]
+}

@@ -1,0 +1,45 @@
+{
+    "actions": [],
+    "artifacts": [],
+    "description": "",
+    "globals": {},
+    "mappings": [],
+    "name": "stores-ui-imported",
+    "source": {
+        "directives": [
+            {
+                "details": {
+                    "args": {
+                        "instance_name": "vbdemo"
+                    },
+                    "method": "identify_workitems",
+                    "plugin": "v1plugin.main"
+                },
+                "type": "plugin_function",
+                "when": "always"
+            },
+            {
+                "details": {
+                    "definition": "dataload_build",
+                    "group": "master",
+                    "includechanges": "",
+                    "instancename": "",
+                    "project": "",
+                    "project_version": ""
+                },
+                "evaluate": "\"_fake\" in __DATA",
+                "type": "initiate_pipeline",
+                "when": "evaluate"
+            }
+        ],
+        "enable_polling": false,
+        "group_source": "branch",
+        "interface": "webhook",
+        "notify_unmanaged": false,
+        "notify_unmanaged_addl": "",
+        "repo_name": "",
+        "repo_server": "",
+        "type": "gitlab"
+    },
+    "type": "Source"
+}

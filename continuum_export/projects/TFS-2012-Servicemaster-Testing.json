@@ -1,0 +1,72 @@
+{
+    "actions": [],
+    "artifacts": [
+        {
+            "_id": "57cf12443ed4d22716e39b36",
+            "created_dt": "2016-09-06T19:00:20.184000",
+            "name": "ServiceMaster-WebApp",
+            "project_id": "57cf12313ed4d22716e39b34",
+            "project_name": "TFS-2012-Servicemaster-Testing"
+        }
+    ],
+    "description": "",
+    "globals": {},
+    "mappings": [],
+    "name": "TFS-2012-Servicemaster-Testing",
+    "notifications": {
+        "email": {
+            "addresses": ""
+        },
+        "enable": false,
+        "hipchat": {
+            "room": ""
+        },
+        "http": {
+            "data": "",
+            "url": ""
+        },
+        "on_failure": [],
+        "on_start": [],
+        "on_success": [],
+        "on_wait": [],
+        "slack": {
+            "channel": ""
+        }
+    },
+    "source": {
+        "directives": [
+            {
+                "details": {
+                    "args": {},
+                    "instance_name": "",
+                    "on_error": "continue"
+                },
+                "type": "jira_workitem_lookup",
+                "when": "always"
+            },
+            {
+                "details": {
+                    "definition": "Logan-SM-TFS-Jira-Build",
+                    "group": "servicemaster",
+                    "includechanges": "",
+                    "instancename": "",
+                    "project": "",
+                    "project_version": ""
+                },
+                "type": "initiate_pipeline",
+                "when": "always"
+            }
+        ],
+        "enable_polling": false,
+        "group_source": "branch",
+        "interface": "webhook",
+        "notify_unmanaged": false,
+        "notify_unmanaged_addl": "",
+        "repo_name": "",
+        "repo_server": "",
+        "type": "tfstfvs_soap"
+    },
+    "type": "Source",
+    "version": "1.0",
+    "version_date": "2016-09-06 19:12:23"
+}

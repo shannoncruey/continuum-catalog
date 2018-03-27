@@ -1,0 +1,239 @@
+{
+    "__assembled": true,
+    "actions": [
+        {
+            "args": {
+                "newKey": "[$pi_id$]"
+            },
+            "icon": "",
+            "name": "new",
+            "parameters": {
+                "parameters": [
+                    {
+                        "name": "i_am_required",
+                        "required": "true",
+                        "values": "hort"
+                    }
+                ]
+            },
+            "task": "dummy",
+            "type": "task",
+            "version": ""
+        },
+        {
+            "definition": "test_pipeline",
+            "details": {
+                "1": 2
+            },
+            "group": "__GROUP",
+            "icon": "",
+            "instancename": "",
+            "name": "test_pipeline",
+            "parameters": {},
+            "project": "",
+            "project_version": "",
+            "type": "initiate_pipeline"
+        }
+    ],
+    "dependencies": [],
+    "description": "",
+    "globals": {},
+    "interactive": false,
+    "name": "test_promote",
+    "phases": [
+        {
+            "name": "",
+            "stages": [
+                {
+                    "name": "",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "bucket": "Release 15.1.3",
+                                    "globals_key": "",
+                                    "required": "true"
+                                },
+                                "label": "Utility - Bucket - Load",
+                                "method": "load_bucket",
+                                "module": "bucket",
+                                "name": "utility"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "full_version": "",
+                                    "new_full_version": "2.4.6.8",
+                                    "new_version": "",
+                                    "package": "aaa",
+                                    "phase": "Branch Dev",
+                                    "revision": "101"
+                                },
+                                "label": "Flow - Package - Promote Revision",
+                                "method": "promote",
+                                "module": "package",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "full_version": "",
+                                    "new_full_version": "",
+                                    "new_version": "",
+                                    "package": "aaa",
+                                    "phase": "Development",
+                                    "revision": "86"
+                                },
+                                "label": "Flow - Package - Promote Revision",
+                                "method": "promote",
+                                "module": "package",
+                                "name": "flow"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "seconds": "7"
+                                },
+                                "label": "Utility - Sleep",
+                                "method": "sleep",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "full_version": "",
+                                    "new_full_version": "",
+                                    "new_version": "",
+                                    "package": "aaa",
+                                    "phase": "Staging",
+                                    "revision": "71"
+                                },
+                                "label": "Flow - Package - Promote Revision",
+                                "method": "promote",
+                                "module": "package",
+                                "name": "flow"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "seconds": "5"
+                                },
+                                "label": "Utility - Sleep",
+                                "method": "sleep",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "full_version": "",
+                                    "new_full_version": "",
+                                    "new_version": "",
+                                    "package": "aaa",
+                                    "phase": "Production",
+                                    "revision": "65"
+                                },
+                                "label": "Flow - Package - Promote Revision",
+                                "method": "promote",
+                                "module": "package",
+                                "name": "flow"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "seconds": "3"
+                                },
+                                "label": "Utility - Sleep",
+                                "method": "sleep",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "full_version": "",
+                                    "new_full_version": "",
+                                    "new_version": "",
+                                    "package": "aaa",
+                                    "phase": "Staging",
+                                    "revision": "87"
+                                },
+                                "label": "Flow - Package - Promote Revision",
+                                "method": "promote",
+                                "module": "package",
+                                "name": "flow"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "seconds": "9"
+                                },
+                                "label": "Utility - Sleep",
+                                "method": "sleep",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "full_version": "",
+                                    "new_full_version": "",
+                                    "new_version": "",
+                                    "package": "aaa",
+                                    "phase": "Development",
+                                    "revision": "89"
+                                },
+                                "label": "Flow - Package - Promote Revision",
+                                "method": "promote",
+                                "module": "package",
+                                "name": "flow"
+                            },
+                            "when": "never"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "product_id": "542ef5ad5e1497307173c009",
+    "product_name": "Velocity",
+    "product_workflow_step": "Development",
+    "summary": [],
+    "tags": [
+        "Velocity"
+    ],
+    "warnings": []
+}

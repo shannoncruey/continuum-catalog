@@ -1,0 +1,112 @@
+{
+    "Category": null,
+    "Code": "",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_variable",
+                        "variables": {
+                            "Item::variable::0": {
+                                "modifier": {
+                                    "modifier": "DEFAULT"
+                                },
+                                "name": {
+                                    "name": "foo"
+                                },
+                                "value": {
+                                    "value": "a\\b"
+                                }
+                            },
+                            "__is_array": "true"
+                        }
+                    },
+                    "FunctionName": "set_variable",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "message": {
+                            "message": " I <3 this!  [$foo$]"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "run_task",
+                        "handle": {
+                            "handle": ""
+                        },
+                        "on_error": {
+                            "on_error": ""
+                        },
+                        "on_success": {
+                            "on_success": ""
+                        },
+                        "parameters": {
+                            "parameters": ""
+                        },
+                        "task_name": {
+                            "task_name": ""
+                        },
+                        "time_to_wait": {
+                            "time_to_wait": ""
+                        },
+                        "version": {
+                            "version": ""
+                        }
+                    },
+                    "FunctionName": "run_task",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        },
+        {
+            "Name": "asd",
+            "Steps": []
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "",
+    "IsDefaultVersion": false,
+    "MaxVersion": "2.000",
+    "Name": "~apitest",
+    "NextMajorVersion": "3.000",
+    "NextMinorVersion": "2.001",
+    "NumberOfApprovedVersions": 2,
+    "Parameters": [
+        {
+            "encrypt": "false",
+            "name": "asdf",
+            "present_as": "value",
+            "prompt": "true",
+            "required": "false",
+            "values": [
+                ""
+            ]
+        }
+    ],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "2.000"
+}

@@ -1,0 +1,149 @@
+{
+    "Category": null,
+    "Code": "phil",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_debug_level",
+                        "debug_level": {
+                            "debug_level": "10"
+                        }
+                    },
+                    "FunctionName": "set_debug_level",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "message": {
+                            "message": "[$ datetime.now() $]"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "loop",
+                        "action": {
+                            "function": {
+                                "__name": "codeblock",
+                                "codeblock": {
+                                    "codeblock": "PROCESS_SERVER"
+                                }
+                            }
+                        },
+                        "compare_to": {
+                            "compare_to": "[$ len(servers)-1 $]"
+                        },
+                        "counter": {
+                            "counter": "X"
+                        },
+                        "increment": {
+                            "increment": "1"
+                        },
+                        "max": {
+                            "max": "100"
+                        },
+                        "start": {
+                            "start": "0"
+                        },
+                        "test": {
+                            "test": "<="
+                        }
+                    },
+                    "FunctionName": "loop",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        },
+        {
+            "Name": "PROCESS_SERVER",
+            "Steps": [
+                {
+                    "Codeblock": "PROCESS_SERVER",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_variable",
+                        "variables": {
+                            "Item::variable::0": {
+                                "modifier": {
+                                    "modifier": ""
+                                },
+                                "name": {
+                                    "name": "SERVER"
+                                },
+                                "value": {
+                                    "value": "[$ servers[[$X$]] $]"
+                                }
+                            },
+                            "__is_array": "true"
+                        }
+                    },
+                    "FunctionName": "set_variable",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "PROCESS_SERVER",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "message": {
+                            "message": "URL: [$ SERVER.get(\"url\") $]\nNAME: [$ SERVER.get(\"server_name\") $]\nWIDGET: [$ SERVER.get(\"widget_id\") $]"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "Loop over complex Parameters list",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [
+        {
+            "encrypt": "false",
+            "name": "servers",
+            "present_as": "list",
+            "prompt": "true",
+            "required": "true",
+            "values": [
+                "{\n    \"url\": \"s1.example.com\",\n    \"widget_id\": \"12345\",\n    \"server_name\": \"Box #42\"\n}",
+                "{\n    \"url\": \"s3example.com\",\n    \"widget_id\": \"09876\",\n    \"server_name\": \"Box #18\"\n}"
+            ]
+        }
+    ],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.000"
+}

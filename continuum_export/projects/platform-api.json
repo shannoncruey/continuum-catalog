@@ -1,0 +1,82 @@
+{
+    "actions": [],
+    "artifacts": [
+        {
+            "_id": "578fc07e805479a88382ca3b",
+            "created_dt": "2016-07-20T18:18:38.377000",
+            "last_revision": 100,
+            "last_revision_dt": "2017-02-01T00:45:30.201000",
+            "name": "platform-api",
+            "project_id": "578fc06e805479a88382ca39",
+            "project_name": "platform-api"
+        }
+    ],
+    "description": "",
+    "globals": {},
+    "mappings": [],
+    "name": "platform-api",
+    "notifications": {
+        "email": {
+            "addresses": ""
+        },
+        "enable": false,
+        "hipchat": {
+            "room": ""
+        },
+        "http": {
+            "data": "",
+            "url": ""
+        },
+        "on_failure": [],
+        "on_start": [],
+        "on_success": [],
+        "on_wait": [],
+        "slack": {
+            "channel": ""
+        }
+    },
+    "source": {
+        "directives": [
+            {
+                "details": {
+                    "args": {},
+                    "instance_name": "vbdemo",
+                    "on_error": "continue"
+                },
+                "type": "jira_workitem_lookup",
+                "when": "always"
+            },
+            {
+                "details": {
+                    "package_name": "api",
+                    "phase": "Acceptance Test",
+                    "use_as_version": "lookup",
+                    "use_as_version_lookup": "[$ _package_version $]"
+                },
+                "evaluate": "\"_fake\" in __DATA",
+                "type": "package_revision",
+                "when": "evaluate"
+            },
+            {
+                "details": {
+                    "package_name": "api",
+                    "phase": "Build",
+                    "use_as_version": "branch",
+                    "use_as_version_lookup": ""
+                },
+                "evaluate": "\"_fake\" not in __DATA",
+                "type": "package_revision",
+                "when": "evaluate"
+            }
+        ],
+        "enable_polling": false,
+        "group_source": "branch",
+        "interface": "webhook",
+        "notify_unmanaged": false,
+        "notify_unmanaged_addl": "",
+        "repo_name": "",
+        "repo_server": "",
+        "type": "gitlab"
+    },
+    "type": "Source"
+}

@@ -1,0 +1,77 @@
+{
+    "actions": [],
+    "artifacts": [
+        {
+            "_id": "57a9fb193ed4d239e05493d6",
+            "created_dt": "2016-08-09T15:47:37.665000",
+            "last_revision": 128,
+            "last_revision_dt": "2016-10-13T12:47:43.016000",
+            "name": "continuum",
+            "project_id": "57a9fb0d3ed4d239e05493d4",
+            "project_name": "continuum"
+        }
+    ],
+    "description": "",
+    "globals": {},
+    "mappings": [],
+    "name": "continuum",
+    "notifications": {
+        "email": {
+            "addresses": ""
+        },
+        "enable": true,
+        "hipchat": {
+            "room": ""
+        },
+        "http": {
+            "data": "",
+            "url": ""
+        },
+        "on_failure": [
+            "slack"
+        ],
+        "on_start": [],
+        "on_success": [],
+        "on_wait": [],
+        "slack": {
+            "channel": "#continuum"
+        }
+    },
+    "source": {
+        "directives": [
+            {
+                "details": {
+                    "args": {},
+                    "instance_name": "",
+                    "on_error": "continue"
+                },
+                "type": "lifecycle_workitem_lookup",
+                "when": "always"
+            },
+            {
+                "details": {
+                    "definition": "Build Continuum",
+                    "group": "[$ branch $]",
+                    "includechanges": "",
+                    "instancename": "",
+                    "project": "",
+                    "project_version": ""
+                },
+                "evaluate": "len(commits) > 0",
+                "type": "initiate_pipeline",
+                "when": "evaluate"
+            }
+        ],
+        "enable_polling": false,
+        "group_source": "branch",
+        "interface": "webhook",
+        "notify_unmanaged": false,
+        "notify_unmanaged_addl": "",
+        "repo_name": "",
+        "repo_server": "",
+        "type": "github"
+    },
+    "type": "Source",
+    "version": "16.2.5",
+    "version_date": "2016-08-25 19:15:22"
+}

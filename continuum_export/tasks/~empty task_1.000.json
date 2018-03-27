@@ -1,0 +1,88 @@
+{
+    "Category": null,
+    "Code": "",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "message": {
+                            "message": "woo"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "jenkins_ext.jenkinscmds",
+                        "__name": "jenkins_new_connection",
+                        "conn_name": {
+                            "conn_name": "jenkconn"
+                        },
+                        "password": {
+                            "password": "Demo1234"
+                        },
+                        "url": {
+                            "url": "http://jenkins.acme.demo:8081"
+                        },
+                        "user": {
+                            "user": "admin"
+                        }
+                    },
+                    "FunctionName": "jenkins_new_connection",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "jenkins_ext.jenkinscmds",
+                        "__name": "jenkins_build_status",
+                        "build_num": {
+                            "build_num": "12"
+                        },
+                        "conn_name": {
+                            "conn_name": "jenkconn"
+                        },
+                        "job": {
+                            "job": "continuum-test-job"
+                        },
+                        "status_var": {
+                            "status_var": "stat"
+                        }
+                    },
+                    "FunctionName": "jenkins_build_status",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "~empty task",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.000"
+}

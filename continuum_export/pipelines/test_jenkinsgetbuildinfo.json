@@ -1,0 +1,57 @@
+{
+    "__assembled": true,
+    "actions": [],
+    "dependencies": [],
+    "description": "",
+    "globals": {},
+    "interactive": false,
+    "name": "test_jenkinsgetbuildinfo",
+    "phases": [
+        {
+            "name": "Test",
+            "stages": [
+                {
+                    "name": "Test",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "artifact_name": "",
+                                    "artifact_regex": "",
+                                    "build_number": "[$ webhookdata[\"build_number\"] $]",
+                                    "inherit": "true",
+                                    "instance_name": "",
+                                    "job": "[$ webhookdata[\"job\"] $]",
+                                    "result_key": "",
+                                    "wait": "true"
+                                },
+                                "label": "Jenkins - Get Build Info",
+                                "method": "get_build",
+                                "module": "job",
+                                "name": "jenkins"
+                            },
+                            "when": "conditionally",
+                            "when_condition": "my_var == \"foo\""
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "message": "Hello World [$ tfs['data']['BuildCompletedEvent']['Build']['@DropLocation'] $]"
+                                },
+                                "label": "Utility - Insert Log",
+                                "method": "insert_log",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "summary": []
+}

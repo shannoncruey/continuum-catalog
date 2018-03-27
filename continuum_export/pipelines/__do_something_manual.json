@@ -1,0 +1,59 @@
+{
+    "__assembled": true,
+    "actions": [
+        {
+            "definition": "__do_something_manual",
+            "details": null,
+            "group": "master",
+            "icon": "",
+            "instancename": "",
+            "name": "run myself, again",
+            "parameters": {},
+            "project": "",
+            "project_version": "",
+            "type": "initiate_pipeline"
+        }
+    ],
+    "dependencies": [],
+    "description": "",
+    "globals": {},
+    "interactive": true,
+    "name": "__do_something_manual",
+    "phases": [
+        {
+            "name": "",
+            "stages": [
+                {
+                    "name": "",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "assignto": [
+                                        "shannon.cruey"
+                                    ],
+                                    "result_key": "interactwoo",
+                                    "text": "It's crucial to ensure that all parties concur with the current occurrences.",
+                                    "title": "Do you concur with the current confluence of occurrences?"
+                                },
+                                "kind": "confirm",
+                                "label": "Flow - Interact - Confirmation",
+                                "method": "confirmation",
+                                "module": "interact",
+                                "name": "flow",
+                                "type": "interaction"
+                            },
+                            "tags": [
+                                "Velocity"
+                            ],
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "summary": []
+}

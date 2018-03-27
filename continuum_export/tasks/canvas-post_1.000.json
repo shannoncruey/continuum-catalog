@@ -1,0 +1,155 @@
+{
+    "Category": null,
+    "Code": "CANVAS-POST",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_debug_level",
+                        "debug_level": {
+                            "__dataset": "ddDataSource_GetDebugLevels",
+                            "__datasource": "function",
+                            "__input_type": "dropdown",
+                            "__label": "Logging Level",
+                            "debug_level": "10"
+                        }
+                    },
+                    "FunctionName": "set_debug_level",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "http",
+                        "__parse_method": "2",
+                        "__snip": "url",
+                        "__variables": "true",
+                        "cookie_out": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Cookie Variable (out)",
+                            "__option_tab": "Options",
+                            "cookie_out": ""
+                        },
+                        "data": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Data",
+                            "__label_style": "display: block;",
+                            "__rows": "3",
+                            "data": "{\"doc\": [$ asjson(DOC) $]}"
+                        },
+                        "headers": {
+                            "Item::pair::0": {
+                                "__label": "Key and Values",
+                                "key": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "key": "Content-Type"
+                                },
+                                "value": {
+                                    "__class": "w50pct",
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "value": "application/json"
+                                }
+                            },
+                            "__is_array": "true",
+                            "__label": "Header Fields"
+                        },
+                        "response_body": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Response Body Variable ",
+                            "__option_tab": "Options",
+                            "response_body": ""
+                        },
+                        "response_header": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Response Header Variable",
+                            "__option_tab": "Options",
+                            "response_header": ""
+                        },
+                        "response_time_ms": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Response Time ms Variable",
+                            "__option_tab": "Options",
+                            "response_time_ms": ""
+                        },
+                        "retries": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Retries",
+                            "__option_tab": "Options",
+                            "retries": "1"
+                        },
+                        "status_code": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Status Code Variable",
+                            "__option_tab": "Options",
+                            "status_code": ""
+                        },
+                        "status_msg": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Status Message Variable",
+                            "__option_tab": "Options",
+                            "status_msg": ""
+                        },
+                        "timeout": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Timeout",
+                            "__option_tab": "Options",
+                            "timeout": "10"
+                        },
+                        "type": {
+                            "__dataset": "GET|POST|DELETE|PUT|HEADER",
+                            "__datasource": "local",
+                            "__input_type": "dropdown",
+                            "__label": "Request Type",
+                            "type": "POST"
+                        },
+                        "url": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "URL",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "1",
+                            "url": "https://localhost:8083/test/receive_doc/receive_doc.widget"
+                        }
+                    },
+                    "FunctionName": "http",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "Run on Cato #1, will post a JSON document to Canvas running on Cato #2.",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "canvas-post",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.000"
+}

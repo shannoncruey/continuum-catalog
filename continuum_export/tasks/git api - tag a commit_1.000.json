@@ -1,0 +1,191 @@
+{
+    "Category": null,
+    "Code": "git",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "comment",
+                        "comment": {
+                            "comment": "FROM: https://developer.github.com/v3/git/refs/#create-a-reference"
+                        }
+                    },
+                    "FunctionName": "comment",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "http",
+                        "__parse_method": "2",
+                        "cookie_out": {
+                            "cookie_out": ""
+                        },
+                        "data": {
+                            "data": "{\n  \"ref\": \"refs/tags/[$tag$]\",\n  \"sha\": \"[$SHA$]\"\n}"
+                        },
+                        "headers": {
+                            "Item::pair::0": {
+                                "key": {
+                                    "key": "Authorization"
+                                },
+                                "value": {
+                                    "value": "token af229d6ad8ee2c33ed60a317d65e9b75d5b3febf"
+                                }
+                            },
+                            "Item::pair::1": {
+                                "key": {
+                                    "key": "Content-Type"
+                                },
+                                "value": {
+                                    "value": "application/json"
+                                }
+                            },
+                            "__is_array": "true"
+                        },
+                        "response_body": {
+                            "response_body": ""
+                        },
+                        "response_header": {
+                            "response_header": ""
+                        },
+                        "response_time_ms": {
+                            "response_time_ms": ""
+                        },
+                        "retries": {
+                            "retries": "1"
+                        },
+                        "status_code": {
+                            "status_code": ""
+                        },
+                        "status_msg": {
+                            "status_msg": ""
+                        },
+                        "timeout": {
+                            "timeout": "10"
+                        },
+                        "type": {
+                            "type": "POST"
+                        },
+                        "url": {
+                            "url": "https://api.github.com/repos/cloudsidekick/[$repo$]/git/refs"
+                        }
+                    },
+                    "FunctionName": "http",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "http",
+                        "__parse_method": "2",
+                        "cookie_out": {
+                            "cookie_out": ""
+                        },
+                        "data": {
+                            "data": ""
+                        },
+                        "headers": {
+                            "Item::pair::0": {
+                                "key": {
+                                    "key": "Authorization"
+                                },
+                                "value": {
+                                    "value": "token d45eefc11d6ddd08652f25e16a3dbf"
+                                }
+                            },
+                            "__is_array": "true"
+                        },
+                        "response_body": {
+                            "response_body": ""
+                        },
+                        "response_header": {
+                            "response_header": ""
+                        },
+                        "response_time_ms": {
+                            "response_time_ms": ""
+                        },
+                        "retries": {
+                            "retries": "1"
+                        },
+                        "status_code": {
+                            "status_code": ""
+                        },
+                        "status_msg": {
+                            "status_msg": ""
+                        },
+                        "timeout": {
+                            "timeout": "10"
+                        },
+                        "type": {
+                            "type": "DELETE"
+                        },
+                        "url": {
+                            "url": "https://api.github.com/repos/cloudsidekick/[$repo$]/git/refs/tags/[$tag$]"
+                        }
+                    },
+                    "FunctionName": "http",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "Use the GitHub API to Tag a specific commit.",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "git api - tag a commit",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [
+        {
+            "encrypt": "false",
+            "name": "SHA",
+            "present_as": "value",
+            "prompt": "true",
+            "required": "true",
+            "values": [
+                ""
+            ]
+        },
+        {
+            "encrypt": "false",
+            "name": "repo",
+            "present_as": "value",
+            "prompt": "true",
+            "required": "true",
+            "values": [
+                ""
+            ]
+        },
+        {
+            "encrypt": "false",
+            "name": "tag",
+            "present_as": "value",
+            "prompt": "true",
+            "required": "true",
+            "values": [
+                ""
+            ]
+        }
+    ],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.000"
+}

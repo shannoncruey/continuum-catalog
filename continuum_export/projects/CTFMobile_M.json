@@ -1,0 +1,100 @@
+{
+    "actions": [],
+    "artifacts": [
+        {
+            "_id": "59f755ef80547994108e23e0",
+            "created_dt": "2017-10-30T16:40:15.926000",
+            "name": "ctfmobile",
+            "project_id": "59f755ef80547994108e23dc",
+            "project_name": "CTFMobile_M"
+        }
+    ],
+    "description": "",
+    "globals": {
+        "omg": "woo"
+    },
+    "mappings": [],
+    "name": "CTFMobile_M",
+    "notifications": {
+        "email": {
+            "addresses": ""
+        },
+        "enable": false,
+        "hipchat": {
+            "room": ""
+        },
+        "http": {
+            "data": "",
+            "url": ""
+        },
+        "on_failure": [],
+        "on_start": [],
+        "on_success": [],
+        "on_wait": [],
+        "slack": {
+            "channel": ""
+        }
+    },
+    "source": {
+        "directives": [
+            {
+                "always": "",
+                "details": {
+                    "always": "",
+                    "args": {},
+                    "instance_name": "",
+                    "on_error": "continue"
+                },
+                "type": "teamforge_workitem_lookup",
+                "when": "always"
+            },
+            {
+                "details": {
+                    "evaluate": "\"_fake\" in __DATA",
+                    "package_name": "CTF Mobile",
+                    "phase": "Acceptance Test",
+                    "use_as_version": "lookup",
+                    "use_as_version_lookup": "[$ _package_version $]"
+                },
+                "evaluate": "\"_fake\" in __DATA",
+                "type": "package_revision",
+                "when": "evaluate"
+            },
+            {
+                "details": {
+                    "evaluate": "\"_fake\" not in __DATA",
+                    "package_name": "CTF Mobile",
+                    "phase": "Build",
+                    "use_as_version": "branch",
+                    "use_as_version_lookup": ""
+                },
+                "evaluate": "\"_fake\" not in __DATA",
+                "type": "package_revision",
+                "when": "evaluate"
+            },
+            {
+                "details": {
+                    "definition": "",
+                    "evaluate": "branch != \"master\"",
+                    "group": "",
+                    "includeChanges": "",
+                    "instancename": "",
+                    "project": "",
+                    "project_version": ""
+                },
+                "evaluate": "branch != \"master\"",
+                "type": "initiate_pipeline",
+                "when": "evaluate"
+            }
+        ],
+        "enable_polling": false,
+        "group_source": "branch",
+        "interface": "webhook",
+        "notify_unmanaged": false,
+        "notify_unmanaged_addl": "",
+        "repo_name": "",
+        "repo_server": "",
+        "type": "gitlab"
+    },
+    "type": "Source"
+}

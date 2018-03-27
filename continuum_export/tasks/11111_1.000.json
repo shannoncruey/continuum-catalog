@@ -1,0 +1,265 @@
+{
+    "Category": null,
+    "Code": "000",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "end",
+                        "message": {
+                            "message": "[$ _HOSTNAME $]\n[$ _EXTERNALHOSTNAME $]\n[$ _PLATFORM $]\n[$ _PID $]"
+                        },
+                        "status": {
+                            "status": "Completed"
+                        }
+                    },
+                    "FunctionName": "end",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_debug_level",
+                        "debug_level": {
+                            "debug_level": "10"
+                        }
+                    },
+                    "FunctionName": "set_debug_level",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "utility_ext.utility",
+                        "__name": "exec_python",
+                        "code": {
+                            "code": "import xmltodict\nx = xmltodict.parse(\"<foo><a>bar</a><b>none</b></foo>\")\nprint x[\"foo\"][\"a\"]"
+                        }
+                    },
+                    "FunctionName": "exec_python",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "end",
+                        "message": {
+                            "message": ""
+                        },
+                        "status": {
+                            "status": "Completed"
+                        }
+                    },
+                    "FunctionName": "end",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_variable",
+                        "variables": {
+                            "Item::variable::0": {
+                                "modifier": {
+                                    "modifier": "DEFAULT"
+                                },
+                                "name": {
+                                    "name": "foo"
+                                },
+                                "value": {
+                                    "value": "$]bar[$"
+                                }
+                            },
+                            "__is_array": "true"
+                        }
+                    },
+                    "FunctionName": "set_variable",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "new_connection",
+                        "asset": {
+                            "asset": "AluminumOverdrive"
+                        },
+                        "cloud_name": {
+                            "cloud_name": ""
+                        },
+                        "conn_name": {
+                            "conn_name": "CONN1"
+                        },
+                        "conn_type": {
+                            "conn_type": "ssh"
+                        },
+                        "debug": {
+                            "debug": ""
+                        },
+                        "initial_prompt": {
+                            "initial_prompt": ""
+                        }
+                    },
+                    "FunctionName": "new_connection",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "cmd_line",
+                        "__parse_method": "2",
+                        "command": {
+                            "command": "ls -l"
+                        },
+                        "conn_name": {
+                            "conn_name": "CONN1"
+                        },
+                        "negative_response": {
+                            "negative_response": ""
+                        },
+                        "positive_response": {
+                            "positive_response": ""
+                        },
+                        "result_variable": {
+                            "result_variable": ""
+                        },
+                        "timeout": {
+                            "timeout": ""
+                        }
+                    },
+                    "FunctionName": "cmd_line",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "message": {
+                            "message": "[$foo$]-[$foo2$]-[$foo3$]-[$foo4$]-[$foo5$]-[$foo6$]-[$foo7$]-[$foo8$]-[$foo9$]-[$foo10$]-[$foo11$]-[$foo12$]-[$foo13$]"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "if",
+                        "tests": {
+                            "test": {
+                                "action": {
+                                    "function": {
+                                        "__name": "run_task",
+                                        "asset_id": {
+                                            "asset_id": ""
+                                        },
+                                        "handle": {
+                                            "handle": ""
+                                        },
+                                        "on_error": {
+                                            "on_error": ""
+                                        },
+                                        "on_success": {
+                                            "on_success": ""
+                                        },
+                                        "parameters": {
+                                            "parameters": ""
+                                        },
+                                        "task_name": {
+                                            "task_name": "~apitest"
+                                        },
+                                        "time_to_wait": {
+                                            "time_to_wait": ""
+                                        },
+                                        "version": {
+                                            "version": ""
+                                        }
+                                    }
+                                },
+                                "eval": {
+                                    "eval": ""
+                                }
+                            }
+                        }
+                    },
+                    "FunctionName": "if",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        },
+        {
+            "Name": "lkj",
+            "Steps": []
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "11111",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [
+        {
+            "encrypt": "false",
+            "name": "woo",
+            "present_as": "value",
+            "prompt": "true",
+            "required": "false",
+            "values": [
+                "hoo"
+            ]
+        },
+        {
+            "encrypt": "false",
+            "name": "hort",
+            "present_as": "value",
+            "prompt": "true",
+            "required": "false",
+            "values": [
+                ""
+            ]
+        }
+    ],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.000"
+}

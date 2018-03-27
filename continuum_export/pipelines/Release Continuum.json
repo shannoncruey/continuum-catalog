@@ -1,0 +1,148 @@
+{
+    "actions": [],
+    "description": "This pipeline is triggered manually and will update THIS continuum to the selected revision",
+    "globals": {},
+    "name": "Release Continuum",
+    "phases": [
+        {
+            "name": "",
+            "stages": [
+                {
+                    "name": "",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "status": "end-failure"
+                                },
+                                "label": "Utility - End",
+                                "method": "end",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "conditionally",
+                            "when_condition": "len(initiator[\"next_version\"]) == 0"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "globals_key": "",
+                                    "package": "Continuum",
+                                    "revision": "[$ initiator[\"revision\"] $]"
+                                },
+                                "label": "Flow - Package - Load Revision",
+                                "method": "load_revision",
+                                "module": "package",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "full_version",
+                                    "value": "[$ __PREVSTEPDATA[\"full_version\"] $]"
+                                },
+                                "label": "Flow - Pipeline - Set Data",
+                                "method": "set_data",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "name": "[$ full_version $]"
+                                },
+                                "label": "Flow - Pipeline - Set Name",
+                                "method": "set_name",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "full_version": "",
+                                    "package": "Continuum",
+                                    "phase": "Released",
+                                    "revision": "[$ initiator[\"revision\"] $]"
+                                },
+                                "label": "Flow - Package - Promote Revision",
+                                "method": "promote",
+                                "module": "package",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "full_version": "",
+                                    "instance_name": "",
+                                    "package_label": "Continuum [$ full_version $]",
+                                    "package_name": "Continuum",
+                                    "phase": "Released",
+                                    "required": "true",
+                                    "revision": "[$ initiator[\"revision\"] $]"
+                                },
+                                "label": "VersionOne - Specify Phase",
+                                "method": "specify_phase",
+                                "module": "main",
+                                "name": "v1plugin"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "initial_data": {
+                                        "next_version": [
+                                            "[$ next_version $]"
+                                        ],
+                                        "this_version": [
+                                            "[$ full_version $]"
+                                        ]
+                                    },
+                                    "task": "Promote Continuum Version",
+                                    "version": ""
+                                },
+                                "label": "Automate - Run Task",
+                                "method": "runtask",
+                                "module": "task",
+                                "name": "automate"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "full_version": "",
+                                    "package": "Continuum",
+                                    "revision": "[$ initiator[\"revision\"] $]"
+                                },
+                                "label": "Flow - Package - Deliver Revision",
+                                "method": "deliver",
+                                "module": "package",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "summary": []
+}

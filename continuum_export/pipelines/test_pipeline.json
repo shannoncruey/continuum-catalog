@@ -1,0 +1,548 @@
+{
+    "__assembled": true,
+    "actions": [
+        {
+            "args": {
+                "newKey": "[$pi_id$]"
+            },
+            "icon": "",
+            "name": "new",
+            "parameters": {
+                "parameters": [
+                    {
+                        "name": "i_am_required",
+                        "required": "true",
+                        "values": "hort"
+                    }
+                ]
+            },
+            "task": "dummy",
+            "type": "task",
+            "version": ""
+        },
+        {
+            "definition": "test_pipeline",
+            "details": {
+                "1": 2
+            },
+            "group": "__GROUP",
+            "icon": "",
+            "instancename": "",
+            "name": "test_pipeline",
+            "parameters": {},
+            "project": "",
+            "project_version": "",
+            "type": "initiate_pipeline"
+        }
+    ],
+    "dependencies": [],
+    "description": "asdf",
+    "globals": {
+        "a": "v"
+    },
+    "interactive": false,
+    "name": "test_pipeline",
+    "phases": [
+        {
+            "name": "__test_phase",
+            "stages": [
+                {
+                    "name": "__test_stage",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "hort",
+                                    "value": "orama"
+                                },
+                                "label": "Flow - Pipeline - Set Data",
+                                "method": "set_data",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "bucket": "Release 16.0.2",
+                                    "globals_key": "",
+                                    "required": "true"
+                                },
+                                "label": "Utility - Bucket - Load",
+                                "method": "load_bucket",
+                                "module": "bucket",
+                                "name": "utility"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "artifact_location": "hort",
+                                    "artifact_name": "flow",
+                                    "artifact_version": "",
+                                    "branch": "",
+                                    "build_details": "",
+                                    "build_id": "__PINUMBER",
+                                    "build_url": "__PIURL",
+                                    "project_name": ""
+                                },
+                                "label": "Flow - Artifact - Register Artifact",
+                                "method": "register_artifact",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "description": "__GROUP.__PINUMBER",
+                                    "globals_key": "aaa_globals",
+                                    "package": "aaa",
+                                    "result_key": "pkg_rev_response",
+                                    "version": "__GROUP"
+                                },
+                                "label": "Flow - Package - New Revision",
+                                "method": "new_revision",
+                                "module": "package",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "full_version": "",
+                                    "new_version": "",
+                                    "package": "aaa",
+                                    "phase": "Branch Dev",
+                                    "revision": "[$ pkg_rev_response[\"revision\"] $]"
+                                },
+                                "label": "Flow - Package - Promote Revision",
+                                "method": "promote",
+                                "module": "package",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "pkg_rev_response"
+                                },
+                                "label": "Utility - Show Workspace Data",
+                                "method": "show_workspace_data",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "data": "",
+                                    "key": "",
+                                    "url": "https://localhost:8080/api/send_message?token=df076e6e-cbf1-11e3-bf33-c8bcc89c1491&to=ian.culling@versionone.com&subject=Continuum - Via Phases&message=This message was sent from a Continuum pipeline, initiated by a Star Trek Phaser.",
+                                    "verb": "GET"
+                                },
+                                "label": "Utility - HTTP",
+                                "method": "http",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "expression": "__WORKSPACE.get(\"foo\", False) is not False",
+                                    "status": "end-success",
+                                    "waitseconds": "300"
+                                },
+                                "label": "Utility - Wait For Data",
+                                "method": "wait_for_data",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "artifact_name": "",
+                                    "artifact_regex": "",
+                                    "inherit": "true",
+                                    "instance_name": "",
+                                    "job": "continuum-test-job",
+                                    "params": {
+                                        "BRANCH": "foobranch",
+                                        "COMMIT": "foocommit"
+                                    },
+                                    "result_key": "",
+                                    "wait": "true"
+                                },
+                                "label": "Jenkins - Build",
+                                "method": "build",
+                                "module": "job",
+                                "name": "jenkins"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "woohoo",
+                                    "value": "[$ fromjson(__PREVSTEPDATA) $]"
+                                },
+                                "label": "Flow - Pipeline - Set Data",
+                                "method": "set_data",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "message": "woohoo"
+                                },
+                                "label": "Utility - Insert Log",
+                                "method": "insert_log",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "bucket": "",
+                                    "create": "true",
+                                    "globals_key": "",
+                                    "package": "aaa_test"
+                                },
+                                "label": "Utility - Bucket - Add Manifest",
+                                "method": "add_to_bucket",
+                                "module": "bucket",
+                                "name": "utility"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "task": "",
+                                    "version": ""
+                                },
+                                "label": "Automate - Run Task",
+                                "method": "runtask",
+                                "module": "task",
+                                "name": "automate"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "artifact_name": "flow",
+                                    "project": "",
+                                    "project_name": ""
+                                },
+                                "label": "Flow - Artifact - Input to Output",
+                                "method": "artifact_in_to_out",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "foo",
+                                    "resource": "demos/minimal/minimal-data1.widget"
+                                },
+                                "label": "Canvas - Get",
+                                "method": "get",
+                                "module": "main",
+                                "name": "canvas"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "label": "Click Me Please!",
+                                    "resource": "demos/api-examples/examples.layout"
+                                },
+                                "label": "Canvas - Show",
+                                "method": "show",
+                                "module": "main",
+                                "name": "canvas"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "myreg",
+                                    "name": "myreg",
+                                    "required": "true"
+                                },
+                                "label": "Utility - Get Registry",
+                                "method": "get_registry",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "action": "set",
+                                    "create": "true",
+                                    "name": "myreg",
+                                    "path": "",
+                                    "value": "[$ myreg $]"
+                                },
+                                "label": "Utility - Set Registry",
+                                "method": "set_registry",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "instance_name": "",
+                                    "key": "foo",
+                                    "query": "from: Story\nselect: \n  - Name\n  - Number\n  - Custom_Version.Name\nfilter: \n  - Number=$var\nwith:\n  $var: \"B-01024\""
+                                },
+                                "label": "VersionOne - Custom Query",
+                                "method": "custom_query",
+                                "module": "main",
+                                "name": "v1plugin"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "action": {
+                                        "args": {
+                                            "message": "IT IS 1.45"
+                                        },
+                                        "label": "Utility - Insert Log",
+                                        "method": "insert_log",
+                                        "module": "utility",
+                                        "name": "utility"
+                                    },
+                                    "else_action": {
+                                        "args": {
+                                            "message": "it is NOT 1.45"
+                                        },
+                                        "label": "Utility - Insert Log",
+                                        "method": "insert_log",
+                                        "module": "utility",
+                                        "name": "utility"
+                                    },
+                                    "expression": "foo[\"Custom_Version_Name\"] == \"1.45\""
+                                },
+                                "label": "Utility - Conditional",
+                                "method": "conditional",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "group": "",
+                                    "pipeline": "Bitbucket Create Branch",
+                                    "project": "",
+                                    "start_now": "false"
+                                },
+                                "label": "Flow - Pipeline - Initiate",
+                                "method": "initiate",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "PHPUNIT"
+                                },
+                                "label": "Utility - jUnit Results",
+                                "method": "junit_results",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "code": "import xmltodict\nxml = WORKSPACE[\"CUCUMBER\"]\nOUTPUT[\"CUCUMBER\"] = xmltodict.parse(xml)"
+                                },
+                                "label": "Utility - Python Script",
+                                "method": "exec_python",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "CUCUMBER"
+                                },
+                                "label": "Utility - jUnit Results",
+                                "method": "junit_results",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "branch": "",
+                                    "path": "metrics/metrics.json",
+                                    "repository": "flow",
+                                    "response_key": "rawdata"
+                                },
+                                "label": "GitHub - Get File",
+                                "method": "get_file",
+                                "module": "main",
+                                "name": "github"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "action": {
+                                        "args": {
+                                            "message": "woo"
+                                        },
+                                        "label": "Utility - Insert Log",
+                                        "method": "insert_log",
+                                        "module": "utility",
+                                        "name": "utility"
+                                    },
+                                    "else_action": {
+                                        "args": {
+                                            "message": "blah"
+                                        },
+                                        "label": "Utility - Insert Log",
+                                        "method": "insert_log",
+                                        "module": "utility",
+                                        "name": "utility"
+                                    },
+                                    "expression": "len(rawdata.get(\"modules\")) > 1"
+                                },
+                                "label": "Utility - Conditional",
+                                "method": "conditional",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "data": "",
+                                    "headers": {
+                                        "Accept": "application/vnd.github.v3.raw",
+                                        "Authorization": "token 16b544c61e83d78ccf6f18c76b6e0811b6bbc626",
+                                        "Content-Type": "application/json"
+                                    },
+                                    "key": "rawfile",
+                                    "url": "https://api.github.com/repos/versionone/flow/contents/metrics/metrics.json",
+                                    "verb": "GET"
+                                },
+                                "label": "Utility - HTTP",
+                                "method": "http",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "attributes": "Custom_VersionNumbe2: 1.51\nCustom_VersionNumber: 1.52\nCustom_ReleaseNotes: woo\n",
+                                    "instance_name": "vbdemo",
+                                    "number": "S-01200",
+                                    "skip_on_closed": "true"
+                                },
+                                "label": "VersionOne - Set Workitem Attributes",
+                                "method": "set_workitem_attributes",
+                                "module": "main",
+                                "name": "v1plugin"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "expression": "returns.get(\"foo\") is not None",
+                                    "status": "end-success",
+                                    "waitseconds": "15"
+                                },
+                                "label": "Utility - Wait For Data",
+                                "method": "wait_for_data",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "never"
+                        }
+                    ]
+                },
+                {
+                    "name": "",
+                    "steps": []
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "summary": [],
+    "tags": [
+        "PetClinic"
+    ]
+}

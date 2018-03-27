@@ -1,0 +1,76 @@
+{
+    "__assembled": true,
+    "actions": [
+        {
+            "args": {},
+            "icon": "",
+            "method": "",
+            "name": "<script>alert(\"terrible pipeline action\")</script>",
+            "parameters": {},
+            "plugin": "",
+            "type": "plugin"
+        }
+    ],
+    "dependencies": [],
+    "description": "<script>alert(\"terrible pipeline description\")</script>",
+    "globals": {
+        "foo": "<script>alert(\"terrible pipeline global\")</script>"
+    },
+    "interactive": false,
+    "name": "test_reversion",
+    "phases": [
+        {
+            "name": "",
+            "stages": [
+                {
+                    "name": "",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "full_version": "",
+                                    "new_full_version": "",
+                                    "new_version": "master",
+                                    "package": "AAA.BBB",
+                                    "revision": "8"
+                                },
+                                "label": "Flow - Package - Rewrite Version",
+                                "method": "reversion",
+                                "module": "package",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "full_version": "",
+                                    "new_full_version": "",
+                                    "new_version": "7.1",
+                                    "package": "AAA.BBB",
+                                    "phase": "Ready for Te",
+                                    "revision": "8"
+                                },
+                                "label": "Flow - Package - Promote Revision",
+                                "method": "promote",
+                                "module": "package",
+                                "name": "flow"
+                            },
+                            "when": "never"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "summary": [
+        {
+            "label": "<script>alert(\"terrible summary label\")</script>",
+            "show": "always",
+            "value": "<script>alert(\"terrible summary value\")</script>"
+        }
+    ]
+}

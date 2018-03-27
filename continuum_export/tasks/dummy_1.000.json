@@ -1,0 +1,873 @@
+{
+    "Category": null,
+    "Code": "00023",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_debug_level",
+                        "debug_level": {
+                            "__dataset": "ddDataSource_GetDebugLevels",
+                            "__datasource": "function",
+                            "__input_type": "dropdown",
+                            "__label": "Logging Level",
+                            "debug_level": "10"
+                        }
+                    },
+                    "FunctionName": "set_debug_level",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "cmd_line",
+                        "__parse_method": "2",
+                        "command": {
+                            "command": "ls -l"
+                        },
+                        "conn_name": {
+                            "conn_name": "CONN1"
+                        },
+                        "negative_response": {
+                            "negative_response": ""
+                        },
+                        "positive_response": {
+                            "positive_response": ""
+                        },
+                        "result_variable": {
+                            "result_variable": ""
+                        },
+                        "timeout": {
+                            "timeout": ""
+                        }
+                    },
+                    "FunctionName": "cmd_line",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "message": {
+                            "message": "[$ submission['ref'] $]\n[$ submission['repository']['name'] $]"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "message": {
+                            "message": "[$ foo $]"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "flow.flowcmds",
+                        "__name": "register_artifact",
+                        "artifact_location": {
+                            "artifact_location": "some.location"
+                        },
+                        "artifact_name": {
+                            "artifact_name": "jenkins-artifact"
+                        },
+                        "artifact_version": {
+                            "artifact_version": "1.2.3.4.a"
+                        },
+                        "build_details": {
+                            "build_details": "{\"foo\": \"bar\"}"
+                        },
+                        "build_id": {
+                            "build_id": "[$ _TASK_INSTANCE $]"
+                        },
+                        "build_url": {
+                            "build_url": "[$ _TASK_INSTANCE_URL $]"
+                        },
+                        "project_name": {
+                            "project_name": "flow"
+                        }
+                    },
+                    "FunctionName": "register_artifact",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "message": {
+                            "message": "[$ _PI_DATA['phasedata'] $]"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "http",
+                        "__parse_method": "2",
+                        "cookie_out": {
+                            "cookie_out": ""
+                        },
+                        "data": {
+                            "data": ""
+                        },
+                        "headers": {
+                            "Item::pair::0": {
+                                "key": {
+                                    "key": "Content-Type"
+                                },
+                                "value": {
+                                    "value": "application/json"
+                                }
+                            },
+                            "Item::pair::1": {
+                                "key": {
+                                    "key": "Accept"
+                                },
+                                "value": {
+                                    "value": "application/vnd.github.v3.raw"
+                                }
+                            },
+                            "Item::pair::2": {
+                                "key": {
+                                    "key": "Authorization"
+                                },
+                                "value": {
+                                    "value": "token 16b544c61e83d78ccf6f18c76b6e0811b6bbc626"
+                                }
+                            },
+                            "__is_array": "true"
+                        },
+                        "response_body": {
+                            "response_body": "gitfile"
+                        },
+                        "response_header": {
+                            "response_header": ""
+                        },
+                        "response_info": {
+                            "response_info": ""
+                        },
+                        "response_time_ms": {
+                            "response_time_ms": ""
+                        },
+                        "retries": {
+                            "retries": "1"
+                        },
+                        "status_code": {
+                            "status_code": ""
+                        },
+                        "status_msg": {
+                            "status_msg": ""
+                        },
+                        "timeout": {
+                            "timeout": "10"
+                        },
+                        "type": {
+                            "type": "GET"
+                        },
+                        "url": {
+                            "url": "http://www.focusonthefamily.com"
+                        }
+                    },
+                    "FunctionName": "http",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "utility_ext.utility",
+                        "__name": "exec_python",
+                        "code": {
+                            "code": "import json\nimport base64\nx = VARS.eval_get(\"gitfile\")\nx[\"modules\"][0][\"metrics\"][0][\"name\"] = \"WOOHOO\"\njsonstring = json.dumps(x)\nb64str = base64.b64encode(jsonstring)\nVARS.set(\"data2post\", b64str)\nLOG.critical(VARS.get(\"data2post\"))"
+                        }
+                    },
+                    "FunctionName": "exec_python",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "message": {
+                            "message": "[$ gitfile[\"modules\"][0][\"metrics\"] $]"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_cloud_account",
+                        "cloud_account_name": {
+                            "cloud_account_name": "skytap"
+                        }
+                    },
+                    "FunctionName": "set_cloud_account",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "skytap_ext.skytapcmds",
+                        "__name": "skytap_new_environment",
+                        "result": {
+                            "result": "x"
+                        },
+                        "start": {
+                            "start": "0"
+                        },
+                        "template_id": {
+                            "template_id": "628629"
+                        }
+                    },
+                    "FunctionName": "skytap_new_environment",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "skytap_ext.skytapcmds",
+                        "__name": "skytap_delete_environment",
+                        "environment_id": {
+                            "environment_id": "[$ x['id'] $]"
+                        }
+                    },
+                    "FunctionName": "skytap_delete_environment",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "message": {
+                            "message": "[$_RUNTIMES$]"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "flow.flowcmds",
+                        "__name": "save_vars",
+                        "key_path": {
+                            "key_path": "VARDUMP"
+                        }
+                    },
+                    "FunctionName": "save_vars",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "flow.flowcmds",
+                        "__name": "set_data",
+                        "key_path": {
+                            "key_path": "FROMTASK"
+                        },
+                        "value": {
+                            "value": "{\"foo\": 1, \"bar\": [2,3,4]}"
+                        }
+                    },
+                    "FunctionName": "set_data",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "message": {
+                            "message": "ID: [$ _PI_ID $]\nWHOLE_PI:[$ _PI $]\nDATA: [$ _PI_DATA $]\nPROJECT: [$ _PROJECT $]\n"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_variable",
+                        "variables": {
+                            "Item::variable::0": {
+                                "__label": "Variable",
+                                "modifier": {
+                                    "__input_type": "select",
+                                    "__label": "Modifier",
+                                    "modifier": ""
+                                },
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "git"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "value": "{         \"after\": \"851e0818309bfe47bf93333517ca51df1dea1209\",         \"before\": \"867e0bc3abce2c5f67ca86b24870d1f7045f1aa5\",         \"commits\": [             {                 \"added\": [],                 \"author\": {                     \"email\": \"shannon.cruey@cloudsidekick.com\",                     \"name\": \"Shannon Cruey\",                     \"username\": \"shannoncruey\"                 },                 \"committer\": {                     \"email\": \"shannon.cruey@cloudsidekick.com\",                     \"name\": \"Shannon Cruey\",                     \"username\": \"shannoncruey\"                 },                 \"distinct\": true,                 \"id\": \"851e0818309bfe47bf93333517ca51df1dea1209\",                 \"message\": \"Closes #319 - poller will create /te log directory if missing\",                 \"modified\": [                     \"lib/catopoller/catopoller.py\"                 ],                 \"removed\": [],                 \"timestamp\": \"2014-04-30T15:44:32-04:00\",                 \"url\": \"https://github.com/cloudsidekick/cato/commit/851e0818309bfe47bf93333517ca51df1dea1209\"             }         ],         \"compare\": \"https://github.com/cloudsidekick/cato/compare/867e0bc3abce...851e0818309b\",         \"created\": false,         \"deleted\": false,         \"forced\": false,         \"head_commit\": {             \"added\": [],             \"author\": {                 \"email\": \"shannon.cruey@cloudsidekick.com\",                 \"name\": \"Shannon Cruey\",                 \"username\": \"shannoncruey\"             },             \"committer\": {                 \"email\": \"shannon.cruey@cloudsidekick.com\",                 \"name\": \"Shannon Cruey\",                 \"username\": \"shannoncruey\"             },             \"distinct\": true,             \"id\": \"851e0818309bfe47bf93333517ca51df1dea1209\",             \"message\": \"Closes #319 - poller will create /te log directory if missing\",             \"modified\": [                 \"lib/catopoller/catopoller.py\"             ],             \"removed\": [],             \"timestamp\": \"2014-04-30T15:44:32-04:00\",             \"url\": \"https://github.com/cloudsidekick/cato/commit/851e0818309bfe47bf93333517ca51df1dea1209\"         },         \"output_format\": \"\",         \"pusher\": {             \"email\": \"shannon.cruey@cloudsidekick.com\",             \"name\": \"shannoncruey\"         },         \"ref\": \"refs/heads/master\",         \"repository\": {             \"created_at\": 1316541359,             \"description\": \"Cloud Automation & Technology Orchestration\",             \"fork\": false,             \"forks\": 5,             \"has_downloads\": true,             \"has_issues\": true,             \"has_wiki\": true,             \"homepage\": \"\",             \"id\": 2424244,             \"language\": \"Python\",             \"master_branch\": \"master\",             \"name\": \"cato\",             \"open_issues\": 88,             \"organization\": \"cloudsidekick\",             \"owner\": {                 \"email\": null,                 \"name\": \"cloudsidekick\"             },             \"private\": false,             \"pushed_at\": 1398887076,             \"size\": 23542,             \"stargazers\": 11,             \"url\": \"https://github.com/cloudsidekick/cato\",             \"watchers\": 11         },         \"token\": \"9f29fb4a-cbf4-11e3-8490-12313b02557d\"    }"
+                                }
+                            },
+                            "__is_array": "true",
+                            "__label": "Variables"
+                        }
+                    },
+                    "FunctionName": "set_variable",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "__snip": "message",
+                        "message": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Log",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "2",
+                            "message": "yes! -- [[testparam]]\nrequired? -- [[i_am_required]]"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "woohoo ^^\n[[_DEPLOYMENT_GROUPS]]\n[[_DEPLOYMENT_GROUPS,*]]\n[[_DEPLOYMENT_GROUPS:1]]\n[[_DEPLOYMENT_PARAMS:depfoo]]\n[[_SEQUENCE_PARAMS:l[1]]]",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "__snip": "message",
+                        "message": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Log",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "2",
+                            "message": "[[_SEQUENCE_PARAMS:l]]\n"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "__snip": "message",
+                        "message": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Log",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "2",
+                            "message": "[[_DEPLOYMENT_GROUPS]]\n[[_DEPLOYMENT_GROUPS,*]]\n[[_DEPLOYMENT_GROUPS,1]]\n[[_DEPLOYMENT_NAME]]\n"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "sleep",
+                        "__snip": "seconds",
+                        "seconds": {
+                            "__input_type": "text",
+                            "__label": "Sleep",
+                            "seconds": "25"
+                        }
+                    },
+                    "FunctionName": "sleep",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "loop",
+                        "action": {
+                            "function": {
+                                "__extension": "deploy.datastore",
+                                "__name": "set_deployment_value",
+                                "pairs": {
+                                    "Item::pair::0": {
+                                        "__label": "Pair",
+                                        "key": {
+                                            "__input_type": "text",
+                                            "__label": "Key",
+                                            "key": "foo_[[x]]"
+                                        },
+                                        "value": {
+                                            "__class": "w200px",
+                                            "__input_type": "text",
+                                            "__label": "Value",
+                                            "value": "[[x]]"
+                                        }
+                                    },
+                                    "__is_array": "true",
+                                    "__label": "Key Value Pairs"
+                                },
+                                "scope": {
+                                    "__dataset": "Deployment|Service",
+                                    "__datasource": "local",
+                                    "__input_type": "dropdown",
+                                    "__label": "Scope",
+                                    "scope": "Deployment"
+                                }
+                            }
+                        },
+                        "compare_to": {
+                            "__input_type": "text",
+                            "compare_to": "10"
+                        },
+                        "counter": {
+                            "__input_type": "text",
+                            "counter": "x"
+                        },
+                        "increment": {
+                            "__input_type": "text",
+                            "increment": "1"
+                        },
+                        "max": {
+                            "__input_type": "text",
+                            "max": "10"
+                        },
+                        "start": {
+                            "__input_type": "text",
+                            "start": "1"
+                        },
+                        "test": {
+                            "__input_type": "select",
+                            "test": "<="
+                        }
+                    },
+                    "FunctionName": "loop",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_variable",
+                        "variables": {
+                            "__label": "Variables",
+                            "variable": {
+                                "__label": "Variable",
+                                "modifier": {
+                                    "__input_type": "select",
+                                    "__label": "Modifier",
+                                    "modifier": "EVAL"
+                                },
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "now"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "value": "datetime.utcnow()"
+                                }
+                            }
+                        }
+                    },
+                    "FunctionName": "set_variable",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "__snip": "message",
+                        "message": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Log",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "2",
+                            "message": "[[diff]]\n[[too_old]]\nnow: [[now]]"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "if",
+                        "else": {
+                            "__input_type": "text",
+                            "function": {
+                                "__name": "log_msg",
+                                "__snip": "message",
+                                "message": {
+                                    "__class": "w95pct",
+                                    "__input_type": "textarea",
+                                    "__label": "Log",
+                                    "__label_style": "display: block;",
+                                    "__required": "true",
+                                    "__rows": "2",
+                                    "message": "not equal"
+                                }
+                            }
+                        },
+                        "tests": {
+                            "test": {
+                                "action": {
+                                    "function": {
+                                        "__name": "log_msg",
+                                        "__snip": "message",
+                                        "message": {
+                                            "__class": "w95pct",
+                                            "__input_type": "textarea",
+                                            "__label": "Log",
+                                            "__label_style": "display: block;",
+                                            "__required": "true",
+                                            "__rows": "2",
+                                            "message": "equal"
+                                        }
+                                    }
+                                },
+                                "eval": {
+                                    "eval": "(parsedate(\"2013-6-14\") - parsedate(\"2013-6-13\")) > datediff(minutes=15)"
+                                }
+                            }
+                        }
+                    },
+                    "FunctionName": "if",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "__snip": "message",
+                        "message": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Log",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "2",
+                            "message": "iamrequired: [[i_am_required]]\npick: [[pick_one]]\nlist: [[list]]"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "exists",
+                        "actions": {
+                            "negative_action": {
+                                "function": {
+                                    "__name": "end",
+                                    "__snip": "status",
+                                    "message": {
+                                        "__class": "w95pct",
+                                        "__input_type": "textarea",
+                                        "__label": "Message",
+                                        "__label_style": "display: block;",
+                                        "__rows": "3",
+                                        "message": "test 1 - var i_am_required is, um... required."
+                                    },
+                                    "status": {
+                                        "__dataset": "Completed|Error|Cancelled",
+                                        "__datasource": "local",
+                                        "__input_type": "dropdown",
+                                        "__label": "Status",
+                                        "status": "Error"
+                                    }
+                                }
+                            },
+                            "positive_action": {
+                                "positive_action": ""
+                            }
+                        },
+                        "variables": {
+                            "variable": {
+                                "is_true": {
+                                    "is_true": "0"
+                                },
+                                "name": {
+                                    "__input_type": "text",
+                                    "name": "i_am_required"
+                                }
+                            }
+                        }
+                    },
+                    "FunctionName": "exists",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "if",
+                        "tests": {
+                            "test": {
+                                "action": {
+                                    "function": {
+                                        "__name": "end",
+                                        "__snip": "status",
+                                        "message": {
+                                            "__class": "w95pct",
+                                            "__input_type": "textarea",
+                                            "__label": "Message",
+                                            "__label_style": "display: block;",
+                                            "__rows": "3",
+                                            "message": "test 2 - var i_am_required is, um... required."
+                                        },
+                                        "status": {
+                                            "__dataset": "Completed|Error|Cancelled",
+                                            "__datasource": "local",
+                                            "__input_type": "dropdown",
+                                            "__label": "Status",
+                                            "status": "Error"
+                                        }
+                                    }
+                                },
+                                "eval": {
+                                    "eval": "\"[[i_am_required]]\"==\"\""
+                                }
+                            }
+                        }
+                    },
+                    "FunctionName": "if",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "new_connection",
+                        "__snip": "conn_name",
+                        "asset": {
+                            "__input_type": "text",
+                            "asset": "AluminumOverdrive"
+                        },
+                        "cloud_name": {
+                            "__input_type": "dropdown",
+                            "__style": "combo",
+                            "cloud_name": ""
+                        },
+                        "conn_name": {
+                            "__class": "w200px",
+                            "__help": "Name this connection for reference in the Task.",
+                            "__input_type": "text",
+                            "__label": "as",
+                            "__required": "true",
+                            "conn_name": "CONN1"
+                        },
+                        "conn_type": {
+                            "__input_type": "select",
+                            "conn_type": "ssh"
+                        }
+                    },
+                    "FunctionName": "new_connection",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "sleep",
+                        "__snip": "seconds",
+                        "seconds": {
+                            "__input_type": "text",
+                            "__label": "Sleep",
+                            "seconds": "120"
+                        }
+                    },
+                    "FunctionName": "sleep",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": 0,
+    "Description": "This dummy task is a placeholder for development.",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "dummy",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [
+        {
+            "encrypt": "false",
+            "name": "i_am_required",
+            "present_as": "value",
+            "prompt": "true",
+            "required": "true",
+            "values": [
+                "bar"
+            ]
+        },
+        {
+            "encrypt": "false",
+            "name": "pick_one",
+            "present_as": "dropdown",
+            "prompt": "true",
+            "required": "false",
+            "values": [
+                "true",
+                "false"
+            ]
+        },
+        {
+            "encrypt": "false",
+            "name": "list",
+            "present_as": "list",
+            "prompt": "true",
+            "required": "false",
+            "values": [
+                "list v1",
+                "list v2"
+            ]
+        },
+        {
+            "encrypt": "false",
+            "name": "no_prompt",
+            "present_as": "value",
+            "prompt": "false",
+            "required": "false",
+            "values": [
+                "you won't see me!"
+            ]
+        }
+    ],
+    "QueueDepth": 0,
+    "Status": "Development",
+    "Version": "1.000"
+}

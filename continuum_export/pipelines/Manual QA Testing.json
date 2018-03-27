@@ -1,0 +1,153 @@
+{
+    "__assembled": true,
+    "actions": [],
+    "description": "Petclinic CD Pipeline",
+    "globals": {
+        "jenkins_job": "petclinic"
+    },
+    "name": "Manual QA Testing",
+    "phases": [
+        {
+            "name": "Notify",
+            "stages": [
+                {
+                    "description": "",
+                    "name": "Notify",
+                    "steps": [
+                        {
+                            "name": "Notify ",
+                            "plugin": {
+                                "args": {
+                                    "message": "Pipeline ready",
+                                    "room": "ClearCode"
+                                },
+                                "method": "send",
+                                "module": "notification",
+                                "name": "hipchatplugin"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Manual User Acceptance",
+            "stages": [
+                {
+                    "description": "deploy to uat",
+                    "name": "Deploy to UAT",
+                    "steps": [
+                        {
+                            "name": "deploy",
+                            "plugin": {
+                                "args": {
+                                    "text": "Should this Release Candidate be deployed to a UAT system?",
+                                    "title": "Deploy?"
+                                },
+                                "kind": "confirm",
+                                "method": "confirmation",
+                                "module": "interact",
+                                "name": "flow",
+                                "type": "interaction"
+                            },
+                            "tags": []
+                        },
+                        {
+                            "name": "deploy mua server",
+                            "plugin": {
+                                "args": {
+                                    "params": {
+                                        "DeploymentParamsVals": [],
+                                        "SequenceParamsVals": [],
+                                        "Services": [
+                                            {
+                                                "ServiceName": "Server",
+                                                "Transitions": [
+                                                    {
+                                                        "Parameters": [],
+                                                        "Step": 1
+                                                    },
+                                                    {
+                                                        "Parameters": [
+                                                            {
+                                                                "name": "warfile",
+                                                                "values": "[$inputs['artifacts']['warfile']['location']$]"
+                                                            }
+                                                        ],
+                                                        "Step": 2
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "template": "petclinic",
+                                    "version": 1
+                                },
+                                "method": "deploy",
+                                "module": "deployment",
+                                "name": "deploy"
+                            }
+                        },
+                        {
+                            "name": "finish testing",
+                            "plugin": {
+                                "args": {
+                                    "text": "Are you finished testing this release candidate?",
+                                    "title": "Finished?"
+                                },
+                                "kind": "confirm",
+                                "method": "confirmation",
+                                "module": "interact",
+                                "name": "flow",
+                                "type": "interaction"
+                            },
+                            "tags": []
+                        },
+                        {
+                            "name": "terminate mua server",
+                            "plugin": {
+                                "args": {},
+                                "method": "terminate",
+                                "module": "deployment",
+                                "name": "deploy"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Push Artifact Downstream",
+            "stages": [
+                {
+                    "description": "",
+                    "name": "Push Artifact Downstream",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "artifact_location": "[$inputs['artifacts']['warfile']['location']$]",
+                                    "artifact_name": "warfile"
+                                },
+                                "method": "register_artifact",
+                                "module": "pipeline",
+                                "name": "flow"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "product_id": "5447f2483ed4d26b0b3d8368",
+    "product_name": "Pet Clinic",
+    "product_workflow_step": "QA",
+    "signature": "",
+    "signature_type": "git",
+    "summary": [],
+    "tags": [
+        "PetClinic"
+    ]
+}

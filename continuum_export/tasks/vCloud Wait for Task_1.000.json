@@ -1,0 +1,196 @@
+{
+    "Category": null,
+    "Code": "062",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "while",
+                        "__snip": "test",
+                        "action": {
+                            "function": {
+                                "__name": "codeblock",
+                                "__snip": "codeblock",
+                                "codeblock": {
+                                    "__input_type": "text",
+                                    "codeblock": "checktask"
+                                }
+                            }
+                        },
+                        "test": {
+                            "__input_type": "text",
+                            "test": "\"[[status]]\" == \"running\""
+                        }
+                    },
+                    "FunctionName": "while",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        },
+        {
+            "Name": "checktask",
+            "Steps": [
+                {
+                    "Codeblock": "checktask",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "vcloud.vcloud",
+                        "__name": "vcloud_call_parse",
+                        "action": {
+                            "__dataset": "GET|POST|DELETE|PUT",
+                            "__datasource": "local",
+                            "__input_type": "dropdown",
+                            "__label": "Action",
+                            "action": "GET"
+                        },
+                        "content_type": {
+                            "__class": "w90pct",
+                            "__input_type": "text",
+                            "__label": "Content Type",
+                            "content_type": ""
+                        },
+                        "data": {
+                            "__class": "w90pct",
+                            "__input_type": "textarea",
+                            "__label": "Data",
+                            "__label_style": "display: block;",
+                            "__rows": "3",
+                            "data": ""
+                        },
+                        "endpoint_name": {
+                            "__class": "combo w300px",
+                            "__dataset": "ddDataSource_GetAllClouds",
+                            "__datasource": "function",
+                            "__hr_after": "true",
+                            "__input_type": "dropdown",
+                            "__label": "Cloud Endpoint Name",
+                            "endpoint_name": ""
+                        },
+                        "method_or_href": {
+                            "__dataset": "method|href",
+                            "__datasource": "local",
+                            "__input_type": "dropdown",
+                            "__label": "Method or Href",
+                            "method_or_href": "href"
+                        },
+                        "path": {
+                            "__class": "w90pct",
+                            "__input_type": "textarea",
+                            "__label": "Url or Method",
+                            "__label_style": "display: block;",
+                            "__rows": "1",
+                            "path": "[[task_href]]"
+                        },
+                        "values": {
+                            "Item::value::0": {
+                                "__label": "Value",
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Attribute or Element Name",
+                                    "name": "status"
+                                },
+                                "type": {
+                                    "__dataset": "attribute|element",
+                                    "__datasource": "local",
+                                    "__input_type": "dropdown",
+                                    "__label": "Type",
+                                    "type": "attribute"
+                                },
+                                "variable": {
+                                    "__input_type": "text",
+                                    "__label": "Variable",
+                                    "variable": "status"
+                                }
+                            },
+                            "__is_array": "true",
+                            "__label": "Values to Extract"
+                        },
+                        "xpath": {
+                            "__class": "w90pct",
+                            "__input_type": "textarea",
+                            "__label": "Xpath",
+                            "__label_style": "display: block;",
+                            "__rows": "1",
+                            "xpath": "."
+                        }
+                    },
+                    "FunctionName": "vcloud_call_parse",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "checktask",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "if",
+                        "tests": {
+                            "test": {
+                                "action": {
+                                    "function": {
+                                        "__name": "sleep",
+                                        "__snip": "seconds",
+                                        "seconds": {
+                                            "__input_type": "text",
+                                            "__label": "Sleep",
+                                            "seconds": "5"
+                                        }
+                                    }
+                                },
+                                "eval": {
+                                    "eval": "\"[[status]]\" == \"running\""
+                                }
+                            }
+                        }
+                    },
+                    "FunctionName": "if",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": 0,
+    "Description": "Called as a subtask. Requires variables \"status\" and \"task_href\"",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "vCloud Wait for Task",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [
+        {
+            "encrypt": "false",
+            "name": "status",
+            "present_as": "value",
+            "prompt": "true",
+            "required": "false",
+            "values": [
+                ""
+            ]
+        },
+        {
+            "encrypt": "false",
+            "name": "task_href",
+            "present_as": "value",
+            "prompt": "true",
+            "required": "true",
+            "values": [
+                ""
+            ]
+        }
+    ],
+    "QueueDepth": 0,
+    "Status": "Development",
+    "Version": "1.000"
+}

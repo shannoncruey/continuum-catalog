@@ -1,0 +1,102 @@
+{
+    "actions": [],
+    "category": "",
+    "dependencies": [],
+    "description": "",
+    "globals": {},
+    "interactive": false,
+    "name": "Test Loop",
+    "phases": [
+        {
+            "name": "",
+            "stages": [
+                {
+                    "name": "",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "myloopitems",
+                                    "value": "[{\"name\": \"Buffy\"}, {\"name\": \"Willow\"}, {\"name\": \"Xander\"}]"
+                                },
+                                "label": "Flow - Pipeline - Set Data",
+                                "method": "set_data",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "action": {
+                                        "args": {
+                                            "code": "OUTPUT[\"myarray\"] = [x[\"name\"] for x in WORKSPACE.get(\"myloopitems\")]\n"
+                                        },
+                                        "label": "Utility - Python Script",
+                                        "method": "exec_python",
+                                        "module": "utility",
+                                        "name": "utility"
+                                    },
+                                    "iterator": "myloopitems"
+                                },
+                                "args_parsing": "internal",
+                                "label": "Utility - Loop",
+                                "method": "loop",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "status": "end-failure"
+                                },
+                                "label": "Utility - End",
+                                "method": "end",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "conditionally",
+                            "when_condition": "myarray[0] != 'Buffy'"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "status": "end-failure"
+                                },
+                                "label": "Utility - End",
+                                "method": "end",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "conditionally",
+                            "when_condition": "myarray[1] != 'Willow'"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "status": "end-failure"
+                                },
+                                "label": "Utility - End",
+                                "method": "end",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "conditionally",
+                            "when_condition": "myarray[2] != 'Xander'"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "summary": []
+}

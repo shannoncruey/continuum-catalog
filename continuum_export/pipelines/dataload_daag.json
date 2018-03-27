@@ -1,0 +1,81 @@
+{
+    "actions": [],
+    "description": "",
+    "globals": {},
+    "name": "dataload_daag",
+    "phases": [
+        {
+            "name": "",
+            "stages": [
+                {
+                    "name": "",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "name": "r[$ to_revision $] to DAAG [$ phase $]"
+                                },
+                                "label": "Flow - Pipeline - Set Name",
+                                "method": "set_name",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "globals_key": "",
+                                    "package": "[$ package $]",
+                                    "revision": "[$ to_revision $]"
+                                },
+                                "label": "Flow - Package - Load Revision",
+                                "method": "load_revision",
+                                "module": "package",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "full_version",
+                                    "value": "[$ __PREVSTEPDATA['full_version'] $]"
+                                },
+                                "label": "Flow - Pipeline - Set Data",
+                                "method": "set_data",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "full_version": "",
+                                    "instance_name": "",
+                                    "package_label": "[$ package $] [$ full_version $]",
+                                    "package_name": "[$ package $]",
+                                    "phase": "[$ phase $]",
+                                    "required": "true",
+                                    "revision": "[$ to_revision $]"
+                                },
+                                "label": "VersionOne - Specify Phase",
+                                "method": "specify_phase",
+                                "module": "main",
+                                "name": "v1plugin"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "summary": []
+}

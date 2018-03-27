@@ -1,0 +1,26 @@
+{
+    "Category": null,
+    "Code": "",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": []
+        },
+        {
+            "Name": "asd",
+            "Steps": []
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "",
+    "IsDefaultVersion": false,
+    "MaxVersion": "2.000",
+    "Name": "~apitest",
+    "NextMajorVersion": "3.000",
+    "NextMinorVersion": "2.001",
+    "NumberOfApprovedVersions": 2,
+    "Parameters": [],
+    "QueueDepth": null,
+    "Status": "Approved",
+    "Version": "1.002"
+}

@@ -1,0 +1,44 @@
+{
+    "actions": "",
+    "dependencies": [],
+    "description": "",
+    "globals": {},
+    "interactive": false,
+    "name": "test_directive",
+    "phases": [
+        {
+            "name": "",
+            "stages": [
+                {
+                    "name": "",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "artifact_location": "path/to/some/thing.txt",
+                                    "artifact_name": "test_project",
+                                    "artifact_version": "",
+                                    "branch": "",
+                                    "build_details": "",
+                                    "build_id": "",
+                                    "build_url": "",
+                                    "package_name": "",
+                                    "package_revision": "",
+                                    "project_name": "test_project"
+                                },
+                                "label": "Flow - Artifact - New Revision",
+                                "method": "register_artifact",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "summary": []
+}

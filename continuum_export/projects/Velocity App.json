@@ -1,0 +1,381 @@
+{
+    "actions": [
+        {
+            "args": {},
+            "icon": "icon1",
+            "method": "manual_initiate",
+            "name": "do a plugin",
+            "parameters": {},
+            "plugin": "flow.pipeline",
+            "tags": [
+                "\"foo\"",
+                "\"bar\""
+            ],
+            "type": "plugin"
+        },
+        {
+            "args": {},
+            "icon": "icon2",
+            "method": "list_tasks",
+            "name": "call api",
+            "parameters": {},
+            "type": "api"
+        },
+        {
+            "definition": "Package Velocity",
+            "details": null,
+            "group": "master",
+            "icon": "icon3",
+            "instancename": "foo",
+            "name": "initiate somethin",
+            "parameters": {},
+            "project": "Velocity App",
+            "project_version": "",
+            "type": "initiate_pipeline"
+        },
+        {
+            "definition": "Deploy To DevServer",
+            "details": null,
+            "group": "master",
+            "icon": "icon4",
+            "instancename": "",
+            "name": "initiate another",
+            "parameters": [
+                {
+                    "name": "project_version",
+                    "required": "true"
+                },
+                {
+                    "name": "package_build",
+                    "required": "true"
+                }
+            ],
+            "project": "Velocity App",
+            "project_version": "",
+            "type": "initiate_pipeline"
+        },
+        {
+            "args": {},
+            "icon": "icon5",
+            "name": "run task",
+            "parameters": [
+                {
+                    "name": "i_am_required",
+                    "required": "true",
+                    "values": [
+                        "bar"
+                    ]
+                },
+                {
+                    "name": "pick_one",
+                    "present_as": "dropdown",
+                    "values": [
+                        "true",
+                        "false"
+                    ]
+                },
+                {
+                    "name": "a_list",
+                    "present_as": "list",
+                    "values": [
+                        "one",
+                        "two"
+                    ]
+                }
+            ],
+            "task": "dummy",
+            "type": "task",
+            "version": ""
+        },
+        {
+            "args": {},
+            "icon": "",
+            "name": "task no params",
+            "parameters": {},
+            "task": "dummy",
+            "type": "task",
+            "version": ""
+        }
+    ],
+    "artifacts": [
+        {
+            "_id": "57616e95805479609578e33a",
+            "created_dt": "2015-03-20T10:59:50.722000",
+            "last_revision": 158,
+            "last_revision_dt": "2015-04-14T01:00:45.950000",
+            "name": "velocityapp",
+            "project_id": "53f38bf35e149705ab1d7acc",
+            "project_name": "Velocity App"
+        }
+    ],
+    "dependencies": [
+        {
+            "group": "master",
+            "project": "flow"
+        },
+        {
+            "group": "master",
+            "project": "canvas"
+        },
+        {
+            "group": "master",
+            "project": "deploy"
+        },
+        {
+            "group": "master",
+            "project": "automate"
+        },
+        {
+            "group": "master",
+            "project": "common"
+        },
+        {
+            "group": "master",
+            "project": "client"
+        },
+        {
+            "group": "master",
+            "project": "velocity_packager"
+        }
+    ],
+    "description": "Bundles everything together!",
+    "feeder_last_good_rcs": {
+        "automate": {
+            "master": {
+                "group": "master",
+                "name": "729e62d",
+                "pi_group_id": "5436ca435e14972c592fc137",
+                "pipeline": "Velocity Build",
+                "pipeline_id": "539b534f2abe6d6e3d4d7645",
+                "project": "automate",
+                "project_id": "53c00b395e14975b2f987f4e",
+                "rc_id": "54822d673ed4d224bdafdbd5"
+            }
+        },
+        "canvas": {
+            "master": {
+                "group": "master",
+                "name": "dc64ff4",
+                "pi_group_id": "5436ccde5e14972c592fc170",
+                "pipeline": "Velocity Build",
+                "pipeline_id": "539b534f2abe6d6e3d4d7645",
+                "project": "canvas",
+                "project_id": "53c543f85e1497721ea438a1",
+                "rc_id": "547cd5153ed4d224bdafda18"
+            }
+        },
+        "client": {
+            "master": {
+                "group": "master",
+                "name": "13f6d58",
+                "pi_group_id": "5436ccc25e14972c592fc165",
+                "pipeline": "Velocity Build",
+                "pipeline_id": "539b534f2abe6d6e3d4d7645",
+                "project": "client",
+                "project_id": "53f3b5445e149705c16be386",
+                "rc_id": "54650e463ed4d224bdafd97b"
+            }
+        },
+        "common": {
+            "master": {
+                "group": "master",
+                "name": "7e9e6b2",
+                "pi_group_id": "544e4ac23ed4d2283e99523c",
+                "pipeline": "Velocity Common Build",
+                "pipeline_id": "544e478e3ed4d228443c4021",
+                "project": "common",
+                "project_id": "53f3897c5e149705c16be334",
+                "rc_id": "5482427d3ed4d224bdafdbe4"
+            }
+        },
+        "deploy": {
+            "master": {
+                "group": "master",
+                "name": "2f1705b",
+                "pi_group_id": "53b5eb6a01fe08205f5a5158",
+                "pipeline": "Velocity Build",
+                "pipeline_id": "539b534f2abe6d6e3d4d7645",
+                "project": "deploy",
+                "project_id": "53c00b585e14975b2f987f54",
+                "rc_id": "547e09623ed4d224bdafda6b"
+            }
+        },
+        "flow": {
+            "master": {
+                "group": "master",
+                "name": "20375373",
+                "pi_group_id": "5436cbdf5e14972c592fc142",
+                "pipeline": "Velocity Build",
+                "pipeline_id": "539b534f2abe6d6e3d4d7645",
+                "project": "flow",
+                "project_id": "53c043c55e14975b2f987f68",
+                "rc_id": "54822cbe3ed4d224bdafdbc6"
+            }
+        },
+        "velocity": {
+            "master": {
+                "group": "master",
+                "name": "34f2675",
+                "pi_group_id": "5436cc035e14972c592fc14d",
+                "pipeline": "Velocity Build",
+                "pipeline_id": "539b534f2abe6d6e3d4d7645",
+                "project": "velocity",
+                "project_id": "53f390945e149705c16be342",
+                "rc_id": "5481fe993ed4d224bdafdb76"
+            }
+        },
+        "velocity_packager": {
+            "master": {
+                "group": "master",
+                "name": "9ed443a",
+                "pi_group_id": "5419f19e5e14973a585c459c",
+                "pipeline": "Velocity Packager",
+                "pipeline_id": "5419efaa5e149766164bf67f",
+                "project": "velocity_packager",
+                "project_id": "53c02b325e14975b2f987f5a",
+                "rc_id": "5460d2c63ed4d205d34f78fe"
+            }
+        }
+    },
+    "fudge": [
+        {
+            "method": "manual_initiate",
+            "parameters": {},
+            "plugin": "flow.pipeline",
+            "type": "plugin"
+        },
+        {
+            "method": "list_tasks",
+            "parameters": {},
+            "type": "api"
+        },
+        {
+            "definition": "Package Velocity",
+            "details": {
+                "asdf": "zxcv"
+            },
+            "group": "master",
+            "instancename": "",
+            "parameters": {},
+            "project": "Velocity App",
+            "project_version": "",
+            "type": "initiate_pipeline"
+        },
+        {
+            "definition": "Deploy To DevServer",
+            "details": "",
+            "group": "master",
+            "instancename": "",
+            "parameters": [
+                {
+                    "name": "project_version",
+                    "required": "true"
+                },
+                {
+                    "name": "package_build",
+                    "required": "true"
+                }
+            ],
+            "project": "Velocity App",
+            "project_version": "",
+            "type": "initiate_pipeline"
+        },
+        {
+            "parameters": [
+                {
+                    "name": "i_am_required",
+                    "required": "true",
+                    "values": [
+                        "bar"
+                    ]
+                },
+                {
+                    "name": "pick_one",
+                    "present_as": "dropdown",
+                    "values": [
+                        "true",
+                        "false"
+                    ]
+                },
+                {
+                    "name": "a_list",
+                    "present_as": "list",
+                    "values": [
+                        "one",
+                        "two"
+                    ]
+                }
+            ],
+            "taskname": "dummy",
+            "taskversion": "1.23",
+            "type": "task"
+        }
+    ],
+    "lifecycle": "",
+    "mappings": [
+        {
+            "_id": "5716227a8054797dbaa5c64c",
+            "dn_definition": "54515a5c3ed4d20b6ad668a5",
+            "dn_group": "master",
+            "dn_project": "542093445e14975fdb17e788",
+            "up_definition": "53ee59345e149705dff19010",
+            "up_group": "master",
+            "up_project": "53f38bf35e149705ab1d7acc"
+        },
+        {
+            "_id": "5716227a8054797dbaa5c64d",
+            "dn_definition": "54515b8e3ed4d20b6ad668a8",
+            "dn_group": "master",
+            "dn_project": "542093445e14975fdb17e788",
+            "up_definition": "54515a5c3ed4d20b6ad668a5",
+            "up_group": "master",
+            "up_project": "53f38bf35e149705ab1d7acc"
+        },
+        {
+            "_id": "5716227a8054797dbaa5c64e",
+            "dn_definition": "54616e633ed4d24546762ed4",
+            "dn_group": "master",
+            "dn_project": "53f38bf35e149705ab1d7acc",
+            "up_definition": "53a0bfd32abe6d77f7f11bad",
+            "up_group": "master",
+            "up_project": "53f38bf35e149705ab1d7acc"
+        }
+    ],
+    "name": "Velocity App",
+    "notifications": {
+        "email": {
+            "addresses": "patrickdunnigan@clearcodelabs.com,shannoncruey@clearcodelabs.com"
+        },
+        "enable": false,
+        "hipchat": {
+            "room": ""
+        },
+        "http": {
+            "data": "",
+            "url": ""
+        },
+        "on_failure": [
+            "email"
+        ],
+        "on_start": [],
+        "on_success": [],
+        "on_wait": [
+            "email"
+        ],
+        "slack": {
+            "channel": ""
+        }
+    },
+    "source": {
+        "directives": [],
+        "enable_polling": false,
+        "group_source": "branch",
+        "notify_unmanaged": false,
+        "notify_unmanaged_addl": "",
+        "repo_name": "",
+        "repo_server": ""
+    },
+    "type": "Integration",
+    "version": "1.43",
+    "version_date": "2015-03-17 19:32:13"
+}

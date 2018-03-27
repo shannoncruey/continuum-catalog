@@ -1,0 +1,52 @@
+{
+    "__assembled": true,
+    "actions": [],
+    "desc": "",
+    "description": "",
+    "globals": {},
+    "name": "Velocity Packager",
+    "phases": [
+        {
+            "name": "Increment Submodule Version",
+            "stages": [
+                {
+                    "description": "",
+                    "name": "Bump Submodule Version",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "increment": "plusone",
+                                    "to_version": ""
+                                },
+                                "label": "Flow - Project - New Version",
+                                "method": "new_version",
+                                "module": "project",
+                                "name": "flow"
+                            },
+                            "when": "conditionally",
+                            "when_condition": "bool(len(github.get('commits', [])))"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "product_id": "542ef5ad5e1497307173c009",
+    "product_name": "Velocity",
+    "product_workflow_step": "Package",
+    "signature": {
+        "ref": "refs/heads/master",
+        "repository": {
+            "name": "velocity_packager",
+            "url": "https://github.com/cloudsidekick/velocity_packager"
+        }
+    },
+    "signature_type": "git",
+    "summary": [],
+    "tags": [
+        "Velocity"
+    ]
+}

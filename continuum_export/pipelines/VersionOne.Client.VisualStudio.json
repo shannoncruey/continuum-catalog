@@ -1,0 +1,61 @@
+{
+    "__assembled": true,
+    "actions": [],
+    "desc": "",
+    "description": "",
+    "globals": {
+        "jenkins_job": "aa.VSClientTest",
+        "version": "9.0.1"
+    },
+    "name": "VersionOne.Client.VisualStudio",
+    "phases": [
+        {
+            "name": "Shared-GitInfo",
+            "stages": [
+                {
+                    "description": "",
+                    "name": "Git-GetInfo",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {},
+                                "label": "GitHub - Show Summary",
+                                "method": "show_summary",
+                                "module": "main",
+                                "name": "github"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Shared-Build",
+            "stages": [
+                {
+                    "description": "",
+                    "name": "Jenkins-Build",
+                    "steps": []
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "product_id": "543fe8a37c1a7c67c7dcb133",
+    "product_name": "VersionOne",
+    "product_workflow_step": "",
+    "signature": {
+        "ref": "refs/heads/master",
+        "repository": {
+            "name": "VersionOne.Client.VisualStudio",
+            "url": "https://github.com/versionone/VersionOne.Client.VisualStudio"
+        }
+    },
+    "signature_type": "git",
+    "summary": [],
+    "tags": [
+        "VersionOne"
+    ],
+    "warnings": []
+}

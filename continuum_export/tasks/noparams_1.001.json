@@ -1,0 +1,113 @@
+{
+    "Category": null,
+    "Code": ",--code",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "utility.utility",
+                        "__name": "datastore_eval",
+                        "code": {
+                            "__input_type": "textarea",
+                            "__label": "Code",
+                            "code": "db.legato.rcs.find().toArray()"
+                        },
+                        "variable": {
+                            "__input_type": "text",
+                            "__label": "Variable",
+                            "variable": "foo"
+                        }
+                    },
+                    "FunctionName": "datastore_eval",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "__snip": "message",
+                        "message": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Log",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "2",
+                            "message": "[[foo]]"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "utility.utility",
+                        "__name": "datastore_eval",
+                        "code": {
+                            "__input_type": "textarea",
+                            "__label": "Code",
+                            "code": "db.legato.rcs.aggregate(\n    { \"$group\" : {\n        \"_id\" : \"$status\",\n        \"num\" : { \"$sum\" : 1 }\n    }}\n).result"
+                        },
+                        "variable": {
+                            "__input_type": "text",
+                            "__label": "Variable",
+                            "variable": "foo"
+                        }
+                    },
+                    "FunctionName": "datastore_eval",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "__snip": "message",
+                        "message": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Log",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "2",
+                            "message": "[[foo]]"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": ",--desc",
+    "IsDefaultVersion": false,
+    "MaxVersion": "1.001",
+    "Name": "noparams",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.002",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.001"
+}

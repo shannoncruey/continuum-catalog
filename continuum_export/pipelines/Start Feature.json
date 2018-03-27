@@ -1,0 +1,150 @@
+{
+    "__assembled": true,
+    "actions": "",
+    "description": "",
+    "globals": {},
+    "name": "Start Feature",
+    "phases": [
+        {
+            "name": "Provision Test Environment",
+            "stages": [
+                {
+                    "description": "",
+                    "name": "Create Skytap Environment",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "cloud_account": "skytap",
+                                    "start": false,
+                                    "template_id": 503325
+                                },
+                                "label": "Skytap - Create Environment",
+                                "method": "create_environment",
+                                "module": "skytap",
+                                "name": "skytap"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "SKYTAPLINK",
+                                    "value": "[$ __PREVSTEPDATA.get(\"response\", {}).get(\"url\", \"\") $]"
+                                },
+                                "label": "Flow - Pipeline - Set Data",
+                                "method": "set_data",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Branch Source Code",
+            "stages": [
+                {
+                    "description": "",
+                    "name": "Create Branch",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "FEATURENAME",
+                                    "value": "[$ webhookdata.get(\"object\", {}).get(\"number\") $]"
+                                },
+                                "label": "Flow - Pipeline - Set Data",
+                                "method": "set_data",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "branch_name": "[$ FEATURENAME $]",
+                                    "instance_name": "",
+                                    "ns_project": "root/customers-microservice",
+                                    "reference": "master"
+                                },
+                                "label": "GitLab - Create Branch",
+                                "method": "create_branch",
+                                "module": "gitlab",
+                                "name": "gitlab"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "GITLABLINK",
+                                    "value": "[$ __PREVSTEPDATA.get(\"response\", {}).get(\"web_url\", \"\") $]"
+                                },
+                                "label": "Flow - Pipeline - Set Data",
+                                "method": "set_data",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Update VersionOne",
+            "stages": [
+                {
+                    "description": "",
+                    "name": "Push Links onto V1 Feature",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "instance_name": "",
+                                    "linkname": "GitLab",
+                                    "linkurl": "[$ GITLABLINK $]",
+                                    "oid": "[$ webhookdata.get(\"object\", {}).get(\"id\") $]",
+                                    "onmenu": true
+                                },
+                                "label": "VersionOne - Push Link",
+                                "method": "push_link",
+                                "module": "main",
+                                "name": "v1plugin"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "instance_name": "",
+                                    "linkname": "SkyTap",
+                                    "linkurl": "[$ SKYTAPLINK $]",
+                                    "oid": "[$ webhookdata.get(\"object\", {}).get(\"id\") $]",
+                                    "onmenu": true
+                                },
+                                "label": "VersionOne - Push Link",
+                                "method": "push_link",
+                                "module": "main",
+                                "name": "v1plugin"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "summary": []
+}

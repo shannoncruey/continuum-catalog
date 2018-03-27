@@ -1,0 +1,203 @@
+{
+    "actions": [
+        {
+            "args": {
+                "foo": "bar"
+            },
+            "icon": "",
+            "isOpen": "",
+            "name": "do it",
+            "parameters": [],
+            "tags": [
+                "ProjAdmin"
+            ],
+            "task": "dummy",
+            "type": "task",
+            "version": ""
+        },
+        {
+            "args": {},
+            "icon": "",
+            "isOpen": "",
+            "method": "test_connection",
+            "name": "Test V1 Connection",
+            "parameters": {},
+            "plugin": "gitlab.gitlab",
+            "tags": [
+                ""
+            ],
+            "type": "plugin"
+        },
+        {
+            "definition": "__do_something_manual",
+            "details": {},
+            "group": "master",
+            "icon": "",
+            "instancename": "",
+            "isOpen": "",
+            "name": "run do nothing",
+            "parameters": [
+                {
+                    "name": "i_am_required",
+                    "required": "true",
+                    "values": [
+                        "bar"
+                    ]
+                },
+                {
+                    "name": "pick_one",
+                    "present_as": "dropdown",
+                    "values": [
+                        "true",
+                        "false"
+                    ]
+                },
+                {
+                    "name": "a_list",
+                    "present_as": "list",
+                    "values": [
+                        "one",
+                        "two"
+                    ]
+                }
+            ],
+            "project": "",
+            "project_version": "",
+            "tags": [
+                ""
+            ],
+            "type": "initiate_pipeline"
+        },
+        {
+            "args": {},
+            "icon": "",
+            "isOpen": "",
+            "method": "list_tasks",
+            "name": "API Call",
+            "parameters": [
+                {
+                    "name": "i_am_required",
+                    "required": "true",
+                    "values": [
+                        "bar"
+                    ]
+                },
+                {
+                    "name": "pick_one",
+                    "present_as": "dropdown",
+                    "values": [
+                        "true",
+                        "false"
+                    ]
+                },
+                {
+                    "name": "a_list",
+                    "present_as": "list",
+                    "values": [
+                        "one",
+                        "two"
+                    ]
+                }
+            ],
+            "tags": [
+                ""
+            ],
+            "type": "api"
+        }
+    ],
+    "artifacts": [
+        {
+            "_id": "5a971cb180547935772884bc",
+            "created_dt": "2018-02-28T21:18:41.062000",
+            "last_revision": 3,
+            "last_revision_dt": "2018-03-20T18:07:48.711000",
+            "name": "another_artifact",
+            "project_id": "562a38e4805479268532542e",
+            "project_name": "test_project"
+        },
+        {
+            "_id": "57ffb7a28054796bc084ded8",
+            "created_dt": "2016-10-13T16:34:42.094000",
+            "last_revision": 47,
+            "last_revision_dt": "2018-02-28T22:16:14.812000",
+            "name": "test_project",
+            "project_id": "562a38e4805479268532542e",
+            "project_name": "test_project"
+        }
+    ],
+    "description": "",
+    "globals": {
+        "foo": "bar"
+    },
+    "mappings": [
+        {
+            "_id": "5a70c10080547966f90e8e69",
+            "dn_definition": "56a1a86e805479cdc45d4064",
+            "dn_group": "ccc",
+            "dn_project": "562a38e4805479268532542e",
+            "up_definition": "56a1a86e805479cdc45d4064",
+            "up_group": "aaa",
+            "up_project": "562a38e4805479268532542e"
+        }
+    ],
+    "name": "test_project",
+    "notifications": {
+        "email": {
+            "addresses": ""
+        },
+        "enable": true,
+        "hipchat": {
+            "room": "a"
+        },
+        "http": {
+            "data": "",
+            "url": ""
+        },
+        "on_failure": [],
+        "on_start": [],
+        "on_success": [],
+        "on_wait": [
+            "hipchat"
+        ],
+        "slack": {
+            "channel": ""
+        }
+    },
+    "source": {
+        "directives": [
+            {
+                "details": {
+                    "evaluate": "branch == \"master\"",
+                    "package_name": "Ready for Test",
+                    "phase": "Branch Test",
+                    "use_as_version": "branch",
+                    "use_as_version_lookup": ""
+                },
+                "evaluate": "branch == \"master\"",
+                "type": "package_revision",
+                "when": "evaluate"
+            },
+            {
+                "details": {
+                    "args": {},
+                    "evaluate": "branch != \"master\"",
+                    "initial_data": "{\"foo\": \"bar\"}",
+                    "taskname": "Build Continuum",
+                    "taskversion": ""
+                },
+                "evaluate": "branch != \"master\"",
+                "type": "run_task",
+                "when": "evaluate"
+            }
+        ],
+        "enable_polling": false,
+        "group_source": "branch",
+        "interface": "webhook",
+        "notify_unmanaged": false,
+        "notify_unmanaged_addl": "",
+        "repo_name": "",
+        "repo_server": "",
+        "type": "gitlab"
+    },
+    "type": "Source"
+}

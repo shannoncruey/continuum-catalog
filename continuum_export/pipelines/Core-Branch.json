@@ -1,0 +1,41 @@
+{
+    "__assembled": true,
+    "actions": [],
+    "description": "Triggered by commits to any branches other than 'developing' and nn.n.  Builds commits to branches.",
+    "globals": {},
+    "name": "Core-Branch",
+    "phases": [
+        {
+            "name": "Core-Branch-Build",
+            "stages": [
+                {
+                    "description": "",
+                    "name": "Core-Branch-Build-Job",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "message": "This Pipeline doesn't nothing yet, but should at least build the branch."
+                                },
+                                "label": "Utility - Insert Log",
+                                "method": "insert_log",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "product_id": "543fe8a37c1a7c67c7dcb133",
+    "product_name": "VersionOne",
+    "product_workflow_step": "",
+    "summary": [],
+    "tags": [
+        "VersionOne"
+    ]
+}

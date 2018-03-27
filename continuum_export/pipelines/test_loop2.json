@@ -1,0 +1,88 @@
+{
+    "__assembled": true,
+    "actions": [],
+    "dependencies": [],
+    "description": "",
+    "globals": {},
+    "interactive": false,
+    "name": "test_loop2",
+    "phases": [
+        {
+            "name": "",
+            "stages": [
+                {
+                    "name": "",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "art",
+                                    "value": "[$ projectglobals.get(\"test\",[]) $]"
+                                },
+                                "label": "Flow - Pipeline - Set Data",
+                                "method": "set_data",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "action": {
+                                        "args": {
+                                            "message": "[$ __LOOPITEM $]"
+                                        },
+                                        "label": "Utility - Insert Log",
+                                        "method": "insert_log",
+                                        "module": "utility",
+                                        "name": "utility"
+                                    },
+                                    "iterator": "art"
+                                },
+                                "args_parsing": "internal",
+                                "label": "Utility - Loop",
+                                "method": "loop",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "build_number",
+                                    "value": "3.0.123"
+                                },
+                                "label": "Flow - Pipeline - Set Data",
+                                "method": "set_data",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "version_number",
+                                    "value": "\"[$ \".\".join(\"[$ build_number $]\".split(\".\")[:2]) $]\""
+                                },
+                                "label": "Flow - Pipeline - Set Data",
+                                "method": "set_data",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "summary": []
+}

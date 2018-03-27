@@ -1,0 +1,118 @@
+{
+    "__assembled": true,
+    "actions": [],
+    "description": "",
+    "globals": {},
+    "name": "test_getpackagestuff",
+    "phases": [
+        {
+            "name": "",
+            "stages": [
+                {
+                    "name": "",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "globals_key": "pkgrevglobals",
+                                    "package": "aaa",
+                                    "revision": "71"
+                                },
+                                "label": "Flow - Package - Load Revision",
+                                "method": "load_revision",
+                                "module": "package",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "artifact_name": "flow",
+                                    "project_name": "flow"
+                                },
+                                "label": "Flow - Artifact - Input to Output",
+                                "method": "artifact_in_to_out",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "hort",
+                                    "package": "aaa",
+                                    "revision": "71",
+                                    "value": "o-rama"
+                                },
+                                "label": "Flow - Package - Set Global",
+                                "method": "set_global",
+                                "module": "package",
+                                "name": "flow"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "globals_key": "pkgglobs2",
+                                    "package": "aaa",
+                                    "revision": "70"
+                                },
+                                "label": "Flow - Package - Get Globals",
+                                "method": "get_globals",
+                                "module": "package",
+                                "name": "flow"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "globals_key": "pkg71arts",
+                                    "package": "aaa",
+                                    "revision": "71"
+                                },
+                                "label": "Flow - Package - Get Artifacts",
+                                "method": "get_artifacts",
+                                "module": "package",
+                                "name": "flow"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "artifact": "flow",
+                                    "globals_key": "singleart",
+                                    "package": "aaa",
+                                    "revision": "71"
+                                },
+                                "label": "Flow - Package - Get Artifact",
+                                "method": "get_artifact",
+                                "module": "package",
+                                "name": "flow"
+                            },
+                            "when": "never"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "summary": [
+        {
+            "label": "Foo",
+            "show": "success",
+            "value": "some_value"
+        }
+    ]
+}

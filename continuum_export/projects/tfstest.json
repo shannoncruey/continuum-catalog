@@ -1,0 +1,53 @@
+{
+    "artifacts": [
+        {
+            "_id": "57b612343ed4d233d234949a",
+            "created_dt": "2016-08-18T19:53:24.100000",
+            "name": "zzz_abc",
+            "project_id": "54fa07143ed4d252e724e108",
+            "project_name": "tfstest"
+        }
+    ],
+    "description": "",
+    "mappings": [],
+    "name": "tfstest",
+    "notifications": {
+        "email": {
+            "addresses": ""
+        },
+        "enable": false,
+        "hipchat": {
+            "room": ""
+        },
+        "http": {
+            "data": "",
+            "url": ""
+        },
+        "on_failure": [],
+        "on_start": [],
+        "on_success": [],
+        "on_wait": [],
+        "slack": {
+            "channel": ""
+        }
+    },
+    "source": {
+        "directives": [
+            {
+                "details": {
+                    "definition": "Test",
+                    "group": "master",
+                    "project": ""
+                },
+                "type": "assign_to_pipeline",
+                "when": "always"
+            }
+        ],
+        "group_source": "branch",
+        "interface": "webhook",
+        "type": "tfstfvs_soap"
+    },
+    "type": "Source",
+    "version": "1",
+    "version_date": "2015-03-11 13:23:26"
+}

@@ -1,0 +1,183 @@
+{
+    "Category": null,
+    "Code": "SQLsvr_test",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "new_connection",
+                        "__snip": "conn_name",
+                        "asset": {
+                            "__input_type": "text",
+                            "asset": "Jenkins"
+                        },
+                        "cloud_name": {
+                            "__input_type": "dropdown",
+                            "__style": "combo",
+                            "cloud_name": ""
+                        },
+                        "conn_name": {
+                            "__class": "w200px",
+                            "__help": "Name this connection for reference in the Task.",
+                            "__input_type": "text",
+                            "__label": "Connection Name",
+                            "__required": "true",
+                            "conn_name": "CONN1"
+                        },
+                        "conn_type": {
+                            "__input_type": "select",
+                            "conn_type": "sqlserver"
+                        },
+                        "debug": {
+                            "__break_after": "true",
+                            "__input_type": "checkbox",
+                            "__label": "Debug",
+                            "debug": ""
+                        }
+                    },
+                    "FunctionName": "new_connection",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__col_delimiter": "0",
+                        "__name": "sql_exec",
+                        "__parse_method": "1",
+                        "__row_delimiter": "0",
+                        "__snip": "sql",
+                        "__variables": "true",
+                        "conn_name": {
+                            "__connection_picker": "true",
+                            "__input_type": "text",
+                            "conn_name": "CONN1"
+                        },
+                        "handle": {
+                            "__input_type": "text",
+                            "handle": ""
+                        },
+                        "mode": {
+                            "__input_type": "select",
+                            "mode": "SQL"
+                        },
+                        "pairs": {
+                            "__label": "Bind Variables",
+                            "pair": {
+                                "key": {
+                                    "__input_type": "text",
+                                    "__label": "Bind",
+                                    "key": ""
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "value": ""
+                                }
+                            }
+                        },
+                        "sql": {
+                            "__input_type": "text",
+                            "sql": "SELECT TOP 10 [id]\n      ,[localId]\n      ,[date]\n      ,[transmissionDate]\n      ,[localDate]\n      ,[captureDate]\n      ,[itc]\n      ,[sourceProcessingCode]\n      ,[palProcessingCode]\n      ,[originalItc]\n      ,[functionCode]\n      ,[reasonCode]\n      ,[cardType]\n      ,[cardBrand]\n      ,[truncatedCard]\n      ,[hash]\n      ,[secureData]\n      ,[avsRequest]\n      ,[avsResponse]\n      ,[cscRequest]\n      ,[cscResponse]\n      ,[ca_name]\n      ,[ca_city]\n      ,[ca_region]\n      ,[ca_postalCode]\n      ,[ca_country]\n      ,[merchantId]\n      ,[terminalId]\n      ,[posDataCode]\n      ,[posCapability]\n      ,[irc]\n      ,[rrc]\n      ,[rc]\n      ,[reversalType]\n      ,[reversalCount]\n      ,[reversalId]\n      ,[completionCount]\n      ,[completionId]\n      ,[refId]\n      ,[reconId]\n      ,[stanIn]\n      ,[rrnIn]\n      ,[stanOut]\n      ,[rrnOut]\n      ,[duration]\n      ,[extDuration]\n      ,[outstanding]\n      ,[listener]\n      ,[node]\n      ,[channelName]\n      ,[endpoint]\n      ,[requestAmount]\n      ,[approveAmount]\n      ,[surchargeAmount]\n      ,[currencyCode]\n      ,[requestSettlementAmount]\n      ,[surchargeSettlementAmount]\n      ,[currencyCodeSettlement]\n      ,[returnedBalances]\n      ,[keyId]\n      ,[approvalcode]\n      ,[mcc]\n      ,[extractId]\n      ,[acquirerInstID]\n      ,[forwardingInstID]\n      ,[receivingInstID]\n      ,[source]\n      ,[settlementInd]\n      ,[addlTranLinkKey]\n  FROM [olsswitch].[dbo].[tranlog]"
+                        },
+                        "step_variables": {
+                            "Item::variable::0": {
+                                "name": {
+                                    "name": "foo"
+                                },
+                                "position": {
+                                    "position": "1"
+                                },
+                                "type": {
+                                    "type": "delimited"
+                                }
+                            },
+                            "Item::variable::1": {
+                                "name": {
+                                    "name": "bar"
+                                },
+                                "position": {
+                                    "position": "2"
+                                },
+                                "type": {
+                                    "type": "delimited"
+                                }
+                            }
+                        }
+                    },
+                    "FunctionName": "sql_exec",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 1,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "sql_exec",
+                        "__parse_method": "1",
+                        "__snip": "sql",
+                        "__variables": "true",
+                        "conn_name": {
+                            "__connection_picker": "true",
+                            "__input_type": "text",
+                            "conn_name": "CONN1"
+                        },
+                        "handle": {
+                            "__input_type": "text",
+                            "handle": ""
+                        },
+                        "mode": {
+                            "__input_type": "select",
+                            "mode": "SQL"
+                        },
+                        "pairs": {
+                            "__label": "Bind Variables",
+                            "pair": {
+                                "key": {
+                                    "__input_type": "text",
+                                    "__label": "Bind",
+                                    "key": ""
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "value": ""
+                                }
+                            }
+                        },
+                        "sql": {
+                            "__input_type": "text",
+                            "sql": "SELECT TOP 10 [id]\n      ,[localId]\n      ,[date]\n      ,[transmissionDate]\n      ,[localDate]\n      ,[captureDate]\n      ,[itc]\n      ,[sourceProcessingCode]\n      ,[palProcessingCode]\n      ,[originalItc]\n      ,[functionCode]\n      ,[reasonCode]\n      ,[cardType]\n      ,[cardBrand]\n      ,[truncatedCard]\n      ,[hash]\n      ,[secureData]\n      ,[avsRequest]\n      ,[avsResponse]\n      ,[cscRequest]\n      ,[cscResponse]\n      ,[ca_name]\n      ,[ca_city]\n      ,[ca_region]\n      ,[ca_postalCode]\n      ,[ca_country]\n      ,[merchantId]\n      ,[terminalId]\n      ,[posDataCode]\n      ,[posCapability]\n      ,[irc]\n      ,[rrc]\n      ,[rc]\n      ,[reversalType]\n      ,[reversalCount]\n      ,[reversalId]\n      ,[completionCount]\n      ,[completionId]\n      ,[refId]\n      ,[reconId]\n      ,[stanIn]\n      ,[rrnIn]\n      ,[stanOut]\n      ,[rrnOut]\n      ,[duration]\n      ,[extDuration]\n      ,[outstanding]\n      ,[listener]\n      ,[node]\n      ,[channelName]\n      ,[endpoint]\n      ,[requestAmount]\n      ,[approveAmount]\n      ,[surchargeAmount]\n      ,[currencyCode]\n      ,[requestSettlementAmount]\n      ,[surchargeSettlementAmount]\n      ,[currencyCodeSettlement]\n      ,[returnedBalances]\n      ,[keyId]\n      ,[approvalcode]\n      ,[mcc]\n      ,[extractId]\n      ,[acquirerInstID]\n      ,[forwardingInstID]\n      ,[receivingInstID]\n      ,[source]\n      ,[settlementInd]\n      ,[addlTranLinkKey]\n  FROM [olsswitch].[dbo].[tranlog]"
+                        }
+                    },
+                    "FunctionName": "sql_exec",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 1,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": 0,
+    "Description": "test SQL server connectivity",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "testing_db",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [],
+    "QueueDepth": 0,
+    "Status": "Development",
+    "Version": "1.000"
+}

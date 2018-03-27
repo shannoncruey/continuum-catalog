@@ -1,0 +1,195 @@
+{
+    "Category": null,
+    "Code": "0",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_variable",
+                        "variables": {
+                            "Item::variable::0": {
+                                "modifier": {
+                                    "modifier": "DEFAULT"
+                                },
+                                "name": {
+                                    "name": "foo"
+                                },
+                                "value": {
+                                    "value": "asd"
+                                }
+                            },
+                            "__is_array": "true"
+                        }
+                    },
+                    "FunctionName": "set_variable",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "utility_ext.utility",
+                        "__name": "exec_python",
+                        "code": {
+                            "code": ""
+                        }
+                    },
+                    "FunctionName": "exec_python",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "AddressingType": {
+                            "AddressingType": ""
+                        },
+                        "BlockDeviceMapping.n": {
+                            "Item::BlockDeviceMapping::0": {
+                                "DeviceName": {
+                                    "DeviceName": ""
+                                },
+                                "Ebs": {
+                                    "DeleteOnTermination": {
+                                        "DeleteOnTermination": ""
+                                    },
+                                    "SnapshotId": {
+                                        "SnapshotId": ""
+                                    },
+                                    "VolumeSize": {
+                                        "VolumeSize": ""
+                                    }
+                                },
+                                "NoDevice": {
+                                    "NoDevice": ""
+                                },
+                                "VirtualName": {
+                                    "VirtualName": ""
+                                }
+                            },
+                            "__is_array": "true"
+                        },
+                        "ClientToken": {
+                            "ClientToken": ""
+                        },
+                        "DisableApiTermination": {
+                            "DisableApiTermination": ""
+                        },
+                        "ImageId": {
+                            "ImageId": ""
+                        },
+                        "InstanceInitiatedShutdownBehavior": {
+                            "InstanceInitiatedShutdownBehavior": ""
+                        },
+                        "InstanceType": {
+                            "InstanceType": ""
+                        },
+                        "KernelId": {
+                            "KernelId": ""
+                        },
+                        "KeyName": {
+                            "KeyName": ""
+                        },
+                        "MaxCount": {
+                            "MaxCount": ""
+                        },
+                        "MinCount": {
+                            "MinCount": ""
+                        },
+                        "Monitoring.Enabled": {
+                            "Monitoring.Enabled": ""
+                        },
+                        "Placement": {
+                            "AvailabilityZone": {
+                                "AvailabilityZone": ""
+                            },
+                            "GroupName": {
+                                "GroupName": ""
+                            },
+                            "Tenancy": {
+                                "Tenancy": ""
+                            }
+                        },
+                        "PrivateIpAddress": {
+                            "PrivateIpAddress": ""
+                        },
+                        "RamdiskId": {
+                            "RamdiskId": ""
+                        },
+                        "SecurityGroup.n": {
+                            "Item::SecurityGroup::0": {
+                                "SecurityGroup": ""
+                            },
+                            "__is_array": "true"
+                        },
+                        "SecurityGroupId.n": {
+                            "Item::SecurityGroupId::0": {
+                                "SecurityGroupId": ""
+                            },
+                            "__is_array": "true"
+                        },
+                        "SubnetId": {
+                            "SubnetId": ""
+                        },
+                        "TagSpecification.n": {
+                            "Item::TagSpecification::0": {
+                                "ResourceType": {
+                                    "ResourceType": ""
+                                },
+                                "Tag.n": {
+                                    "Item::Tag::0": {
+                                        "Key": {
+                                            "Key": ""
+                                        },
+                                        "Value": {
+                                            "Value": ""
+                                        }
+                                    },
+                                    "__is_array": "true"
+                                }
+                            },
+                            "__is_array": "true"
+                        },
+                        "UserData": {
+                            "UserData": ""
+                        },
+                        "__name": "aws_ec2_RunInstances",
+                        "aws_region": {
+                            "aws_region": ""
+                        },
+                        "result_name": {
+                            "result_name": ""
+                        }
+                    },
+                    "FunctionName": "aws_ec2_RunInstances",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.002",
+    "Name": "000 for user",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.003",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.001"
+}

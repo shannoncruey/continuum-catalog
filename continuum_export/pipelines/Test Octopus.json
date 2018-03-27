@@ -1,0 +1,43 @@
+{
+    "actions": "",
+    "category": "General",
+    "dependencies": [],
+    "description": "",
+    "globals": {},
+    "interactive": false,
+    "name": "Test Octopus",
+    "phases": [
+        {
+            "name": "",
+            "stages": [
+                {
+                    "name": "",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "environment": "Dev",
+                                    "inherit": "true",
+                                    "instance_name": "",
+                                    "project": "ContinuumTesting",
+                                    "release": "0.0.1",
+                                    "result_key": "OCTORESULT",
+                                    "wait": "true"
+                                },
+                                "label": "Octopus - Deploy",
+                                "method": "deploy",
+                                "module": "octo",
+                                "name": "octopus",
+                                "type": "external"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "summary": []
+}

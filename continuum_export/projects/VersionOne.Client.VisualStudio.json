@@ -1,0 +1,26 @@
+{
+    "artifacts": [],
+    "description": "",
+    "mappings": [],
+    "name": "VersionOne.Client.VisualStudio",
+    "notifications": {
+        "email": {
+            "addresses": ""
+        },
+        "enable": "",
+        "hipchat": {
+            "room": ""
+        },
+        "on_failure": [],
+        "on_start": [],
+        "on_success": [],
+        "on_wait": []
+    },
+    "source": {
+        "directives": [],
+        "group_source": "branch",
+        "interface": "webhook",
+        "type": "github"
+    },
+    "type": null
+}

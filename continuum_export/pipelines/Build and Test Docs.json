@@ -1,0 +1,140 @@
+{
+    "__assembled": true,
+    "actions": [
+        {
+            "args": {},
+            "icon": "12_48x48.png",
+            "name": "Run the 'dummy' Task",
+            "on": "group",
+            "parameters": {},
+            "show": "success",
+            "task": "dummy",
+            "type": "task",
+            "version": ""
+        }
+    ],
+    "description": "",
+    "globals": {},
+    "name": "Build and Test Docs",
+    "phases": [
+        {
+            "name": "Build Documentation",
+            "stages": [
+                {
+                    "name": "Build Documentation",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "instance_name": "",
+                                    "resolution_name": "",
+                                    "transition_name": ""
+                                },
+                                "label": "Jira - Transition Issues",
+                                "method": "transition",
+                                "module": "issue",
+                                "name": "jiraplugin"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "deployment": "qqq",
+                                    "params": "",
+                                    "sequence": "DBStart",
+                                    "sequence_data": {
+                                        "sequencedata": "fromapipeline"
+                                    }
+                                },
+                                "label": "Deploy - Run Sequence",
+                                "method": "run_sequence",
+                                "module": "deployment",
+                                "name": "deploy"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "datastore": {
+                                        "new": "datastore!"
+                                    },
+                                    "params": "",
+                                    "sequence_data": {
+                                        "sequencedata": "fromapipeline"
+                                    },
+                                    "template": "asdf",
+                                    "version": 1
+                                },
+                                "label": "Deploy - Deploy an Application",
+                                "method": "deploy",
+                                "module": "deployment",
+                                "name": "deploy"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "initial_data": {
+                                        "z": "frompipeline"
+                                    },
+                                    "parameters": "",
+                                    "task": "dummy"
+                                },
+                                "label": "Automate - Run Task",
+                                "method": "runtask",
+                                "module": "task",
+                                "name": "automate"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "seconds": 1
+                                },
+                                "label": "Utility - Sleep",
+                                "method": "sleep",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Deploy Documentation",
+            "stages": [
+                {
+                    "name": "Deploy Documentation to Test",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "status": "end-success"
+                                },
+                                "label": "Utility - End",
+                                "method": "end",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "summary": []
+}

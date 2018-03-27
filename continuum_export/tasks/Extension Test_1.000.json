@@ -1,0 +1,191 @@
+{
+    "Category": null,
+    "Code": "EXT002",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "new_connection",
+                        "asset": {
+                            "__input_type": "text",
+                            "asset": "ubuntu@i-a30b97c7"
+                        },
+                        "cloud_name": {
+                            "__input_type": "dropdown",
+                            "__style": "combo",
+                            "cloud_name": ""
+                        },
+                        "conn_name": {
+                            "__class": "w200px",
+                            "__help": "Name this connection for reference in the Task.",
+                            "__input_type": "text",
+                            "__label": "as",
+                            "__required": "true",
+                            "conn_name": "CONN1"
+                        },
+                        "conn_type": {
+                            "__input_type": "select",
+                            "conn_type": "ssh - ec2"
+                        }
+                    },
+                    "FunctionName": "new_connection",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "sysinfo/ohai/ohai_info.tcl",
+                        "__name": "ohai_info",
+                        "conn_name": {
+                            "__input_type": "text",
+                            "__label": "Connection",
+                            "conn_name": "CONN1"
+                        },
+                        "negative_response": {
+                            "__input_type": "text",
+                            "__option_tab": "Options",
+                            "negative_response": ""
+                        },
+                        "positive_response": {
+                            "__input_type": "text",
+                            "__option_tab": "Options",
+                            "positive_response": ""
+                        },
+                        "result_variable": {
+                            "__input_type": "text",
+                            "__label": "Result Variable",
+                            "result_variable": "ohai"
+                        },
+                        "timeout": {
+                            "__input_type": "text",
+                            "__option_tab": "Options",
+                            "timeout": ""
+                        }
+                    },
+                    "FunctionName": "ohai_info",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "sysinfo/linux/linux_info.tcl",
+                        "__name": "linux_info",
+                        "conn_name": {
+                            "__input_type": "text",
+                            "__label": "Connection",
+                            "conn_name": "CONN1"
+                        },
+                        "negative_response": {
+                            "__input_type": "text",
+                            "__option_tab": "Options",
+                            "negative_response": ""
+                        },
+                        "positive_response": {
+                            "__input_type": "text",
+                            "__option_tab": "Options",
+                            "positive_response": ""
+                        },
+                        "result_variable": {
+                            "__input_type": "text",
+                            "__label": "Result Variable",
+                            "result_variable": "result"
+                        },
+                        "timeout": {
+                            "__input_type": "text",
+                            "__option_tab": "Options",
+                            "timeout": ""
+                        }
+                    },
+                    "FunctionName": "linux_info",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "sysinfo/posix/posix_info.tcl",
+                        "__name": "hello_world",
+                        "conn_name": {
+                            "__input_type": "text",
+                            "__label": "Connection",
+                            "conn_name": "CONN1"
+                        },
+                        "negative_response": {
+                            "__input_type": "text",
+                            "__option_tab": "Options",
+                            "negative_response": ""
+                        },
+                        "positive_response": {
+                            "__input_type": "text",
+                            "__option_tab": "Options",
+                            "positive_response": ""
+                        },
+                        "result_variable": {
+                            "__input_type": "text",
+                            "__label": "Result Variable",
+                            "result_variable": "info"
+                        },
+                        "timeout": {
+                            "__input_type": "text",
+                            "__option_tab": "Options",
+                            "timeout": ""
+                        }
+                    },
+                    "FunctionName": "posix_info",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "message": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Log",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "2",
+                            "message": "CAN WE LOOK UP? [[ohai:network default_gateway]]"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": 0,
+    "Description": "",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "Extension Test",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [],
+    "QueueDepth": 0,
+    "Status": "Development",
+    "Version": "1.000"
+}

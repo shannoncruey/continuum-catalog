@@ -1,0 +1,145 @@
+{
+    "__assembled": true,
+    "actions": [
+        {
+            "definition": "__DEFINITIONNAME",
+            "details": null,
+            "group": "__GROUP",
+            "icon": "20_48x48.png",
+            "instancename": "",
+            "name": "Run the Package Pipeline",
+            "on": "group",
+            "parameters": {},
+            "project": "__PROJECTNAME",
+            "project_version": "",
+            "tags": [
+                "foo"
+            ],
+            "type": "initiate_pipeline"
+        },
+        {
+            "definition": "__DEFINITIONNAME",
+            "details": null,
+            "group": "__GROUP",
+            "icon": "20_48x48.png",
+            "instancename": "",
+            "name": "Run the Package Pipeline",
+            "on": "instance",
+            "parameters": {},
+            "project": "__PROJECTNAME",
+            "project_version": "",
+            "tags": [
+                "foo"
+            ],
+            "type": "initiate_pipeline"
+        }
+    ],
+    "desc": "",
+    "description": "",
+    "globals": {
+        "jenkins_job": "velocity_package4"
+    },
+    "name": "Package Velocity",
+    "phases": [
+        {
+            "name": "Package Velocity",
+            "stages": [
+                {
+                    "description": "",
+                    "name": "Package Velocity",
+                    "steps": [
+                        {
+                            "name": "Jenkins Build Velocity",
+                            "plugin": {
+                                "args": {
+                                    "inherit": true,
+                                    "job": "[$ globals['jenkins_job'] $]",
+                                    "params": {
+                                        "AUTOMATE_ART": "[$inputs['artifacts']['automate']['location']$]",
+                                        "CANVAS_ART": "[$inputs['artifacts']['canvas']['location']$]",
+                                        "CLIENT_ART": "[$inputs['artifacts']['client']['location']$]",
+                                        "COMMON_26_ART": "[$inputs['artifacts']['common_26']['location']$]",
+                                        "COMMON_27_ART": "[$inputs['artifacts']['common_27']['location']$]",
+                                        "DEPLOY_ART": "[$inputs['artifacts']['deploy']['location']$]",
+                                        "FLOW_ART": "[$inputs['artifacts']['flow']['location']$]",
+                                        "INSTANCE_NUMBER": "__PINUMBER",
+                                        "VELOCITY_ART": "[$inputs['artifacts']['velocity']['location']$]"
+                                    },
+                                    "token": "",
+                                    "wait": true
+                                },
+                                "method": "build",
+                                "module": "job",
+                                "name": "jenkins"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "Store Build Number",
+                            "plugin": {
+                                "args": {
+                                    "key": "jenkins_build_number",
+                                    "value": {
+                                        "Ref": "__PREVSTEPDATA['build']"
+                                    }
+                                },
+                                "method": "set_data",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "never"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Finalize Package",
+            "stages": [
+                {
+                    "description": "",
+                    "name": "Bump Package Version",
+                    "steps": [
+                        {
+                            "name": "Rename the Instance to the version",
+                            "plugin": {
+                                "args": {
+                                    "name": "__PROJECTVERSION.__PINUMBER"
+                                },
+                                "label": "Flow - Pipeline - Set Name",
+                                "method": "set_name",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "Put this manifest in a Package representing this Version",
+                            "plugin": {
+                                "args": {
+                                    "create": true,
+                                    "package": "ClearCode __PROJECTVERSION"
+                                },
+                                "label": "Utility - Bucket - Add Manifest",
+                                "method": "add_to_bucket",
+                                "module": "bucket",
+                                "name": "utility"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "product_id": "542ef5ad5e1497307173c009",
+    "product_name": "Velocity",
+    "product_workflow_step": "Package",
+    "signature": "",
+    "signature_type": "",
+    "summary": [],
+    "tags": [
+        "Velocity"
+    ]
+}

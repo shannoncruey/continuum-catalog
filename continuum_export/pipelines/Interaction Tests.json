@@ -1,0 +1,101 @@
+{
+    "actions": [],
+    "category": "",
+    "dependencies": [],
+    "description": "",
+    "globals": {},
+    "interactive": true,
+    "name": "Interaction Tests",
+    "phases": [
+        {
+            "name": "",
+            "stages": [
+                {
+                    "name": "",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "assignto": [],
+                                    "definition": [
+                                        {
+                                            "args": {},
+                                            "icon": "",
+                                            "name": "do task",
+                                            "parameters": {},
+                                            "task": "dummy",
+                                            "type": "task",
+                                            "version": ""
+                                        },
+                                        {
+                                            "definition": "Package",
+                                            "details": {
+                                                "name": "Buffy the Vampire Slayer"
+                                            },
+                                            "group": "__GROUP",
+                                            "icon": "12_48x48.png",
+                                            "name": "Initiate the 'Package' Pipeline",
+                                            "project": "test",
+                                            "type": "initiate_pipeline"
+                                        }
+                                    ]
+                                },
+                                "kind": "actions",
+                                "label": "Flow - Interact - Action",
+                                "method": "actions",
+                                "module": "interact",
+                                "name": "flow",
+                                "type": "interaction"
+                            },
+                            "tags": [],
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "assignto": [],
+                                    "result_key": "",
+                                    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et velit eleifend, tincidunt neque ac, ullamcorper diam. Sed posuere ultrices scelerisque. Integer ultricies rhoncus magna in sollicitudin. Nunc orci arcu, vehicula vitae nunc quis, fringilla pretium dolor. Nam quis ligula sapien. Proin finibus tortor cursus, scelerisque ligula nec, luctus ipsum. Morbi non sapien aliquet, aliquam nibh non, condimentum odio. Nunc pretium nisl et quam sodales vestibulum. Donec maximus dui eu sagittis aliquet. Sed ac aliquet sem, vitae lacinia ligula. Vestibulum eu mauris a magna posuere laoreet et a lorem.",
+                                    "title": "This is my title."
+                                },
+                                "kind": "confirm",
+                                "label": "Flow - Interact - Confirmation",
+                                "method": "confirmation",
+                                "module": "interact",
+                                "name": "flow",
+                                "type": "interaction"
+                            },
+                            "tags": [
+                                "foo",
+                                "bar",
+                                "[$ pi_id $]"
+                            ],
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "assignto": [],
+                                    "resource": "demos/interact/interact.layout"
+                                },
+                                "kind": "canvas",
+                                "label": "Canvas - Interact",
+                                "method": "interact",
+                                "module": "main",
+                                "name": "canvas",
+                                "type": "interaction"
+                            },
+                            "tags": [],
+                            "when": "never"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "summary": []
+}

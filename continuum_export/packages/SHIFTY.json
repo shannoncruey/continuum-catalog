@@ -1,0 +1,792 @@
+{
+    "actions": [
+        {
+            "definition": "",
+            "details": {},
+            "group": "",
+            "icon": "",
+            "instancename": "",
+            "isOpen": true,
+            "name": "do something",
+            "parameters": [
+                {
+                    "name": "i_am_not_required",
+                    "required": "false",
+                    "values": [
+                        "bar"
+                    ]
+                },
+                {
+                    "name": "pick_one",
+                    "present_as": "dropdown",
+                    "values": [
+                        "true",
+                        "false"
+                    ]
+                },
+                {
+                    "name": "a_list",
+                    "present_as": "list",
+                    "values": [
+                        "one",
+                        "two"
+                    ]
+                }
+            ],
+            "project": "",
+            "project_version": "",
+            "tags": [
+                ""
+            ],
+            "type": "initiate_pipeline"
+        }
+    ],
+    "artifacts": [
+        {
+            "name": "shifty",
+            "project_name": "shifty"
+        }
+    ],
+    "description": "",
+    "globals": {},
+    "name": "SHIFTY",
+    "progression": {
+        "name": "Connected",
+        "phases": [
+            {
+                "autopromote": true,
+                "delivery_category": "Developing",
+                "directives": [
+                    {
+                        "category": null,
+                        "controls": [],
+                        "description": "",
+                        "details": {
+                            "definition": "shifty common build",
+                            "group": "",
+                            "initial_data": {},
+                            "project": "test_project"
+                        },
+                        "directives": [
+                            {
+                                "category": null,
+                                "controls": [
+                                    {
+                                        "description": "",
+                                        "details": {},
+                                        "index": "0",
+                                        "name": "Did it start?",
+                                        "required": false
+                                    },
+                                    {
+                                        "description": "",
+                                        "details": {},
+                                        "index": "1",
+                                        "name": "\"Check Engine\" light is not illuminated.",
+                                        "required": false
+                                    },
+                                    {
+                                        "description": "",
+                                        "details": {},
+                                        "index": "2",
+                                        "name": "Seems to be idling normally.",
+                                        "required": false
+                                    }
+                                ],
+                                "description": "",
+                                "details": {
+                                    "assignto": [],
+                                    "reason_required": false,
+                                    "tags": [],
+                                    "text": "Start the Engine",
+                                    "title": "Start Engine"
+                                },
+                                "estimated_touch_time": "1",
+                                "index": "0_0",
+                                "interactive": true,
+                                "name": "Start Engine (with Controls)",
+                                "type": "manual_activity"
+                            }
+                        ],
+                        "estimated_touch_time": "1",
+                        "index": "0",
+                        "interactive": false,
+                        "name": "Common CI Build",
+                        "type": "initiate_pipeline"
+                    },
+                    {
+                        "category": null,
+                        "controls": [],
+                        "description": "",
+                        "details": {
+                            "assignto": [],
+                            "reason_required": false,
+                            "tags": [],
+                            "text": "Start the Engine",
+                            "title": "Start Engine"
+                        },
+                        "estimated_touch_time": "",
+                        "index": "1",
+                        "interactive": true,
+                        "name": "Start Engine",
+                        "type": "manual_activity"
+                    }
+                ],
+                "name": "Build"
+            },
+            {
+                "autopromote": true,
+                "delivery_category": "Developing",
+                "directives": [
+                    {
+                        "category": null,
+                        "controls": [],
+                        "description": "",
+                        "details": {
+                            "assignto": [],
+                            "reason_required": false,
+                            "tags": [],
+                            "text": "",
+                            "title": ""
+                        },
+                        "directives": [
+                            {
+                                "category": null,
+                                "controls": [
+                                    {
+                                        "description": "",
+                                        "details": {},
+                                        "index": "0",
+                                        "name": "Config was Documented?",
+                                        "required": false
+                                    },
+                                    {
+                                        "description": "",
+                                        "details": {},
+                                        "index": "1",
+                                        "name": "Config was Completed?",
+                                        "required": false
+                                    }
+                                ],
+                                "description": "",
+                                "details": {
+                                    "assignto": [],
+                                    "reason_required": false,
+                                    "tags": [],
+                                    "text": "",
+                                    "title": "Post-Deploy Dev Config"
+                                },
+                                "directives": [
+                                    {
+                                        "category": null,
+                                        "controls": [],
+                                        "description": "",
+                                        "details": {
+                                            "assignto": [],
+                                            "reason_required": false,
+                                            "tags": [],
+                                            "text": "",
+                                            "title": "Comm Deploy"
+                                        },
+                                        "directives": [
+                                            {
+                                                "category": null,
+                                                "controls": [],
+                                                "description": "",
+                                                "details": {
+                                                    "assignto": [],
+                                                    "reason_required": false,
+                                                    "tags": [],
+                                                    "text": "",
+                                                    "title": "Post Comm Deploy Config"
+                                                },
+                                                "estimated_touch_time": "",
+                                                "index": "0_0_0_0",
+                                                "interactive": true,
+                                                "name": "Post Comm Deploy Config",
+                                                "type": "manual_activity"
+                                            }
+                                        ],
+                                        "estimated_touch_time": "",
+                                        "index": "0_0_0",
+                                        "interactive": true,
+                                        "name": "Comm Deploy",
+                                        "type": "manual_activity"
+                                    }
+                                ],
+                                "estimated_touch_time": "",
+                                "index": "0_0",
+                                "interactive": true,
+                                "name": "Post-Deploy Dev Config",
+                                "type": "manual_activity"
+                            }
+                        ],
+                        "estimated_touch_time": "",
+                        "index": "0",
+                        "interactive": true,
+                        "name": "Dev Deploy",
+                        "type": "manual_activity"
+                    }
+                ],
+                "name": "Dev Deploy"
+            },
+            {
+                "autopromote": true,
+                "delivery_category": "Developing",
+                "directives": [
+                    {
+                        "category": null,
+                        "controls": [],
+                        "description": "",
+                        "details": {
+                            "assignto": [],
+                            "reason_required": false,
+                            "tags": [],
+                            "text": "",
+                            "title": "Dev Regression Test"
+                        },
+                        "directives": [
+                            {
+                                "category": null,
+                                "controls": [],
+                                "description": "",
+                                "details": {
+                                    "assignto": [],
+                                    "reason_required": false,
+                                    "tags": [],
+                                    "text": "",
+                                    "title": "BA/QA Test"
+                                },
+                                "estimated_touch_time": "",
+                                "index": "0_0",
+                                "interactive": true,
+                                "name": "BA/QA Test",
+                                "type": "manual_activity"
+                            }
+                        ],
+                        "estimated_touch_time": "",
+                        "index": "0",
+                        "interactive": true,
+                        "name": "Dev Regression Test",
+                        "type": "manual_activity"
+                    }
+                ],
+                "name": "Three Amigo Testing"
+            },
+            {
+                "autopromote": true,
+                "delivery_category": "Packaged",
+                "directives": [
+                    {
+                        "category": null,
+                        "controls": [],
+                        "description": "",
+                        "details": {
+                            "assignto": [],
+                            "reason_required": false,
+                            "tags": [],
+                            "text": "",
+                            "title": "Agree we are ready to do QA Deploy"
+                        },
+                        "estimated_touch_time": "",
+                        "index": "0",
+                        "interactive": true,
+                        "name": "Agree we are ready to do QA Deploy",
+                        "type": "manual_activity"
+                    }
+                ],
+                "name": "Ready for QA Testing"
+            },
+            {
+                "autopromote": true,
+                "delivery_category": "Packaged",
+                "directives": [
+                    {
+                        "category": null,
+                        "controls": [],
+                        "description": "",
+                        "details": {
+                            "assignto": [],
+                            "reason_required": false,
+                            "tags": [],
+                            "text": "",
+                            "title": "Deploy to \"Manual\" Test Server"
+                        },
+                        "directives": [
+                            {
+                                "category": null,
+                                "controls": [
+                                    {
+                                        "description": "",
+                                        "details": {},
+                                        "index": "0",
+                                        "name": "Smoke Tests Successful?",
+                                        "required": false
+                                    }
+                                ],
+                                "description": "",
+                                "details": {
+                                    "assignto": [],
+                                    "reason_required": false,
+                                    "tags": [],
+                                    "text": "",
+                                    "title": "Post Deploy Configure Test (Manual)"
+                                },
+                                "estimated_touch_time": "",
+                                "index": "0_0",
+                                "interactive": true,
+                                "name": "Post Deploy Configure Test (Manual Env)",
+                                "type": "manual_activity"
+                            }
+                        ],
+                        "estimated_touch_time": "",
+                        "index": "0",
+                        "interactive": true,
+                        "name": "Deploy to \"Manual\" Test Server",
+                        "type": "manual_activity"
+                    },
+                    {
+                        "category": null,
+                        "controls": [],
+                        "description": "",
+                        "details": {
+                            "assignto": [],
+                            "reason_required": false,
+                            "tags": [],
+                            "text": "",
+                            "title": "Deploy to \"Auto\" Test"
+                        },
+                        "directives": [
+                            {
+                                "category": null,
+                                "controls": [
+                                    {
+                                        "description": "",
+                                        "details": {},
+                                        "index": "0",
+                                        "name": "Smoke Test Successful?",
+                                        "required": false
+                                    }
+                                ],
+                                "description": "",
+                                "details": {
+                                    "assignto": [],
+                                    "reason_required": false,
+                                    "tags": [],
+                                    "text": "",
+                                    "title": "Post Deploy Config (Autotest Env)"
+                                },
+                                "estimated_touch_time": "",
+                                "index": "1_0",
+                                "interactive": true,
+                                "name": "Post Deploy Config (Autotest Env)",
+                                "type": "manual_activity"
+                            }
+                        ],
+                        "estimated_touch_time": "",
+                        "index": "1",
+                        "interactive": true,
+                        "name": "Deploy to \"Auto\" Test",
+                        "type": "manual_activity"
+                    }
+                ],
+                "name": "QA Deploy"
+            },
+            {
+                "autopromote": true,
+                "delivery_category": "Packaged",
+                "directives": [
+                    {
+                        "category": null,
+                        "controls": [
+                            {
+                                "description": "",
+                                "details": {},
+                                "index": "0",
+                                "name": "No High Severity Defects",
+                                "required": false
+                            }
+                        ],
+                        "description": "",
+                        "details": {
+                            "assignto": [],
+                            "reason_required": false,
+                            "tags": [],
+                            "text": "",
+                            "title": "Manual Testing of New Features"
+                        },
+                        "estimated_touch_time": "",
+                        "index": "0",
+                        "interactive": true,
+                        "name": "Manual Testing of New Features",
+                        "type": "manual_activity"
+                    },
+                    {
+                        "category": null,
+                        "controls": [],
+                        "description": "",
+                        "details": {
+                            "assignto": [],
+                            "reason_required": false,
+                            "tags": [],
+                            "text": "",
+                            "title": "Test Analytics"
+                        },
+                        "estimated_touch_time": "",
+                        "index": "1",
+                        "interactive": true,
+                        "name": "Test Analytics",
+                        "type": "manual_activity"
+                    },
+                    {
+                        "category": null,
+                        "controls": [
+                            {
+                                "description": "",
+                                "details": {},
+                                "index": "0",
+                                "name": "100% of Tests Passed?",
+                                "required": false
+                            }
+                        ],
+                        "description": "",
+                        "details": {
+                            "assignto": [],
+                            "reason_required": false,
+                            "tags": [],
+                            "text": "",
+                            "title": "Automated Regression Tests"
+                        },
+                        "directives": [
+                            {
+                                "category": null,
+                                "controls": [
+                                    {
+                                        "description": "",
+                                        "details": {},
+                                        "index": "0",
+                                        "name": "100% of Tests were executed?",
+                                        "required": false
+                                    },
+                                    {
+                                        "description": "",
+                                        "details": {},
+                                        "index": "1",
+                                        "name": "No High Severity Defects Found?",
+                                        "required": false
+                                    }
+                                ],
+                                "description": "",
+                                "details": {
+                                    "assignto": [],
+                                    "reason_required": false,
+                                    "tags": [],
+                                    "text": "",
+                                    "title": "Manual Full Regression Testing"
+                                },
+                                "estimated_touch_time": "",
+                                "index": "2_0",
+                                "interactive": true,
+                                "name": "Manual Full Regression Testing",
+                                "type": "manual_activity"
+                            }
+                        ],
+                        "estimated_touch_time": "",
+                        "index": "2",
+                        "interactive": true,
+                        "name": "Automated Regression Tests",
+                        "type": "manual_activity"
+                    }
+                ],
+                "name": "QA Testing"
+            },
+            {
+                "autopromote": true,
+                "delivery_category": "Packaged",
+                "directives": [
+                    {
+                        "category": null,
+                        "controls": [],
+                        "description": "",
+                        "details": {
+                            "assignto": [],
+                            "reason_required": false,
+                            "tags": [],
+                            "text": "",
+                            "title": "Are we ready to upload to SFDC for Validation?"
+                        },
+                        "estimated_touch_time": "",
+                        "index": "0",
+                        "interactive": true,
+                        "name": "Are we ready to upload to SFDC for Validation?",
+                        "type": "manual_activity"
+                    }
+                ],
+                "name": "Ready For SFDC Validation"
+            },
+            {
+                "autopromote": true,
+                "delivery_category": "Packaged",
+                "directives": [
+                    {
+                        "category": null,
+                        "controls": [],
+                        "description": "",
+                        "details": {
+                            "assignto": [],
+                            "reason_required": false,
+                            "tags": [],
+                            "text": "",
+                            "title": "Upload the Package to SFDC"
+                        },
+                        "directives": [
+                            {
+                                "category": null,
+                                "controls": [
+                                    {
+                                        "description": "",
+                                        "details": {},
+                                        "index": "0",
+                                        "name": "100% of tests executed?",
+                                        "required": false
+                                    },
+                                    {
+                                        "description": "",
+                                        "details": {},
+                                        "index": "1",
+                                        "name": "75% Unit Test Code Coverage?",
+                                        "required": false
+                                    }
+                                ],
+                                "description": "",
+                                "details": {
+                                    "assignto": [],
+                                    "reason_required": false,
+                                    "tags": [],
+                                    "text": "",
+                                    "title": "SFDC Unit Testing"
+                                },
+                                "estimated_touch_time": "",
+                                "index": "0_0",
+                                "interactive": true,
+                                "name": "SFDC Unit Testing",
+                                "type": "manual_activity"
+                            }
+                        ],
+                        "estimated_touch_time": "",
+                        "index": "0",
+                        "interactive": true,
+                        "name": "Upload the Package to SFDC",
+                        "type": "manual_activity"
+                    }
+                ],
+                "name": "SFDC Validation"
+            },
+            {
+                "autopromote": true,
+                "delivery_category": "Packaged",
+                "directives": [
+                    {
+                        "category": null,
+                        "controls": [],
+                        "description": "",
+                        "details": {
+                            "assignto": [],
+                            "reason_required": false,
+                            "tags": [],
+                            "text": "",
+                            "title": "Are we Ready for Release?"
+                        },
+                        "estimated_touch_time": "",
+                        "index": "0",
+                        "interactive": true,
+                        "name": "Are we Ready for Release?",
+                        "type": "manual_activity"
+                    }
+                ],
+                "name": "Ready for Release"
+            },
+            {
+                "autopromote": true,
+                "delivery_category": "Packaged",
+                "directives": [
+                    {
+                        "category": null,
+                        "controls": [],
+                        "description": "",
+                        "details": {
+                            "assignto": [],
+                            "reason_required": false,
+                            "tags": [],
+                            "text": "",
+                            "title": "Perform Pre-Deployment Checklist"
+                        },
+                        "directives": [
+                            {
+                                "category": null,
+                                "controls": [],
+                                "description": "",
+                                "details": {
+                                    "assignto": [],
+                                    "reason_required": false,
+                                    "tags": [],
+                                    "text": "",
+                                    "title": "Deploy to Production Staging"
+                                },
+                                "directives": [
+                                    {
+                                        "category": null,
+                                        "controls": [],
+                                        "description": "",
+                                        "details": {
+                                            "assignto": [],
+                                            "reason_required": false,
+                                            "tags": [],
+                                            "text": "",
+                                            "title": "Post Staging Deploy Config"
+                                        },
+                                        "estimated_touch_time": "",
+                                        "index": "0_0_0",
+                                        "interactive": true,
+                                        "name": "Post Staging Deploy Config",
+                                        "type": "manual_activity"
+                                    }
+                                ],
+                                "estimated_touch_time": "",
+                                "index": "0_0",
+                                "interactive": true,
+                                "name": "Deploy to Production Staging",
+                                "type": "manual_activity"
+                            }
+                        ],
+                        "estimated_touch_time": "",
+                        "index": "0",
+                        "interactive": true,
+                        "name": "Perform Pre-Deployment Checklist",
+                        "type": "manual_activity"
+                    }
+                ],
+                "name": "Production Deploy"
+            },
+            {
+                "autopromote": true,
+                "delivery_category": "Packaged",
+                "directives": [
+                    {
+                        "category": null,
+                        "controls": [],
+                        "description": "",
+                        "details": {
+                            "assignto": [],
+                            "reason_required": false,
+                            "tags": [],
+                            "text": "",
+                            "title": "Squid Test with Grunt"
+                        },
+                        "directives": [
+                            {
+                                "category": null,
+                                "controls": [],
+                                "description": "",
+                                "details": {
+                                    "assignto": [],
+                                    "reason_required": false,
+                                    "tags": [],
+                                    "text": "",
+                                    "title": "Execute Post Deploy Checklist"
+                                },
+                                "directives": [
+                                    {
+                                        "category": null,
+                                        "controls": [],
+                                        "description": "",
+                                        "details": {
+                                            "assignto": [],
+                                            "reason_required": false,
+                                            "tags": [],
+                                            "text": "",
+                                            "title": "Post Deploy Automated Tests"
+                                        },
+                                        "directives": [
+                                            {
+                                                "category": null,
+                                                "controls": [],
+                                                "description": "",
+                                                "details": {
+                                                    "assignto": [],
+                                                    "reason_required": false,
+                                                    "tags": [],
+                                                    "text": "",
+                                                    "title": "Prod Validation Manual Smoke Testing"
+                                                },
+                                                "directives": [
+                                                    {
+                                                        "category": null,
+                                                        "controls": [],
+                                                        "description": "",
+                                                        "details": {
+                                                            "assignto": [],
+                                                            "reason_required": false,
+                                                            "tags": [],
+                                                            "text": "",
+                                                            "title": "Check Prod Config into Master Branch"
+                                                        },
+                                                        "directives": [
+                                                            {
+                                                                "category": null,
+                                                                "controls": [],
+                                                                "description": "",
+                                                                "details": {
+                                                                    "assignto": [],
+                                                                    "reason_required": false,
+                                                                    "tags": [],
+                                                                    "text": "",
+                                                                    "title": "Schedule next Change Control Window"
+                                                                },
+                                                                "estimated_touch_time": "",
+                                                                "index": "0_0_0_0_0_0",
+                                                                "interactive": true,
+                                                                "name": "Schedule next Change Control Window",
+                                                                "type": "manual_activity"
+                                                            }
+                                                        ],
+                                                        "estimated_touch_time": "",
+                                                        "index": "0_0_0_0_0",
+                                                        "interactive": true,
+                                                        "name": "Check Prod Config into Master Branch",
+                                                        "type": "manual_activity"
+                                                    }
+                                                ],
+                                                "estimated_touch_time": "",
+                                                "index": "0_0_0_0",
+                                                "interactive": true,
+                                                "name": "Prod Validation Manual Smoke Testing",
+                                                "type": "manual_activity"
+                                            }
+                                        ],
+                                        "estimated_touch_time": "",
+                                        "index": "0_0_0",
+                                        "interactive": true,
+                                        "name": "Post Deploy Automated Tests",
+                                        "type": "manual_activity"
+                                    }
+                                ],
+                                "estimated_touch_time": "",
+                                "index": "0_0",
+                                "interactive": true,
+                                "name": "Execute Post Deploy Checklist",
+                                "type": "manual_activity"
+                            }
+                        ],
+                        "estimated_touch_time": "",
+                        "index": "0",
+                        "interactive": true,
+                        "name": "Squid Test with Grunt",
+                        "type": "manual_activity"
+                    }
+                ],
+                "name": "Production Validation"
+            }
+        ]
+    }
+}

@@ -1,0 +1,114 @@
+{
+    "__assembled": true,
+    "actions": [],
+    "description": "build a jenkins job",
+    "globals": {
+        "downstream_pipeline": "Single Service Deployment Test"
+    },
+    "name": "Jenkins Build",
+    "phases": [
+        {
+            "name": "Collect Third Party Info",
+            "stages": [
+                {
+                    "description": "",
+                    "name": "Collect Git Info",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {},
+                                "label": "GitHub - Show Summary",
+                                "method": "show_summary",
+                                "module": "main",
+                                "name": "github"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "message": "Starting pipeline instance for project __PROJECTNAME",
+                                    "room": "ClearCode"
+                                },
+                                "label": "HipChat - Send Notification",
+                                "method": "send",
+                                "module": "notification",
+                                "name": "hipchatplugin"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Build Jenkins Job",
+            "stages": [
+                {
+                    "description": "",
+                    "name": "Jenkins Build",
+                    "steps": [
+                        {
+                            "name": "Jenkins",
+                            "plugin": {
+                                "args": {
+                                    "inherit": true,
+                                    "job": "[$ projectglobals['jenkins_job'] $]",
+                                    "params": {
+                                        "BRANCH": "[$ github['ref'] $]",
+                                        "COMMIT": "[$ github['after'] $]"
+                                    },
+                                    "token": "",
+                                    "wait": true
+                                },
+                                "method": "build",
+                                "module": "job",
+                                "name": "jenkins"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Initiate Next Pipeline",
+            "stages": [
+                {
+                    "description": "",
+                    "name": "Initiate Next Pipeline",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "group": "master",
+                                    "pipeline": "[$ globals[\"downstream_pipeline\"] $]",
+                                    "project": "customers-microservice"
+                                },
+                                "label": "Flow - Pipeline - Initiate",
+                                "method": "initiate",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "product_id": "",
+    "product_workflow_step": "",
+    "signature": {
+        "ref": "refs/heads/master",
+        "repository": {
+            "name": "spring-petclinic",
+            "url": "https://github.com/cloudsidekick/spring-petclinic"
+        }
+    },
+    "signature_type": "git",
+    "summary": []
+}

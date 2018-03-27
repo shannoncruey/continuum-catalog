@@ -1,0 +1,210 @@
+{
+    "__assembled": true,
+    "actions": [
+        {
+            "definition": "Package Continuum Branch",
+            "details": null,
+            "group": "__GROUP",
+            "icon": "",
+            "instancename": "",
+            "name": "Run this Pipeline",
+            "on": "group",
+            "parameters": {},
+            "project": "Continuum",
+            "project_version": "",
+            "type": "initiate_pipeline"
+        }
+    ],
+    "description": "",
+    "globals": "",
+    "name": "Package Continuum Branch",
+    "phases": [
+        {
+            "name": "Package Continuum Branch",
+            "stages": [
+                {
+                    "description": "",
+                    "name": "Package Continuum Branch",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "master_artifacts",
+                                    "name": "master_artifacts",
+                                    "required": true
+                                },
+                                "label": "Utility - Get Registry",
+                                "method": "get_registry",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "master_artifacts.automate",
+                                    "value": "[$inputs['artifacts']['automate']['location']$]"
+                                },
+                                "label": "Flow - Pipeline - Set Data",
+                                "method": "set_data",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "conditionally",
+                            "when_condition": "len(inputs['artifacts']['automate']['location']) > 0"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "master_artifacts.deploy",
+                                    "value": "[$inputs['artifacts']['deploy']['location']$]"
+                                },
+                                "label": "Flow - Pipeline - Set Data",
+                                "method": "set_data",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "conditionally",
+                            "when_condition": "len(inputs['artifacts']['deploy']['location']) > 0"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "master_artifacts.flow",
+                                    "value": "[$inputs['artifacts']['flow']['location']$]"
+                                },
+                                "label": "Flow - Pipeline - Set Data",
+                                "method": "set_data",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "conditionally",
+                            "when_condition": "len(inputs['artifacts']['flow']['location']) > 0"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "master_artifacts.canvas",
+                                    "value": "[$inputs['artifacts']['canvas']['location']$]"
+                                },
+                                "label": "Flow - Pipeline - Set Data",
+                                "method": "set_data",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "conditionally",
+                            "when_condition": "len(inputs['artifacts']['canvas']['location']) > 0"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "master_artifacts.client",
+                                    "value": "[$inputs['artifacts']['client']['location']$]"
+                                },
+                                "label": "Flow - Pipeline - Set Data",
+                                "method": "set_data",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "conditionally",
+                            "when_condition": "len(inputs['artifacts']['client']['location']) > 0"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "master_artifacts.velocity",
+                                    "value": "[$inputs['artifacts']['velocity']['location']$]"
+                                },
+                                "label": "Flow - Pipeline - Set Data",
+                                "method": "set_data",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "conditionally",
+                            "when_condition": "len(inputs['artifacts']['velocity']['location']) > 0\n"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "master_artifacts.thirdparty",
+                                    "value": "[$inputs['artifacts']['thirdparty']['location']$]"
+                                },
+                                "label": "Flow - Pipeline - Set Data",
+                                "method": "set_data",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "conditionally",
+                            "when_condition": "len(inputs['artifacts']['thirdparty']['location']) > 0"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "master_artifacts.common",
+                                    "value": "[$inputs['artifacts']['common']['location']$]"
+                                },
+                                "label": "Flow - Pipeline - Set Data",
+                                "method": "set_data",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "conditionally",
+                            "when_condition": "len(inputs['artifacts']['common']['location']) > 0"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "initial_data": {
+                                        "AUTOMATE_ART": "[$ master_artifacts['automate']$]",
+                                        "BUILD_NUMBER": "__PINUMBER",
+                                        "CANVAS_ART": "[$master_artifacts['canvas']$]",
+                                        "CLIENT_ART": "[$master_artifacts['client']$]",
+                                        "COMMON_ART": "[$master_artifacts['common']$]",
+                                        "DEPLOY_ART": "[$master_artifacts['deploy']$]",
+                                        "FLOW_ART": "[$master_artifacts['flow']$]",
+                                        "GROUP": "__GROUP",
+                                        "THIRDPARTY_ART": "[$master_artifacts['thirdparty']$]",
+                                        "VELOCITY_ART": "[$ master_artifacts['velocity'] $]"
+                                    },
+                                    "task": "package continuum branch"
+                                },
+                                "label": "Automate - Run Task",
+                                "method": "runtask",
+                                "module": "task",
+                                "name": "automate"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "artifact_location": "https://s3.amazonaws.com/builds.continuum.versionone.com/installer/continuum-16.0.2-installer.sh",
+                                    "artifact_name": "installer"
+                                },
+                                "label": "Flow - Artifact - Register Artifact",
+                                "method": "register_artifact",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "summary": []
+}

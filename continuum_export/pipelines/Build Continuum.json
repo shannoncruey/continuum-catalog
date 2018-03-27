@@ -1,0 +1,314 @@
+{
+    "actions": [
+        {
+            "icon": "38_48x48.png",
+            "name": "Retry",
+            "parameters": {},
+            "show": "failure",
+            "type": "retry_instance"
+        },
+        {
+            "definition": "Deploy Continuum to Test VM",
+            "details": {
+                "installer": "[$ installer $]"
+            },
+            "group": "__GROUP",
+            "icon": "",
+            "instancename": "",
+            "name": "Deploy Continuum to Test VM",
+            "parameters": {},
+            "project": "continuum",
+            "project_version": "",
+            "show": "success",
+            "type": "initiate_pipeline"
+        }
+    ],
+    "description": "Used to build various Velocity modules.",
+    "globals": {},
+    "name": "Build Continuum",
+    "phases": [
+        {
+            "name": "Build and Unit Test",
+            "stages": [
+                {
+                    "name": "Build",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "broid_target_key": "build_run_id",
+                                    "build_project": "Continuum Repo",
+                                    "initial_status": "In Progress",
+                                    "instance_name": "",
+                                    "name": "",
+                                    "reference": ""
+                                },
+                                "label": "VersionOne - Create BuildRun",
+                                "method": "create_buildrun",
+                                "module": "main",
+                                "name": "v1plugin"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "master_artifacts",
+                                    "name": "master_artifacts",
+                                    "required": "true"
+                                },
+                                "label": "Utility - Get Registry",
+                                "method": "get_registry",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "action": {
+                                        "args": {
+                                            "key": "sha",
+                                            "value": "[$ __WORKSPACE.get('github', {}).get('after', '') $]"
+                                        },
+                                        "label": "Flow - Pipeline - Set Data",
+                                        "method": "set_data",
+                                        "module": "pipeline",
+                                        "name": "flow"
+                                    },
+                                    "else_action": {
+                                        "args": {
+                                            "key": "sha",
+                                            "value": "__GROUP"
+                                        },
+                                        "label": "Flow - Pipeline - Set Data",
+                                        "method": "set_data",
+                                        "module": "pipeline",
+                                        "name": "flow"
+                                    },
+                                    "expression": "\"[$ __WORKSPACE.get('github', {}).get('after', '') $]\" > \"\""
+                                },
+                                "label": "Utility - Conditional",
+                                "method": "conditional",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "initial_data": {
+                                        "BRANCH": "__GROUP",
+                                        "BUILD": "__PINUMBER",
+                                        "SHA": "[$ sha $]",
+                                        "THIRDPARTY": "[$ master_artifacts['thirdparty'] $]"
+                                    },
+                                    "task": "Build Continuum",
+                                    "version": ""
+                                },
+                                "label": "Automate - Run Task",
+                                "method": "runtask",
+                                "module": "task",
+                                "name": "automate"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "name": "[$ VERSION $].__PINUMBER"
+                                },
+                                "label": "Flow - Pipeline - Set Name",
+                                "method": "set_name",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "ERRORS.JAVASCRIPT"
+                                },
+                                "label": "Utility - Show Workspace Data",
+                                "method": "show_workspace_data",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "ERRORS.PYTHON"
+                                },
+                                "label": "Utility - Show Workspace Data",
+                                "method": "show_workspace_data",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "action": {
+                                        "args": {
+                                            "status": "end-failure"
+                                        },
+                                        "label": "Utility - End",
+                                        "method": "end",
+                                        "module": "utility",
+                                        "name": "utility"
+                                    },
+                                    "expression": "len(ERRORS.get(\"JAVASCRIPT\", \"\")) > 0 or len(ERRORS.get(\"PYTHON\", \"\")) > 0"
+                                },
+                                "label": "Utility - Conditional",
+                                "method": "conditional",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "New Revision on Master",
+            "stages": [
+                {
+                    "name": "New Revision on Master",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "artifact_location": "https://s3.amazonaws.com/builds.continuum.versionone.com/installer/continuum-[$ VERSION $].__PINUMBER-installer.sh",
+                                    "artifact_name": "continuum",
+                                    "artifact_version": "[$ VERSION $].__PINUMBER",
+                                    "branch": "master",
+                                    "build_details": "",
+                                    "build_id": "__PINUMBER",
+                                    "build_url": "__PIURL",
+                                    "project_name": ""
+                                },
+                                "label": "Flow - Artifact - New Revision",
+                                "method": "register_artifact",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "conditionally",
+                            "when_condition": "\"__GROUP\" == \"master\""
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "description": "[$ VERSION $].__PINUMBER",
+                                    "globals_key": "",
+                                    "package": "Continuum",
+                                    "result_key": "revision",
+                                    "version": "[$ VERSION $]"
+                                },
+                                "label": "Flow - Package - New Revision",
+                                "method": "new_revision",
+                                "module": "package",
+                                "name": "flow"
+                            },
+                            "when": "conditionally",
+                            "when_condition": "\"__GROUP\" == \"master\""
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "full_version": "",
+                                    "package": "Continuum",
+                                    "phase": "Packaged",
+                                    "revision": "[$ revision[\"revision\"] $]"
+                                },
+                                "label": "Flow - Package - Promote Revision",
+                                "method": "promote",
+                                "module": "package",
+                                "name": "flow"
+                            },
+                            "when": "conditionally",
+                            "when_condition": "\"__GROUP\" == \"master\""
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "full_version": "",
+                                    "instance_name": "",
+                                    "package_label": "Continuum [$ VERSION $].__PINUMBER",
+                                    "package_name": "Continuum",
+                                    "phase": "Packaged",
+                                    "required": "true",
+                                    "revision": "[$ revision[\"revision\"] $]"
+                                },
+                                "label": "VersionOne - Specify Phase",
+                                "method": "specify_phase",
+                                "module": "main",
+                                "name": "v1plugin"
+                            },
+                            "when": "conditionally",
+                            "when_condition": "\"__GROUP\" == \"master\""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Trigger Testing",
+            "stages": [
+                {
+                    "name": "Trigger Testing",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "group": "__GROUP",
+                                    "initial_data": {
+                                        "full_version": "[$ VERSION $].__PINUMBER",
+                                        "installer": "https://s3.amazonaws.com/builds.continuum.versionone.com/installer/continuum-[$ VERSION $].__PINUMBER-installer.sh"
+                                    },
+                                    "pipeline": "Regression Tests",
+                                    "project": "__PROJECTNAME"
+                                },
+                                "label": "Flow - Pipeline - Initiate",
+                                "method": "initiate",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "conditionally",
+                            "when_condition": "\"__GROUP\" == \"master\""
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "signature": {
+        "ref": "refs/heads/master",
+        "repository": {
+            "name": "deploy",
+            "url": "https://github.com/cloudsidekick/deploy"
+        }
+    },
+    "signature_type": "git",
+    "summary": []
+}

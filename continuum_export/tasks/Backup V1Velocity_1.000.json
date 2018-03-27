@@ -1,0 +1,471 @@
+{
+    "Category": null,
+    "Code": "Backup",
+    "Codeblocks": [
+        {
+            "Name": "get_task",
+            "Steps": [
+                {
+                    "Codeblock": "get_task",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_variable",
+                        "variables": {
+                            "Item::variable::0": {
+                                "modifier": {
+                                    "modifier": "DEFAULT"
+                                },
+                                "name": {
+                                    "name": "task2export"
+                                },
+                                "value": {
+                                    "value": "[$ tasklist[\"Response\"][[$x$]].get(\"Name\") $]"
+                                }
+                            },
+                            "Item::variable::1": {
+                                "modifier": {
+                                    "modifier": "DEFAULT"
+                                },
+                                "name": {
+                                    "name": "filename"
+                                },
+                                "value": {
+                                    "value": "[$ task2export.replace(\" \",\"\") $]"
+                                }
+                            },
+                            "__is_array": "true"
+                        }
+                    },
+                    "FunctionName": "set_variable",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "get_task",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "cato_web_service",
+                        "error_var": {
+                            "error_var": ""
+                        },
+                        "host": {
+                            "host": "http://[$addy$]:8081"
+                        },
+                        "method": {
+                            "method": "export_task"
+                        },
+                        "pairs": {
+                            "Item::pair::0": {
+                                "key": {
+                                    "key": "output_format"
+                                },
+                                "value": {
+                                    "value": "json"
+                                }
+                            },
+                            "Item::pair::1": {
+                                "key": {
+                                    "key": "task"
+                                },
+                                "value": {
+                                    "value": "[$ task2export $]"
+                                }
+                            },
+                            "__is_array": "true"
+                        },
+                        "password": {
+                            "password": "[$pwd$]"
+                        },
+                        "result_var": {
+                            "result_var": "taskjson"
+                        },
+                        "timeout": {
+                            "timeout": ""
+                        },
+                        "userid": {
+                            "userid": "[$uid$]"
+                        },
+                        "values": {
+                            "Item::value::0": {
+                                "name": {
+                                    "name": ""
+                                },
+                                "type": {
+                                    "type": "element"
+                                },
+                                "variable": {
+                                    "variable": ""
+                                }
+                            },
+                            "__is_array": "true"
+                        },
+                        "xpath": {
+                            "xpath": ""
+                        }
+                    },
+                    "FunctionName": "cato_web_service",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "get_task",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "utility.utility",
+                        "__name": "write_file",
+                        "contents": {
+                            "contents": "[$taskjson$]"
+                        },
+                        "path": {
+                            "path": "[$BACKUPDIR$]/[$filename$].task"
+                        }
+                    },
+                    "FunctionName": "write_file",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        },
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_debug_level",
+                        "debug_level": {
+                            "debug_level": "10"
+                        }
+                    },
+                    "FunctionName": "set_debug_level",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "get_asset",
+                        "address_out": {
+                            "address_out": "addy"
+                        },
+                        "asset": {
+                            "asset": "V1Velocity"
+                        },
+                        "conn_string_out": {
+                            "conn_string_out": ""
+                        },
+                        "db_out": {
+                            "db_out": ""
+                        },
+                        "pass_out": {
+                            "pass_out": "pwd"
+                        },
+                        "port_out": {
+                            "port_out": ""
+                        },
+                        "user_out": {
+                            "user_out": "uid"
+                        }
+                    },
+                    "FunctionName": "get_asset",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "cato_web_service",
+                        "error_var": {
+                            "error_var": ""
+                        },
+                        "host": {
+                            "host": "http://[$addy$]:8081"
+                        },
+                        "method": {
+                            "method": "export_flow"
+                        },
+                        "pairs": {
+                            "Item::pair::0": {
+                                "key": {
+                                    "key": "output_format"
+                                },
+                                "value": {
+                                    "value": "json"
+                                }
+                            },
+                            "__is_array": "true"
+                        },
+                        "password": {
+                            "password": "[$pwd$]"
+                        },
+                        "result_var": {
+                            "result_var": "flowjson"
+                        },
+                        "timeout": {
+                            "timeout": ""
+                        },
+                        "userid": {
+                            "userid": "[$uid$]"
+                        },
+                        "values": {
+                            "Item::value::0": {
+                                "name": {
+                                    "name": ""
+                                },
+                                "type": {
+                                    "type": "element"
+                                },
+                                "variable": {
+                                    "variable": ""
+                                }
+                            },
+                            "__is_array": "true"
+                        },
+                        "xpath": {
+                            "xpath": ""
+                        }
+                    },
+                    "FunctionName": "cato_web_service",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "utility.utility",
+                        "__name": "write_file",
+                        "contents": {
+                            "contents": "[$flowjson$]"
+                        },
+                        "path": {
+                            "path": "[$BACKUPDIR$]/v1flow.json"
+                        }
+                    },
+                    "FunctionName": "write_file",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "cato_web_service",
+                        "error_var": {
+                            "error_var": ""
+                        },
+                        "host": {
+                            "host": "http://[$addy$]:8081"
+                        },
+                        "method": {
+                            "method": "export_canvas"
+                        },
+                        "pairs": {
+                            "Item::pair::0": {
+                                "key": {
+                                    "key": "output_format"
+                                },
+                                "value": {
+                                    "value": "json"
+                                }
+                            },
+                            "__is_array": "true"
+                        },
+                        "password": {
+                            "password": "[$pwd$]"
+                        },
+                        "result_var": {
+                            "result_var": "canvasjson"
+                        },
+                        "timeout": {
+                            "timeout": ""
+                        },
+                        "userid": {
+                            "userid": "[$uid$]"
+                        },
+                        "values": {
+                            "Item::value::0": {
+                                "name": {
+                                    "name": ""
+                                },
+                                "type": {
+                                    "type": "element"
+                                },
+                                "variable": {
+                                    "variable": ""
+                                }
+                            },
+                            "__is_array": "true"
+                        },
+                        "xpath": {
+                            "xpath": ""
+                        }
+                    },
+                    "FunctionName": "cato_web_service",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "utility.utility",
+                        "__name": "write_file",
+                        "contents": {
+                            "contents": "[$canvasjson$]"
+                        },
+                        "path": {
+                            "path": "[$BACKUPDIR$]/v1canvas.json"
+                        }
+                    },
+                    "FunctionName": "write_file",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "cato_web_service",
+                        "error_var": {
+                            "error_var": ""
+                        },
+                        "host": {
+                            "host": "http://[$addy$]:8081"
+                        },
+                        "method": {
+                            "method": "list_tasks"
+                        },
+                        "pairs": {
+                            "Item::pair::0": {
+                                "key": {
+                                    "key": "output_format"
+                                },
+                                "value": {
+                                    "value": "json"
+                                }
+                            },
+                            "__is_array": "true"
+                        },
+                        "password": {
+                            "password": "[$pwd$]"
+                        },
+                        "result_var": {
+                            "result_var": "tasklist"
+                        },
+                        "timeout": {
+                            "timeout": ""
+                        },
+                        "userid": {
+                            "userid": "[$uid$]"
+                        },
+                        "values": {
+                            "Item::value::0": {
+                                "name": {
+                                    "name": ""
+                                },
+                                "type": {
+                                    "type": "element"
+                                },
+                                "variable": {
+                                    "variable": ""
+                                }
+                            },
+                            "__is_array": "true"
+                        },
+                        "xpath": {
+                            "xpath": ""
+                        }
+                    },
+                    "FunctionName": "cato_web_service",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "loop",
+                        "action": {
+                            "function": {
+                                "__name": "codeblock",
+                                "codeblock": {
+                                    "codeblock": "get_task"
+                                }
+                            }
+                        },
+                        "compare_to": {
+                            "compare_to": "[$ len(tasklist) $]"
+                        },
+                        "counter": {
+                            "counter": "x"
+                        },
+                        "increment": {
+                            "increment": "1"
+                        },
+                        "max": {
+                            "max": "100"
+                        },
+                        "start": {
+                            "start": "0"
+                        },
+                        "test": {
+                            "test": "<="
+                        }
+                    },
+                    "FunctionName": "loop",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "Backup V1Velocity",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [
+        {
+            "encrypt": "false",
+            "name": "BACKUPDIR",
+            "present_as": "value",
+            "prompt": "false",
+            "required": "false",
+            "values": [
+                "/Users/shannon/Dropbox/backup/v1"
+            ]
+        }
+    ],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.000"
+}

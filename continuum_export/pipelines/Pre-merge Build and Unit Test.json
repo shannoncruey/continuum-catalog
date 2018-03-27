@@ -1,0 +1,132 @@
+{
+    "__assembled": true,
+    "actions": [],
+    "description": "Petclinic CD Pipeline",
+    "globals": {
+        "jenkins_job": "petclinic",
+        "jenkins_merge_job": "petclinic_merge"
+    },
+    "name": "Pre-merge Build and Unit Test",
+    "phases": [
+        {
+            "name": "Collect Third Party Info",
+            "stages": [
+                {
+                    "description": "",
+                    "name": "Collect Git Info",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {},
+                                "label": "GitHub - Show Summary",
+                                "method": "show_summary",
+                                "module": "main",
+                                "name": "github"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "message": "Starting pipeline instance for project __PROJECTNAME",
+                                    "room": "ClearCode"
+                                },
+                                "label": "HipChat - Send Notification",
+                                "method": "send",
+                                "module": "notification",
+                                "name": "hipchatplugin"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Approve and Merge",
+            "stages": [
+                {
+                    "description": "",
+                    "name": "Jenkins Merge",
+                    "steps": [
+                        {
+                            "name": "Approve for merge to main",
+                            "plugin": {
+                                "args": {
+                                    "text": "Is this code change ready to be approved and merged?",
+                                    "title": "Approve for merge to main?"
+                                },
+                                "kind": "confirm",
+                                "method": "confirmation",
+                                "module": "interact",
+                                "name": "flow",
+                                "type": "interaction"
+                            },
+                            "tags": []
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "group": "master",
+                                    "pipeline": "Nightly Petclinic Merge",
+                                    "project": "Petclinic App"
+                                },
+                                "method": "initiate",
+                                "module": "pipeline",
+                                "name": "flow"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Build Jenkins Job",
+            "stages": [
+                {
+                    "description": "",
+                    "name": "Jenkins Build",
+                    "steps": [
+                        {
+                            "name": "Jenkins",
+                            "plugin": {
+                                "args": {
+                                    "inherit": true,
+                                    "job": "[$ projectglobals['jenkins_job'] $]",
+                                    "params": {
+                                        "BRANCH": "[$ github['ref'] $]",
+                                        "COMMIT": "[$ github['after'] $]"
+                                    },
+                                    "token": "",
+                                    "wait": true
+                                },
+                                "method": "build",
+                                "module": "job",
+                                "name": "jenkins"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "product_id": "5447f2483ed4d26b0b3d8368",
+    "product_name": "Pet Clinic",
+    "product_workflow_step": "Development",
+    "signature": {
+        "ref": "refs/heads/master",
+        "repository": {
+            "name": "spring-petclinic",
+            "url": "https://github.com/cloudsidekick/spring-petclinic"
+        }
+    },
+    "signature_type": "git",
+    "summary": [],
+    "tags": [
+        "PetClinic"
+    ]
+}

@@ -1,0 +1,71 @@
+{
+    "artifacts": [
+        {
+            "_id": "57616e95805479609578e33d",
+            "created_dt": null,
+            "last_revision": 64,
+            "last_revision_dt": null,
+            "name": "tfsdropzip",
+            "project_id": "54da759e3ed4d22f95a849ed",
+            "project_name": "ContosoUniversity"
+        }
+    ],
+    "description": "",
+    "mappings": [],
+    "name": "ContosoUniversity",
+    "notifications": {
+        "email": {
+            "addresses": ""
+        },
+        "enable": false,
+        "hipchat": {
+            "room": ""
+        },
+        "http": {
+            "data": "",
+            "url": ""
+        },
+        "on_failure": [],
+        "on_start": [],
+        "on_success": [],
+        "on_wait": [],
+        "slack": {
+            "channel": ""
+        }
+    },
+    "source": {
+        "directives": [
+            {
+                "details": {
+                    "args": {
+                        "expression": "#[0-9]{1,}",
+                        "fields": [
+                            "message"
+                        ],
+                        "tfsaccount": "clearcodelabs.visualstudio.com"
+                    },
+                    "method": "identify_issues",
+                    "plugin": "tfsplugin.commit"
+                },
+                "type": "plugin_function",
+                "when": "always"
+            },
+            {
+                "details": {
+                    "definition": "Contoso - Deploy to Test",
+                    "group": "[$ branch $]",
+                    "project": ""
+                },
+                "group": "master",
+                "type": "assign_to_pipeline",
+                "when": "group"
+            }
+        ],
+        "group_source": "branch",
+        "interface": "webhook",
+        "type": "tfsgit"
+    },
+    "type": "Source",
+    "version": "1.0",
+    "version_date": "2015-02-10 21:35:29"
+}

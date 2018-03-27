@@ -1,0 +1,180 @@
+{
+    "Category": null,
+    "Code": "QA - SQL Exec",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "new_connection",
+                        "__snip": "conn_name",
+                        "asset": {
+                            "__input_type": "text",
+                            "asset": "LocalMySql"
+                        },
+                        "cloud_name": {
+                            "__input_type": "dropdown",
+                            "__style": "combo",
+                            "cloud_name": ""
+                        },
+                        "conn_name": {
+                            "__class": "w200px",
+                            "__help": "Name this connection for reference in the Task.",
+                            "__input_type": "text",
+                            "__label": "as",
+                            "__required": "true",
+                            "conn_name": "MYSQLCONN"
+                        },
+                        "conn_type": {
+                            "__input_type": "select",
+                            "conn_type": "mysql"
+                        }
+                    },
+                    "FunctionName": "new_connection",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__col_delimiter": "0",
+                        "__name": "sql_exec",
+                        "__parse_method": "1",
+                        "__row_delimiter": "0",
+                        "__snip": "sql",
+                        "__variables": "true",
+                        "conn_name": {
+                            "__connection_picker": "true",
+                            "__input_type": "text",
+                            "conn_name": "MYSQLCONN"
+                        },
+                        "handle": {
+                            "__input_type": "text",
+                            "handle": ""
+                        },
+                        "mode": {
+                            "__input_type": "select",
+                            "mode": "SQL"
+                        },
+                        "pairs": {
+                            "__label": "Bind Variables",
+                            "pair": {
+                                "key": {
+                                    "__input_type": "text",
+                                    "__label": "Bind",
+                                    "key": ""
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "value": ""
+                                }
+                            }
+                        },
+                        "result_variable": {
+                            "result_variable": "rows"
+                        },
+                        "sql": {
+                            "__input_type": "text",
+                            "sql": "select * from task;"
+                        },
+                        "step_variables": {}
+                    },
+                    "FunctionName": "sql_exec",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 1,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "drop_connection",
+                        "__snip": "conn_name",
+                        "conn_name": {
+                            "__connection_picker": "true",
+                            "__input_type": "text",
+                            "__label": "Connection",
+                            "conn_name": "MYSQLCONN"
+                        }
+                    },
+                    "FunctionName": "drop_connection",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "loop",
+                        "action": {
+                            "function": {
+                                "__name": "log_msg",
+                                "__snip": "message",
+                                "message": {
+                                    "__class": "w95pct",
+                                    "__input_type": "textarea",
+                                    "__label": "Log",
+                                    "__label_style": "display: block;",
+                                    "__required": "true",
+                                    "__rows": "2",
+                                    "message": "[$ rows[[$X$]][4] $]"
+                                }
+                            }
+                        },
+                        "compare_to": {
+                            "__input_type": "text",
+                            "compare_to": "[$ len(rows) $]"
+                        },
+                        "counter": {
+                            "__input_type": "text",
+                            "counter": "x"
+                        },
+                        "increment": {
+                            "__input_type": "text",
+                            "increment": "1"
+                        },
+                        "max": {
+                            "__input_type": "text",
+                            "max": "100"
+                        },
+                        "start": {
+                            "__input_type": "text",
+                            "start": "0"
+                        },
+                        "test": {
+                            "__input_type": "select",
+                            "test": "<="
+                        }
+                    },
+                    "FunctionName": "loop",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "Tests New Connection, SQL Exec, and Drop Connection.  Uses the explicit mode of New Connection by specifying a conn string.",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "QA - SQL Exec",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.000"
+}

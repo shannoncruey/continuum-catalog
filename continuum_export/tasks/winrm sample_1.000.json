@@ -1,0 +1,232 @@
+{
+    "Category": null,
+    "Code": "000000",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "new_connection",
+                        "__snip": "conn_name",
+                        "asset": {
+                            "__input_type": "text",
+                            "asset": "address=192.168.0.5 userid=administrator password=nowayn"
+                        },
+                        "cloud_name": {
+                            "__input_type": "dropdown",
+                            "__style": "combo",
+                            "cloud_name": ""
+                        },
+                        "conn_name": {
+                            "__class": "w200px",
+                            "__help": "Name this connection for reference in the Task.",
+                            "__input_type": "text",
+                            "__label": "Connection Name",
+                            "__required": "true",
+                            "conn_name": "winrmconn"
+                        },
+                        "conn_type": {
+                            "__input_type": "select",
+                            "conn_type": "winrm"
+                        },
+                        "debug": {
+                            "__break_after": "true",
+                            "__input_type": "checkbox",
+                            "__label": "Debug",
+                            "debug": "1"
+                        }
+                    },
+                    "FunctionName": "new_connection",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_variable",
+                        "variables": {
+                            "__label": "Variables",
+                            "variable": {
+                                "__label": "Variable",
+                                "modifier": {
+                                    "__input_type": "select",
+                                    "__label": "Modifier",
+                                    "modifier": "TO_BASE64_UTF16"
+                                },
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "ps"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "value": "Get-Service"
+                                }
+                            }
+                        }
+                    },
+                    "FunctionName": "set_variable",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "winrm_cmd",
+                        "__parse_method": "2",
+                        "__snip": "command",
+                        "__variables": "true",
+                        "command": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Command",
+                            "__rows": "3",
+                            "__style": "display: block;",
+                            "command": "powershell -encodedcommand [[ps]]"
+                        },
+                        "conn_name": {
+                            "__break_after": "true",
+                            "__connection_picker": "true",
+                            "__input_type": "text",
+                            "__label": "Connection",
+                            "conn_name": "winrmconn"
+                        },
+                        "result_variable": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Result Variable",
+                            "__option_tab": "Options",
+                            "result_variable": "all"
+                        },
+                        "return_code": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Return Code",
+                            "__option_tab": "Options",
+                            "return_code": ""
+                        },
+                        "timeout": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Timeout",
+                            "__option_tab": "Options",
+                            "timeout": ""
+                        }
+                    },
+                    "FunctionName": "winrm_cmd",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_variable",
+                        "variables": {
+                            "Item::variable::0": {
+                                "__label": "Variable",
+                                "modifier": {
+                                    "__input_type": "select",
+                                    "__label": "Modifier",
+                                    "modifier": "DEFAULT"
+                                },
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "filtered_set"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "value": "[$ [x for x in all.split(\"\\n\") if \"Running\" in x] $]"
+                                }
+                            },
+                            "__is_array": "true",
+                            "__label": "Variables"
+                        }
+                    },
+                    "FunctionName": "set_variable",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "loop",
+                        "action": {
+                            "function": {
+                                "__name": "log_msg",
+                                "__snip": "message",
+                                "message": {
+                                    "__class": "w95pct",
+                                    "__input_type": "textarea",
+                                    "__label": "Log",
+                                    "__label_style": "display: block;",
+                                    "__required": "true",
+                                    "__rows": "2",
+                                    "message": "[$ filtered_set[[$X$]].replace(\"Running\", \"\") $]"
+                                }
+                            }
+                        },
+                        "compare_to": {
+                            "__input_type": "text",
+                            "compare_to": "[$ len(filtered_set) $]"
+                        },
+                        "counter": {
+                            "__input_type": "text",
+                            "counter": "X"
+                        },
+                        "increment": {
+                            "__input_type": "text",
+                            "increment": "1"
+                        },
+                        "max": {
+                            "__input_type": "text",
+                            "max": "100"
+                        },
+                        "start": {
+                            "__input_type": "text",
+                            "start": "0"
+                        },
+                        "test": {
+                            "__input_type": "select",
+                            "test": "<="
+                        }
+                    },
+                    "FunctionName": "loop",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "winrm sample",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.000"
+}

@@ -1,0 +1,158 @@
+{
+    "Category": null,
+    "Code": "0000",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "get_plugin",
+                        "config_var": {
+                            "config_var": "woo"
+                        },
+                        "instance": {
+                            "instance": ""
+                        },
+                        "plugin": {
+                            "plugin": "slackplugin"
+                        }
+                    },
+                    "FunctionName": "get_plugin",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_variable",
+                        "variables": {
+                            "__label": "Variables",
+                            "variable": {
+                                "modifier": {
+                                    "modifier": "FROM_JSON"
+                                },
+                                "name": {
+                                    "name": "ryan"
+                                },
+                                "value": {
+                                    "value": "{\n  \"Backup\": {\n    \"FolderGroups\": [{\n      \"CleanLevel\": \"Folder\",\n      \"Folders\": [{\n        \"SourceLocation\": \"OTokenAPI\",\n        \"DestName\": \"OTokenAPI\"\n      }],\n      \"ServerLocation\": \"D$\\\\\\\\IIS_Content\\\\\\\\\"\n    }]\n  },\n  \"FileGroups\": [{\n    \"CleanLevel\": \"Full\",\n    \"Destination\": \"D$\\\\\\\\IIS_Content\\\\\\\\OTokenAPI\\\\\\\\\",\n    \"Files\": [{\n      \"SourceName\": \"Web.config\",\n      \"DestName\": \"Web.config\"\n    }, {\n      \"SourceName\": \"Global.asax\",\n      \"DestName\": \"Global.asax\"\n    }],\n    \"SourceLocation\": \"_PublishedWebsites\\\\\\\\OToken_API\\\\\\\\\"\n  }, {\n    \"CleanLevel\": \"Partial\",\n    \"Destination\": \"D$\\\\\\\\IIS_Content\\\\\\\\OTokenAPI\\\\\\\\\",\n    \"Files\": [{\n      \"SourceName\": \"Security.config\",\n      \"DestName\": \"Security.config\"\n    }],\n    \"SourceLocation\": \"$Env\\\\\\\\\"\n  }],\n  \"FolderGroups\": [{\n    \"CleanLevel\": \"Folder\",\n    \"Destination\": \"D$\\\\\\\\IIS_Content\\\\\\\\OTokenAPI\\\\\\\\\",\n    \"Folders\": [{\n      \"SourceName\": \"bin\",\n      \"DestName\": \"bin\"\n    }, {\n      \"SourceName\": \"Scripts\",\n      \"DestName\": \"Scripts\"\n    }],\n    \"SourceLocation\": \"_PublishedWebsites\\\\\\\\OTokenAPI\\\\\\\\\"\n  }, {\n    \"CleanLevel\": \"Folder\",\n    \"Destination\": \"D$\\\\\\\\IIS_Content\\\\\\\\OTokenAPI\\\\\\\\bin\\\\\\\\\",\n    \"Folders\": [{\n      \"SourceName\": \"roslyn\",\n      \"DestName\": \"roslyn\"\n    }],\n    \"SourceLocation\": \"\"\n  }],\n  \"Servers\": {\n    \"DEV\": [\"DCWSVC03\"],\n    \"INTG\": [\"ICWSVC03A\", \"ICWSVC03B\"],\n    \"PROD\": [\"PCWSVC03A\", \"PCWSVC03B\", \"PCWSVC03C\"],\n    \"SYST\": [\"SCWSVC03A\", \"SCWSVC03B\"]\n  }\n}"
+                                }
+                            }
+                        }
+                    },
+                    "FunctionName": "set_variable",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "message": {
+                            "message": "[$ ryan.get(\"Servers\") $]"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "__snip": "message",
+                        "message": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Log",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "2",
+                            "message": "[$ $stages $]\n[$ $stages:* $]"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "loop",
+                        "action": {
+                            "function": {
+                                "__name": "log_msg",
+                                "__snip": "message",
+                                "message": {
+                                    "__class": "w95pct",
+                                    "__input_type": "textarea",
+                                    "__label": "Log",
+                                    "__label_style": "display: block;",
+                                    "__required": "true",
+                                    "__rows": "2",
+                                    "message": "[$ $stages:$[[$ x $]].name $]"
+                                }
+                            }
+                        },
+                        "compare_to": {
+                            "__input_type": "text",
+                            "compare_to": "[$ len(stages_cnt) $]"
+                        },
+                        "counter": {
+                            "__input_type": "text",
+                            "counter": "x"
+                        },
+                        "increment": {
+                            "__input_type": "text",
+                            "increment": "1"
+                        },
+                        "max": {
+                            "__input_type": "text",
+                            "max": "10"
+                        },
+                        "start": {
+                            "__input_type": "text",
+                            "start": "0"
+                        },
+                        "test": {
+                            "__input_type": "select",
+                            "test": "<="
+                        }
+                    },
+                    "FunctionName": "loop",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "~json test",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.000"
+}

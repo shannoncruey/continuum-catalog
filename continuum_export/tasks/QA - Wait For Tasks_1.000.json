@@ -1,0 +1,252 @@
+{
+    "Category": null,
+    "Code": "QA - Wait",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "__snip": "message",
+                        "message": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Log",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "2",
+                            "message": "First, start it with a short timer, and wait."
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "run_task",
+                        "asset_id": {
+                            "__input_type": "text",
+                            "asset_id": ""
+                        },
+                        "handle": {
+                            "__input_type": "text",
+                            "handle": "WAIT4ME"
+                        },
+                        "on_error": {
+                            "__input_type": "text",
+                            "on_error": ""
+                        },
+                        "on_success": {
+                            "__input_type": "text",
+                            "on_success": ""
+                        },
+                        "parameters": {
+                            "parameter": {
+                                "__id": "p_7e597747-b0e9-11e2-8ee7-c8bcc89c1491",
+                                "__required": "false",
+                                "name": {
+                                    "name": "how_long"
+                                },
+                                "values": {
+                                    "__present_as": "value",
+                                    "value": {
+                                        "value": "15"
+                                    }
+                                }
+                            }
+                        },
+                        "task_name": {
+                            "__input_type": "text",
+                            "task_name": "QA - Sleep"
+                        },
+                        "time_to_wait": {
+                            "__input_type": "text",
+                            "time_to_wait": ""
+                        },
+                        "version": {
+                            "__input_type": "text",
+                            "version": ""
+                        }
+                    },
+                    "FunctionName": "run_task",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "wait_for_tasks",
+                        "handles": {
+                            "__label": "Handles",
+                            "handle": {
+                                "__label": "Handle",
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "WAIT4ME"
+                                }
+                            }
+                        }
+                    },
+                    "FunctionName": "wait_for_tasks",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "__snip": "message",
+                        "message": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Log",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "2",
+                            "message": "This time, start it with a long timer, then use the Instance property of the handle to get another handle, and cancel the task using that."
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "run_task",
+                        "asset_id": {
+                            "__input_type": "text",
+                            "asset_id": ""
+                        },
+                        "handle": {
+                            "__input_type": "text",
+                            "handle": "WAIT4ME"
+                        },
+                        "on_error": {
+                            "__input_type": "text",
+                            "on_error": ""
+                        },
+                        "on_success": {
+                            "__input_type": "text",
+                            "on_success": ""
+                        },
+                        "parameters": {
+                            "parameters": ""
+                        },
+                        "task_name": {
+                            "__input_type": "text",
+                            "task_name": "QA - Sleep"
+                        },
+                        "time_to_wait": {
+                            "__input_type": "text",
+                            "time_to_wait": ""
+                        },
+                        "version": {
+                            "__input_type": "text",
+                            "version": ""
+                        }
+                    },
+                    "FunctionName": "run_task",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "get_instance_handle",
+                        "__snip": "handle",
+                        "handle": {
+                            "__input_type": "text",
+                            "__label": "Handle",
+                            "handle": "NEWHANDLE"
+                        },
+                        "instance": {
+                            "__input_type": "text",
+                            "__label": "Task Instance",
+                            "instance": "[$ #WAIT4ME.INSTANCE $]"
+                        }
+                    },
+                    "FunctionName": "get_instance_handle",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "__snip": "message",
+                        "message": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Log",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "2",
+                            "message": "Setting NEWHANDLE to Task Instance [$ #WAIT4ME.INSTANCE $], then canceling..."
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "cancel_task",
+                        "__snip": "task_instance",
+                        "task_instance": {
+                            "__class": "w95pct",
+                            "__input_type": "text",
+                            "__label": "Task Instance ID(s)",
+                            "task_instance": "[$ #NEWHANDLE.INSTANCE $]"
+                        }
+                    },
+                    "FunctionName": "cancel_task",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "Starts a sleeper task, then waits for it to finish.  Then starts the sleeper task again and cancels it.",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "QA - Wait For Tasks",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.000"
+}

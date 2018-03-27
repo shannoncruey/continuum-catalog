@@ -1,0 +1,116 @@
+{
+    "actions": [],
+    "artifacts": [
+        {
+            "name": "zzz_abc",
+            "project_name": "tfstest"
+        }
+    ],
+    "description": "",
+    "globals": {},
+    "name": "tfstest",
+    "progression": {
+        "name": "Lifecycle",
+        "phases": [
+            {
+                "autopromote": false,
+                "delivery_category": "Developing",
+                "directives": [
+                    {
+                        "category": null,
+                        "controls": [],
+                        "description": "",
+                        "details": {},
+                        "directives": [
+                            {
+                                "category": null,
+                                "controls": [],
+                                "description": "",
+                                "details": {},
+                                "directives": [
+                                    {
+                                        "category": null,
+                                        "controls": [],
+                                        "description": "",
+                                        "details": {},
+                                        "directives": [
+                                            {
+                                                "category": null,
+                                                "controls": [],
+                                                "description": "",
+                                                "details": {},
+                                                "estimated_touch_time": "",
+                                                "index": "0_0_0_0",
+                                                "interactive": false,
+                                                "name": "ddd",
+                                                "type": ""
+                                            }
+                                        ],
+                                        "estimated_touch_time": "",
+                                        "index": "0_0_0",
+                                        "interactive": false,
+                                        "name": "ccc",
+                                        "type": ""
+                                    }
+                                ],
+                                "estimated_touch_time": "",
+                                "index": "0_0",
+                                "interactive": false,
+                                "name": "bbb",
+                                "type": ""
+                            }
+                        ],
+                        "estimated_touch_time": "",
+                        "index": "0",
+                        "interactive": false,
+                        "name": "aaaa",
+                        "type": ""
+                    }
+                ],
+                "name": "Local Dev"
+            },
+            {
+                "autopromote": false,
+                "delivery_category": "Developing",
+                "directives": [],
+                "name": "Pre-Flight Build"
+            },
+            {
+                "autopromote": false,
+                "delivery_category": "Developing",
+                "directives": [],
+                "name": "Acceptance Testing"
+            },
+            {
+                "autopromote": false,
+                "delivery_category": "Packaged",
+                "directives": [],
+                "name": "Unit Test"
+            },
+            {
+                "delivery_category": "Packaged",
+                "name": "Code Complete"
+            },
+            {
+                "delivery_category": "Packaged",
+                "name": "In Consideration"
+            },
+            {
+                "delivery_category": "Packaged",
+                "name": "Stage"
+            },
+            {
+                "delivery_category": "Packaged",
+                "name": "Pre-Release"
+            },
+            {
+                "delivery_category": "Packaged",
+                "name": "Publishing"
+            },
+            {
+                "delivery_category": "Packaged",
+                "name": "Release"
+            }
+        ]
+    }
+}

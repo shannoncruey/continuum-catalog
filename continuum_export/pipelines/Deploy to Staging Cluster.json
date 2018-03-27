@@ -1,0 +1,94 @@
+{
+    "__assembled": true,
+    "actions": "",
+    "description": "",
+    "globals": {
+        "jenkins_job": "petclinic"
+    },
+    "name": "Deploy to Staging Cluster",
+    "phases": [
+        {
+            "name": "Deploy Artifact",
+            "stages": [
+                {
+                    "description": "",
+                    "name": "Deploy Customer Artifact",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "artifact_name": "jarfile"
+                                },
+                                "label": "Flow - Input Artifact to Output",
+                                "method": "artifact_in_to_out",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "run tests",
+                            "plugin": {
+                                "args": {
+                                    "deployment": "Stores Staging Cluster",
+                                    "params": {
+                                        "DeploymentParamsVals": [],
+                                        "SequenceParamsVals": [],
+                                        "Services": [
+                                            {
+                                                "ServiceName": "Customers",
+                                                "Transitions": [
+                                                    {
+                                                        "Parameters": [
+                                                            {
+                                                                "name": "artifact",
+                                                                "values": "[$inputs['artifacts']['jarfile']['location']$]"
+                                                            }
+                                                        ],
+                                                        "Step": 1
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "sequence": "Deploy Customer Artifact"
+                                },
+                                "method": "run_sequence",
+                                "module": "deployment",
+                                "name": "deploy"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "artifact": "jarfile",
+                                    "asset": "",
+                                    "description": "",
+                                    "environment": "Stores Staging Cluster",
+                                    "host": "",
+                                    "instance": "Customers 1",
+                                    "name": "",
+                                    "path": "",
+                                    "service": "Customers",
+                                    "target_type": "service_instance",
+                                    "url": ""
+                                },
+                                "label": "Flow - Deploy Artifact",
+                                "method": "deploy_artifact",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "signature": "",
+    "signature_type": "git",
+    "summary": []
+}

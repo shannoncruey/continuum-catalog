@@ -1,0 +1,571 @@
+{
+    "Category": null,
+    "Code": "csk 302",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "message": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Log",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "2",
+                            "message": "Installing Cato release [[release]], region [[region]]"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "if",
+                        "else": {
+                            "__input_type": "text",
+                            "function": {
+                                "__name": "set_variable",
+                                "variables": {
+                                    "__label": "Variables",
+                                    "variable": {
+                                        "__label": "Variable",
+                                        "modifier": {
+                                            "__input_type": "select",
+                                            "__label": "Modifier",
+                                            "modifier": "DEFAULT"
+                                        },
+                                        "name": {
+                                            "__input_type": "text",
+                                            "__label": "Name",
+                                            "name": "pk_name"
+                                        },
+                                        "value": {
+                                            "__input_type": "text",
+                                            "__label": "Value",
+                                            "value": "csk_www"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "tests": {
+                            "test": {
+                                "action": {
+                                    "function": {
+                                        "__name": "set_variable",
+                                        "variables": {
+                                            "__label": "Variables",
+                                            "variable": {
+                                                "__label": "Variable",
+                                                "modifier": {
+                                                    "__input_type": "select",
+                                                    "__label": "Modifier",
+                                                    "modifier": "DEFAULT"
+                                                },
+                                                "name": {
+                                                    "__input_type": "text",
+                                                    "__label": "Name",
+                                                    "name": "pk_name"
+                                                },
+                                                "value": {
+                                                    "__input_type": "text",
+                                                    "__label": "Value",
+                                                    "value": "maestrodemos"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "eval": {
+                                    "eval": "\"[[demo]]\" == \"yes\""
+                                }
+                            }
+                        }
+                    },
+                    "FunctionName": "if",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_variable",
+                        "variables": {
+                            "variable": {
+                                "modifier": {
+                                    "__input_type": "select",
+                                    "modifier": "DEFAULT"
+                                },
+                                "name": {
+                                    "__input_type": "text",
+                                    "name": "image"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "value": "ami-5d621634"
+                                }
+                            }
+                        }
+                    },
+                    "FunctionName": "set_variable",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "AddressingType": {
+                            "AddressingType": "",
+                            "__input_type": "text",
+                            "__option_tab": "Options"
+                        },
+                        "BlockDeviceMapping.n": {
+                            "Item::BlockDeviceMapping::0": {
+                                "DeviceName": {
+                                    "DeviceName": "",
+                                    "__input_type": "text"
+                                },
+                                "Ebs": {
+                                    "DeleteOnTermination": {
+                                        "DeleteOnTermination": "",
+                                        "__input_type": "text"
+                                    },
+                                    "SnapshotId": {
+                                        "SnapshotId": "",
+                                        "__input_type": "text"
+                                    },
+                                    "VolumeSize": {
+                                        "VolumeSize": "",
+                                        "__input_type": "text"
+                                    }
+                                },
+                                "NoDevice": {
+                                    "NoDevice": "",
+                                    "__input_type": "text"
+                                },
+                                "VirtualName": {
+                                    "VirtualName": "",
+                                    "__input_type": "text"
+                                }
+                            },
+                            "__is_array": "true",
+                            "__option_tab": "Options"
+                        },
+                        "ClientToken": {
+                            "ClientToken": "",
+                            "__input_type": "text",
+                            "__option_tab": "Options"
+                        },
+                        "DisableApiTermination": {
+                            "DisableApiTermination": "",
+                            "__input_type": "text",
+                            "__option_tab": "Options"
+                        },
+                        "ImageId": {
+                            "ImageId": "[[image]]",
+                            "__input_type": "text"
+                        },
+                        "InstanceInitiatedShutdownBehavior": {
+                            "InstanceInitiatedShutdownBehavior": "",
+                            "__input_type": "text",
+                            "__option_tab": "Options"
+                        },
+                        "InstanceType": {
+                            "InstanceType": "m1.medium",
+                            "__input_type": "text"
+                        },
+                        "KernelId": {
+                            "KernelId": "",
+                            "__input_type": "text",
+                            "__option_tab": "Options"
+                        },
+                        "KeyName": {
+                            "KeyName": "[[pk_name]]",
+                            "__break_before": "true",
+                            "__input_type": "text"
+                        },
+                        "MaxCount": {
+                            "MaxCount": "1",
+                            "__input_type": "text"
+                        },
+                        "MinCount": {
+                            "MinCount": "1",
+                            "__input_type": "text"
+                        },
+                        "Monitoring": {
+                            "Enabled": {
+                                "Enabled": "",
+                                "__input_type": "text"
+                            },
+                            "__option_tab": "Options"
+                        },
+                        "Placement": {
+                            "AvailabilityZone": {
+                                "AvailabilityZone": "",
+                                "__input_type": "text"
+                            },
+                            "GroupName": {
+                                "GroupName": "",
+                                "__input_type": "text"
+                            },
+                            "Tenancy": {
+                                "Tenancy": "",
+                                "__input_type": "text"
+                            },
+                            "__option_tab": "Options"
+                        },
+                        "PrivateIpAddress": {
+                            "PrivateIpAddress": "",
+                            "__input_type": "text",
+                            "__option_tab": "Options"
+                        },
+                        "RamdiskId": {
+                            "RamdiskId": "",
+                            "__input_type": "text",
+                            "__option_tab": "Options"
+                        },
+                        "SecurityGroup.n": {
+                            "Item::SecurityGroup::0": {
+                                "SecurityGroup": "[[GROUP_NAME]]",
+                                "__input_type": "text"
+                            },
+                            "__is_array": "true"
+                        },
+                        "SecurityGroupId.n": {
+                            "Item::SecurityGroupId::0": {
+                                "SecurityGroupId": "",
+                                "__input_type": "text"
+                            },
+                            "__is_array": "true",
+                            "__option_tab": "Options"
+                        },
+                        "SubnetId": {
+                            "SubnetId": "",
+                            "__input_type": "text",
+                            "__option_tab": "Options"
+                        },
+                        "UserData": {
+                            "UserData": "",
+                            "__break_after": "true",
+                            "__break_before": "true",
+                            "__input_type": "textarea",
+                            "__rows": "2",
+                            "__style": "width: 95%"
+                        },
+                        "__name": "aws_ec2_RunInstances",
+                        "aws_region": {
+                            "__class": "combo w300px",
+                            "__dataset": "ddDataSource_GetAWSClouds",
+                            "__datasource": "function",
+                            "__input_type": "dropdown",
+                            "__label": "AWS Region",
+                            "aws_region": "[[region]]"
+                        },
+                        "result_name": {
+                            "__hr_after": "true",
+                            "__input_type": "text",
+                            "__label": "Result Variable",
+                            "result_name": "result"
+                        }
+                    },
+                    "FunctionName": "aws_ec2_RunInstances",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_variable",
+                        "variables": {
+                            "variable": {
+                                "modifier": {
+                                    "__input_type": "select",
+                                    "modifier": "DEFAULT"
+                                },
+                                "name": {
+                                    "__input_type": "text",
+                                    "name": "instance"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "value": "[[result.//instanceId]]"
+                                }
+                            }
+                        }
+                    },
+                    "FunctionName": "set_variable",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "new_connection",
+                        "asset": {
+                            "__input_type": "text",
+                            "asset": "ubuntu@[[instance]]"
+                        },
+                        "cloud_name": {
+                            "cloud_name": "[[region]]"
+                        },
+                        "conn_name": {
+                            "__class": "w200px",
+                            "__help": "Name this connection for reference in the Task.",
+                            "__input_type": "text",
+                            "__label": "as",
+                            "__required": "true",
+                            "conn_name": "CONN1"
+                        },
+                        "conn_type": {
+                            "__input_type": "select",
+                            "conn_type": "ssh - ec2"
+                        }
+                    },
+                    "FunctionName": "new_connection",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "Filter.n": {
+                            "Item::Filter::0": {
+                                "Name": {
+                                    "Name": "",
+                                    "__input_type": "text"
+                                },
+                                "Value.m": {
+                                    "Item::Value::0": {
+                                        "Value": "",
+                                        "__input_type": "text"
+                                    },
+                                    "__is_array": "true"
+                                }
+                            },
+                            "__is_array": "true"
+                        },
+                        "InstanceId.n": {
+                            "Item::InstanceId::0": {
+                                "InstanceId": "[[instance]]",
+                                "__input_type": "text"
+                            },
+                            "__is_array": "true"
+                        },
+                        "__name": "aws_ec2_DescribeInstances",
+                        "aws_region": {
+                            "__hr_after": "true",
+                            "__input_type": "text",
+                            "__label": "AWS Region",
+                            "aws_region": "[[region]]"
+                        },
+                        "result_name": {
+                            "__input_type": "text",
+                            "result_name": "new_instance"
+                        }
+                    },
+                    "FunctionName": "aws_ec2_DescribeInstances",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "drop_connection",
+                        "__snip": "conn_name",
+                        "conn_name": {
+                            "__connection_picker": "true",
+                            "__input_type": "text",
+                            "__label": "Connection",
+                            "conn_name": "CONN1"
+                        }
+                    },
+                    "FunctionName": "drop_connection",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_variable",
+                        "variables": {
+                            "__label": "Variables",
+                            "variable": {
+                                "__label": "Variable",
+                                "modifier": {
+                                    "__input_type": "select",
+                                    "__label": "Modifier",
+                                    "modifier": "DEFAULT"
+                                },
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "ipaddress"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "value": "[[new_instance.//ipAddress]]"
+                                }
+                            }
+                        }
+                    },
+                    "FunctionName": "set_variable",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "if",
+                        "tests": {
+                            "test": {
+                                "action": {
+                                    "function": {
+                                        "__name": "codeblock",
+                                        "__snip": "codeblock",
+                                        "codeblock": {
+                                            "__input_type": "text",
+                                            "codeblock": "registerdeployment"
+                                        }
+                                    }
+                                },
+                                "eval": {
+                                    "eval": "\"[[_DEPLOYMENT_ID]]\" > \"\""
+                                }
+                            }
+                        }
+                    },
+                    "FunctionName": "if",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        },
+        {
+            "Name": "registerdeployment",
+            "Steps": [
+                {
+                    "Codeblock": "registerdeployment",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "deploy.deploy",
+                        "__name": "register_host_instance",
+                        "address": {
+                            "__input_type": "text",
+                            "__label": "Address",
+                            "address": "[[dnsname]]"
+                        },
+                        "host_name": {
+                            "__input_type": "text",
+                            "__label": "Hostname",
+                            "host_name": "[[instance]]"
+                        }
+                    },
+                    "FunctionName": "register_host_instance",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "registerdeployment",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "deploy.datastore",
+                        "__name": "set_deployment_value",
+                        "pairs": {
+                            "Item::pair::0": {
+                                "__label": "Pair",
+                                "key": {
+                                    "__input_type": "text",
+                                    "__label": "Key",
+                                    "key": "ipaddress"
+                                },
+                                "value": {
+                                    "__class": "w200px",
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "value": "[[ipaddress]]"
+                                }
+                            },
+                            "__is_array": "true",
+                            "__label": "Key Value Pairs"
+                        },
+                        "scope": {
+                            "__dataset": "Deployment|Service",
+                            "__datasource": "local",
+                            "__input_type": "dropdown",
+                            "__label": "Scope",
+                            "scope": "Service"
+                        }
+                    },
+                    "FunctionName": "set_deployment_value",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "Launch Maestro Image",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [
+        {
+            "encrypt": "false",
+            "name": "demo",
+            "present_as": "dropdown",
+            "prompt": "true",
+            "required": "false",
+            "values": [
+                "yes",
+                "no"
+            ]
+        }
+    ],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.000"
+}

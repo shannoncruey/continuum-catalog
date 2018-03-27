@@ -1,0 +1,419 @@
+{
+    "__assembled": true,
+    "actions": [
+        {
+            "icon": "38_48x48.png",
+            "name": "Retry",
+            "parameters": {},
+            "show": "failure",
+            "type": "retry_instance"
+        }
+    ],
+    "description": "Used to build various Velocity modules.",
+    "globals": {
+        "calked": "[$ globals.get('foo') $]",
+        "foo": "bar",
+        "mylist": [
+            1.0,
+            2.0,
+            3.0,
+            4.0,
+            5.0
+        ]
+    },
+    "name": "Velocity Build",
+    "phases": [
+        {
+            "name": "Test",
+            "stages": [
+                {
+                    "description": "",
+                    "name": "Test",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "attributes": "Custom_VersionNumbe2: 1.51",
+                                    "instance_name": "vbdemo",
+                                    "number": "S-01200"
+                                },
+                                "label": "VersionOne - Set Workitem Attributes",
+                                "method": "set_workitem_attributes",
+                                "module": "main",
+                                "name": "v1plugin"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "status": "end-success"
+                                },
+                                "label": "Utility - End",
+                                "method": "end",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "attributes": "# THIS IS PROPOSED BUT DOES NOT WORK\nClassOfService: \n  set:\n    Standard\nCustom_TShirtSize:\n  set:\n    Tiny",
+                                    "instance_name": "vbdemo"
+                                },
+                                "label": "VersionOne - Set Attributes on All Workitems",
+                                "method": "set_workitem_attributes_all",
+                                "module": "main",
+                                "name": "v1plugin"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "continue": false,
+                                    "instance_name": "vbdemo",
+                                    "key": "notready"
+                                },
+                                "label": "VersionOne - Check All Systems Go",
+                                "method": "check_readiness",
+                                "module": "main",
+                                "name": "v1plugin"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "continue": true,
+                                    "instance_name": "vbdemo",
+                                    "key": "blocked"
+                                },
+                                "label": "VersionOne - Check Blocking Issues",
+                                "method": "check_blockingissues",
+                                "module": "main",
+                                "name": "v1plugin"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "continue": false,
+                                    "instance_name": "vbdemo",
+                                    "key": "incomplete"
+                                },
+                                "label": "VersionOne - Check Epic Completeness",
+                                "method": "check_epiccomplete",
+                                "module": "main",
+                                "name": "v1plugin"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "continue": false,
+                                    "instance_name": "vbdemo",
+                                    "key": "unmet"
+                                },
+                                "label": "VersionOne - Check Workitem Dependencies",
+                                "method": "check_all_workitem_dependencies",
+                                "module": "main",
+                                "name": "v1plugin"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "attributes": "Custom_MyDate: 3/15/2001\nCustom_IsHappy: False\nReference: awesome!!!\nDescription: |\n   There once was a short man from ealing\n   Who got on a bus to Darjeeling\n       It said on the door\n       \"Please don't spit on the floor\"\n   So he carefully spat on the ceiling",
+                                    "instance_name": "vbdemo",
+                                    "number": "S-01200"
+                                },
+                                "label": "VersionOne - Set Workitem Attributes",
+                                "method": "set_workitem_attributes",
+                                "module": "main",
+                                "name": "v1plugin"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "attributes": "Custom_IsHappy: True\nCustom_MyDate: 3/15/2001\nReference: woo!!!\nDescription: |\n   There once was a short man from ealing\n   Who got on a bus to Darjeeling\n       It said on the door\n       \"Please don't spit on the floor\"\n   So he carefully spat on the ceiling",
+                                    "instance_name": "vbdemo"
+                                },
+                                "label": "VersionOne - Set Attributes on All Workitems",
+                                "method": "set_workitem_attributes_all",
+                                "module": "main",
+                                "name": "v1plugin"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "current_status": "Ready For Test, Developing",
+                                    "instance_name": "vbdemo",
+                                    "status": "Testing"
+                                },
+                                "label": "VersionOne - Set All Workitem Statuses",
+                                "method": "set_workitem_status_all",
+                                "module": "main",
+                                "name": "v1plugin"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "current_status": "Ready For Test",
+                                    "instance_name": "vbdemo",
+                                    "number": "S-01200",
+                                    "status": "Accepted"
+                                },
+                                "label": "VersionOne - Set Workitem Status",
+                                "method": "set_workitem_status",
+                                "module": "main",
+                                "name": "v1plugin"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "initial_data": "",
+                                    "parameters": "",
+                                    "task": "test newconn prompt"
+                                },
+                                "label": "Automate - Run Task",
+                                "method": "runtask",
+                                "module": "task",
+                                "name": "automate"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {},
+                                "label": "GitHub - Show Summary",
+                                "method": "show_summary",
+                                "module": "main",
+                                "name": "github"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "message": "<a href=\"__PIURL\">View in ClearCode</a>"
+                                },
+                                "label": "Utility - Insert Log",
+                                "method": "insert_log",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "count": "BADCHANGECOUNT",
+                                    "expression": "len(message) < 10",
+                                    "key": "BADCHANGES",
+                                    "notify_cc": "shannon@cruey.net",
+                                    "notify_message": "commit message too short"
+                                },
+                                "label": "Flow - Manifest - Evaluate Changes",
+                                "method": "evaluate_changes",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "tests": ""
+                                },
+                                "label": "Selenium - Run Tests",
+                                "method": "run",
+                                "module": "test",
+                                "name": "selenium"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "seconds": 5
+                                },
+                                "label": "Utility - Sleep",
+                                "method": "sleep",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "artifact_location": "example.com/myartie-__PINUMBER.jar",
+                                    "artifact_name": "myartie"
+                                },
+                                "label": "Flow - Artifact - Register Artifact",
+                                "method": "register_artifact",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "artifact": "myartie",
+                                    "asset": "",
+                                    "description": "",
+                                    "environment": "",
+                                    "host": "",
+                                    "instance": "",
+                                    "name": "Test",
+                                    "path": "",
+                                    "service": "",
+                                    "target_type": "custom",
+                                    "url": "",
+                                    "zone": "Testing"
+                                },
+                                "label": "Flow - Artifact - Deploy Artifact",
+                                "method": "deploy_artifact",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "create": true,
+                                    "globals_key": "",
+                                    "package": "Release 42"
+                                },
+                                "label": "Utility - Bucket - Add Manifest",
+                                "method": "add_to_bucket",
+                                "module": "bucket",
+                                "name": "utility"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "seconds": 6
+                                },
+                                "label": "Utility - Sleep",
+                                "method": "sleep",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "deploy to prod",
+                            "plugin": {
+                                "args": {
+                                    "asset": "",
+                                    "description": "",
+                                    "environment": "",
+                                    "host": "",
+                                    "instance": "",
+                                    "name": "Production",
+                                    "package_name": "Release 42",
+                                    "path": "",
+                                    "service": "",
+                                    "target_type": "custom",
+                                    "url": "",
+                                    "zone": "Production"
+                                },
+                                "label": "Flow - Package - Deploy Package",
+                                "method": "deploy_package",
+                                "module": "bucket",
+                                "name": "utility"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "build_run": "[$broid$]",
+                                    "complete_workitems": true,
+                                    "instance_name": "",
+                                    "status": "Passed"
+                                },
+                                "label": "VersionOne - Set BuildRun Status",
+                                "method": "set_buildrun_status",
+                                "module": "main",
+                                "name": "v1plugin"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "current_status": "",
+                                    "instance_name": "",
+                                    "status": "Accepted"
+                                },
+                                "label": "VersionOne - Set All Workitem Statuses",
+                                "method": "set_workitem_status_all",
+                                "module": "main",
+                                "name": "v1plugin"
+                            },
+                            "when": "never"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "product_id": "542ef5ad5e1497307173c009",
+    "product_name": "Velocity",
+    "product_workflow_step": "Development",
+    "signature": {
+        "ref": "refs/heads/master",
+        "repository": {
+            "name": "deploy",
+            "url": "https://github.com/cloudsidekick/deploy"
+        }
+    },
+    "signature_type": "git",
+    "summary": [],
+    "tags": [
+        "Velocity"
+    ]
+}

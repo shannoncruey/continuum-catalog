@@ -1,0 +1,38 @@
+{
+    "artifacts": [],
+    "description": "",
+    "lifecycle": "",
+    "mappings": [],
+    "name": "bitbucket_test",
+    "notifications": {
+        "email": {
+            "addresses": ""
+        },
+        "enable": false,
+        "hipchat": {
+            "room": ""
+        },
+        "http": {
+            "data": "",
+            "url": ""
+        },
+        "on_failure": [],
+        "on_start": [],
+        "on_success": [],
+        "on_wait": [],
+        "slack": {
+            "channel": ""
+        }
+    },
+    "source": {
+        "directives": [],
+        "group_source": "branch",
+        "interface": "webhook",
+        "notify_unmanaged": false,
+        "notify_unmanaged_addl": "",
+        "type": "bitbucket"
+    },
+    "type": "Source",
+    "version": "1.0",
+    "version_date": "2015-10-22 15:22:09"
+}

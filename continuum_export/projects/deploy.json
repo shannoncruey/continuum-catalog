@@ -1,0 +1,87 @@
+{
+    "artifacts": [
+        {
+            "_id": "57616e95805479609578e337",
+            "created_dt": "2015-03-21T00:33:29.357000",
+            "last_revision": 70,
+            "last_revision_dt": "2015-04-14T00:33:49.719000",
+            "name": "deploy",
+            "project_id": "53c00b585e14975b2f987f54",
+            "project_name": "deploy"
+        }
+    ],
+    "description": "",
+    "globals": {
+        "jenkins_job": "deploy"
+    },
+    "mappings": [
+        {
+            "_id": "54c7d8253ed4d2299c512fef",
+            "dn_definition": "53a0bfd32abe6d77f7f11bad",
+            "dn_group": "master",
+            "dn_project": "53f38bf35e149705ab1d7acc",
+            "up_definition": "539b534f2abe6d6e3d4d7645",
+            "up_group": "master",
+            "up_project": "53c00b585e14975b2f987f54"
+        },
+        {
+            "_id": "577bbfbc3ed4d21eda8d6c10",
+            "dn_definition": "56e02a6b3ed4d23ee2617e06",
+            "dn_group": "master",
+            "dn_project": "56e027b93ed4d23ee2617def",
+            "up_definition": "56e02fa63ed4d23ee2617e15",
+            "up_group": "master",
+            "up_project": "53c00b585e14975b2f987f54"
+        }
+    ],
+    "name": "deploy",
+    "notifications": {
+        "email": {
+            "addresses": "patrickdunnigan@clearcodelabs.com,shannoncruey@clearcodelabs.com"
+        },
+        "enable": "",
+        "hipchat": {
+            "room": ""
+        },
+        "on_failure": [
+            "email"
+        ],
+        "on_start": [],
+        "on_success": [],
+        "on_wait": []
+    },
+    "source": {
+        "directives": [
+            {
+                "details": {
+                    "args": {
+                        "expression": "[A-Z]{4}-[0-9]{1,}",
+                        "fields": [
+                            "message"
+                        ]
+                    },
+                    "method": "identify_issues",
+                    "plugin": "jiraplugin.issue"
+                },
+                "type": "plugin_function",
+                "when": "always"
+            },
+            {
+                "details": {
+                    "definition": "Velocity Build",
+                    "group": "[$ branch $]",
+                    "instancename": "[$ after[:7] $]",
+                    "project": "deploy"
+                },
+                "type": "initiate_pipeline",
+                "when": "always"
+            }
+        ],
+        "group_source": "branch",
+        "interface": "webhook",
+        "type": "github"
+    },
+    "type": "Source",
+    "version": "1.43",
+    "version_date": "2015-03-11 20:03:46"
+}

@@ -1,0 +1,454 @@
+{
+    "__assembled": true,
+    "actions": "",
+    "description": "Ecommerce app pipeline",
+    "globals": {
+        "jenkins_job": "ecomm-app"
+    },
+    "name": "Ecomm",
+    "phases": [
+        {
+            "name": "Collect Third Party Info",
+            "stages": [
+                {
+                    "description": "",
+                    "name": "Collect Git Info",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {},
+                                "label": "GitHub - Show Summary",
+                                "method": "show_summary",
+                                "module": "main",
+                                "name": "github"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "message": "Starting pipeline instance for project __PROJECTNAME",
+                                    "room": "ClearCode"
+                                },
+                                "label": "HipChat - Send Notification",
+                                "method": "send",
+                                "module": "notification",
+                                "name": "hipchatplugin"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Integration Test",
+            "stages": [
+                {
+                    "description": "build integration test server",
+                    "name": "Build Test Server",
+                    "steps": [
+                        {
+                            "name": "deploy server",
+                            "plugin": {
+                                "args": {
+                                    "params": {
+                                        "DeploymentParamsVals": [],
+                                        "SequenceParamsVals": [],
+                                        "Services": [
+                                            {
+                                                "ServiceName": "Server",
+                                                "Transitions": [
+                                                    {
+                                                        "Parameters": [],
+                                                        "Step": 1
+                                                    },
+                                                    {
+                                                        "Parameters": [
+                                                            {
+                                                                "name": "artifact",
+                                                                "values": "[$inputs['artifacts']['warfile']['location']$]"
+                                                            }
+                                                        ],
+                                                        "Step": 2
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "template": "petclinic",
+                                    "version": 1
+                                },
+                                "method": "deploy",
+                                "module": "deployment",
+                                "name": "deploy"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "run tests",
+                            "plugin": {
+                                "args": {
+                                    "deployment": "",
+                                    "sequence": "Tests"
+                                },
+                                "method": "run_sequence",
+                                "module": "deployment",
+                                "name": "deploy"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "terminate server",
+                            "plugin": {
+                                "args": {},
+                                "method": "terminate",
+                                "module": "deployment",
+                                "name": "deploy"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Automated User Acceptance",
+            "stages": [
+                {
+                    "description": "build integration test server",
+                    "name": "Build AUA Env",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "build_run": "",
+                                    "complete_workitems": true,
+                                    "instance_name": "",
+                                    "status": ""
+                                },
+                                "label": "VersionOne - Set BuildRun Status",
+                                "method": "set_buildrun_status",
+                                "module": "main",
+                                "name": "v1plugin"
+                            },
+                            "when": "conditionally"
+                        },
+                        {
+                            "name": "deploy aua server",
+                            "plugin": {
+                                "args": {
+                                    "datastore": "",
+                                    "params": {
+                                        "DeploymentParamsVals": [],
+                                        "SequenceParamsVals": [],
+                                        "Services": [
+                                            {
+                                                "ServiceName": "Server",
+                                                "Transitions": [
+                                                    {
+                                                        "Parameters": [],
+                                                        "Step": 1
+                                                    },
+                                                    {
+                                                        "Parameters": [
+                                                            {
+                                                                "name": "warfile",
+                                                                "values": "[$inputs['artifacts']['warfile']['location']$]"
+                                                            }
+                                                        ],
+                                                        "Step": 2
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "sequence_data": "",
+                                    "template": "petclinic",
+                                    "version": 1
+                                },
+                                "method": "deploy",
+                                "module": "deployment",
+                                "name": "deploy"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "run automated acceptance tests",
+                            "plugin": {
+                                "args": {
+                                    "deployment": "",
+                                    "params": "",
+                                    "sequence": "Tests",
+                                    "sequence_data": ""
+                                },
+                                "method": "run_sequence",
+                                "module": "deployment",
+                                "name": "deploy"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "terminate uau server",
+                            "plugin": {
+                                "args": {},
+                                "method": "terminate",
+                                "module": "deployment",
+                                "name": "deploy"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Manual User Acceptance",
+            "stages": [
+                {
+                    "description": "deploy to uat",
+                    "name": "Deploy to UAT",
+                    "steps": [
+                        {
+                            "name": "deploy",
+                            "plugin": {
+                                "args": {
+                                    "text": "Should this Release Candidate be deployed to a UAT system?",
+                                    "title": "Deploy?"
+                                },
+                                "kind": "confirm",
+                                "method": "confirmation",
+                                "module": "interact",
+                                "name": "flow",
+                                "type": "interaction"
+                            },
+                            "tags": []
+                        },
+                        {
+                            "name": "deploy mua server",
+                            "plugin": {
+                                "args": {
+                                    "params": {
+                                        "DeploymentParamsVals": [],
+                                        "SequenceParamsVals": [],
+                                        "Services": [
+                                            {
+                                                "ServiceName": "Server",
+                                                "Transitions": [
+                                                    {
+                                                        "Parameters": [],
+                                                        "Step": 1
+                                                    },
+                                                    {
+                                                        "Parameters": [
+                                                            {
+                                                                "name": "warfile",
+                                                                "values": "[$inputs['artifacts']['warfile']['location']$]"
+                                                            }
+                                                        ],
+                                                        "Step": 2
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "template": "petclinic",
+                                    "version": 1
+                                },
+                                "method": "deploy",
+                                "module": "deployment",
+                                "name": "deploy"
+                            }
+                        },
+                        {
+                            "name": "finish testing",
+                            "plugin": {
+                                "args": {
+                                    "text": "Are you finished testing this release candidate?",
+                                    "title": "Finished?"
+                                },
+                                "kind": "confirm",
+                                "method": "confirmation",
+                                "module": "interact",
+                                "name": "flow",
+                                "type": "interaction"
+                            },
+                            "tags": []
+                        },
+                        {
+                            "name": "terminate mua server",
+                            "plugin": {
+                                "args": {},
+                                "method": "terminate",
+                                "module": "deployment",
+                                "name": "deploy"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Pre-production",
+            "stages": [
+                {
+                    "description": "Deploy to Pre-production",
+                    "name": "Deploy to PreProd",
+                    "steps": [
+                        {
+                            "name": "deploy to preprod",
+                            "plugin": {
+                                "args": {
+                                    "text": "Shall we deploy to pre-production?",
+                                    "title": "Deploy"
+                                },
+                                "kind": "confirm",
+                                "method": "confirmation",
+                                "module": "interact",
+                                "name": "flow",
+                                "type": "interaction"
+                            },
+                            "tags": []
+                        },
+                        {
+                            "name": "deploy preprod",
+                            "plugin": {
+                                "args": {
+                                    "params": {
+                                        "DeploymentParamsVals": [],
+                                        "SequenceParamsVals": [],
+                                        "Services": [
+                                            {
+                                                "ServiceName": "Server",
+                                                "Transitions": [
+                                                    {
+                                                        "Parameters": [],
+                                                        "Step": 1
+                                                    },
+                                                    {
+                                                        "Parameters": [
+                                                            {
+                                                                "name": "warfile",
+                                                                "values": "[$inputs['artifacts']['warfile']['location']$]"
+                                                            }
+                                                        ],
+                                                        "Step": 2
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "template": "petclinic",
+                                    "version": 1
+                                },
+                                "method": "deploy",
+                                "module": "deployment",
+                                "name": "deploy"
+                            }
+                        },
+                        {
+                            "name": "preprod testing",
+                            "plugin": {
+                                "args": {
+                                    "deployment": "",
+                                    "sequence": "Tests"
+                                },
+                                "method": "run_sequence",
+                                "module": "deployment",
+                                "name": "deploy"
+                            }
+                        },
+                        {
+                            "name": "terminate preprod",
+                            "plugin": {
+                                "args": {},
+                                "method": "terminate",
+                                "module": "deployment",
+                                "name": "deploy"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Production",
+            "stages": [
+                {
+                    "description": "Deploy to Production",
+                    "name": "Deploy to Production",
+                    "steps": [
+                        {
+                            "name": "deploy",
+                            "plugin": {
+                                "args": {
+                                    "text": "Should this Release Candidate be deployed to Production?",
+                                    "title": "Deploy to Production?"
+                                },
+                                "kind": "confirm",
+                                "method": "confirmation",
+                                "module": "interact",
+                                "name": "flow",
+                                "type": "interaction"
+                            },
+                            "tags": []
+                        },
+                        {
+                            "name": "deploy to production",
+                            "plugin": {
+                                "args": {
+                                    "parameters": [],
+                                    "task": "Deploy Artifact"
+                                },
+                                "method": "runtask",
+                                "module": "task",
+                                "name": "automate"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Build Jenkins Job",
+            "stages": [
+                {
+                    "description": "",
+                    "name": "Jenkins Build",
+                    "steps": [
+                        {
+                            "name": "Jenkins",
+                            "plugin": {
+                                "args": {
+                                    "inherit": true,
+                                    "job": "[$ projectglobals['jenkins_job'] $]",
+                                    "params": {
+                                        "BRANCH": "[$ github['ref'] $]",
+                                        "COMMIT": "[$ github['after'] $]"
+                                    },
+                                    "token": "",
+                                    "wait": true
+                                },
+                                "method": "build",
+                                "module": "job",
+                                "name": "jenkins"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "signature": {
+        "ref": "refs/heads/master",
+        "repository": {
+            "name": "ecomm-app",
+            "url": "https://github.com/cloudsidekick/ecomm-app"
+        }
+    },
+    "signature_type": "git",
+    "summary": []
+}

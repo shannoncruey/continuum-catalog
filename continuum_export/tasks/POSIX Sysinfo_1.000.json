@@ -1,0 +1,420 @@
+{
+    "Category": null,
+    "Code": "EXT001",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "new_connection",
+                        "asset": {
+                            "__input_type": "text",
+                            "asset": "ubuntu@i-a30b97c7"
+                        },
+                        "cloud_name": {
+                            "__input_type": "dropdown",
+                            "__style": "combo",
+                            "cloud_name": ""
+                        },
+                        "conn_name": {
+                            "__class": "w200px",
+                            "__help": "Name this connection for reference in the Task.",
+                            "__input_type": "text",
+                            "__label": "as",
+                            "__required": "true",
+                            "conn_name": "CONN1"
+                        },
+                        "conn_type": {
+                            "__input_type": "select",
+                            "conn_type": "ssh - ec2"
+                        }
+                    },
+                    "FunctionName": "new_connection",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "cmd_line",
+                        "__parse_method": "2",
+                        "__variables": "true",
+                        "command": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Command",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "3",
+                            "command": "uname"
+                        },
+                        "conn_name": {
+                            "__break_after": "true",
+                            "__connection_picker": "true",
+                            "__input_type": "text",
+                            "__label": "Connection",
+                            "__required": "true",
+                            "conn_name": "CONN1"
+                        },
+                        "negative_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Negative Response",
+                            "__option_tab": "Options",
+                            "negative_response": ""
+                        },
+                        "positive_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Positive Response",
+                            "__option_tab": "Options",
+                            "positive_response": ""
+                        },
+                        "timeout": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Timeout",
+                            "__option_tab": "Options",
+                            "timeout": ""
+                        }
+                    },
+                    "FunctionName": "cmd_line",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "cmd_line",
+                        "__parse_method": "2",
+                        "__variables": "true",
+                        "command": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Command",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "3",
+                            "command": "df"
+                        },
+                        "conn_name": {
+                            "__break_after": "true",
+                            "__connection_picker": "true",
+                            "__input_type": "text",
+                            "__label": "Connection",
+                            "__required": "true",
+                            "conn_name": "CONN1"
+                        },
+                        "negative_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Negative Response",
+                            "__option_tab": "Options",
+                            "negative_response": ""
+                        },
+                        "positive_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Positive Response",
+                            "__option_tab": "Options",
+                            "positive_response": ""
+                        },
+                        "timeout": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Timeout",
+                            "__option_tab": "Options",
+                            "timeout": ""
+                        }
+                    },
+                    "FunctionName": "cmd_line",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "cmd_line",
+                        "__parse_method": "2",
+                        "__variables": "true",
+                        "command": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Command",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "3",
+                            "command": "uptime"
+                        },
+                        "conn_name": {
+                            "__break_after": "true",
+                            "__connection_picker": "true",
+                            "__input_type": "text",
+                            "__label": "Connection",
+                            "__required": "true",
+                            "conn_name": "CONN1"
+                        },
+                        "negative_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Negative Response",
+                            "__option_tab": "Options",
+                            "negative_response": ""
+                        },
+                        "positive_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Positive Response",
+                            "__option_tab": "Options",
+                            "positive_response": ""
+                        },
+                        "timeout": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Timeout",
+                            "__option_tab": "Options",
+                            "timeout": ""
+                        }
+                    },
+                    "FunctionName": "cmd_line",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "cmd_line",
+                        "__parse_method": "2",
+                        "__variables": "true",
+                        "command": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Command",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "3",
+                            "command": "date"
+                        },
+                        "conn_name": {
+                            "__break_after": "true",
+                            "__connection_picker": "true",
+                            "__input_type": "text",
+                            "__label": "Connection",
+                            "__required": "true",
+                            "conn_name": "CONN1"
+                        },
+                        "negative_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Negative Response",
+                            "__option_tab": "Options",
+                            "negative_response": ""
+                        },
+                        "positive_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Positive Response",
+                            "__option_tab": "Options",
+                            "positive_response": ""
+                        },
+                        "timeout": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Timeout",
+                            "__option_tab": "Options",
+                            "timeout": ""
+                        }
+                    },
+                    "FunctionName": "cmd_line",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "cmd_line",
+                        "__parse_method": "2",
+                        "__variables": "true",
+                        "command": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Command",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "3",
+                            "command": "hostname"
+                        },
+                        "conn_name": {
+                            "__break_after": "true",
+                            "__connection_picker": "true",
+                            "__input_type": "text",
+                            "__label": "Connection",
+                            "__required": "true",
+                            "conn_name": "CONN1"
+                        },
+                        "negative_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Negative Response",
+                            "__option_tab": "Options",
+                            "negative_response": ""
+                        },
+                        "positive_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Positive Response",
+                            "__option_tab": "Options",
+                            "positive_response": ""
+                        },
+                        "timeout": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Timeout",
+                            "__option_tab": "Options",
+                            "timeout": ""
+                        }
+                    },
+                    "FunctionName": "cmd_line",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "cmd_line",
+                        "__parse_method": "2",
+                        "__variables": "true",
+                        "command": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Command",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "3",
+                            "command": "ifconfig"
+                        },
+                        "conn_name": {
+                            "__break_after": "true",
+                            "__connection_picker": "true",
+                            "__input_type": "text",
+                            "__label": "Connection",
+                            "__required": "true",
+                            "conn_name": "CONN1"
+                        },
+                        "negative_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Negative Response",
+                            "__option_tab": "Options",
+                            "negative_response": ""
+                        },
+                        "positive_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Positive Response",
+                            "__option_tab": "Options",
+                            "positive_response": ""
+                        },
+                        "timeout": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Timeout",
+                            "__option_tab": "Options",
+                            "timeout": ""
+                        }
+                    },
+                    "FunctionName": "cmd_line",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "cmd_line",
+                        "__parse_method": "2",
+                        "__variables": "true",
+                        "command": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Command",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "3",
+                            "command": "ps ax | wc -l"
+                        },
+                        "conn_name": {
+                            "__break_after": "true",
+                            "__connection_picker": "true",
+                            "__input_type": "text",
+                            "__label": "Connection",
+                            "__required": "true",
+                            "conn_name": "CONN1"
+                        },
+                        "negative_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Negative Response",
+                            "__option_tab": "Options",
+                            "negative_response": ""
+                        },
+                        "positive_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Positive Response",
+                            "__option_tab": "Options",
+                            "positive_response": ""
+                        },
+                        "timeout": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Timeout",
+                            "__option_tab": "Options",
+                            "timeout": ""
+                        }
+                    },
+                    "FunctionName": "cmd_line",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "Gets basic POSIX compliant system info from a *nix operating system.",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "POSIX Sysinfo",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.000"
+}

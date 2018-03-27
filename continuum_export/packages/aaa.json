@@ -1,0 +1,194 @@
+{
+    "actions": [
+        {
+            "args": {},
+            "icon": "",
+            "isOpen": true,
+            "name": "do task",
+            "on": "instance",
+            "parameters": {},
+            "show": "",
+            "tags": [
+                ""
+            ],
+            "task": "dummy",
+            "type": "task",
+            "version": ""
+        },
+        {
+            "definition": "",
+            "details": null,
+            "group": "",
+            "icon": "",
+            "instancename": "",
+            "isOpen": "",
+            "name": "do pipeline",
+            "on": "instance",
+            "parameters": {},
+            "project": "",
+            "project_version": "",
+            "show": "",
+            "tags": [
+                ""
+            ],
+            "type": "initiate_pipeline"
+        }
+    ],
+    "artifacts": [
+        {
+            "name": "myartie",
+            "project_name": "flow"
+        },
+        {
+            "name": "flow",
+            "project_name": "flow"
+        },
+        {
+            "name": "Bob's Artifact",
+            "project_name": "flow"
+        },
+        {
+            "name": "database",
+            "project_name": "database"
+        }
+    ],
+    "description": "description like a boss",
+    "globals": {
+        "bar": "c",
+        "foo": "b"
+    },
+    "name": "aaa",
+    "progression": {
+        "name": "test_progression",
+        "phases": [
+            {
+                "autopromote": true,
+                "delivery_category": "Developing",
+                "directives": [],
+                "name": "Branch Dev"
+            },
+            {
+                "autopromote": true,
+                "delivery_category": "Developing",
+                "directives": [
+                    {
+                        "category": null,
+                        "controls": [
+                            {
+                                "description": "",
+                                "details": {},
+                                "index": "0",
+                                "name": "ctl 1",
+                                "required": false
+                            },
+                            {
+                                "description": "",
+                                "details": {},
+                                "index": "1",
+                                "name": "ctl 2",
+                                "required": false
+                            }
+                        ],
+                        "description": "",
+                        "details": {
+                            "assignto": [],
+                            "reason_required": false,
+                            "tags": [],
+                            "text": "manual text",
+                            "title": "manual titls"
+                        },
+                        "estimated_touch_time": "",
+                        "index": "0",
+                        "interactive": true,
+                        "name": "do something manual",
+                        "type": "manual_activity"
+                    }
+                ],
+                "name": "Branch Test"
+            },
+            {
+                "autopromote": false,
+                "delivery_category": "Developing",
+                "directives": [
+                    {
+                        "controls": [
+                            {
+                                "description": "",
+                                "details": {},
+                                "index": "0",
+                                "name": "ddd",
+                                "required": false,
+                                "type": ""
+                            },
+                            {
+                                "description": "",
+                                "details": {},
+                                "index": "1",
+                                "name": "www",
+                                "required": false,
+                                "type": ""
+                            }
+                        ],
+                        "description": "We will do the things we need to do ...",
+                        "details": {
+                            "definition": "__do_something_manual",
+                            "group": "master",
+                            "initial_data": {
+                                "question": "why?"
+                            },
+                            "project": "test_project"
+                        },
+                        "index": "0",
+                        "interactive": true,
+                        "name": "do a manual thing",
+                        "type": "initiate_pipeline"
+                    },
+                    {
+                        "category": null,
+                        "controls": [
+                            {
+                                "description": "",
+                                "details": {},
+                                "index": "0",
+                                "name": "should be in 0_0",
+                                "required": false,
+                                "type": ""
+                            }
+                        ],
+                        "description": "Until we don't need to do them any more.",
+                        "details": {
+                            "definition": "__do_something_automatic",
+                            "group": "master",
+                            "initial_data": {},
+                            "project": "test_project"
+                        },
+                        "estimated_touch_time": "20",
+                        "index": "1",
+                        "interactive": false,
+                        "name": "do an automated thing",
+                        "type": "initiate_pipeline"
+                    }
+                ],
+                "name": "Merged"
+            },
+            {
+                "autopromote": false,
+                "delivery_category": "Packaged",
+                "directives": [],
+                "name": "Regression"
+            },
+            {
+                "autopromote": false,
+                "delivery_category": "Packaged",
+                "directives": [],
+                "name": "Ready for Delivery"
+            },
+            {
+                "autopromote": false,
+                "delivery_category": "Packaged",
+                "directives": [],
+                "name": "Released - Toggled Off"
+            }
+        ]
+    }
+}

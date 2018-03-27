@@ -1,0 +1,68 @@
+{
+    "actions": [],
+    "artifacts": [
+        {
+            "_id": "5a5fae1f805479062517f3cf",
+            "created_dt": "2018-01-17T20:12:15.177000",
+            "name": "shifty",
+            "project_id": "5a5f9d2c805479feeed3777d",
+            "project_name": "shifty"
+        }
+    ],
+    "description": "",
+    "globals": {},
+    "mappings": [],
+    "name": "shifty",
+    "notifications": {
+        "email": {
+            "addresses": ""
+        },
+        "enable": false,
+        "hipchat": {
+            "room": ""
+        },
+        "http": {
+            "data": "",
+            "url": ""
+        },
+        "on_failure": [],
+        "on_start": [],
+        "on_success": [],
+        "on_wait": [],
+        "slack": {
+            "channel": ""
+        }
+    },
+    "source": {
+        "directives": [
+            {
+                "details": {
+                    "args": {},
+                    "instance_name": "v1prod",
+                    "on_error": "Continue Processing Directives"
+                },
+                "type": "lifecycle_workitem_lookup",
+                "when": "always"
+            },
+            {
+                "details": {
+                    "package_name": "SHIFTY",
+                    "phase": "Build",
+                    "use_as_version": "branch",
+                    "use_as_version_lookup": ""
+                },
+                "type": "package_revision",
+                "when": "always"
+            }
+        ],
+        "enable_polling": false,
+        "group_source": "branch",
+        "interface": "webhook",
+        "notify_unmanaged": false,
+        "notify_unmanaged_addl": "",
+        "repo_name": "",
+        "repo_server": "",
+        "type": "github"
+    },
+    "type": "Source"
+}

@@ -1,0 +1,150 @@
+{
+    "Category": null,
+    "Code": "_v1commandtests",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_debug_level",
+                        "debug_level": {
+                            "debug_level": "10"
+                        }
+                    },
+                    "FunctionName": "set_debug_level",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "versionone.v1commands",
+                        "__name": "v1_api_connection",
+                        "conn_name": {
+                            "conn_name": "v1conn"
+                        },
+                        "password": {
+                            "password": "admin"
+                        },
+                        "url": {
+                            "url": "https://www12.v1host.com/cloudsidekick"
+                        },
+                        "user": {
+                            "user": "admin"
+                        }
+                    },
+                    "FunctionName": "v1_api_connection",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "versionone.v1commands",
+                        "__name": "v1_query",
+                        "conn_name": {
+                            "conn_name": "v1conn"
+                        },
+                        "query": {
+                            "query": "from: StoryStatus\nselect: \n  - Name\n"
+                        },
+                        "result_var": {
+                            "result_var": "v1q_out"
+                        }
+                    },
+                    "FunctionName": "v1_query",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "message": {
+                            "message": "[$v1q_out[0][0]$]"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "versionone.v1commands",
+                        "__name": "v1_restapi_post",
+                        "asset_path": {
+                            "asset_path": "Defect/2023"
+                        },
+                        "conn_name": {
+                            "conn_name": "v1conn"
+                        },
+                        "result_var": {
+                            "result_var": ""
+                        },
+                        "xmldata": {
+                            "xmldata": "<Asset id=\"Defect:2023\">\n  <Relation name=\"Status\" act=\"set\">\n    <Asset idref=\"StoryStatus:134\" />\n  </Relation>\n</Asset>"
+                        }
+                    },
+                    "FunctionName": "v1_restapi_post",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "versionone.v1commands",
+                        "__name": "v1_restapi_get",
+                        "asset_type": {
+                            "asset_type": "StoryStatus"
+                        },
+                        "conn_name": {
+                            "conn_name": "v1conn"
+                        },
+                        "querystring": {
+                            "querystring": ""
+                        },
+                        "result_var": {
+                            "result_var": "v1out"
+                        }
+                    },
+                    "FunctionName": "v1_restapi_get",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "_v1 command tests",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.000"
+}

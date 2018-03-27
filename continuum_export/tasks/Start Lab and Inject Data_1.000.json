@@ -1,0 +1,640 @@
+{
+    "Category": null,
+    "Code": "testlab",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "new_connection",
+                        "asset": {
+                            "asset": "VMWARE"
+                        },
+                        "cloud_name": {
+                            "cloud_name": ""
+                        },
+                        "conn_name": {
+                            "conn_name": "CONN1"
+                        },
+                        "conn_type": {
+                            "conn_type": "ssh"
+                        },
+                        "debug": {
+                            "debug": ""
+                        },
+                        "initial_prompt": {
+                            "initial_prompt": ""
+                        }
+                    },
+                    "FunctionName": "new_connection",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "cmd_line",
+                        "__parse_method": "2",
+                        "command": {
+                            "command": "docker go team go"
+                        },
+                        "conn_name": {
+                            "conn_name": "CONN1"
+                        },
+                        "negative_response": {
+                            "negative_response": ""
+                        },
+                        "positive_response": {
+                            "positive_response": ""
+                        },
+                        "result_variable": {
+                            "result_variable": ""
+                        },
+                        "timeout": {
+                            "timeout": ""
+                        }
+                    },
+                    "FunctionName": "cmd_line",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "get_asset",
+                        "address_out": {
+                            "address_out": "JENKINSURL"
+                        },
+                        "asset": {
+                            "asset": "csk-jenkins"
+                        },
+                        "conn_string_out": {
+                            "conn_string_out": ""
+                        },
+                        "db_out": {
+                            "db_out": ""
+                        },
+                        "domain_out": {
+                            "domain_out": ""
+                        },
+                        "pass_out": {
+                            "pass_out": "JENKINSPWD"
+                        },
+                        "port_out": {
+                            "port_out": ""
+                        },
+                        "user_out": {
+                            "user_out": "JENKINSUID"
+                        }
+                    },
+                    "FunctionName": "get_asset",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_variable",
+                        "variables": {
+                            "Item::variable::0": {
+                                "modifier": {
+                                    "modifier": "TO_BASE64"
+                                },
+                                "name": {
+                                    "name": "JEKNINSAUTH"
+                                },
+                                "value": {
+                                    "value": "[$JENKINSUID$]:[$JENKINSPWD$]"
+                                }
+                            },
+                            "__is_array": "true"
+                        }
+                    },
+                    "FunctionName": "set_variable",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "codeblock",
+                        "codeblock": {
+                            "codeblock": "get_config"
+                        }
+                    },
+                    "FunctionName": "codeblock",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "codeblock",
+                        "codeblock": {
+                            "codeblock": "get_pipedefs"
+                        }
+                    },
+                    "FunctionName": "codeblock",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "codeblock",
+                        "codeblock": {
+                            "codeblock": "get_jenkinsjob"
+                        }
+                    },
+                    "FunctionName": "codeblock",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        },
+        {
+            "Name": "get_jenkinsjob",
+            "Steps": [
+                {
+                    "Codeblock": "get_jenkinsjob",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_variable",
+                        "variables": {
+                            "Item::variable::0": {
+                                "modifier": {
+                                    "modifier": "DEFAULT"
+                                },
+                                "name": {
+                                    "name": "JOBNAME"
+                                },
+                                "value": {
+                                    "value": "MYJOB"
+                                }
+                            },
+                            "__is_array": "true"
+                        }
+                    },
+                    "FunctionName": "set_variable",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "get_jenkinsjob",
+                    "Commented": false,
+                    "Description": "Get the plugin config",
+                    "FunctionDefinition": {
+                        "__name": "http",
+                        "__parse_method": "2",
+                        "cookie_out": {
+                            "cookie_out": ""
+                        },
+                        "data": {
+                            "data": ""
+                        },
+                        "headers": {
+                            "Item::pair::0": {
+                                "key": {
+                                    "key": "Accept"
+                                },
+                                "value": {
+                                    "value": "application/vnd.github.v3.raw"
+                                }
+                            },
+                            "Item::pair::1": {
+                                "key": {
+                                    "key": "Authorization"
+                                },
+                                "value": {
+                                    "value": "token 16b544c61e83d78ccf6f18c76b6e0811b6bbc626"
+                                }
+                            },
+                            "__is_array": "true"
+                        },
+                        "response_body": {
+                            "response_body": "JOBDEF"
+                        },
+                        "response_header": {
+                            "response_header": ""
+                        },
+                        "response_info": {
+                            "response_info": ""
+                        },
+                        "response_time_ms": {
+                            "response_time_ms": ""
+                        },
+                        "retries": {
+                            "retries": "1"
+                        },
+                        "status_code": {
+                            "status_code": ""
+                        },
+                        "status_msg": {
+                            "status_msg": ""
+                        },
+                        "timeout": {
+                            "timeout": "10"
+                        },
+                        "type": {
+                            "type": "GET"
+                        },
+                        "url": {
+                            "url": "https://api.github.com/repos/versionone/continuum-data/contents/pipeline-definitions/jenkins/jenkins-job.xml"
+                        }
+                    },
+                    "FunctionName": "http",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "get_jenkinsjob",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "http",
+                        "__parse_method": "2",
+                        "cookie_out": {
+                            "cookie_out": ""
+                        },
+                        "data": {
+                            "data": "[$ JOBDEF $]"
+                        },
+                        "headers": {
+                            "Item::pair::0": {
+                                "key": {
+                                    "key": "Content-Type"
+                                },
+                                "value": {
+                                    "value": "application/xml"
+                                }
+                            },
+                            "Item::pair::1": {
+                                "key": {
+                                    "key": "Authorization"
+                                },
+                                "value": {
+                                    "value": "Basic [$ JEKNINSAUTH $]"
+                                }
+                            },
+                            "__is_array": "true"
+                        },
+                        "response_body": {
+                            "response_body": ""
+                        },
+                        "response_header": {
+                            "response_header": ""
+                        },
+                        "response_info": {
+                            "response_info": ""
+                        },
+                        "response_time_ms": {
+                            "response_time_ms": ""
+                        },
+                        "retries": {
+                            "retries": "1"
+                        },
+                        "status_code": {
+                            "status_code": ""
+                        },
+                        "status_msg": {
+                            "status_msg": ""
+                        },
+                        "timeout": {
+                            "timeout": "10"
+                        },
+                        "type": {
+                            "type": "POST"
+                        },
+                        "url": {
+                            "url": "[$ JENKINSURL $]/createItem?j_username=[$ JENKINSUID $]&j_password=[$ JENKINSPWD $]&name=[$ JOBNAME $]"
+                        }
+                    },
+                    "FunctionName": "http",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        },
+        {
+            "Name": "get_config",
+            "Steps": [
+                {
+                    "Codeblock": "get_config",
+                    "Commented": false,
+                    "Description": "Get the plugin config",
+                    "FunctionDefinition": {
+                        "__name": "http",
+                        "__parse_method": "2",
+                        "cookie_out": {
+                            "cookie_out": ""
+                        },
+                        "data": {
+                            "data": ""
+                        },
+                        "headers": {
+                            "Item::pair::0": {
+                                "key": {
+                                    "key": "Accept"
+                                },
+                                "value": {
+                                    "value": "application/vnd.github.v3.raw"
+                                }
+                            },
+                            "Item::pair::1": {
+                                "key": {
+                                    "key": "Authorization"
+                                },
+                                "value": {
+                                    "value": "token 16b544c61e83d78ccf6f18c76b6e0811b6bbc626"
+                                }
+                            },
+                            "__is_array": "true"
+                        },
+                        "response_body": {
+                            "response_body": "PCONFIGJSON"
+                        },
+                        "response_header": {
+                            "response_header": ""
+                        },
+                        "response_info": {
+                            "response_info": ""
+                        },
+                        "response_time_ms": {
+                            "response_time_ms": ""
+                        },
+                        "retries": {
+                            "retries": "1"
+                        },
+                        "status_code": {
+                            "status_code": ""
+                        },
+                        "status_msg": {
+                            "status_msg": ""
+                        },
+                        "timeout": {
+                            "timeout": "10"
+                        },
+                        "type": {
+                            "type": "GET"
+                        },
+                        "url": {
+                            "url": "https://api.github.com/repos/versionone/continuum-data/contents/pipeline-definitions/jenkins/plugin-configs.json"
+                        }
+                    },
+                    "FunctionName": "http",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "get_config",
+                    "Commented": false,
+                    "Description": "push the config to continuum",
+                    "FunctionDefinition": {
+                        "__name": "http",
+                        "__parse_method": "2",
+                        "cookie_out": {
+                            "cookie_out": ""
+                        },
+                        "data": {
+                            "data": "[$ asjson(PCONFIGJSON) $] "
+                        },
+                        "headers": {
+                            "Item::pair::0": {
+                                "key": {
+                                    "key": "Authorization"
+                                },
+                                "value": {
+                                    "value": "Token df076e6e-cbf1-11e3-bf33-c8bcc89c1491"
+                                }
+                            },
+                            "Item::pair::1": {
+                                "key": {
+                                    "key": "Content-Type"
+                                },
+                                "value": {
+                                    "value": "application/json"
+                                }
+                            },
+                            "__is_array": "true"
+                        },
+                        "response_body": {
+                            "response_body": ""
+                        },
+                        "response_header": {
+                            "response_header": ""
+                        },
+                        "response_info": {
+                            "response_info": ""
+                        },
+                        "response_time_ms": {
+                            "response_time_ms": ""
+                        },
+                        "retries": {
+                            "retries": "1"
+                        },
+                        "status_code": {
+                            "status_code": ""
+                        },
+                        "status_msg": {
+                            "status_msg": ""
+                        },
+                        "timeout": {
+                            "timeout": "10"
+                        },
+                        "type": {
+                            "type": "POST"
+                        },
+                        "url": {
+                            "url": "https://localhost:8080/api/configure_plugins"
+                        }
+                    },
+                    "FunctionName": "http",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        },
+        {
+            "Name": "get_pipedefs",
+            "Steps": [
+                {
+                    "Codeblock": "get_pipedefs",
+                    "Commented": false,
+                    "Description": "Get the plugin config",
+                    "FunctionDefinition": {
+                        "__name": "http",
+                        "__parse_method": "2",
+                        "cookie_out": {
+                            "cookie_out": ""
+                        },
+                        "data": {
+                            "data": ""
+                        },
+                        "headers": {
+                            "Item::pair::0": {
+                                "key": {
+                                    "key": "Accept"
+                                },
+                                "value": {
+                                    "value": "application/vnd.github.v3.raw"
+                                }
+                            },
+                            "Item::pair::1": {
+                                "key": {
+                                    "key": "Authorization"
+                                },
+                                "value": {
+                                    "value": "token 16b544c61e83d78ccf6f18c76b6e0811b6bbc626"
+                                }
+                            },
+                            "__is_array": "true"
+                        },
+                        "response_body": {
+                            "response_body": "PIPEDEF"
+                        },
+                        "response_header": {
+                            "response_header": ""
+                        },
+                        "response_info": {
+                            "response_info": ""
+                        },
+                        "response_time_ms": {
+                            "response_time_ms": ""
+                        },
+                        "retries": {
+                            "retries": "1"
+                        },
+                        "status_code": {
+                            "status_code": ""
+                        },
+                        "status_msg": {
+                            "status_msg": ""
+                        },
+                        "timeout": {
+                            "timeout": "10"
+                        },
+                        "type": {
+                            "type": "GET"
+                        },
+                        "url": {
+                            "url": "https://api.github.com/repos/versionone/continuum-data/contents/pipeline-definitions/jenkins/test-jenkins.json"
+                        }
+                    },
+                    "FunctionName": "http",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "get_pipedefs",
+                    "Commented": false,
+                    "Description": "push the config to continuum",
+                    "FunctionDefinition": {
+                        "__name": "http",
+                        "__parse_method": "2",
+                        "cookie_out": {
+                            "cookie_out": ""
+                        },
+                        "data": {
+                            "data": "{\"backup\": [$ asjson(PIPEDEF) $]}"
+                        },
+                        "headers": {
+                            "Item::pair::0": {
+                                "key": {
+                                    "key": "Authorization"
+                                },
+                                "value": {
+                                    "value": "Token df076e6e-cbf1-11e3-bf33-c8bcc89c1491"
+                                }
+                            },
+                            "Item::pair::1": {
+                                "key": {
+                                    "key": "Content-Type"
+                                },
+                                "value": {
+                                    "value": "application/json"
+                                }
+                            },
+                            "__is_array": "true"
+                        },
+                        "response_body": {
+                            "response_body": ""
+                        },
+                        "response_header": {
+                            "response_header": ""
+                        },
+                        "response_info": {
+                            "response_info": ""
+                        },
+                        "response_time_ms": {
+                            "response_time_ms": ""
+                        },
+                        "retries": {
+                            "retries": "1"
+                        },
+                        "status_code": {
+                            "status_code": ""
+                        },
+                        "status_msg": {
+                            "status_msg": ""
+                        },
+                        "timeout": {
+                            "timeout": "10"
+                        },
+                        "type": {
+                            "type": "POST"
+                        },
+                        "url": {
+                            "url": "https://localhost:8080/api/import_pipeline?overwrite=all&output_format=json"
+                        }
+                    },
+                    "FunctionName": "http",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "Start Lab and Inject Data",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.000"
+}

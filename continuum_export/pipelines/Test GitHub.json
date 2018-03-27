@@ -1,0 +1,139 @@
+{
+    "actions": "",
+    "category": "General",
+    "dependencies": [],
+    "description": "Automated testing of all the GitHub plugin functions.",
+    "globals": {},
+    "interactive": false,
+    "name": "Test GitHub",
+    "phases": [
+        {
+            "name": "",
+            "stages": [
+                {
+                    "name": "",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "instance_name": "",
+                                    "response_key": "REPOLIST"
+                                },
+                                "label": "GitHub - List Repositories",
+                                "method": "list_repos",
+                                "module": "main",
+                                "name": "github",
+                                "type": "external"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "branch_name": "created_by_pipeline",
+                                    "instance_name": "",
+                                    "repository": "continuum-tools",
+                                    "source": "master"
+                                },
+                                "label": "GitHub - Create Branch",
+                                "method": "create_branch",
+                                "module": "main",
+                                "name": "github",
+                                "type": "external"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "branch_name": "created_by_pipeline",
+                                    "instance_name": "",
+                                    "repository": "continuum-tools"
+                                },
+                                "label": "GitHub - Delete Branch",
+                                "method": "delete_branch",
+                                "module": "main",
+                                "name": "github",
+                                "type": "external"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "pr_number": "3",
+                                    "repository": "continuum-tools",
+                                    "response_key": "pr_key"
+                                },
+                                "label": "GitHub - Wait for PR Mergeability",
+                                "method": "wait_for_pr_mergeability",
+                                "module": "main",
+                                "name": "github",
+                                "type": "external"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "instance_name": "",
+                                    "response_key": "BRANCHLIST",
+                                    "type": "GET",
+                                    "url": "https://api.github.com/repos/versionone/continuum-tools"
+                                },
+                                "label": "GitHub - API Call",
+                                "method": "api_call",
+                                "module": "main",
+                                "name": "github",
+                                "type": "external"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "branch": "",
+                                    "instance_name": "",
+                                    "path": "/simtinuum/demo/README.md",
+                                    "repository": "continuum-tools",
+                                    "response_key": "READMEFILE"
+                                },
+                                "label": "GitHub - Get File",
+                                "method": "get_file",
+                                "module": "main",
+                                "name": "github",
+                                "type": "external"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "instance_name": "",
+                                    "issue_number": "5",
+                                    "repository": "continuum-tools",
+                                    "response_key": "ISSUEDOC"
+                                },
+                                "label": "GitHub - Get Issue",
+                                "method": "get_issue",
+                                "module": "main",
+                                "name": "github",
+                                "type": "external"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "summary": []
+}

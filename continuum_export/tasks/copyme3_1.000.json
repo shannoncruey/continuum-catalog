@@ -1,0 +1,22 @@
+{
+    "Category": null,
+    "Code": "0",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": []
+        }
+    ],
+    "ConcurrentInstances": "None",
+    "Description": "",
+    "IsDefaultVersion": false,
+    "MaxVersion": "3.000",
+    "Name": "copyme3",
+    "NextMajorVersion": "4.000",
+    "NextMinorVersion": "3.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [],
+    "QueueDepth": "None",
+    "Status": "Development",
+    "Version": "1.000"
+}

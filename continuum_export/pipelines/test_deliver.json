@@ -1,0 +1,78 @@
+{
+    "__assembled": true,
+    "actions": [],
+    "dependencies": [],
+    "desc": "",
+    "description": "woo",
+    "globals": {},
+    "interactive": false,
+    "name": "test_deliver",
+    "phases": [
+        {
+            "name": "sample phase",
+            "stages": [
+                {
+                    "name": "testz",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "full_version": "",
+                                    "package": "webstore",
+                                    "revision": "18"
+                                },
+                                "label": "Flow - Package - Deliver Revision",
+                                "method": "deliver",
+                                "module": "package",
+                                "name": "flow"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "asset": "AluminumOverdrive",
+                                    "delivery_category": "Developing",
+                                    "description": "_desc",
+                                    "full_version": "",
+                                    "host": "_host",
+                                    "name": "_name",
+                                    "package_name": "database",
+                                    "path": "_path",
+                                    "revision": "5",
+                                    "target_type": "custom",
+                                    "url": "_url"
+                                },
+                                "label": "Flow - Package - Deploy Package",
+                                "method": "deploy_package_revision",
+                                "module": "package",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "delivery_category": "Packaged",
+                                    "description": "_d22214",
+                                    "environment_name": "_name",
+                                    "status": "inactive"
+                                },
+                                "label": "Flow - Environment - Update Details",
+                                "method": "update_details",
+                                "module": "environment",
+                                "name": "flow"
+                            },
+                            "when": "never"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "summary": []
+}

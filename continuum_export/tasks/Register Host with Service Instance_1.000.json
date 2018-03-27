@@ -1,0 +1,67 @@
+{
+    "Category": null,
+    "Code": "util-01",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "deploy.deploy",
+                        "__name": "register_host_instance",
+                        "address": {
+                            "__input_type": "text",
+                            "__label": "Address",
+                            "address": "[[address]]"
+                        },
+                        "host_name": {
+                            "__input_type": "text",
+                            "__label": "Hostname",
+                            "host_name": "[[hostname]]"
+                        }
+                    },
+                    "FunctionName": "register_host_instance",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "Registers a Host defined by parameters with a Service Instance",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "Register Host with Service Instance",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [
+        {
+            "encrypt": "false",
+            "name": "hostname",
+            "present_as": "value",
+            "prompt": "true",
+            "required": "true",
+            "values": [
+                ""
+            ]
+        },
+        {
+            "encrypt": "false",
+            "name": "address",
+            "present_as": "value",
+            "prompt": "true",
+            "required": "true",
+            "values": [
+                ""
+            ]
+        }
+    ],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.000"
+}

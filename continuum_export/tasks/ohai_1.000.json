@@ -1,0 +1,422 @@
+{
+    "Category": null,
+    "Code": "",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "cmd_line",
+                        "__parse_method": "2",
+                        "command": {
+                            "command": ""
+                        },
+                        "conn_name": {
+                            "conn_name": ""
+                        },
+                        "negative_response": {
+                            "negative_response": ""
+                        },
+                        "positive_response": {
+                            "positive_response": ""
+                        },
+                        "result_variable": {
+                            "result_variable": ""
+                        },
+                        "timeout": {
+                            "timeout": ""
+                        }
+                    },
+                    "FunctionName": "cmd_line",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "end",
+                        "message": {
+                            "message": ""
+                        },
+                        "status": {
+                            "status": "Completed"
+                        }
+                    },
+                    "FunctionName": "end",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "new_connection",
+                        "__snip": "conn_name",
+                        "asset": {
+                            "__input_type": "text",
+                            "asset": "AluminumOverdrive"
+                        },
+                        "cloud_name": {
+                            "__input_type": "dropdown",
+                            "__style": "combo",
+                            "cloud_name": ""
+                        },
+                        "conn_name": {
+                            "__class": "w200px",
+                            "__help": "Name this connection for reference in the Task.",
+                            "__input_type": "text",
+                            "__label": "Connection Name",
+                            "__required": "true",
+                            "conn_name": "CONN1"
+                        },
+                        "conn_type": {
+                            "__input_type": "select",
+                            "conn_type": "ssh"
+                        },
+                        "debug": {
+                            "__break_after": "true",
+                            "__input_type": "checkbox",
+                            "__label": "Debug",
+                            "debug": ""
+                        }
+                    },
+                    "FunctionName": "new_connection",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__col_delimiter": "0",
+                        "__name": "cmd_line",
+                        "__parse_method": "2",
+                        "__row_delimiter": "0",
+                        "__snip": "command",
+                        "__variables": "true",
+                        "command": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Command",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "3",
+                            "command": "ohai > /tmp/ohai.json"
+                        },
+                        "conn_name": {
+                            "__break_after": "true",
+                            "__connection_picker": "true",
+                            "__input_type": "text",
+                            "__label": "Connection",
+                            "__required": "true",
+                            "conn_name": "CONN1"
+                        },
+                        "negative_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Negative Response",
+                            "__option_tab": "Options",
+                            "negative_response": ""
+                        },
+                        "positive_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Positive Response",
+                            "__option_tab": "Options",
+                            "positive_response": ""
+                        },
+                        "step_variables": {
+                            "Item::variable::0": {
+                                "name": {
+                                    "name": "result"
+                                },
+                                "range_begin": {
+                                    "range_begin": "1"
+                                },
+                                "range_end": {
+                                    "range_end": "end"
+                                },
+                                "type": {
+                                    "type": "range"
+                                }
+                            }
+                        },
+                        "timeout": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Timeout",
+                            "__option_tab": "Options",
+                            "timeout": ""
+                        }
+                    },
+                    "FunctionName": "cmd_line",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__col_delimiter": "0",
+                        "__name": "cmd_line",
+                        "__parse_method": "2",
+                        "__row_delimiter": "0",
+                        "__snip": "command",
+                        "__variables": "true",
+                        "command": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Command",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "3",
+                            "command": "cat ohai.json"
+                        },
+                        "conn_name": {
+                            "__break_after": "true",
+                            "__connection_picker": "true",
+                            "__input_type": "text",
+                            "__label": "Connection",
+                            "__required": "true",
+                            "conn_name": "CONN1"
+                        },
+                        "negative_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Negative Response",
+                            "__option_tab": "Options",
+                            "negative_response": ""
+                        },
+                        "positive_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Positive Response",
+                            "__option_tab": "Options",
+                            "positive_response": ""
+                        },
+                        "step_variables": {
+                            "Item::variable::0": {
+                                "name": {
+                                    "name": "result"
+                                },
+                                "range_begin": {
+                                    "range_begin": "1"
+                                },
+                                "range_end": {
+                                    "range_end": "end"
+                                },
+                                "type": {
+                                    "type": "range"
+                                }
+                            }
+                        },
+                        "timeout": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Timeout",
+                            "__option_tab": "Options",
+                            "timeout": ""
+                        }
+                    },
+                    "FunctionName": "cmd_line",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "utility.utility",
+                        "__name": "write_file",
+                        "contents": {
+                            "__input_type": "textarea",
+                            "__label": "Contents",
+                            "contents": "import json\n\ndef walk_dict(d):\n    for k, v in d.iteritems():\n        nk = k.replace(\".\", \"_\")\n        if \".\" in k:\n            d[nk] = d.pop(k)\n        if isinstance(d[nk], dict):\n            walk_dict(d[nk])\n            \nwith open('/tmp/ohai.json', 'r') as fr:\n    if fr:\n        d = json.load(fr)\n        walk_dict(d)\n\nfw = open(\"/tmp/fixohai.json\", \"w+\")\nif fw:\n    fw.write(json.dumps(d))"
+                        },
+                        "path": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Path",
+                            "path": "/tmp/fixohai.py"
+                        }
+                    },
+                    "FunctionName": "write_file",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "cmd_line",
+                        "__parse_method": "2",
+                        "__snip": "command",
+                        "__variables": "true",
+                        "command": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Command",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "3",
+                            "command": "python /tmp/fixohai.py"
+                        },
+                        "conn_name": {
+                            "__break_after": "true",
+                            "__connection_picker": "true",
+                            "__input_type": "text",
+                            "__label": "Connection",
+                            "__required": "true",
+                            "conn_name": "CONN1"
+                        },
+                        "negative_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Negative Response",
+                            "__option_tab": "Options",
+                            "negative_response": ""
+                        },
+                        "positive_response": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Positive Response",
+                            "__option_tab": "Options",
+                            "positive_response": ""
+                        },
+                        "timeout": {
+                            "__break_after": "true",
+                            "__input_type": "text",
+                            "__label": "Timeout",
+                            "__option_tab": "Options",
+                            "timeout": ""
+                        }
+                    },
+                    "FunctionName": "cmd_line",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 2,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "utility.utility",
+                        "__name": "read_file",
+                        "path": {
+                            "__input_type": "text",
+                            "__label": "Path",
+                            "path": "/tmp/fixohai.json"
+                        },
+                        "variable": {
+                            "__input_type": "text",
+                            "__label": "Variable",
+                            "variable": "fixed"
+                        }
+                    },
+                    "FunctionName": "read_file",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "datastore_update",
+                        "addtoset": {
+                            "__input_type": "checkbox",
+                            "__label": "Add To Set?",
+                            "addtoset": ""
+                        },
+                        "collection": {
+                            "__input_type": "text",
+                            "__label": "Collection",
+                            "__required": "true",
+                            "collection": "serviceinstances"
+                        },
+                        "columns": {
+                            "Item::column::0": {
+                                "json_value": {
+                                    "__input_type": "checkbox",
+                                    "__label": "Evaluate?",
+                                    "json_value": "1"
+                                },
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "details"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "__style": "width: 50%;",
+                                    "value": "[[fixed]]"
+                                }
+                            },
+                            "__is_array": "true"
+                        },
+                        "query": {
+                            "__class": "w90pct",
+                            "__input_type": "textarea",
+                            "__label": "Query",
+                            "__label_style": "display: block;",
+                            "__rows": "1",
+                            "query": "{ \"_id\" : ObjectId(\"[[_INSTANCE_DOCID]]\") }"
+                        },
+                        "upsert": {
+                            "__input_type": "checkbox",
+                            "__label": "Upsert?",
+                            "upsert": "1"
+                        }
+                    },
+                    "FunctionName": "datastore_update",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "Gets the current system config using Ohai, and updates the Deployment datastore.",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "ohai",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [
+        {
+            "encrypt": "false",
+            "name": "vm-instance",
+            "present_as": "value",
+            "prompt": "true",
+            "required": "true",
+            "values": [
+                "woo"
+            ]
+        }
+    ],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.000"
+}

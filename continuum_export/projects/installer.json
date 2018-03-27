@@ -1,0 +1,84 @@
+{
+    "actions": [],
+    "artifacts": [],
+    "description": "",
+    "globals": {},
+    "lifecycle": "ClearCode Application",
+    "mappings": [
+        {
+            "_id": "58173caf80547967764f1dcc",
+            "dn_definition": "56e02a6b3ed4d23ee2617e06",
+            "dn_group": "master",
+            "dn_project": "56e027b93ed4d23ee2617def",
+            "up_definition": "55e9c0323ed4d27c5f5aa395",
+            "up_group": "master",
+            "up_project": "56e028923ed4d23ee2617df5"
+        }
+    ],
+    "name": "installer",
+    "notifications": {
+        "email": {
+            "addresses": "patrick.dunnigan@versionone.com,shannon.cruey@versionone.com"
+        },
+        "enable": true,
+        "hipchat": {
+            "room": ""
+        },
+        "http": {
+            "data": "",
+            "url": ""
+        },
+        "on_failure": [
+            "email"
+        ],
+        "on_start": [],
+        "on_success": [],
+        "on_wait": [],
+        "slack": {
+            "channel": ""
+        }
+    },
+    "source": {
+        "directives": [
+            {
+                "details": {
+                    "args": {
+                        "fields": [
+                            "message",
+                            "branch"
+                        ]
+                    },
+                    "method": "identify_workitems",
+                    "on_error": "continue",
+                    "plugin": "v1plugin.main"
+                },
+                "type": "plugin_function",
+                "when": "always"
+            },
+            {
+                "details": {
+                    "definition": "Build Install",
+                    "group": "[$ branch $]",
+                    "includechanges": "",
+                    "instancename": "",
+                    "project": "",
+                    "project_version": ""
+                },
+                "type": "initiate_pipeline",
+                "when": "never"
+            }
+        ],
+        "enable_polling": false,
+        "group_lookup": "",
+        "group_source": "lookup",
+        "interface": "webhook",
+        "notify_unmanaged": false,
+        "notify_unmanaged_addl": "",
+        "repo_name": "",
+        "repo_server": "",
+        "type": "github"
+    },
+    "type": "Source",
+    "version": "16.2.5",
+    "version_date": "2016-08-18 17:37:53"
+}

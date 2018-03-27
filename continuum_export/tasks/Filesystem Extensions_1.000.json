@@ -1,0 +1,87 @@
+{
+    "Category": null,
+    "Code": "01",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "utility.utility",
+                        "__name": "write_file",
+                        "contents": {
+                            "__input_type": "textarea",
+                            "__label": "Contents",
+                            "contents": "sup?"
+                        },
+                        "path": {
+                            "__input_type": "text",
+                            "__label": "Path",
+                            "path": "~/written"
+                        }
+                    },
+                    "FunctionName": "write_file",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "utility.utility",
+                        "__name": "read_file",
+                        "path": {
+                            "__input_type": "text",
+                            "__label": "Path",
+                            "path": "~/written"
+                        },
+                        "variable": {
+                            "__input_type": "text",
+                            "__label": "Variable",
+                            "variable": "foo"
+                        }
+                    },
+                    "FunctionName": "read_file",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "utility.utility",
+                        "__name": "exec_python",
+                        "code": {
+                            "__input_type": "textarea",
+                            "__label": "Code",
+                            "code": "AUDIT(\"script\", \"woohoo!\", \"\")\n\nprint VARS.__dict__\n\nprint VARS.get(\"foo\")\n\nfor x in range(1,10):\n    print x\n\nraise SystemExit"
+                        }
+                    },
+                    "FunctionName": "exec_python",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "Filesystem Extensions",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.000"
+}

@@ -1,0 +1,58 @@
+{
+    "Category": null,
+    "Code": "terminate-vsvm",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "InstanceId.n": {
+                            "Item::InstanceId::0": {
+                                "InstanceId": "[[vsvm_instance]]"
+                            },
+                            "__is_array": "true"
+                        },
+                        "__name": "aws_ec2_TerminateInstances",
+                        "aws_region": {
+                            "aws_region": "us-east-1"
+                        },
+                        "result_name": {
+                            "result_name": ""
+                        }
+                    },
+                    "FunctionName": "aws_ec2_TerminateInstances",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "Terminate active Visual Studio virtual machine on AWS",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "Terminate VSVM",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [
+        {
+            "encrypt": "false",
+            "name": "vsvm_instance",
+            "present_as": "value",
+            "prompt": "true",
+            "required": "true",
+            "values": [
+                ""
+            ]
+        }
+    ],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.000"
+}

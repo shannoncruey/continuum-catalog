@@ -1,0 +1,71 @@
+{
+    "Category": "general",
+    "Code": "test",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_variable",
+                        "variables": {
+                            "__label": "Variables",
+                            "variable": {
+                                "__label": "Variable",
+                                "modifier": {
+                                    "__input_type": "select",
+                                    "__label": "Modifier",
+                                    "modifier": "FROM_JSON"
+                                },
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "ryan"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "value": "{\n  \"Backup\": {\n    \"FolderGroups\": [{\n      \"CleanLevel\": \"Folder\",\n      \"Folders\": [{\n        \"SourceLocation\": \"OTokenAPI\",\n        \"DestName\": \"OTokenAPI\"\n      }],\n      \"ServerLocation\": \"D$\\\\\\\\IIS_Content\\\\\\\\\"\n    }]\n  },\n  \"FileGroups\": [{\n    \"CleanLevel\": \"Full\",\n    \"Destination\": \"D$\\\\\\\\IIS_Content\\\\\\\\OTokenAPI\\\\\\\\\",\n    \"Files\": [{\n      \"SourceName\": \"Web.config\",\n      \"DestName\": \"Web.config\"\n    }, {\n      \"SourceName\": \"Global.asax\",\n      \"DestName\": \"Global.asax\"\n    }],\n    \"SourceLocation\": \"_PublishedWebsites\\\\\\\\OToken_API\\\\\\\\\"\n  }, {\n    \"CleanLevel\": \"Partial\",\n    \"Destination\": \"D$\\\\\\\\IIS_Content\\\\\\\\OTokenAPI\\\\\\\\\",\n    \"Files\": [{\n      \"SourceName\": \"Security.config\",\n      \"DestName\": \"Security.config\"\n    }],\n    \"SourceLocation\": \"$Env\\\\\\\\\"\n  }],\n  \"FolderGroups\": [{\n    \"CleanLevel\": \"Folder\",\n    \"Destination\": \"D$\\\\\\\\IIS_Content\\\\\\\\OTokenAPI\\\\\\\\\",\n    \"Folders\": [{\n      \"SourceName\": \"bin\",\n      \"DestName\": \"bin\"\n    }, {\n      \"SourceName\": \"Scripts\",\n      \"DestName\": \"Scripts\"\n    }],\n    \"SourceLocation\": \"_PublishedWebsites\\\\\\\\OTokenAPI\\\\\\\\\"\n  }, {\n    \"CleanLevel\": \"Folder\",\n    \"Destination\": \"D$\\\\\\\\IIS_Content\\\\\\\\OTokenAPI\\\\\\\\bin\\\\\\\\\",\n    \"Folders\": [{\n      \"SourceName\": \"roslyn\",\n      \"DestName\": \"roslyn\"\n    }],\n    \"SourceLocation\": \"\"\n  }],\n  \"Servers\": {\n    \"DEV\": [\"DCWSVC03\"],\n    \"INTG\": [\"ICWSVC03A\", \"ICWSVC03B\"],\n    \"PROD\": [\"PCWSVC03A\", \"PCWSVC03B\", \"PCWSVC03C\"],\n    \"SYST\": [\"SCWSVC03A\", \"SCWSVC03B\"]\n  }\n}"
+                                }
+                            }
+                        }
+                    },
+                    "FunctionName": "set_variable",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": null,
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "message": {
+                            "message": "[$ ryan.get(\"Servers\") $]"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "ryan escape test",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.000"
+}

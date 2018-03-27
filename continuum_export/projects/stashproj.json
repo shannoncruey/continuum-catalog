@@ -1,0 +1,57 @@
+{
+    "actions": [],
+    "artifacts": [],
+    "description": "",
+    "globals": {},
+    "lifecycle": "",
+    "mappings": [],
+    "name": "stashproj",
+    "notifications": {
+        "email": {
+            "addresses": ""
+        },
+        "enable": false,
+        "hipchat": {
+            "room": ""
+        },
+        "http": {
+            "data": "",
+            "url": ""
+        },
+        "on_failure": [],
+        "on_start": [],
+        "on_success": [],
+        "on_wait": [],
+        "slack": {
+            "channel": ""
+        }
+    },
+    "source": {
+        "directives": [
+            {
+                "details": {
+                    "args": {
+                        "expression": "CUST-5",
+                        "fields": [
+                            "branch"
+                        ]
+                    },
+                    "method": "identify_issues",
+                    "on_error": "continue",
+                    "plugin": "jiraplugin.issue"
+                },
+                "type": "plugin_function",
+                "when": "never"
+            }
+        ],
+        "enable_polling": false,
+        "group_source": "branch",
+        "interface": "webhook",
+        "notify_unmanaged": false,
+        "notify_unmanaged_addl": "",
+        "repo_name": "",
+        "repo_server": "",
+        "type": "stash"
+    },
+    "type": "Source"
+}

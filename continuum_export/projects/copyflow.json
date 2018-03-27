@@ -1,0 +1,100 @@
+{
+    "actions": [
+        {
+            "definition": "Deploy Flow Module",
+            "details": null,
+            "group": "master",
+            "icon": "46_48x48.png",
+            "instancename": "",
+            "name": "Deploy a Version",
+            "parameters": {},
+            "project": "flow",
+            "project_version": "",
+            "type": "initiate_pipeline"
+        }
+    ],
+    "artifacts": [
+        {
+            "_id": "57894ac48054793703b85dbb",
+            "created_dt": "2016-07-15T20:42:44.106000",
+            "name": "blahblahblah",
+            "project_id": "563a3c0180547943c41a0122"
+        },
+        {
+            "_id": "579261e58054798b78927bd6",
+            "created_dt": "2016-07-22T18:11:49.931000",
+            "name": "qqq",
+            "project_id": "563a3c0180547943c41a0122",
+            "project_name": "copyflow"
+        }
+    ],
+    "description": "",
+    "globals": {
+        "jenkins_job": "flow"
+    },
+    "lifecycle": "ClearCode Application",
+    "mappings": [],
+    "name": "copyflow",
+    "notifications": {
+        "email": {
+            "addresses": "patrickdunnigan@clearcodelabs.com,shannoncruey@clearcodelabs.com"
+        },
+        "enable": false,
+        "hipchat": {
+            "room": ""
+        },
+        "http": {
+            "data": "",
+            "url": ""
+        },
+        "on_failure": [
+            "email"
+        ],
+        "on_start": [],
+        "on_success": [],
+        "on_wait": [],
+        "slack": {
+            "channel": ""
+        }
+    },
+    "source": {
+        "directives": [
+            {
+                "details": {
+                    "args": {
+                        "fields": [
+                            "commit['message']"
+                        ],
+                        "ignore_secondary": true,
+                        "push_link": true
+                    },
+                    "method": "identify_workitems",
+                    "plugin": "v1plugin.main"
+                },
+                "type": "plugin_function",
+                "when": "always"
+            },
+            {
+                "details": {
+                    "definition": "Velocity Build",
+                    "group": "[$ branch $]",
+                    "includechanges": "",
+                    "instancename": "",
+                    "project": "",
+                    "project_version": ""
+                },
+                "type": "initiate_pipeline",
+                "when": "always"
+            }
+        ],
+        "enable_polling": false,
+        "group_source": "branch",
+        "interface": "webhook",
+        "notify_unmanaged": false,
+        "notify_unmanaged_addl": "",
+        "repo_name": "",
+        "repo_server": "",
+        "type": "github"
+    },
+    "type": "Source"
+}

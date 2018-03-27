@@ -1,0 +1,88 @@
+{
+    "actions": [],
+    "artifacts": [
+        {
+            "_id": "5a7d1d21805479c587504157",
+            "created_dt": "2018-02-09T04:01:37.901000",
+            "last_revision": 62,
+            "last_revision_dt": "2018-02-20T21:11:29.474000",
+            "name": "test_ci_arty",
+            "project_id": "5a70c10080547966f90e8e6b",
+            "project_name": "test_ci"
+        }
+    ],
+    "description": "test ci desc",
+    "globals": {
+        "version": "18.0.0"
+    },
+    "last_cijob_number": 47,
+    "mappings": [],
+    "name": "test_ci",
+    "notifications": {
+        "email": {
+            "addresses": ""
+        },
+        "enable": false,
+        "hipchat": {
+            "room": ""
+        },
+        "http": {
+            "data": "",
+            "url": ""
+        },
+        "on_failure": [],
+        "on_start": [],
+        "on_success": [],
+        "on_wait": [],
+        "slack": {
+            "channel": ""
+        }
+    },
+    "source": {
+        "directives": [
+            {
+                "always": "",
+                "details": {
+                    "always": "",
+                    "clone": "true",
+                    "command": "build/buildworker.sh __PROJECTVERSION.$CI_JOB_NUMBER https://s3.amazonaws.com/versionone-builds/continuum/thirdparty/thirdparty-261.tgz",
+                    "command_timeout": "30",
+                    "never": "",
+                    "plugin_instance": "",
+                    "shared_workspace": "true",
+                    "wait_for_completion": "true"
+                },
+                "type": "worker_ci",
+                "when": "always"
+            },
+            {
+                "always": "",
+                "details": {
+                    "always": "",
+                    "args": {},
+                    "clone": "false",
+                    "command": "ctm-register-artifact -p $CI_PROJECT_NAME -n test_ci_arty -b masterwoo -l some/path/thing.__LASTCIJOBVERSION.gz\n",
+                    "command_timeout": "",
+                    "never": "",
+                    "on_error": "Continue Processing Directives",
+                    "plugin_instance": "",
+                    "shared_workspace": "false",
+                    "wait_for_completion": "true"
+                },
+                "type": "worker_ci",
+                "when": "always"
+            }
+        ],
+        "enable_polling": false,
+        "group_source": "branch",
+        "interface": "webhook",
+        "notify_unmanaged": false,
+        "notify_unmanaged_addl": "",
+        "repo_name": "",
+        "repo_server": "",
+        "type": "github"
+    },
+    "type": "Source",
+    "version": "18.0.0",
+    "version_date": "2018-02-10 15:37:16"
+}

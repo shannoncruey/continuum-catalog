@@ -1,0 +1,22 @@
+{
+    "Category": null,
+    "Code": "VSClient",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": []
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "Publish the .vsix to S3, tag GitHub, and update App Catalog.",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "Publish .vsix",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.000"
+}

@@ -1,0 +1,114 @@
+{
+    "artifacts": [],
+    "dependencies": [
+        {
+            "project": "petclinic-chef",
+            "story": "master"
+        },
+        {
+            "project": "petclinic-ddl",
+            "story": "master"
+        },
+        {
+            "project": "petclinic-data",
+            "story": "master"
+        },
+        {
+            "project": "spring-petclinic",
+            "story": "master"
+        }
+    ],
+    "desc": "",
+    "description": "",
+    "feeder_last_good_rcs": {
+        "petclinic-chef": {
+            "master": {
+                "group": "master",
+                "name": "4ee2c83",
+                "pi_group_id": "54208ab15e14975fd5167916",
+                "pipeline": "Petclinic Chef",
+                "pipeline_id": "54206a645e149765da012d36",
+                "project": "petclinic-chef",
+                "project_id": "542076235e149765da012d3d",
+                "rc_id": "5453b87c3ed4d24c7bf2b2c8"
+            }
+        },
+        "petclinic-data": {
+            "master": {
+                "group": "master",
+                "name": "ca400ac",
+                "pi_group_id": "54208d0f5e14975fd5167929",
+                "pipeline": "Petclinic Data",
+                "pipeline_id": "54206aef5e149765da012d38",
+                "project": "petclinic-data",
+                "project_id": "542076025e149765da012d39",
+                "rc_id": "5453afd93ed4d24c7bf2b2ba"
+            }
+        },
+        "petclinic-ddl": {
+            "master": {
+                "group": "master",
+                "name": "9a375e2",
+                "pi_group_id": "54208f4a5e14975fd5167930",
+                "pipeline": "Petclinic DDL",
+                "pipeline_id": "54206ac35e149765da012d37",
+                "project": "petclinic-ddl",
+                "project_id": "54208f285e14975fdb17e786",
+                "rc_id": "545396ce3ed4d24c7bf2b27e"
+            }
+        },
+        "spring-petclinic": {
+            "master": {
+                "group": "master",
+                "name": "941bcca",
+                "pi_group_id": "542093be5e14975fd5167937",
+                "pipeline": "Pre-merge Build and Unit Test",
+                "pipeline_id": "537a4d232abe6d2c073870ff",
+                "project": "spring-petclinic",
+                "project_id": "53c6cd605e14976c043508db",
+                "rc_id": "54539ee43ed4d24c7bf2b29a"
+            }
+        }
+    },
+    "mappings": [
+        {
+            "_id": "5452a5483ed4d278df9134cf",
+            "dn_definition": "54515a5c3ed4d20b6ad668a5",
+            "dn_group": "master",
+            "dn_project": "542093445e14975fdb17e788",
+            "up_definition": "53ee59345e149705dff19010",
+            "up_group": "master",
+            "up_project": "542093445e14975fdb17e788"
+        },
+        {
+            "_id": "5452a5483ed4d278df9134d0",
+            "dn_definition": "54515b8e3ed4d20b6ad668a8",
+            "dn_group": "master",
+            "dn_project": "542093445e14975fdb17e788",
+            "up_definition": "54515a5c3ed4d20b6ad668a5",
+            "up_group": "master",
+            "up_project": "542093445e14975fdb17e788"
+        }
+    ],
+    "name": "Petclinic App",
+    "notifications": {
+        "email": {
+            "addresses": ""
+        },
+        "enable": "",
+        "hipchat": {
+            "room": ""
+        },
+        "on_failure": [],
+        "on_start": [],
+        "on_success": [],
+        "on_wait": []
+    },
+    "source": {
+        "directives": [],
+        "type": ""
+    },
+    "type": "Integration",
+    "version": "4.04",
+    "version_date": "2014-10-22 19:03:49"
+}

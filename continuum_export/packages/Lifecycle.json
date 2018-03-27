@@ -1,0 +1,124 @@
+{
+    "actions": [
+        {
+            "args": {},
+            "icon": "",
+            "method": "",
+            "name": "",
+            "parameters": {},
+            "tags": [
+                "foo",
+                "bar"
+            ],
+            "type": "api"
+        }
+    ],
+    "artifacts": [],
+    "description": "",
+    "globals": {
+        "LCglobals": "woo",
+        "asdf": "asdf"
+    },
+    "name": "Lifecycle",
+    "progression": {
+        "name": "Lifecycle",
+        "phases": [
+            {
+                "autopromote": false,
+                "delivery_category": "Developing",
+                "directives": [],
+                "name": "Local Dev"
+            },
+            {
+                "autopromote": false,
+                "delivery_category": "Developing",
+                "directives": [
+                    {
+                        "description": "Team City Build\t\t\t\n\tValidate Team City Build, \t\t\nUpdate LC Status to \"Ready for Test\", \t\t\nCheck for Rogue Commits, \t\nValidate Git Hub Status Checks \t\t\t",
+                        "details": {},
+                        "index": "0",
+                        "interactive": false,
+                        "name": "Teamcity Build the Branch",
+                        "type": ""
+                    }
+                ],
+                "name": "Pre-Flight Build"
+            },
+            {
+                "autopromote": false,
+                "delivery_category": "Developing",
+                "directives": [
+                    {
+                        "description": "",
+                        "details": {},
+                        "directives": [
+                            {
+                                "description": "",
+                                "details": {},
+                                "index": "0_0",
+                                "interactive": false,
+                                "name": "(if pct_tests_passed < 75) - Create Blocking Issue",
+                                "type": ""
+                            }
+                        ],
+                        "index": "0",
+                        "interactive": false,
+                        "name": "Run Manual Tests",
+                        "type": ""
+                    }
+                ],
+                "name": "Acceptance Testing"
+            },
+            {
+                "autopromote": false,
+                "delivery_category": "Packaged",
+                "directives": [
+                    {
+                        "description": "",
+                        "details": {},
+                        "index": "0",
+                        "interactive": false,
+                        "name": "Run Unit Test Suite",
+                        "type": ""
+                    }
+                ],
+                "name": "Unit Test"
+            },
+            {
+                "autopromote": false,
+                "delivery_category": "Packaged",
+                "directives": [
+                    {
+                        "description": "",
+                        "details": {},
+                        "index": "0",
+                        "interactive": false,
+                        "name": "Change LC status of all workitems and test for rogue commits",
+                        "type": ""
+                    }
+                ],
+                "name": "Code Complete"
+            },
+            {
+                "delivery_category": "Packaged",
+                "name": "In Consideration"
+            },
+            {
+                "delivery_category": "Packaged",
+                "name": "Stage"
+            },
+            {
+                "delivery_category": "Packaged",
+                "name": "Pre-Release"
+            },
+            {
+                "delivery_category": "Packaged",
+                "name": "Publishing"
+            },
+            {
+                "delivery_category": "Packaged",
+                "name": "Release"
+            }
+        ]
+    }
+}

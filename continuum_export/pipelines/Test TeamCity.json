@@ -1,0 +1,79 @@
+{
+    "actions": "",
+    "category": "General",
+    "dependencies": [],
+    "description": "",
+    "globals": {},
+    "interactive": false,
+    "name": "Test TeamCity",
+    "phases": [
+        {
+            "name": "",
+            "stages": [
+                {
+                    "name": "",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "branch": "",
+                                    "build_id": "TeamQProjects_Test",
+                                    "commit_id": "",
+                                    "inherit": "true",
+                                    "instance_name": "",
+                                    "params": "{\"FOO\":\"BAR\"}",
+                                    "result_key": "TCRESULTS",
+                                    "snapshot_id": "",
+                                    "timeout": "",
+                                    "vcs_instance_id": "",
+                                    "wait": "true"
+                                },
+                                "label": "TeamCity - Build",
+                                "method": "build",
+                                "module": "job",
+                                "name": "teamcity",
+                                "type": "external"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "TCRESULTS.number",
+                                    "value": "4180"
+                                },
+                                "label": "Flow - Pipeline - Set Data",
+                                "method": "set_data",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "build_number": "[$ TCRESULTS['build'] $]",
+                                    "inherit": "true",
+                                    "instance_name": "q-teamcity",
+                                    "result_key": "TECETRESULTS",
+                                    "wait": "true"
+                                },
+                                "label": "TeamCity - Get Build Info",
+                                "method": "get_build",
+                                "module": "job",
+                                "name": "teamcity",
+                                "type": "external"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "summary": []
+}

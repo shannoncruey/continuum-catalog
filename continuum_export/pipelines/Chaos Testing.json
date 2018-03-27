@@ -1,0 +1,89 @@
+{
+    "actions": [],
+    "dependencies": [],
+    "description": "",
+    "globals": {},
+    "interactive": false,
+    "name": "Chaos Testing",
+    "phases": [
+        {
+            "name": "",
+            "stages": [
+                {
+                    "name": "",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "name": "r[$ revision $] to [$ phase $]"
+                                },
+                                "label": "Flow - Pipeline - Set Name",
+                                "method": "set_name",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "full_version": "",
+                                    "new_full_version": "",
+                                    "new_version": "",
+                                    "package": "[$ package $]",
+                                    "phase": "[$ phase $]",
+                                    "revision": "[$ revision $]"
+                                },
+                                "label": "Flow - Package - Promote Revision",
+                                "method": "promote",
+                                "module": "package",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "depending on the target phase, we deploy to different fixed environments",
+                            "plugin": {
+                                "args": {
+                                    "code": "target_env = 'virtual environment'\n\nif WORKSPACE['phase'] == 'Acceptance Test':\n    target_env = 'QA'\nelif WORKSPACE['phase'] == 'Regression Test':\n    target_env = 'QA'\nelif WORKSPACE['phase'] == 'Performance Test':\n    target_env = 'QA'\nelif WORKSPACE['phase'] == 'Ready for Delivery':\n    target_env = 'Staging'\nelif WORKSPACE['phase'] == 'Canary Release':\n    target_env = 'Production_EA'\n\nOUTPUT['environment'] = target_env"
+                                },
+                                "label": "Utility - Python Script",
+                                "method": "exec_python",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "asset": "",
+                                    "delivery_category": "Packaged",
+                                    "description": "",
+                                    "full_version": "",
+                                    "host": "",
+                                    "name": "[$ environment $]",
+                                    "package_name": "[$ package $]",
+                                    "path": "",
+                                    "revision": "[$ revision $]",
+                                    "target_type": "custom",
+                                    "url": "http://[$ environment $].acme.demo/"
+                                },
+                                "label": "Flow - Package - Deploy Package",
+                                "method": "deploy_package_revision",
+                                "module": "package",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "summary": []
+}

@@ -1,0 +1,40 @@
+{
+    "artifacts": [],
+    "desc": "",
+    "description": "",
+    "mappings": [],
+    "name": "gitlab_test",
+    "notifications": {
+        "email": {
+            "addresses": ""
+        },
+        "enable": "",
+        "hipchat": {
+            "room": ""
+        },
+        "on_failure": [],
+        "on_start": [],
+        "on_success": [],
+        "on_wait": []
+    },
+    "source": {
+        "directives": [
+            {
+                "details": {
+                    "definition": "sample test",
+                    "group": "[$ branch $]",
+                    "instancename": "",
+                    "project": "gitlab_test"
+                },
+                "type": "initiate_pipeline",
+                "when": "always"
+            }
+        ],
+        "group_source": "branch",
+        "interface": "webhook",
+        "type": "gitlab"
+    },
+    "type": "Source",
+    "version": "1",
+    "version_date": "2014-11-05 22:04:58"
+}

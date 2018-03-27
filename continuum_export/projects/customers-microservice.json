@@ -1,0 +1,83 @@
+{
+    "artifacts": [
+        {
+            "_id": "57616e95805479609578e342",
+            "created_dt": "2015-03-26T16:39:06.447000",
+            "last_revision": 23,
+            "last_revision_dt": "2015-03-27T15:00:10.760000",
+            "name": "jarfile",
+            "project_id": "54ef3dc6950048d021c76d8e",
+            "project_name": "customers-microservice"
+        },
+        {
+            "_id": "57616e95805479609578e341",
+            "created_dt": null,
+            "last_revision": 3,
+            "last_revision_dt": null,
+            "name": "warfile",
+            "project_id": "54ef3dc6950048d021c76d8e",
+            "project_name": "customers-microservice"
+        }
+    ],
+    "description": "",
+    "globals": {
+        "jenkins_job": "customers-microservice-build"
+    },
+    "mappings": [],
+    "name": "customers-microservice",
+    "notifications": {
+        "email": {
+            "addresses": ""
+        },
+        "enable": false,
+        "hipchat": {
+            "room": ""
+        },
+        "http": {
+            "data": "",
+            "url": ""
+        },
+        "on_failure": [],
+        "on_start": [],
+        "on_success": [],
+        "on_wait": [],
+        "slack": {
+            "channel": ""
+        }
+    },
+    "source": {
+        "directives": [
+            {
+                "details": {
+                    "args": {
+                        "expression": "CUST-[0-9]{1,}",
+                        "fields": [
+                            "message"
+                        ]
+                    },
+                    "method": "identify_issues",
+                    "plugin": "jiraplugin.issue"
+                },
+                "type": "plugin_function",
+                "when": "always"
+            },
+            {
+                "details": {
+                    "definition": "Commit to Prod",
+                    "group": "[$ branch $]",
+                    "instancename": "",
+                    "project": "",
+                    "project_version": ""
+                },
+                "type": "initiate_pipeline",
+                "when": "always"
+            }
+        ],
+        "group_source": "branch",
+        "interface": "webhook",
+        "type": "github"
+    },
+    "type": "Source",
+    "version": ".241",
+    "version_date": "2015-02-26 16:02:14"
+}

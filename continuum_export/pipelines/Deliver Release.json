@@ -1,0 +1,60 @@
+{
+    "actions": [],
+    "dependencies": [],
+    "description": "",
+    "globals": {},
+    "interactive": false,
+    "name": "Deliver Release",
+    "phases": [
+        {
+            "name": "",
+            "stages": [
+                {
+                    "name": "",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "full_version": "",
+                                    "package": "[$ package $]",
+                                    "revision": "[$ revision $]"
+                                },
+                                "label": "Flow - Package - Deliver Revision",
+                                "method": "deliver",
+                                "module": "package",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "asset": "",
+                                    "delivery_category": "Delivered",
+                                    "description": "",
+                                    "full_version": "",
+                                    "host": "",
+                                    "name": "Production",
+                                    "package_name": "[$ package $]",
+                                    "path": "",
+                                    "revision": "[$ revision $]",
+                                    "target_type": "custom",
+                                    "url": "http://portal.acme.demo"
+                                },
+                                "label": "Flow - Package - Deploy Package",
+                                "method": "deploy_package_revision",
+                                "module": "package",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "summary": []
+}

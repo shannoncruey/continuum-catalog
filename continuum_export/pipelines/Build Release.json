@@ -1,0 +1,89 @@
+{
+    "actions": [],
+    "dependencies": [],
+    "description": "",
+    "globals": {},
+    "interactive": false,
+    "name": "Build Release",
+    "phases": [
+        {
+            "name": "",
+            "stages": [
+                {
+                    "name": "",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "count": "WICOUNT",
+                                    "expression": "\"_id\" in __DATA",
+                                    "key": "WITEST"
+                                },
+                                "label": "Flow - Manifest - Evaluate Workitems",
+                                "method": "evaluate_workitems",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "artifact_location": "http://artifactory.acme.demo:8082/artifactory/dev-builds/demo/acme/__PROJECTNAME/build-__NEWREVISION/__PROJECTNAME-[$ gitlab[\"_package_version\"] $].__NEWREVISION.__PINUMBER.tz",
+                                    "artifact_name": "__PROJECTNAME",
+                                    "artifact_version": "[$ initiator[\"data\"][\"_package_version\"] $].__NEWREVISION",
+                                    "branch": "",
+                                    "build_details": "",
+                                    "build_id": "[$ initiator[\"data\"][\"_package_version\"] $].__NEWREVISION.__PINUMBER",
+                                    "build_url": "",
+                                    "package_name": "",
+                                    "package_revision": "",
+                                    "project_name": ""
+                                },
+                                "label": "Flow - Artifact - New Revision",
+                                "method": "register_artifact",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "description": "[$ initiator[\"data\"][\"_package_version\"] $].__PINUMBER",
+                                    "globals_key": "",
+                                    "package": "[$ initiator[\"data\"][\"_package\"] $]",
+                                    "result_key": "NEWREV",
+                                    "version": "[$ initiator[\"data\"][\"_package_version\"] $]"
+                                },
+                                "label": "Flow - Package - New Revision",
+                                "method": "new_revision",
+                                "module": "package",
+                                "name": "flow"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "name": "v[$ NEWREV[\"version\"] $] - r[$ NEWREV[\"revision\"] $] ([$ WICOUNT $] workitem)"
+                                },
+                                "label": "Flow - Pipeline - Set Name",
+                                "method": "set_name",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "summary": []
+}

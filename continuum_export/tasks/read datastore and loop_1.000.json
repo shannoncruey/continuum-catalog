@@ -1,0 +1,137 @@
+{
+    "Category": null,
+    "Code": "phil",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_debug_level",
+                        "debug_level": {
+                            "debug_level": "10"
+                        }
+                    },
+                    "FunctionName": "set_debug_level",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "datastore_query",
+                        "collection": {
+                            "collection": "my_collection"
+                        },
+                        "columns": {
+                            "Item::column::0": {
+                                "name": {
+                                    "name": "widget_id"
+                                },
+                                "variable": {
+                                    "variable": "WIDGET_ID"
+                                }
+                            },
+                            "Item::column::1": {
+                                "name": {
+                                    "name": "data"
+                                },
+                                "variable": {
+                                    "variable": "DATA"
+                                }
+                            },
+                            "__is_array": "true"
+                        },
+                        "limit": {
+                            "limit": ""
+                        },
+                        "query": {
+                            "query": "{\"widget_id\": { \"$exists\": \"true\" }}"
+                        },
+                        "result_var": {
+                            "result_var": "foo"
+                        },
+                        "sort": {
+                            "sort": ""
+                        }
+                    },
+                    "FunctionName": "datastore_query",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "message": {
+                            "message": "[$foo[:]$]"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "loop",
+                        "action": {
+                            "function": {
+                                "__name": "log_msg",
+                                "message": {
+                                    "message": "[$ asjson(DATA[[$X$]]) $]"
+                                }
+                            }
+                        },
+                        "compare_to": {
+                            "compare_to": "[$ len(WIDGET_ID)-1 $]"
+                        },
+                        "counter": {
+                            "counter": "x"
+                        },
+                        "increment": {
+                            "increment": "1"
+                        },
+                        "max": {
+                            "max": "100"
+                        },
+                        "start": {
+                            "start": "0"
+                        },
+                        "test": {
+                            "test": "<="
+                        }
+                    },
+                    "FunctionName": "loop",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "read datastore and loop",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.000"
+}

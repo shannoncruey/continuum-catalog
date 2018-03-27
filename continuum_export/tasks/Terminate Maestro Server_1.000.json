@@ -1,0 +1,389 @@
+{
+    "Category": null,
+    "Code": "csk 301",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_variable",
+                        "variables": {
+                            "__label": "Variables",
+                            "variable": {
+                                "__label": "Variable",
+                                "modifier": {
+                                    "__input_type": "select",
+                                    "__label": "Modifier",
+                                    "modifier": "DEFAULT"
+                                },
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "host"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "value": "[[_HOST]]"
+                                }
+                            }
+                        }
+                    },
+                    "FunctionName": "set_variable",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "deploy.datastore",
+                        "__name": "get_deployment_value",
+                        "pairs": {
+                            "Item::pair::0": {
+                                "__label": "Pair",
+                                "key": {
+                                    "__input_type": "text",
+                                    "__label": "Key",
+                                    "key": "iamuser"
+                                },
+                                "variable_name": {
+                                    "__input_type": "text",
+                                    "__label": "Variable",
+                                    "__required": "true",
+                                    "variable_name": "iamuser"
+                                }
+                            },
+                            "Item::pair::1": {
+                                "__label": "Pair",
+                                "key": {
+                                    "__input_type": "text",
+                                    "__label": "Key",
+                                    "key": "iamkey"
+                                },
+                                "variable_name": {
+                                    "__input_type": "text",
+                                    "__label": "Variable",
+                                    "__required": "true",
+                                    "variable_name": "iamkey"
+                                }
+                            },
+                            "Item::pair::2": {
+                                "__label": "Pair",
+                                "key": {
+                                    "__input_type": "text",
+                                    "__label": "Key",
+                                    "key": "url"
+                                },
+                                "variable_name": {
+                                    "__input_type": "text",
+                                    "__label": "Variable",
+                                    "__required": "true",
+                                    "variable_name": "url"
+                                }
+                            },
+                            "__is_array": "true",
+                            "__label": "Key Value Pairs"
+                        },
+                        "scope": {
+                            "__dataset": "Deployment|Service",
+                            "__datasource": "local",
+                            "__input_type": "dropdown",
+                            "__label": "Scope",
+                            "scope": "Deployment"
+                        }
+                    },
+                    "FunctionName": "get_deployment_value",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "deploy.datastore",
+                        "__name": "get_deployment_value",
+                        "pairs": {
+                            "Item::pair::0": {
+                                "__label": "Pair",
+                                "key": {
+                                    "__input_type": "text",
+                                    "__label": "Key",
+                                    "key": "ipaddress"
+                                },
+                                "variable_name": {
+                                    "__input_type": "text",
+                                    "__label": "Variable",
+                                    "__required": "true",
+                                    "variable_name": "ipaddress"
+                                }
+                            },
+                            "__is_array": "true",
+                            "__label": "Key Value Pairs"
+                        },
+                        "scope": {
+                            "__dataset": "Deployment|Service",
+                            "__datasource": "local",
+                            "__input_type": "dropdown",
+                            "__label": "Scope",
+                            "scope": "Service"
+                        }
+                    },
+                    "FunctionName": "get_deployment_value",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "InstanceId.n": {
+                            "Item::InstanceId::0": {
+                                "InstanceId": "[[host]]",
+                                "__input_type": "text"
+                            },
+                            "__is_array": "true"
+                        },
+                        "__name": "aws_ec2_TerminateInstances",
+                        "aws_region": {
+                            "__class": "combo w300px",
+                            "__dataset": "ddDataSource_GetAWSClouds",
+                            "__datasource": "function",
+                            "__hr_after": "true",
+                            "__input_type": "dropdown",
+                            "__label": "AWS Region",
+                            "aws_region": ""
+                        },
+                        "result_name": {
+                            "__break_before": "true",
+                            "__input_type": "text",
+                            "__label": "Result Variable",
+                            "result_name": ""
+                        }
+                    },
+                    "FunctionName": "aws_ec2_TerminateInstances",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "AccessKeyId": {
+                            "AccessKeyId": "[[iamkey]]",
+                            "__input_type": "text"
+                        },
+                        "UserName": {
+                            "UserName": "[[iamuser]]",
+                            "__input_type": "text"
+                        },
+                        "__name": "aws_iam_DeleteAccessKey",
+                        "aws_region": {
+                            "__class": "combo w300px",
+                            "__dataset": "ddDataSource_GetAWSClouds",
+                            "__datasource": "function",
+                            "__hr_after": "true",
+                            "__input_type": "dropdown",
+                            "__label": "AWS Region",
+                            "aws_region": ""
+                        },
+                        "result_name": {
+                            "__break_before": "true",
+                            "__input_type": "text",
+                            "__label": "Result Variable",
+                            "result_name": ""
+                        }
+                    },
+                    "FunctionName": "aws_iam_DeleteAccessKey",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "GroupName": {
+                            "GroupName": "demousers",
+                            "__input_type": "text"
+                        },
+                        "UserName": {
+                            "UserName": "[[iamuser]]",
+                            "__input_type": "text"
+                        },
+                        "__name": "aws_iam_RemoveUserFromGroup",
+                        "aws_region": {
+                            "__class": "combo w300px",
+                            "__dataset": "ddDataSource_GetAWSClouds",
+                            "__datasource": "function",
+                            "__hr_after": "true",
+                            "__input_type": "dropdown",
+                            "__label": "AWS Region",
+                            "aws_region": ""
+                        },
+                        "result_name": {
+                            "__break_before": "true",
+                            "__input_type": "text",
+                            "__label": "Result Variable",
+                            "result_name": ""
+                        }
+                    },
+                    "FunctionName": "aws_iam_RemoveUserFromGroup",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "UserName": {
+                            "UserName": "[[iamuser]]",
+                            "__input_type": "text"
+                        },
+                        "__name": "aws_iam_DeleteUser",
+                        "aws_region": {
+                            "__class": "combo w300px",
+                            "__dataset": "ddDataSource_GetAWSClouds",
+                            "__datasource": "function",
+                            "__hr_after": "true",
+                            "__input_type": "dropdown",
+                            "__label": "AWS Region",
+                            "aws_region": ""
+                        },
+                        "result_name": {
+                            "__break_before": "true",
+                            "__input_type": "text",
+                            "__label": "Result Variable",
+                            "result_name": ""
+                        }
+                    },
+                    "FunctionName": "aws_iam_DeleteUser",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_variable",
+                        "variables": {
+                            "__label": "Variables",
+                            "variable": {
+                                "__label": "Variable",
+                                "modifier": {
+                                    "__input_type": "select",
+                                    "__label": "Modifier",
+                                    "modifier": "DEFAULT"
+                                },
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "xml"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "value": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<ChangeResourceRecordSetsRequest xmlns=\"https://route53.amazonaws.com/doc/2012-12-12/\">\n   <ChangeBatch>\n      <Comment>optional comment about the changes in this \n         change batch request</Comment>\n      <Changes>\n         <Change>\n            <Action>DELETE</Action>\n            <ResourceRecordSet>\n               <Name>[[url]]</Name>\n               <Type>A</Type>\n               <TTL>300</TTL>\n               <ResourceRecords>\n                  <ResourceRecord>\n                     <Value>[[ipaddress]]</Value>\n                  </ResourceRecord>\n               </ResourceRecords>\n            </ResourceRecordSet>\n         </Change>\n      </Changes>\n   </ChangeBatch>\n</ChangeResourceRecordSetsRequest>"
+                                }
+                            }
+                        }
+                    },
+                    "FunctionName": "set_variable",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "__snip": "message",
+                        "message": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Log",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "2",
+                            "message": "[[xml]]"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "route53",
+                        "data": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Data",
+                            "__label_style": "display: block;",
+                            "__rows": "3",
+                            "data": "[[xml]]"
+                        },
+                        "path": {
+                            "__class": "w95pct",
+                            "__input_type": "text",
+                            "__label": "Path",
+                            "path": "hostedzone/Z3LYU1DEXSWA15/rrset"
+                        },
+                        "result_name": {
+                            "__break_before": "true",
+                            "__input_type": "text",
+                            "__label": "Result Variable",
+                            "result_name": ""
+                        },
+                        "type": {
+                            "__dataset": "GET|POST|DELETE",
+                            "__datasource": "local",
+                            "__input_type": "dropdown",
+                            "__label": "Request Type",
+                            "type": "POST"
+                        }
+                    },
+                    "FunctionName": "route53",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "Terminate Maestro Server",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.000"
+}

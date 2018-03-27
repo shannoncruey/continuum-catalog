@@ -1,0 +1,110 @@
+{
+    "__assembled": true,
+    "actions": [],
+    "description": "",
+    "globals": {},
+    "name": "bucket stuff",
+    "phases": [
+        {
+            "name": "a",
+            "stages": [
+                {
+                    "name": "a",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "a-b+c",
+                                    "value": "woohoo!"
+                                },
+                                "label": "Flow - Pipeline - Set Data",
+                                "method": "set_data",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "message": "[$ __WORKSPACE['a-b+c'] $]"
+                                },
+                                "label": "Utility - Insert Log",
+                                "method": "insert_log",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "bucket": "Release 16.0.2",
+                                    "globals_key": "releasebucket",
+                                    "required": "true"
+                                },
+                                "label": "Utility - Bucket - Load",
+                                "method": "load_bucket",
+                                "module": "bucket",
+                                "name": "utility"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "bucket": "_aaa",
+                                    "create": "true",
+                                    "key": "foo",
+                                    "required": "true",
+                                    "value": "bar"
+                                },
+                                "label": "Utility - Bucket - Set Global",
+                                "method": "set_global",
+                                "module": "bucket",
+                                "name": "utility"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "bucket": "_aaa",
+                                    "globals_key": "frombucket",
+                                    "required": "true"
+                                },
+                                "label": "Utility - Bucket - Get Globals",
+                                "method": "get_globals",
+                                "module": "bucket",
+                                "name": "utility"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "bucket": "_aaa",
+                                    "create": "true",
+                                    "globals_key": ""
+                                },
+                                "label": "Utility - Bucket - Add Manifest",
+                                "method": "add_to_bucket",
+                                "module": "bucket",
+                                "name": "utility"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "summary": []
+}

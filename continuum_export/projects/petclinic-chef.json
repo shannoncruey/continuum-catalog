@@ -1,0 +1,79 @@
+{
+    "artifacts": [],
+    "desc": "",
+    "description": "",
+    "mappings": [
+        {
+            "_id": "548610533ed4d2314a9ece93",
+            "dn_definition": "537a4d2b2abe6d2c07387100",
+            "dn_group": "master",
+            "dn_project": "542093445e14975fdb17e788",
+            "up_definition": "54206a645e149765da012d36",
+            "up_group": "master",
+            "up_project": "542076235e149765da012d3d"
+        },
+        {
+            "_id": "548610533ed4d2314a9ece94",
+            "dn_definition": "53ee59345e149705dff19010",
+            "dn_group": "master",
+            "dn_project": "542093445e14975fdb17e788",
+            "up_definition": "54206a645e149765da012d36",
+            "up_group": "master",
+            "up_project": "542076235e149765da012d3d"
+        }
+    ],
+    "name": "petclinic-chef",
+    "notifications": {
+        "email": {
+            "addresses": ""
+        },
+        "enable": "",
+        "hipchat": {
+            "room": ""
+        },
+        "on_failure": [],
+        "on_start": [],
+        "on_success": [],
+        "on_wait": []
+    },
+    "source": {
+        "directives": [
+            {
+                "details": {
+                    "args": {
+                        "expression": "PET-[0-9]{1,}",
+                        "fields": [
+                            "message"
+                        ]
+                    },
+                    "method": "identify_issues",
+                    "plugin": "jiraplugin.issue"
+                },
+                "signature": {
+                    "ref": "refs/heads/master"
+                },
+                "type": "plugin_function",
+                "when": "signature"
+            },
+            {
+                "details": {
+                    "definition": "Petclinic Chef",
+                    "group": "master",
+                    "instancename": "",
+                    "project": "petclinic-chef"
+                },
+                "signature": {
+                    "ref": "refs/heads/master"
+                },
+                "type": "initiate_pipeline",
+                "when": "signature"
+            }
+        ],
+        "group_source": "branch",
+        "interface": "webhook",
+        "type": "github"
+    },
+    "type": "Source",
+    "version": "5.6",
+    "version_date": "2014-09-24 13:31:02"
+}

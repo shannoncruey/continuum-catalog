@@ -1,0 +1,83 @@
+{
+    "__assembled": true,
+    "actions": [],
+    "dependencies": [],
+    "description": "",
+    "globals": {},
+    "interactive": false,
+    "name": "CEDAR IDEA",
+    "phases": [
+        {
+            "name": "CD Build",
+            "stages": [
+                {
+                    "name": "CD Jenk Build",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "task": "du",
+                                    "version": ""
+                                },
+                                "label": "Automate - Run Task",
+                                "method": "runtask",
+                                "module": "task",
+                                "name": "automate"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "artifact_name": "",
+                                    "artifact_regex": "",
+                                    "inherit": "true",
+                                    "instance_name": "",
+                                    "job": "Job Name Goes HEre",
+                                    "result_key": "",
+                                    "token": "",
+                                    "wait": "true"
+                                },
+                                "label": "Jenkins - Build",
+                                "method": "build",
+                                "module": "job",
+                                "name": "jenkins"
+                            },
+                            "when": "conditionally",
+                            "when_condition": "MATCHEDCHANGES > 15"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "action": "set",
+                                    "create": "true",
+                                    "name": "",
+                                    "path": "",
+                                    "value": ""
+                                },
+                                "label": "Utility - Set Registry",
+                                "method": "set_registry",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "CD Analysis",
+            "stages": []
+        },
+        {
+            "name": "CD Package",
+            "stages": []
+        }
+    ],
+    "pipelineglobals": {},
+    "summary": []
+}

@@ -1,0 +1,85 @@
+{
+    "actions": [
+        {
+            "definition": "test_pipeline",
+            "details": null,
+            "group": "master",
+            "icon": "43_48x48.png",
+            "instancename": "",
+            "name": "test w/params",
+            "parameters": [
+                {
+                    "name": "BRANCH",
+                    "required": "true"
+                },
+                {
+                    "name": "SHA",
+                    "required": "true"
+                }
+            ],
+            "project": "__PROJECTNAME",
+            "project_version": "",
+            "type": "initiate_pipeline"
+        }
+    ],
+    "artifacts": [],
+    "description": "",
+    "globals": {},
+    "lifecycle": "",
+    "mappings": [],
+    "name": "testproject",
+    "notifications": {
+        "email": {
+            "addresses": ""
+        },
+        "enable": false,
+        "hipchat": {
+            "room": ""
+        },
+        "http": {
+            "data": "",
+            "url": ""
+        },
+        "on_failure": [],
+        "on_start": [],
+        "on_success": [],
+        "on_wait": [],
+        "slack": {
+            "channel": ""
+        }
+    },
+    "source": {
+        "directives": [
+            {
+                "details": {
+                    "args": {},
+                    "method": "identify_workitems",
+                    "plugin": "v1plugin.main"
+                },
+                "type": "plugin_function",
+                "when": "always"
+            },
+            {
+                "details": {
+                    "definition": "test_pipeline",
+                    "group": "[$ branch $]",
+                    "includechanges": "",
+                    "instancename": "",
+                    "project": "",
+                    "project_version": ""
+                },
+                "type": "initiate_pipeline",
+                "when": "always"
+            }
+        ],
+        "enable_polling": false,
+        "group_source": "branch",
+        "interface": "webhook",
+        "notify_unmanaged": true,
+        "notify_unmanaged_addl": "",
+        "repo_name": "",
+        "repo_server": "",
+        "type": "github"
+    },
+    "type": "Source"
+}

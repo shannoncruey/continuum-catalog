@@ -1,0 +1,349 @@
+{
+    "actions": [
+        {
+            "definition": "__DEFINITIONNAME",
+            "details": null,
+            "group": "__GROUP",
+            "icon": "20_48x48.png",
+            "instancename": "",
+            "name": "Run the Package Pipeline",
+            "on": "group",
+            "parameters": {},
+            "project": "__PROJECTNAME",
+            "project_version": "",
+            "type": "initiate_pipeline"
+        },
+        {
+            "icon": "",
+            "name": "Retry",
+            "on": "instance",
+            "parameters": {},
+            "type": "retry_instance"
+        }
+    ],
+    "desc": "",
+    "description": "",
+    "globals": {},
+    "name": "Regression Tests",
+    "phases": [
+        {
+            "name": "Package Continuum",
+            "stages": [
+                {
+                    "name": "Package Continuum",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "name": "[$ full_version $]"
+                                },
+                                "label": "Flow - Pipeline - Set Name",
+                                "method": "set_name",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "broid_target_key": "build_run_id",
+                                    "build_project": "Continuum Installer",
+                                    "initial_status": "In Progress",
+                                    "instance_name": "",
+                                    "name": "",
+                                    "reference": ""
+                                },
+                                "label": "VersionOne - Create BuildRun",
+                                "method": "create_buildrun",
+                                "module": "main",
+                                "name": "v1plugin"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Test Deploy",
+            "stages": [
+                {
+                    "name": "Test Velocity Ubuntu",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "datastore": "",
+                                    "params": {
+                                        "DeploymentParamsVals": [],
+                                        "SequenceParamsVals": [],
+                                        "Services": [
+                                            {
+                                                "ServiceName": "Server",
+                                                "Transitions": [
+                                                    {
+                                                        "Parameters": [],
+                                                        "Step": 1
+                                                    },
+                                                    {
+                                                        "Parameters": [
+                                                            {
+                                                                "name": "artifact",
+                                                                "values": "[$ installer $]"
+                                                            }
+                                                        ],
+                                                        "Step": 2
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "sequence_data": "",
+                                    "template": "Velocity Ubuntu",
+                                    "version": "1"
+                                },
+                                "label": "Deploy - Deploy an Application",
+                                "method": "deploy",
+                                "module": "deployment",
+                                "name": "deploy"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "deployment": "",
+                                    "params": "",
+                                    "sequence": "Tests",
+                                    "sequence_data": ""
+                                },
+                                "label": "Deploy - Run Sequence",
+                                "method": "run_sequence",
+                                "module": "deployment",
+                                "name": "deploy"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "deployment": "",
+                                    "params": "",
+                                    "sequence": "Test Deploy",
+                                    "sequence_data": ""
+                                },
+                                "label": "Deploy - Run Sequence",
+                                "method": "run_sequence",
+                                "module": "deployment",
+                                "name": "deploy"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {},
+                                "label": "Deploy - Terminate",
+                                "method": "terminate",
+                                "module": "deployment",
+                                "name": "deploy"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                },
+                {
+                    "name": "Test Velocity RHEL",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "datastore": "",
+                                    "params": {
+                                        "DeploymentParamsVals": [],
+                                        "SequenceParamsVals": [],
+                                        "Services": [
+                                            {
+                                                "ServiceName": "Server",
+                                                "Transitions": [
+                                                    {
+                                                        "Parameters": [],
+                                                        "Step": 1
+                                                    },
+                                                    {
+                                                        "Parameters": [
+                                                            {
+                                                                "name": "artifact",
+                                                                "values": "[$ installer $]"
+                                                            }
+                                                        ],
+                                                        "Step": 2
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "sequence_data": "",
+                                    "template": "Velocity RHEL",
+                                    "version": "1"
+                                },
+                                "label": "Deploy - Deploy an Application",
+                                "method": "deploy",
+                                "module": "deployment",
+                                "name": "deploy"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "deployment": "",
+                                    "params": "",
+                                    "sequence": "Tests",
+                                    "sequence_data": ""
+                                },
+                                "label": "Deploy - Run Sequence",
+                                "method": "run_sequence",
+                                "module": "deployment",
+                                "name": "deploy"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {},
+                                "label": "Deploy - Terminate",
+                                "method": "terminate",
+                                "module": "deployment",
+                                "name": "deploy"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Finalize Package",
+            "stages": [
+                {
+                    "name": "Bump Package Version",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "full_version": "[$ full_version $]",
+                                    "instance_name": "",
+                                    "package_label": "Continuum [$ full_version $]",
+                                    "package_name": "Continuum",
+                                    "phase": "Ready for Test",
+                                    "required": "true",
+                                    "revision": ""
+                                },
+                                "label": "VersionOne - Specify Phase",
+                                "method": "specify_phase",
+                                "module": "main",
+                                "name": "v1plugin"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "full_version": "[$ full_version $]",
+                                    "package": "Continuum",
+                                    "phase": "Ready for Test",
+                                    "revision": ""
+                                },
+                                "label": "Flow - Package - Promote Revision",
+                                "method": "promote",
+                                "module": "package",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Deploy to Continuum Staging",
+            "stages": [
+                {
+                    "name": "Deploy to Continuum Staging",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "initial_data": {
+                                        "asset_name": "continuumstaging",
+                                        "installer": "[$ installer $]"
+                                    },
+                                    "task": "Update Continuum Environment to Version",
+                                    "version": ""
+                                },
+                                "label": "Automate - Run Task",
+                                "method": "runtask",
+                                "module": "task",
+                                "name": "automate"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "full_version": "[$ full_version $]",
+                                    "instance_name": "",
+                                    "package_label": "Continuum [$ full_version $]",
+                                    "package_name": "Continuum",
+                                    "phase": "Staged",
+                                    "required": "true",
+                                    "revision": ""
+                                },
+                                "label": "VersionOne - Specify Phase",
+                                "method": "specify_phase",
+                                "module": "main",
+                                "name": "v1plugin"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "full_version": "[$ full_version $]",
+                                    "package": "Continuum",
+                                    "phase": "Staged",
+                                    "revision": ""
+                                },
+                                "label": "Flow - Package - Promote Revision",
+                                "method": "promote",
+                                "module": "package",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "product_id": "542ef5ad5e1497307173c009",
+    "product_name": "Continuum",
+    "product_workflow_step": "Package",
+    "summary": []
+}

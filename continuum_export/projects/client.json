@@ -1,0 +1,104 @@
+{
+    "artifacts": [
+        {
+            "_id": "57616e95805479609578e334",
+            "created_dt": "2015-03-21T00:31:06.275000",
+            "last_revision": 76,
+            "last_revision_dt": "2015-04-14T00:32:43.467000",
+            "name": "client",
+            "project_id": "53f3b5445e149705c16be386",
+            "project_name": "client"
+        },
+        {
+            "_id": "57616e95805479609578e343",
+            "created_dt": "2015-03-21T00:31:06.491000",
+            "last_revision": 28,
+            "last_revision_dt": "2015-04-14T00:32:43.487000",
+            "name": "client-win",
+            "project_id": "53f3b5445e149705c16be386",
+            "project_name": "client"
+        }
+    ],
+    "description": "",
+    "globals": {
+        "jenkins_job": "client"
+    },
+    "mappings": [
+        {
+            "_id": "54f87e4c3ed4d23e0f45b66a",
+            "dn_definition": "53a0bfd32abe6d77f7f11bad",
+            "dn_group": "master",
+            "dn_project": "53f38bf35e149705ab1d7acc",
+            "up_definition": "539b534f2abe6d6e3d4d7645",
+            "up_group": "master",
+            "up_project": "53f3b5445e149705c16be386"
+        },
+        {
+            "_id": "577bbfa53ed4d21eda8d6c08",
+            "dn_definition": "56e02a6b3ed4d23ee2617e06",
+            "dn_group": "master",
+            "dn_project": "56e027b93ed4d23ee2617def",
+            "up_definition": "56e02fa63ed4d23ee2617e15",
+            "up_group": "master",
+            "up_project": "53f3b5445e149705c16be386"
+        }
+    ],
+    "name": "client",
+    "notifications": {
+        "email": {
+            "addresses": "patrickdunnigan@clearcodelabs.com,shannoncruey@clearcodelabs.com"
+        },
+        "enable": false,
+        "hipchat": {
+            "room": ""
+        },
+        "http": {
+            "data": "",
+            "url": ""
+        },
+        "on_failure": [
+            "email"
+        ],
+        "on_start": [],
+        "on_success": [],
+        "on_wait": [],
+        "slack": {
+            "channel": ""
+        }
+    },
+    "source": {
+        "directives": [
+            {
+                "details": {
+                    "args": {
+                        "expression": "CLIEN-[0-9]{1,}",
+                        "fields": [
+                            "message"
+                        ]
+                    },
+                    "method": "identify_issues",
+                    "plugin": "jiraplugin.issue"
+                },
+                "type": "plugin_function",
+                "when": "always"
+            },
+            {
+                "details": {
+                    "definition": "Velocity Build",
+                    "group": "[$ branch $]",
+                    "instancename": "[$ after[:7] $]",
+                    "project": "client",
+                    "project_version": ""
+                },
+                "type": "initiate_pipeline",
+                "when": "always"
+            }
+        ],
+        "group_source": "branch",
+        "interface": "webhook",
+        "type": "github"
+    },
+    "type": "Source",
+    "version": "1.43",
+    "version_date": "2015-03-16 18:19:39"
+}

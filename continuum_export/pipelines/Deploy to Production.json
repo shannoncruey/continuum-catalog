@@ -1,0 +1,82 @@
+{
+    "__assembled": true,
+    "actions": [],
+    "description": "Petclinic CD Pipeline",
+    "globals": {
+        "jenkins_job": "petclinic"
+    },
+    "name": "Deploy to Production",
+    "phases": [
+        {
+            "name": "Notify",
+            "stages": [
+                {
+                    "description": "",
+                    "name": "Notify",
+                    "steps": [
+                        {
+                            "name": "Notify ",
+                            "plugin": {
+                                "args": {
+                                    "message": "Pipeline ready",
+                                    "room": "ClearCode"
+                                },
+                                "method": "send",
+                                "module": "notification",
+                                "name": "hipchatplugin"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Production",
+            "stages": [
+                {
+                    "description": "Deploy to Production",
+                    "name": "Deploy to Production",
+                    "steps": [
+                        {
+                            "name": "deploy",
+                            "plugin": {
+                                "args": {
+                                    "text": "Should this Release Candidate be deployed to Production?",
+                                    "title": "Deploy to Production?"
+                                },
+                                "kind": "confirm",
+                                "method": "confirmation",
+                                "module": "interact",
+                                "name": "flow",
+                                "type": "interaction"
+                            },
+                            "tags": []
+                        },
+                        {
+                            "name": "deploy to production",
+                            "plugin": {
+                                "args": {
+                                    "parameters": [],
+                                    "task": "Deploy Artifact"
+                                },
+                                "method": "runtask",
+                                "module": "task",
+                                "name": "automate"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "product_id": "5447f2483ed4d26b0b3d8368",
+    "product_name": "Pet Clinic",
+    "product_workflow_step": "Production",
+    "signature": "",
+    "signature_type": "git",
+    "summary": [],
+    "tags": [
+        "PetClinic"
+    ]
+}

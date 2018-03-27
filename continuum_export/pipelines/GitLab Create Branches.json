@@ -1,0 +1,51 @@
+{
+    "__assembled": true,
+    "actions": [],
+    "description": "",
+    "globals": "",
+    "name": "GitLab Create Branches",
+    "phases": [
+        {
+            "name": "Create Branches",
+            "stages": [
+                {
+                    "description": "",
+                    "name": "Create GitLab Branch",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "action": {
+                                        "args": {
+                                            "branch_name": "[$ NEWBRANCH $]",
+                                            "instance_name": "",
+                                            "ns_project": "root/[$ __LOOPITEM[\"inreponame\"] $]",
+                                            "reference": "[$ __LOOPITEM[\"frombranch\"] $]"
+                                        },
+                                        "label": "GitLab - Create Branch",
+                                        "method": "create_branch",
+                                        "module": "gitlab",
+                                        "name": "gitlab"
+                                    },
+                                    "iterator": "REPOS",
+                                    "variable_name": "THISREPO"
+                                },
+                                "args_parsing": "internal",
+                                "label": "Utility - Loop",
+                                "method": "loop",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "product_id": "",
+    "product_workflow_step": "",
+    "summary": []
+}

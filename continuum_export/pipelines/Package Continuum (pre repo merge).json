@@ -1,0 +1,361 @@
+{
+    "__assembled": true,
+    "actions": [
+        {
+            "definition": "Package Continuum (pre repo merge)",
+            "details": null,
+            "group": "__GROUP",
+            "icon": "20_48x48.png",
+            "instancename": "",
+            "name": "Run the Package Pipeline",
+            "on": "group",
+            "parameters": {},
+            "project": "__PROJECTNAME",
+            "project_version": "",
+            "type": "initiate_pipeline"
+        }
+    ],
+    "desc": "",
+    "description": "",
+    "globals": {
+        "jenkins_job": "installer"
+    },
+    "name": "Package Continuum (pre repo merge)",
+    "phases": [
+        {
+            "name": "Package Continuum",
+            "stages": [
+                {
+                    "name": "Package Continuum",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "broid_target_key": "build_run_id",
+                                    "build_project": "Continuum Installer",
+                                    "initial_status": "In Progress",
+                                    "instance_name": "",
+                                    "name": "",
+                                    "reference": ""
+                                },
+                                "label": "VersionOne - Create BuildRun",
+                                "method": "create_buildrun",
+                                "module": "main",
+                                "name": "v1plugin"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "master_artifacts",
+                                    "name": "master_artifacts",
+                                    "required": "true"
+                                },
+                                "label": "Utility - Get Registry",
+                                "method": "get_registry",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "artifact_name": "",
+                                    "artifact_regex": "",
+                                    "inherit": "true",
+                                    "instance_name": "",
+                                    "job": "[$ pipelineglobals['jenkins_job'] $]",
+                                    "params": {
+                                        "AUTOMATE_ART": "[$ master_artifacts['automate']$]",
+                                        "CANVAS_ART": "[$ master_artifacts['canvas']$]",
+                                        "CLIENT_ART": "[$ master_artifacts['client']$]",
+                                        "COMMON_ART": "[$ master_artifacts['common']$]",
+                                        "DEPLOY_ART": "[$ master_artifacts['deploy']$]",
+                                        "FLOW_ART": "[$ master_artifacts['flow']$]",
+                                        "INSTANCE_NUMBER": "__PINUMBER",
+                                        "THIRDPARTY_ART": "[$ master_artifacts['thirdparty'] $]",
+                                        "VELOCITY_ART": "[$ master_artifacts['velocity'] $]"
+                                    },
+                                    "wait": "true"
+                                },
+                                "label": "Jenkins - Build",
+                                "method": "build",
+                                "module": "job",
+                                "name": "jenkins"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "artifact_location": "https://s3.amazonaws.com/builds.continuum.versionone.com/installer/continuum-__PROJECTVERSION.__PINUMBER-installer.sh",
+                                    "artifact_name": "installer",
+                                    "artifact_version": "__PROJECTVERSION.__PINUMBER",
+                                    "branch": "master",
+                                    "build_details": "[$ __PREVSTEPDATA[\"details\"] $]",
+                                    "build_id": "[$ __PREVSTEPDATA[\"build\"] $]",
+                                    "build_url": "[$ __PREVSTEPDATA[\"details\"][\"url\"] $]",
+                                    "project_name": "Continuum"
+                                },
+                                "label": "Flow - Artifact - New Revision",
+                                "method": "register_artifact",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Test Deploy",
+            "stages": [
+                {
+                    "name": "Test Velocity Ubuntu",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "datastore": "",
+                                    "params": {
+                                        "DeploymentParamsVals": [],
+                                        "SequenceParamsVals": [],
+                                        "Services": [
+                                            {
+                                                "ServiceName": "Server",
+                                                "Transitions": [
+                                                    {
+                                                        "Parameters": [],
+                                                        "Step": 1
+                                                    },
+                                                    {
+                                                        "Parameters": [
+                                                            {
+                                                                "name": "artifact",
+                                                                "values": "https://s3.amazonaws.com/builds.continuum.versionone.com/installer/continuum-__PROJECTVERSION.__PINUMBER-installer.sh"
+                                                            }
+                                                        ],
+                                                        "Step": 2
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "sequence_data": "",
+                                    "template": "Velocity Ubuntu",
+                                    "version": "1"
+                                },
+                                "label": "Deploy - Deploy an Application",
+                                "method": "deploy",
+                                "module": "deployment",
+                                "name": "deploy"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "deployment": "",
+                                    "params": "",
+                                    "sequence": "Tests",
+                                    "sequence_data": ""
+                                },
+                                "label": "Deploy - Run Sequence",
+                                "method": "run_sequence",
+                                "module": "deployment",
+                                "name": "deploy"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "deployment": "",
+                                    "params": "",
+                                    "sequence": "Test Deploy",
+                                    "sequence_data": ""
+                                },
+                                "label": "Deploy - Run Sequence",
+                                "method": "run_sequence",
+                                "module": "deployment",
+                                "name": "deploy"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {},
+                                "label": "Deploy - Terminate",
+                                "method": "terminate",
+                                "module": "deployment",
+                                "name": "deploy"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                },
+                {
+                    "name": "Test Velocity RHEL",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "datastore": "",
+                                    "params": {
+                                        "DeploymentParamsVals": [],
+                                        "SequenceParamsVals": [],
+                                        "Services": [
+                                            {
+                                                "ServiceName": "Server",
+                                                "Transitions": [
+                                                    {
+                                                        "Parameters": [],
+                                                        "Step": 1
+                                                    },
+                                                    {
+                                                        "Parameters": [
+                                                            {
+                                                                "name": "artifact",
+                                                                "values": "https://s3.amazonaws.com/builds.continuum.versionone.com/installer/continuum-__PROJECTVERSION.__PINUMBER-installer.sh"
+                                                            }
+                                                        ],
+                                                        "Step": 2
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "sequence_data": "",
+                                    "template": "Velocity RHEL",
+                                    "version": "1"
+                                },
+                                "label": "Deploy - Deploy an Application",
+                                "method": "deploy",
+                                "module": "deployment",
+                                "name": "deploy"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "deployment": "",
+                                    "params": "",
+                                    "sequence": "Tests",
+                                    "sequence_data": ""
+                                },
+                                "label": "Deploy - Run Sequence",
+                                "method": "run_sequence",
+                                "module": "deployment",
+                                "name": "deploy"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {},
+                                "label": "Deploy - Terminate",
+                                "method": "terminate",
+                                "module": "deployment",
+                                "name": "deploy"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Finalize Package",
+            "stages": [
+                {
+                    "name": "Bump Package Version",
+                    "steps": [
+                        {
+                            "name": "Rename the Instance to the version",
+                            "plugin": {
+                                "args": {
+                                    "name": "__PROJECTVERSION.__PINUMBER"
+                                },
+                                "label": "Flow - Pipeline - Set Name",
+                                "method": "set_name",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "initial_data": {
+                                        "version": "__PROJECTVERSION.__PINUMBER"
+                                    },
+                                    "task": "Update Continuum Staging to Version"
+                                },
+                                "label": "Automate - Run Task",
+                                "method": "runtask",
+                                "module": "task",
+                                "name": "automate"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "description": "__PROJECTVERSION.__PINUMBER",
+                                    "globals_key": "",
+                                    "package": "Continuum",
+                                    "result_key": "package_data",
+                                    "version": "__PROJECTVERSION"
+                                },
+                                "label": "Flow - Package - New Revision",
+                                "method": "new_revision",
+                                "module": "package",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "package": "Continuum",
+                                    "phase": "Merged",
+                                    "revision": "[$ package_data[\"revision\"] $]"
+                                },
+                                "label": "Flow - Package - Promote Revision",
+                                "method": "promote",
+                                "module": "package",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "product_id": "542ef5ad5e1497307173c009",
+    "product_name": "Continuum",
+    "product_workflow_step": "Package",
+    "signature": "",
+    "signature_type": "",
+    "summary": []
+}

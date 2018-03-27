@@ -1,0 +1,22 @@
+{
+    "Category": null,
+    "Code": "ols-db-1",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": []
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "Generate the 'Counts by Day' report.",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "OLS - Counts By Day",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.000"
+}

@@ -1,0 +1,432 @@
+{
+    "__assembled": true,
+    "actions": [
+        {
+            "args": {
+                "details": {
+                    "foo": "bar"
+                }
+            },
+            "definition": "__do_nothing",
+            "details": {
+                "foo": "bar"
+            },
+            "group": "master",
+            "icon": "",
+            "isOpen": true,
+            "name": "do me",
+            "parameters": {},
+            "project": "test_project",
+            "task": "~hello",
+            "type": "initiate_pipeline",
+            "version": ""
+        }
+    ],
+    "category": "",
+    "dependencies": [],
+    "description": "",
+    "globals": {},
+    "interactive": true,
+    "name": "foo",
+    "phases": [
+        {
+            "name": "testPhase",
+            "stages": [
+                {
+                    "name": "testStage",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "branch_name": "foobranch",
+                                    "failifexists": "false",
+                                    "instance_name": "",
+                                    "ns_project": "shannoncruey/testproject",
+                                    "reference": "master"
+                                },
+                                "label": "GitLab - Create Branch",
+                                "method": "create_branch",
+                                "module": "gitlab",
+                                "name": "gitlab",
+                                "type": "external"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "status": "end-success"
+                                },
+                                "label": "Utility - End",
+                                "method": "end",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "full_version": "",
+                                    "package": "aaa",
+                                    "revision": "273"
+                                },
+                                "label": "Flow - Package - Deliver Revision",
+                                "method": "deliver",
+                                "module": "package",
+                                "name": "flow"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "assignto": [],
+                                    "result_key": "",
+                                    "text": "",
+                                    "title": ""
+                                },
+                                "kind": "confirm",
+                                "label": "Flow - Interact - Confirmation",
+                                "method": "confirmation",
+                                "module": "interact",
+                                "name": "flow",
+                                "type": "interaction"
+                            },
+                            "tags": [],
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "as_user": "",
+                                    "attachments": "",
+                                    "channel": "@shannon.cruey",
+                                    "failonerror": "true",
+                                    "message": "word"
+                                },
+                                "label": "Slack - Post Message",
+                                "method": "post",
+                                "module": "chat",
+                                "name": "slackplugin"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "status": "end-success"
+                                },
+                                "label": "Utility - End",
+                                "method": "end",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "data": "",
+                                    "key": "",
+                                    "url": "",
+                                    "verb": "GET"
+                                },
+                                "label": "Utility - HTTP",
+                                "method": "http",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "asset": "",
+                                    "delivery_category": "Developing",
+                                    "description": "this is my environment",
+                                    "full_version": "",
+                                    "host": "my.se.rv.er",
+                                    "name": "my_server",
+                                    "package_name": "webstore",
+                                    "path": "/path/to/my/stuff",
+                                    "revision": "10",
+                                    "target_type": "custom",
+                                    "url": "myserver.com",
+                                    "zone": "my zone"
+                                },
+                                "label": "Flow - Package - Deploy Package",
+                                "method": "deploy_package_revision",
+                                "module": "package",
+                                "name": "flow"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "description": "",
+                                    "globals_key": "",
+                                    "package": "AAA.BBB",
+                                    "result_key": "NEWREV",
+                                    "version": "master"
+                                },
+                                "label": "Flow - Package - New Revision",
+                                "method": "new_revision",
+                                "module": "package",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "full_version": "",
+                                    "new_full_version": "",
+                                    "new_version": "",
+                                    "package": "AAA.BBB",
+                                    "phase": "Ready for Test",
+                                    "revision": "[$ NEWREV['revision'] $]"
+                                },
+                                "label": "Flow - Package - Promote Revision",
+                                "method": "promote",
+                                "module": "package",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "foo",
+                                    "package": "aaa",
+                                    "revision": "200",
+                                    "value": "{\"Bar\": 1, \"baz\": \"qwerty\"}"
+                                },
+                                "label": "Flow - Package - Set Global",
+                                "method": "set_global",
+                                "module": "package",
+                                "name": "flow"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "message": "log me"
+                                },
+                                "label": "Utility - Log",
+                                "method": "insert_log",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "task": "~hello",
+                                    "version": ""
+                                },
+                                "label": "Automate - Run Task",
+                                "method": "runtask",
+                                "module": "task",
+                                "name": "automate"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "artifact_name": "",
+                                    "artifact_regex": "",
+                                    "inherit": "true",
+                                    "instance_name": "demo",
+                                    "job": "database",
+                                    "params": {
+                                        "BRANCH": "master",
+                                        "COMMIT": "origin/master"
+                                    },
+                                    "result_key": "buildresult",
+                                    "wait": "true"
+                                },
+                                "label": "Jenkins - Build",
+                                "method": "build",
+                                "module": "job",
+                                "name": "jenkins"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "foo",
+                                    "package": "webstore",
+                                    "revision": "158",
+                                    "value": "bar"
+                                },
+                                "label": "Flow - Package - Set Global",
+                                "method": "set_global",
+                                "module": "package",
+                                "name": "flow"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "globals_key": "_158GLOBALS",
+                                    "package": "webstore",
+                                    "revision": "158"
+                                },
+                                "label": "Flow - Package - Load Revision",
+                                "method": "load_revision",
+                                "module": "package",
+                                "name": "flow"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "artifact_name": "stores-ui",
+                                    "key": "loadedartie",
+                                    "project_name": "stores-ui",
+                                    "revision": "156"
+                                },
+                                "label": "Flow - Artifact - Load Revision",
+                                "method": "load_artifact_revision",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "artifact_location": "a new location",
+                                    "artifact_name": "stores-ui",
+                                    "artifact_version": "v1.2.3.4",
+                                    "build_details": "",
+                                    "build_id": "new build ID",
+                                    "build_url": "new build URL",
+                                    "project_name": "stores-ui",
+                                    "revision": "156"
+                                },
+                                "label": "Flow - Artifact - Update Revision",
+                                "method": "update_artifact_revision",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "message": "[$ inputs['artifacts']['__PROJECTNAME']['location'].replace(eib_docker_locations['dev'], eib_docker_locations['int'], 1) $]"
+                                },
+                                "label": "Utility - Log",
+                                "method": "insert_log",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "bundle_name": "",
+                                    "full_version": "",
+                                    "instance_name": "_instance",
+                                    "package_label": "",
+                                    "package_name": "_package",
+                                    "phase": "_phase",
+                                    "required": "true",
+                                    "revision": "",
+                                    "version": "_version"
+                                },
+                                "label": "VersionOne - Specify Phase",
+                                "method": "specify_phase",
+                                "module": "main",
+                                "name": "v1plugin"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "mydata",
+                                    "value": "{\n    \"build\": 109,\n    \"build_id\": \"Bbtest_Build\",\n    \"details\": {\n        \"agent\": {\n            \"href\": \"/app/rest/agents/id:1\",\n            \"id\": 1,\n            \"name\": \"Default Agent\",\n            \"typeId\": 1\n        },\n        \"artifacts\": {\n            \"href\": \"/app/rest/builds/id:109/artifacts/children\"\n        },\n        \"build\": 109,\n        \"buildType\": {\n            \"href\": \"/app/rest/buildTypes/id:Bbtest_Build\",\n            \"id\": \"Bbtest_Build\",\n            \"name\": \"Build\",\n            \"projectId\": \"Bbtest\",\n            \"projectName\": \"Bbtest\",\n            \"webUrl\": \"http://54.86.53.244:8111/viewType.html?buildTypeId=Bbtest_Build\"\n        },\n        \"buildTypeId\": \"Bbtest_Build\",\n        \"build_id\": \"Bbtest_Build\",\n        \"changes\": {\n            \"href\": \"/app/rest/changes?locator=build:(id:109)\"\n        },\n        \"failed_tests\": 0,\n        \"finishDate\": \"20151210T205524+0000\",\n        \"href\": \"/app/rest/builds/id:109\",\n        \"id\": 109,\n        \"lastChanges\": {\n            \"change\": [\n                {\n                    \"date\": \"20151210T204841+0000\",\n                    \"href\": \"/app/rest/changes/id:28\",\n                    \"id\": 28,\n                    \"username\": \"shannon.cruey\",\n                    \"version\": \"f11884067d3c5192ed961d2c97ecf466b767c1fa\",\n                    \"webUrl\": \"http://54.86.53.244:8111/viewModification.html?modId=28&personal=false\"\n                }\n            ],\n            \"count\": 1\n        },\n        \"number\": \"9\",\n        \"passed_tests\": 0,\n        \"properties\": {\n            \"count\": 1,\n            \"property\": [\n                {\n                    \"name\": \"HELLO\",\n                    \"value\": \"WORLD\"\n                }\n            ]\n        },\n        \"queuedDate\": \"20151210T204847+0000\",\n        \"relatedIssues\": {\n            \"href\": \"/app/rest/builds/id:109/relatedIssues\"\n        },\n        \"revisions\": {\n            \"count\": 1,\n            \"revision\": [\n                {\n                    \"vcs-root-instance\": {\n                        \"href\": \"/app/rest/vcs-root-instances/id:6\",\n                        \"id\": \"6\",\n                        \"name\": \"https://shannoncruey@bitbucket.org/shannoncruey/bbtest.git#refs/heads/master\",\n                        \"vcs-root-id\": \"Bbtest_HttpsShannoncrueyBitbucketOrgShannoncrueyBbtestGitRefsHeadsMaster\"\n                    },\n                    \"version\": \"f11884067d3c5192ed961d2c97ecf466b767c1fa\"\n                }\n            ]\n        },\n        \"skipped_tests\": 0,\n        \"startDate\": \"20151210T204853+0000\",\n        \"state\": \"finished\",\n        \"statistics\": {\n            \"href\": \"/app/rest/builds/id:109/statistics\"\n        },\n        \"status\": \"SUCCESS\",\n        \"statusText\": \"Success\",\n        \"total_tests\": 0,\n        \"triggered\": {\n            \"date\": \"20151210T204847+0000\",\n            \"type\": \"user\",\n            \"user\": {\n                \"href\": \"/app/rest/users/id:1\",\n                \"id\": 1,\n                \"username\": \"administrator\"\n            }\n        },\n        \"url\": \"http://54.175.34.2:8111/viewLog.html?buildId=109\",\n        \"webUrl\": \"http://54.86.53.244:8111/viewLog.html?buildId=109&buildTypeId=Bbtest_Build\"\n    },\n    \"instance_name\": null\n}"
+                                },
+                                "label": "Flow - Pipeline - Set Data",
+                                "method": "set_data",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "code": "props = WORKSPACE.get(\"mydata\", {}).get(\"details\", {}).get(\"properties\", {}).get(\"property\", [])\nfor p in props:\n    if p.get(\"name\",\"\") == \"HELLO\":\n        OUTPUT[\"foo\"] = p.get(\"value\")"
+                                },
+                                "label": "Utility - Python Script",
+                                "method": "exec_python",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "action": {
+                                        "args": {
+                                            "message": "the value is [$ cheddar $]"
+                                        },
+                                        "label": "Utility - Insert Log",
+                                        "method": "insert_log",
+                                        "module": "utility",
+                                        "name": "utility"
+                                    },
+                                    "iterator": "[\n    \"a\",\n    \"b\",\n    \"c\"\n]",
+                                    "variable_name": "cheddar"
+                                },
+                                "label": "Utility - Loop",
+                                "method": "loop",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "never"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "summary": []
+}

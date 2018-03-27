@@ -1,0 +1,271 @@
+{
+    "actions": [
+        {
+            "definition": "Update Package Phase",
+            "details": null,
+            "group": "master",
+            "icon": "",
+            "instancename": "",
+            "name": "Promote Package Revision",
+            "parameters": [
+                {
+                    "name": "phase",
+                    "present_as": "dropdown",
+                    "required": "true",
+                    "values": [
+                        "Staged",
+                        "Ready for Release",
+                        "Pre-Prod",
+                        "Released"
+                    ]
+                }
+            ],
+            "project": "continuum",
+            "project_version": "",
+            "type": "initiate_pipeline"
+        },
+        {
+            "definition": "Deploy to Continuum Dev",
+            "details": null,
+            "group": "master",
+            "icon": "",
+            "instancename": "",
+            "name": "Deploy to Continuum Dev",
+            "parameters": {},
+            "project": "continuum",
+            "project_version": "",
+            "type": "initiate_pipeline"
+        },
+        {
+            "definition": "Release Continuum",
+            "details": null,
+            "group": "master",
+            "icon": "",
+            "instancename": "",
+            "name": "Release Continuum",
+            "parameters": [
+                {
+                    "name": "next_version",
+                    "required": "true"
+                }
+            ],
+            "project": "continuum",
+            "project_version": "",
+            "type": "initiate_pipeline"
+        }
+    ],
+    "artifacts": [
+        {
+            "name": "installer",
+            "project_name": "Continuum"
+        },
+        {
+            "name": "continuum",
+            "project_name": "continuum"
+        }
+    ],
+    "description": "",
+    "globals": {},
+    "name": "Continuum",
+    "progression": {
+        "name": "Development Workflow",
+        "phases": [
+            {
+                "autopromote": false,
+                "delivery_category": "Developing",
+                "directives": [
+                    {
+                        "controls": [
+                            {
+                                "description": "",
+                                "details": {},
+                                "index": "0",
+                                "name": "Functional Tests are 100% successful",
+                                "required": false
+                            }
+                        ],
+                        "description": "",
+                        "details": {
+                            "definition": "__do_nothing",
+                            "group": "master",
+                            "project": "test_project"
+                        },
+                        "directives": [
+                            {
+                                "controls": [
+                                    {
+                                        "description": "",
+                                        "details": {},
+                                        "index": "0",
+                                        "name": "Screenshot test outliers were visually verified",
+                                        "required": false
+                                    }
+                                ],
+                                "description": "",
+                                "details": {
+                                    "definition": "__do_nothing",
+                                    "group": "master",
+                                    "project": "test_project"
+                                },
+                                "index": "0_0",
+                                "interactive": false,
+                                "name": "Perform Screenshot Tests",
+                                "type": "initiate_pipeline"
+                            }
+                        ],
+                        "index": "0",
+                        "interactive": false,
+                        "name": "Perform Fast Functional Tests",
+                        "type": "initiate_pipeline"
+                    },
+                    {
+                        "controls": [
+                            {
+                                "description": "",
+                                "details": {},
+                                "index": "0",
+                                "name": "All Workitems are 'done', have no incomplete upstream dependencies",
+                                "required": false
+                            }
+                        ],
+                        "description": "",
+                        "details": {
+                            "definition": "__do_nothing",
+                            "group": "master",
+                            "project": "test_project"
+                        },
+                        "index": "1",
+                        "interactive": false,
+                        "name": "Validate Workitems",
+                        "type": "initiate_pipeline"
+                    }
+                ],
+                "name": "Ready for Test"
+            },
+            {
+                "autopromote": false,
+                "delivery_category": "Developing",
+                "directives": [
+                    {
+                        "controls": [],
+                        "description": "",
+                        "details": {
+                            "definition": "__do_nothing",
+                            "group": "master",
+                            "project": "test_project"
+                        },
+                        "directives": [
+                            {
+                                "controls": [],
+                                "description": "",
+                                "details": {
+                                    "definition": "__do_nothing",
+                                    "group": "master",
+                                    "project": "test_project"
+                                },
+                                "directives": [
+                                    {
+                                        "controls": [
+                                            {
+                                                "description": "",
+                                                "details": {},
+                                                "index": "0",
+                                                "name": "Upgrade tests all pass",
+                                                "required": false
+                                            }
+                                        ],
+                                        "description": "",
+                                        "details": {
+                                            "definition": "__do_nothing",
+                                            "group": "master",
+                                            "project": "test_project"
+                                        },
+                                        "directives": [
+                                            {
+                                                "controls": [],
+                                                "description": "",
+                                                "details": {
+                                                    "definition": "__do_nothing",
+                                                    "group": "master",
+                                                    "project": "test_project"
+                                                },
+                                                "directives": [
+                                                    {
+                                                        "controls": [
+                                                            {
+                                                                "description": "",
+                                                                "details": {},
+                                                                "index": "0",
+                                                                "name": "Smoke tests were 100% successful",
+                                                                "required": false
+                                                            }
+                                                        ],
+                                                        "description": "",
+                                                        "details": {
+                                                            "definition": "__smoke_tests",
+                                                            "group": "master",
+                                                            "initial_data": {},
+                                                            "project": "test_project"
+                                                        },
+                                                        "index": "0_0_0_0_0",
+                                                        "interactive": false,
+                                                        "name": "Run Smoke Tests",
+                                                        "type": "initiate_pipeline"
+                                                    }
+                                                ],
+                                                "index": "0_0_0_0",
+                                                "interactive": false,
+                                                "name": "Upgrade Environment",
+                                                "type": "initiate_pipeline"
+                                            }
+                                        ],
+                                        "index": "0_0_0",
+                                        "interactive": false,
+                                        "name": "Run all upgrade tests",
+                                        "type": "initiate_pipeline"
+                                    }
+                                ],
+                                "index": "0_0",
+                                "interactive": false,
+                                "name": "Upgrade Staging Environment",
+                                "type": "initiate_pipeline"
+                            }
+                        ],
+                        "index": "0",
+                        "interactive": false,
+                        "name": "Deploy to Hostess",
+                        "type": "initiate_pipeline"
+                    }
+                ],
+                "name": "Staged"
+            },
+            {
+                "autopromote": false,
+                "delivery_category": "Packaged",
+                "directives": [
+                    {
+                        "description": "",
+                        "details": {
+                            "definition": "__do_something_manual",
+                            "group": "master",
+                            "project": "test_project"
+                        },
+                        "index": "0",
+                        "interactive": true,
+                        "name": "Capture a manual approval",
+                        "type": "initiate_pipeline"
+                    }
+                ],
+                "name": "Ready for Release"
+            },
+            {
+                "delivery_category": "Packaged",
+                "name": "Pre-Prod"
+            },
+            {
+                "delivery_category": "Packaged",
+                "name": "Released"
+            }
+        ]
+    }
+}

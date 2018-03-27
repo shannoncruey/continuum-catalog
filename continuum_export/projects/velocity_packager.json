@@ -1,0 +1,88 @@
+{
+    "artifacts": [],
+    "description": "",
+    "mappings": [
+        {
+            "_id": "54ff12483ed4d2446ab878b8",
+            "dn_definition": "53a0bfd32abe6d77f7f11bad",
+            "dn_group": "master",
+            "dn_project": "53f38bf35e149705ab1d7acc",
+            "up_definition": "539b534f2abe6d6e3d4d7645",
+            "up_group": "master",
+            "up_project": "53c02b325e14975b2f987f5a"
+        },
+        {
+            "_id": "56e028923ed4d23ee2617df4",
+            "dn_definition": "557f05be3ed4d227393e041d",
+            "dn_group": "",
+            "dn_project": "53f38bf35e149705ab1d7acc",
+            "up_definition": "5419efaa5e149766164bf67f",
+            "up_group": "",
+            "up_project": "53c02b325e14975b2f987f5a"
+        }
+    ],
+    "name": "velocity_packager",
+    "notifications": {
+        "email": {
+            "addresses": "patrickdunnigan@clearcodelabs.com,shannoncruey@clearcodelabs.com"
+        },
+        "enable": false,
+        "hipchat": {
+            "room": ""
+        },
+        "http": {
+            "data": "",
+            "url": ""
+        },
+        "on_failure": [
+            "email"
+        ],
+        "on_start": [],
+        "on_success": [],
+        "on_wait": [],
+        "slack": {
+            "channel": ""
+        }
+    },
+    "source": {
+        "directives": [
+            {
+                "details": {
+                    "args": {
+                        "expression": "VPACK-[0-9]{1,}",
+                        "fields": [
+                            "message"
+                        ]
+                    },
+                    "method": "identify_issues",
+                    "plugin": "jiraplugin.issue"
+                },
+                "signature": {
+                    "ref": "refs/heads/master"
+                },
+                "type": "plugin_function",
+                "when": "signature"
+            },
+            {
+                "details": {
+                    "definition": "Velocity Packager",
+                    "group": "[$ branch $]",
+                    "instancename": "[$ after[:7] $]",
+                    "project": "velocity_packager",
+                    "project_version": ""
+                },
+                "signature": {
+                    "ref": "refs/heads/master"
+                },
+                "type": "initiate_pipeline",
+                "when": "signature"
+            }
+        ],
+        "group_source": "branch",
+        "interface": "webhook",
+        "type": "github"
+    },
+    "type": "Source",
+    "version": "1.43",
+    "version_date": "2015-03-11 20:01:26"
+}

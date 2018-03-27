@@ -1,0 +1,120 @@
+{
+    "Category": null,
+    "Code": "Demo 042",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "datastore_drop_collection",
+                        "collection": {
+                            "__input_type": "text",
+                            "__label": "Collection",
+                            "collection": "task-datastore-demo"
+                        }
+                    },
+                    "FunctionName": "datastore_drop_collection",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "loop",
+                        "action": {
+                            "function": {
+                                "__name": "datastore_insert",
+                                "collection": {
+                                    "__input_type": "text",
+                                    "__label": "Collection",
+                                    "collection": "task-datastore-demo"
+                                },
+                                "object_id": {
+                                    "__input_type": "text",
+                                    "__label": "ObjectId Variable",
+                                    "object_id": ""
+                                },
+                                "pairs": {
+                                    "Item::pair::0": {
+                                        "name": {
+                                            "__input_type": "text",
+                                            "__label": "Name",
+                                            "name": "address"
+                                        },
+                                        "value": {
+                                            "__input_type": "text",
+                                            "__label": "Value",
+                                            "__style": "width: 50%;",
+                                            "value": "192.168.10.[[x]]"
+                                        }
+                                    },
+                                    "Item::pair::1": {
+                                        "name": {
+                                            "__input_type": "text",
+                                            "__label": "Name",
+                                            "name": "hostname"
+                                        },
+                                        "value": {
+                                            "__input_type": "text",
+                                            "__label": "Value",
+                                            "__style": "width: 50%;",
+                                            "value": "server-[[x]]"
+                                        }
+                                    },
+                                    "__is_array": "true"
+                                }
+                            }
+                        },
+                        "compare_to": {
+                            "__input_type": "text",
+                            "compare_to": "10"
+                        },
+                        "counter": {
+                            "__input_type": "text",
+                            "counter": "x"
+                        },
+                        "increment": {
+                            "__input_type": "text",
+                            "increment": "1"
+                        },
+                        "max": {
+                            "__input_type": "text",
+                            "max": "10"
+                        },
+                        "start": {
+                            "__input_type": "text",
+                            "start": "1"
+                        },
+                        "test": {
+                            "__input_type": "select",
+                            "test": "<="
+                        }
+                    },
+                    "FunctionName": "loop",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "Will write some sample data into the 'task-datastore-demo' datastore collection.",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "Write Datastore Data2",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.000"
+}

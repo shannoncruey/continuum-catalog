@@ -1,0 +1,70 @@
+{
+    "actions": [],
+    "dependencies": [],
+    "description": "",
+    "globals": {},
+    "interactive": false,
+    "name": "test_email_contributors",
+    "phases": [
+        {
+            "name": "",
+            "stages": [
+                {
+                    "name": "",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "bucket": "lowcontribs",
+                                    "globals_key": "",
+                                    "required": "true"
+                                },
+                                "label": "Utility - Bucket - Load",
+                                "method": "load_bucket",
+                                "module": "bucket",
+                                "name": "utility"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "count": "MATCHEDCHGCNT",
+                                    "expression": "1 == 1",
+                                    "key": "MATCHEDCHANGES",
+                                    "notify_cc": "first@step.com",
+                                    "notify_contributor": true,
+                                    "notify_message": "this is an extra message"
+                                },
+                                "label": "Flow - Manifest - Evaluate Changes",
+                                "method": "evaluate_changes",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "body": "HOO",
+                                    "cc": "second@step.com",
+                                    "subject": "WOO"
+                                },
+                                "label": "Utility - Email Contributors",
+                                "method": "email_contributors",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "summary": []
+}

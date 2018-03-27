@@ -1,0 +1,65 @@
+{
+    "actions": [],
+    "artifacts": [],
+    "description": "",
+    "globals": {},
+    "name": "AAA.BBB",
+    "progression": {
+        "name": "Development Workflow",
+        "phases": [
+            {
+                "autopromote": false,
+                "delivery_category": "Developing",
+                "directives": [
+                    {
+                        "category": null,
+                        "controls": [],
+                        "description": "",
+                        "details": {
+                            "assignto": [
+                                "CORP\\spriest",
+                                "daniel"
+                            ],
+                            "tags": [
+                                "591cb5adac563eaf22559718",
+                                "591cb5adac563eaf22559716"
+                            ],
+                            "text": "MA text",
+                            "title": "MA tltle"
+                        },
+                        "estimated_touch_time": "",
+                        "index": "0",
+                        "interactive": true,
+                        "name": "Manual Activity WOO",
+                        "type": "manual_activity"
+                    }
+                ],
+                "name": "Ready for Test"
+            },
+            {
+                "autopromote": false,
+                "delivery_category": "Developing",
+                "directives": [],
+                "name": "Staged"
+            },
+            {
+                "autopromote": false,
+                "delivery_category": "Packaged",
+                "directives": [],
+                "name": "Ready for Release"
+            },
+            {
+                "autopromote": false,
+                "delivery_category": "Packaged",
+                "directives": [],
+                "name": "Pre-Prod"
+            },
+            {
+                "autopromote": false,
+                "delivery_category": "Packaged",
+                "directives": [],
+                "name": "Released"
+            }
+        ]
+    }
+}

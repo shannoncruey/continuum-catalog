@@ -1,0 +1,196 @@
+{
+    "__assembled": true,
+    "actions": [
+        {
+            "definition": "__DEFINITIONNAME",
+            "details": null,
+            "group": "manual",
+            "icon": "43_48x48.png",
+            "instancename": "",
+            "name": "Build a specific Branch and Commit",
+            "on": "group",
+            "parameters": [
+                {
+                    "name": "BRANCH",
+                    "required": "true"
+                },
+                {
+                    "name": "SHA",
+                    "required": "true"
+                }
+            ],
+            "project": "__PROJECTNAME",
+            "project_version": "",
+            "type": "initiate_pipeline"
+        }
+    ],
+    "description": "Manually Build and Deploy",
+    "globals": {},
+    "name": "Core-Manual-Build",
+    "phases": [
+        {
+            "name": "Core-Manual-Build",
+            "stages": [
+                {
+                    "description": "",
+                    "name": "Core-Manual-Build-Job",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "inherit": true,
+                                    "job": "Core-Release",
+                                    "params": {
+                                        "BRANCH": "[$ BRANCH $]",
+                                        "COMMIT": "[$ SHA $]"
+                                    },
+                                    "token": "",
+                                    "wait": true
+                                },
+                                "label": "Jenkins - Build",
+                                "method": "build",
+                                "module": "job",
+                                "name": "jenkins"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "path": "/job/Core-Release/[$ __PREVSTEPDATA['build'] $]/artifact/VERSION/*view*/",
+                                    "target": "VERSION"
+                                },
+                                "label": "Jenkins - Get URL",
+                                "method": "get_url",
+                                "module": "job",
+                                "name": "jenkins"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "VERSION",
+                                    "value": "[$ VERSION.strip() $]"
+                                },
+                                "label": "Flow - Pipeline - Set Data",
+                                "method": "set_data",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "name": "[$ VERSION $]"
+                                },
+                                "label": "Flow - Pipeline - Set Name",
+                                "method": "set_name",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "POINTVERSION",
+                                    "value": "[$ '.'.join(VERSION.split('.')[:-1]) $]"
+                                },
+                                "label": "Flow - Pipeline - Set Data",
+                                "method": "set_data",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "BASEVERSION",
+                                    "value": "[$ '.'.join(VERSION.split('.')[:-2]) $]"
+                                },
+                                "label": "Flow - Pipeline - Set Data",
+                                "method": "set_data",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "artifact_location": "VersionOne.Setup-Ultimate-[$VERSION$].exe",
+                                    "artifact_name": "VersionOne-Ultimate"
+                                },
+                                "label": "Flow - Pipeline - Register Artifact",
+                                "method": "register_artifact",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "artifact_location": "VersionOne.Setup-Team-[$VERSION$].exe",
+                                    "artifact_name": "VersionOne-Team"
+                                },
+                                "label": "Flow - Pipeline - Register Artifact",
+                                "method": "register_artifact",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "artifact_location": "VersionOne.Setup-Enterprise-[$VERSION$].exe",
+                                    "artifact_name": "VersionOne-Enterprise"
+                                },
+                                "label": "Flow - Pipeline - Register Artifact",
+                                "method": "register_artifact",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "artifact_location": "VersionOne.Setup-Catalyst-[$VERSION$].exe",
+                                    "artifact_name": "VersionOne-Catalyst"
+                                },
+                                "label": "Flow - Pipeline - Register Artifact",
+                                "method": "register_artifact",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "product_id": "543fe8a37c1a7c67c7dcb133",
+    "product_name": "VersionOne",
+    "product_workflow_step": "",
+    "summary": [],
+    "tags": [
+        "VersionOne"
+    ]
+}

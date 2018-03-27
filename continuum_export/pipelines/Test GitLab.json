@@ -1,0 +1,102 @@
+{
+    "actions": "",
+    "category": "General",
+    "dependencies": [],
+    "description": "Test the GitLab Plugin Functions",
+    "globals": {},
+    "interactive": false,
+    "name": "Test GitLab",
+    "phases": [
+        {
+            "name": "",
+            "stages": [
+                {
+                    "name": "",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "instance_name": "",
+                                    "response_key": "REPOS"
+                                },
+                                "label": "GitLab - List Repositories",
+                                "method": "list_repos",
+                                "module": "gitlab",
+                                "name": "gitlab",
+                                "type": "external"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "instance_name": "",
+                                    "request": "projects/shannoncruey%2Ftestproject/repository/branches",
+                                    "response_key": "BRANCHES",
+                                    "type": "GET"
+                                },
+                                "label": "GitLab - API Call",
+                                "method": "api_call",
+                                "module": "gitlab",
+                                "name": "gitlab",
+                                "type": "external"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "branch_name": "created_by_pipeline",
+                                    "failifexists": "false",
+                                    "instance_name": "",
+                                    "ns_project": "shannoncruey%2Ftestproject",
+                                    "reference": "master"
+                                },
+                                "label": "GitLab - Create Branch",
+                                "method": "create_branch",
+                                "module": "gitlab",
+                                "name": "gitlab",
+                                "type": "external"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "branch_name": "created_by_pipeline",
+                                    "instance_name": "",
+                                    "ns_project": "shannoncruey%2Ftestproject"
+                                },
+                                "label": "GitLab - Delete Branch",
+                                "method": "delete_branch",
+                                "module": "gitlab",
+                                "name": "gitlab",
+                                "type": "external"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "message": "projects/[$ REPOS[0]['id'] $]/repository/branches"
+                                },
+                                "label": "Utility - Log",
+                                "method": "insert_log",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "summary": []
+}

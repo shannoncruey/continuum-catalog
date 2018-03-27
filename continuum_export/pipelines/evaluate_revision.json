@@ -1,0 +1,68 @@
+{
+    "__assembled": true,
+    "actions": [],
+    "dependencies": [],
+    "description": "",
+    "globals": {},
+    "interactive": false,
+    "name": "evaluate_revision",
+    "phases": [
+        {
+            "name": "",
+            "stages": [
+                {
+                    "name": "",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "globals_key": "REVDATA",
+                                    "package": "[$ initiator[\"package_revision\"][\"name\"] $]",
+                                    "revision": "[$ initiator[\"package_revision\"][\"revision\"] $]"
+                                },
+                                "label": "Flow - Package - Get Globals",
+                                "method": "get_globals",
+                                "module": "package",
+                                "name": "flow"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "control": "Is Revision Promotable?",
+                                    "details": "",
+                                    "result": "[$ \"fail\" if REVDATA.get(\"stop_in_phase\") == initiator[\"phase\"] else \"pass\" $]"
+                                },
+                                "label": "Flow - Package - Set Activity Control",
+                                "method": "set_activity_control",
+                                "module": "package",
+                                "name": "flow"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "control": "Is Revision Promotable?",
+                                    "details": "This revision does not meet the criteria to be promoted to the next Phase.",
+                                    "result": "fail"
+                                },
+                                "label": "Flow - Package - Set Activity Control",
+                                "method": "set_activity_control",
+                                "module": "package",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "summary": []
+}

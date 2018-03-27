@@ -1,0 +1,41 @@
+{
+    "actions": "",
+    "category": "General",
+    "dependencies": [],
+    "description": "",
+    "globals": {},
+    "interactive": false,
+    "name": "dummy",
+    "phases": [
+        {
+            "name": "",
+            "stages": [
+                {
+                    "name": "",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "artifact": "artf1234",
+                                    "field_name": "",
+                                    "field_value": "",
+                                    "folder_type": "",
+                                    "instance_name": "",
+                                    "result_key": ""
+                                },
+                                "label": "TeamForge - Update Artifact",
+                                "method": "set_flex_fields",
+                                "module": "trackerapp",
+                                "name": "teamforgeplugin"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "summary": []
+}

@@ -1,0 +1,76 @@
+{
+    "__assembled": true,
+    "actions": [
+        {
+            "args": {},
+            "icon": "",
+            "isOpen": true,
+            "name": "New Item",
+            "parameters": [
+                {
+                    "name": "i_am_not_required",
+                    "required": "false",
+                    "values": [
+                        "bar"
+                    ]
+                },
+                {
+                    "name": "pick_one",
+                    "present_as": "dropdown",
+                    "values": [
+                        "true",
+                        "false"
+                    ]
+                },
+                {
+                    "name": "a_list",
+                    "present_as": "list",
+                    "values": [
+                        "one",
+                        "two"
+                    ]
+                }
+            ],
+            "tags": [
+                ""
+            ],
+            "task": "dummy",
+            "type": "task",
+            "version": ""
+        }
+    ],
+    "category": "",
+    "dependencies": [],
+    "description": "",
+    "globals": {},
+    "interactive": false,
+    "name": "Test RunTask",
+    "phases": [
+        {
+            "name": "",
+            "stages": [
+                {
+                    "name": "",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "task": "test_runfrompipeline",
+                                    "version": ""
+                                },
+                                "label": "Automate - Run Task",
+                                "method": "runtask",
+                                "module": "task",
+                                "name": "automate"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "summary": []
+}

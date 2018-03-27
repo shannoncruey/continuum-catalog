@@ -1,0 +1,466 @@
+{
+    "Category": null,
+    "Code": "new",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_variable",
+                        "variables": {
+                            "Item::variable::0": {
+                                "__label": "Variable",
+                                "modifier": {
+                                    "__input_type": "select",
+                                    "__label": "Modifier",
+                                    "modifier": "DEFAULT"
+                                },
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "foo"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "value": "{\"a\":\"b\"}"
+                                }
+                            },
+                            "Item::variable::1": {
+                                "__label": "Variable",
+                                "modifier": {
+                                    "__input_type": "select",
+                                    "__label": "Modifier",
+                                    "modifier": "DEFAULT"
+                                },
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "jsonvar"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "value": "{\n  \"name\": \"petclinic\",\n  \"description\": \"Petclinic CD Pipeline\",\n  \"phases\": [\n    {\n      \"name\": \"Integration Test\",\n      \"stages\": {\n        \"Build Test Server\": {\n          \"description\": \"build integration test server\",\n          \"steps\": [\n            {\n              \"name\": \"deploy\",\n              \"description\": \"deploys artifacts on target system\",\n              \"plugin\": {\n                \"name\": \"sample.example\",\n                \"method\": \"sample_job2\",\n                \"args\": {\n                }\n              }\n            }\n          ]\n        }\n      }\n    },\n    {\n      \"name\": \"Automated User Acceptance\",\n      \"stages\": {\n        \"Build Acceptance Test Server\": {\n          \"description\": \"builds a server for acceptance testing\",\n          \"steps\": [\n            {\n              \"name\": \"deploy\",\n              \"description\": \"deploys artifacts on target system\",\n              \"plugin\": {\n                \"name\": \"sample.example\",\n                \"method\": \"sample_job2\",\n                \"args\": {\n                }\n              }\n            }\n          ]\n        }\n      }\n    },\n    {\n      \"name\": \"Manual User Acceptance\",\n      \"stages\": {\n        \"Deploy to UAT\": {\n          \"description\": \"deploy to uat\",\n          \"ingate\": {\n            \"type\": \"ui-prompt\",\n            \"title\": \"Deploy to UAT?\",\n            \"text\": \"Should this Release Candidate be deploy to a UAT system?\",\n            \"tags\": [\"ProjAdmin\",\"ProjUser\"]\n          },\n          \"outgate\": {\n            \"type\": \"ui-prompt\",\n            \"title\": \"Pass UAT?\",\n            \"text\": \"Did this UAT pass acceptance testing?\"\n          },\n          \"steps\": [\n            {\n              \"name\": \"deploy\",\n              \"description\": \"deploys artifacts on target system\",\n              \"plugin\": {\n                \"name\": \"sample.example\",\n                \"method\": \"sample_job2\",\n                \"args\": {\n                }\n              }\n            }\n          ]\n        }\n      }\n    },\n    {\n      \"name\": \"Pre-production\",\n      \"stages\": {\n        \"Deploy to PreProd\": {\n          \"description\": \"Deploy to Pre-production\",\n          \"ingate\": {\n            \"type\": \"ui-prompt\",\n            \"title\": \"Deploy to Pre-production?\",\n            \"text\": \"Should this Release Candidate be deployed to Pre-production?\"\n          },\n          \"steps\": [\n            {\n              \"name\": \"hello world\",\n              \"description\": \"sample plugin\",\n              \"plugin\": {\n                \"name\": \"sample.example\",\n                \"method\": \"sample_job2\",\n                \"args\": {\n                }\n              }\n            }\n          ]\n        }\n      }\n    },\n    {\n      \"name\": \"Production\",\n      \"stages\": {\n        \"Deploy to Production\": {\n          \"description\": \"Deploy to Production\",\n          \"ingate\": {\n            \"type\": \"ui-prompt\",\n            \"title\": \"Deploy to Production?\",\n            \"text\": \"Should this Release Candidate be deployed to Production?\"\n          },\n          \"steps\": [\n            {\n              \"name\": \"deploy to production\",\n              \"description\": \"deploys accepted code to production\",\n              \"plugin\": {\n                \"name\": \"sample.example\",\n                \"method\": \"sample_job2\",\n                \"args\": {\n                }\n              }\n            }\n          ]\n        }\n      }\n    }\n  ]\n}\n"
+                                }
+                            },
+                            "Item::variable::2": {
+                                "__label": "Variable",
+                                "modifier": {
+                                    "__input_type": "select",
+                                    "__label": "Modifier",
+                                    "modifier": "DEFAULT"
+                                },
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "list"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "value": "[\"z\",\"y\",\"x\"]"
+                                }
+                            },
+                            "Item::variable::3": {
+                                "__label": "Variable",
+                                "modifier": {
+                                    "__input_type": "select",
+                                    "__label": "Modifier",
+                                    "modifier": "DEFAULT"
+                                },
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "xml"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "value": "<bookstore>\n\n<book category=\"COOKING\">\n  <title lang=\"en\">Everyday Italian</title>\n  <author>Giada De Laurentiis</author>\n  <year>2005</year>\n  <price>30.00</price>\n</book>\n\n<book category=\"CHILDREN\">\n  <title lang=\"en\">Harry Potter</title>\n  <author>J K. Rowling</author>\n  <year>2005</year>\n  <price>29.99</price>\n</book>\n\n<book category=\"WEB\">\n  <title lang=\"en\">XQuery Kick Start</title>\n  <author>James McGovern</author>\n  <author>Per Bothner</author>\n  <author>Kurt Cagle</author>\n  <author>James Linn</author>\n  <author>Vaidyanathan Nagarajan</author>\n  <year>2003</year>\n  <price>49.99</price>\n</book>\n\n<book category=\"WEB\">\n  <title lang=\"en\">Learning XML</title>\n  <author>Erik T. Ray</author>\n  <year>2003</year>\n  <price>39.95</price>\n</book>\n\n</bookstore>"
+                                }
+                            },
+                            "Item::variable::4": {
+                                "__label": "Variable",
+                                "modifier": {
+                                    "__input_type": "select",
+                                    "__label": "Modifier",
+                                    "modifier": "DEFAULT"
+                                },
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "str"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "value": "Now is the time for all good men to come to the aid of their country."
+                                }
+                            },
+                            "__is_array": "true",
+                            "__label": "Variables"
+                        }
+                    },
+                    "FunctionName": "set_variable",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "__snip": "message",
+                        "message": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Log",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "2",
+                            "message": "[$ [x for x in list if x == \"y\"] $]"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "__snip": "message",
+                        "message": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Log",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "2",
+                            "message": "[$list[1]$]"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_variable",
+                        "variables": {
+                            "Item::variable::0": {
+                                "__label": "Variable",
+                                "modifier": {
+                                    "__input_type": "select",
+                                    "__label": "Modifier",
+                                    "modifier": "DEFAULT"
+                                },
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "@list[2]"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "value": "hellsyeah"
+                                }
+                            },
+                            "Item::variable::1": {
+                                "__label": "Variable",
+                                "modifier": {
+                                    "__input_type": "select",
+                                    "__label": "Modifier",
+                                    "modifier": "DEFAULT"
+                                },
+                                "name": {
+                                    "__input_type": "text",
+                                    "__label": "Name",
+                                    "name": "@list[3]"
+                                },
+                                "value": {
+                                    "__input_type": "text",
+                                    "__label": "Value",
+                                    "value": "[1,2,3]"
+                                }
+                            },
+                            "__is_array": "true",
+                            "__label": "Variables"
+                        }
+                    },
+                    "FunctionName": "set_variable",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "__snip": "message",
+                        "message": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Log",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "2",
+                            "message": "list is now [$list$]"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "__snip": "message",
+                        "message": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Log",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "2",
+                            "message": "[$foo . get(\"x\", \"woo\")$]"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "__snip": "message",
+                        "message": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Log",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "2",
+                            "message": "[$ len( jsonvar [\"phases\" ]) $]"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "__snip": "message",
+                        "message": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Log",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "2",
+                            "message": "XPATH TEST: [$xml^//book[1]/title$]"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "__snip": "message",
+                        "message": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Log",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "2",
+                            "message": "STRING INDEX: [$str[14]$]\nLENGTH: [$len(str)$]\nSECTION: -[$ str[4:15] $]-\nLIST: [$ str.split() $]"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "__snip": "message",
+                        "message": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Log",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "2",
+                            "message": "GLOBAL TEST: [$_TASK_NAME$]"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "__snip": "message",
+                        "message": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Log",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "2",
+                            "message": "BASE64: [$ base64.b64encode('[$str$]') $]\n2BASE64: [$ base64.b64encode(str) $]"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "__snip": "message",
+                        "message": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Log",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "2",
+                            "message": "JSON: [$ json.dumps(list) $]"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "run_task",
+                        "asset_id": {
+                            "__input_type": "text",
+                            "asset_id": ""
+                        },
+                        "handle": {
+                            "__input_type": "text",
+                            "handle": "DUMMYHANDLE"
+                        },
+                        "on_error": {
+                            "__input_type": "text",
+                            "on_error": ""
+                        },
+                        "on_success": {
+                            "__input_type": "text",
+                            "on_success": ""
+                        },
+                        "parameters": {
+                            "parameters": ""
+                        },
+                        "task_name": {
+                            "__input_type": "text",
+                            "task_name": "dummy"
+                        },
+                        "time_to_wait": {
+                            "__input_type": "text",
+                            "time_to_wait": ""
+                        },
+                        "version": {
+                            "__input_type": "text",
+                            "version": ""
+                        }
+                    },
+                    "FunctionName": "run_task",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "__snip": "message",
+                        "message": {
+                            "__class": "w95pct",
+                            "__input_type": "textarea",
+                            "__label": "Log",
+                            "__label_style": "display: block;",
+                            "__required": "true",
+                            "__rows": "2",
+                            "message": "[$#DUMMYHANDLE.INSTANCE$]"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "newvars",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.000"
+}

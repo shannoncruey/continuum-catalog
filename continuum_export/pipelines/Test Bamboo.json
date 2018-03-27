@@ -1,0 +1,87 @@
+{
+    "actions": "",
+    "category": "General",
+    "dependencies": [],
+    "description": "",
+    "globals": {},
+    "interactive": false,
+    "name": "Test Bamboo",
+    "phases": [
+        {
+            "name": "",
+            "stages": [
+                {
+                    "name": "",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "build_id": "MS-EX",
+                                    "expand": "artifacts",
+                                    "inherit": "true",
+                                    "instance_name": "",
+                                    "params": "",
+                                    "result_key": "BUILDRESULT",
+                                    "revision": "",
+                                    "wait": "true",
+                                    "wait_poll_interval": ""
+                                },
+                                "label": "Bamboo - Build",
+                                "method": "build",
+                                "module": "job",
+                                "name": "bamboo",
+                                "type": "external"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "build_id": "MS-EX",
+                                    "expand": "artifacts",
+                                    "inherit": "true",
+                                    "instance_name": "",
+                                    "params": "stage: 'Release jars'",
+                                    "result_key": "BUILDRESULT",
+                                    "revision": "",
+                                    "wait": "true",
+                                    "wait_poll_interval": "9"
+                                },
+                                "label": "Bamboo - Build",
+                                "method": "build",
+                                "module": "job",
+                                "name": "bamboo"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "build_id": "MS-EX",
+                                    "build_number": "MS-EX-1168",
+                                    "expand": "changes,metadata,plan,vcsRevisions,artifacts,comments,labels,stages",
+                                    "inherit": "true",
+                                    "instance_name": "",
+                                    "result_key": "woohoo",
+                                    "revision": "",
+                                    "wait": "true"
+                                },
+                                "label": "Bamboo - Get Build Info",
+                                "method": "get_build",
+                                "module": "job",
+                                "name": "bamboo",
+                                "type": "external"
+                            },
+                            "when": "never"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "summary": []
+}

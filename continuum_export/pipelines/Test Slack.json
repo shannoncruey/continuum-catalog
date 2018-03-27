@@ -1,0 +1,40 @@
+{
+    "actions": "",
+    "category": "General",
+    "dependencies": [],
+    "description": "",
+    "globals": {},
+    "interactive": false,
+    "name": "Test Slack",
+    "phases": [
+        {
+            "name": "",
+            "stages": [
+                {
+                    "name": "",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "as_user": "",
+                                    "attachments": "",
+                                    "channel": "#continuum",
+                                    "failonerror": "true",
+                                    "message": "Test Message from Continuum Pipeline"
+                                },
+                                "label": "Slack - Post Message",
+                                "method": "post",
+                                "module": "chat",
+                                "name": "slackplugin"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "summary": []
+}

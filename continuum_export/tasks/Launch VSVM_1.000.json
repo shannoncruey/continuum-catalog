@@ -1,0 +1,273 @@
+{
+    "Category": null,
+    "Code": "vsvm",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "AddressingType": {
+                            "AddressingType": ""
+                        },
+                        "BlockDeviceMapping.n": {
+                            "Item::BlockDeviceMapping::0": {
+                                "DeviceName": {
+                                    "DeviceName": ""
+                                },
+                                "Ebs": {
+                                    "DeleteOnTermination": {
+                                        "DeleteOnTermination": ""
+                                    },
+                                    "SnapshotId": {
+                                        "SnapshotId": ""
+                                    },
+                                    "VolumeSize": {
+                                        "VolumeSize": ""
+                                    }
+                                },
+                                "NoDevice": {
+                                    "NoDevice": ""
+                                },
+                                "VirtualName": {
+                                    "VirtualName": ""
+                                }
+                            },
+                            "__is_array": "true"
+                        },
+                        "ClientToken": {
+                            "ClientToken": ""
+                        },
+                        "DisableApiTermination": {
+                            "DisableApiTermination": ""
+                        },
+                        "ImageId": {
+                            "ImageId": "ami-7db18b14"
+                        },
+                        "InstanceInitiatedShutdownBehavior": {
+                            "InstanceInitiatedShutdownBehavior": ""
+                        },
+                        "InstanceType": {
+                            "InstanceType": "m1.large"
+                        },
+                        "KernelId": {
+                            "KernelId": ""
+                        },
+                        "KeyName": {
+                            "KeyName": "cloud-sidekick"
+                        },
+                        "MaxCount": {
+                            "MaxCount": "1"
+                        },
+                        "MinCount": {
+                            "MinCount": "1"
+                        },
+                        "Monitoring": {
+                            "Enabled": {
+                                "Enabled": ""
+                            }
+                        },
+                        "Placement": {
+                            "AvailabilityZone": {
+                                "AvailabilityZone": ""
+                            },
+                            "GroupName": {
+                                "GroupName": ""
+                            },
+                            "Tenancy": {
+                                "Tenancy": ""
+                            }
+                        },
+                        "PrivateIpAddress": {
+                            "PrivateIpAddress": ""
+                        },
+                        "RamdiskId": {
+                            "RamdiskId": ""
+                        },
+                        "SecurityGroup.n": {
+                            "Item::SecurityGroup::0": {
+                                "SecurityGroup": "windows_desktop_test"
+                            },
+                            "__is_array": "true"
+                        },
+                        "SecurityGroupId.n": {
+                            "Item::SecurityGroupId::0": {
+                                "SecurityGroupId": ""
+                            },
+                            "__is_array": "true"
+                        },
+                        "SubnetId": {
+                            "SubnetId": ""
+                        },
+                        "UserData": {
+                            "UserData": ""
+                        },
+                        "__name": "aws_ec2_RunInstances",
+                        "aws_region": {
+                            "aws_region": "us-east-1"
+                        },
+                        "result_name": {
+                            "result_name": "result"
+                        }
+                    },
+                    "FunctionName": "aws_ec2_RunInstances",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_variable",
+                        "variables": {
+                            "Item::variable::0": {
+                                "modifier": {
+                                    "modifier": "DEFAULT"
+                                },
+                                "name": {
+                                    "name": "instance"
+                                },
+                                "value": {
+                                    "value": "[$ result^//instanceId $]"
+                                }
+                            },
+                            "__is_array": "true"
+                        }
+                    },
+                    "FunctionName": "set_variable",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "ResourceId.n": {
+                            "Item::ResourceId::0": {
+                                "ResourceId": "[$instance$]"
+                            },
+                            "__is_array": "true"
+                        },
+                        "Tag.n": {
+                            "Item::Tag::0": {
+                                "Key": {
+                                    "Key": "Name"
+                                },
+                                "Value": {
+                                    "Value": "Visual Studio (Cloud Sidekick)"
+                                }
+                            },
+                            "__is_array": "true"
+                        },
+                        "__name": "aws_ec2_CreateTags",
+                        "aws_region": {
+                            "aws_region": ""
+                        },
+                        "result_name": {
+                            "result_name": ""
+                        }
+                    },
+                    "FunctionName": "aws_ec2_CreateTags",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "datastore_update",
+                        "addtoset": {
+                            "addtoset": ""
+                        },
+                        "collection": {
+                            "collection": "legato.rc_data"
+                        },
+                        "columns": {
+                            "Item::column::0": {
+                                "json_value": {
+                                    "json_value": ""
+                                },
+                                "name": {
+                                    "name": "vsvm_instance"
+                                },
+                                "value": {
+                                    "value": "[[instance]]"
+                                }
+                            },
+                            "__is_array": "true"
+                        },
+                        "query": {
+                            "query": "{\"rc_id\" : \"[[rc_id]]\"}"
+                        },
+                        "upsert": {
+                            "upsert": ""
+                        }
+                    },
+                    "FunctionName": "datastore_update",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "send_email",
+                        "bcc": {
+                            "bcc": ""
+                        },
+                        "body": {
+                            "body": "Ian, I'm looking for an it, but I have an example of how to include the public DNS link directly in the email. (for copy/paste into Remote Desktop)"
+                        },
+                        "cc": {
+                            "cc": ""
+                        },
+                        "subject": {
+                            "subject": "Your VSClient Test Environment is ready!"
+                        },
+                        "to": {
+                            "to": "ian.buchanan@versionone.com"
+                        }
+                    },
+                    "FunctionName": "send_email",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "Launch a Visual Studio virtual machine on AWS",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "Launch VSVM",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [
+        {
+            "encrypt": "false",
+            "name": "rc_id",
+            "present_as": "value",
+            "prompt": "true",
+            "required": "true",
+            "values": [
+                ""
+            ]
+        }
+    ],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.000"
+}

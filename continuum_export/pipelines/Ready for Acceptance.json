@@ -1,0 +1,56 @@
+{
+    "actions": [],
+    "dependencies": [],
+    "description": "",
+    "globals": {},
+    "interactive": true,
+    "name": "Ready for Acceptance",
+    "phases": [
+        {
+            "name": "",
+            "stages": [
+                {
+                    "name": "",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "assignto": [],
+                                    "result_key": "answer",
+                                    "text": "Is this release candidate ready for Acceptance Test?",
+                                    "title": "Ready for Acceptance?"
+                                },
+                                "kind": "confirm",
+                                "label": "Flow - Interact - Confirmation",
+                                "method": "confirmation",
+                                "module": "interact",
+                                "name": "flow",
+                                "type": "interaction"
+                            },
+                            "tags": [],
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "control": "Ready for Acceptance",
+                                    "details": "",
+                                    "result": "[$ answer $]"
+                                },
+                                "label": "Flow - Package - Set Activity Control",
+                                "method": "set_activity_control",
+                                "module": "package",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "summary": []
+}

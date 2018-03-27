@@ -1,0 +1,225 @@
+{
+    "Category": null,
+    "Code": "tesla",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_debug_level",
+                        "debug_level": {
+                            "debug_level": "10"
+                        }
+                    },
+                    "FunctionName": "set_debug_level",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "get_shared_cred",
+                        "alias": {
+                            "alias": "ian_tesla"
+                        },
+                        "domain": {
+                            "domain": ""
+                        },
+                        "password": {
+                            "password": "PWD"
+                        },
+                        "userid": {
+                            "userid": "UID"
+                        }
+                    },
+                    "FunctionName": "get_shared_cred",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "get_shared_cred",
+                        "alias": {
+                            "alias": "dennis_tesla"
+                        },
+                        "domain": {
+                            "domain": ""
+                        },
+                        "password": {
+                            "password": "PWD"
+                        },
+                        "userid": {
+                            "userid": "UID"
+                        }
+                    },
+                    "FunctionName": "get_shared_cred",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "tesla_ext.teslacmds",
+                        "__name": "tesla_new_connection",
+                        "conn_name": {
+                            "conn_name": "MYTESLA"
+                        },
+                        "email": {
+                            "email": "[$UID$]"
+                        },
+                        "password": {
+                            "password": "[$PWD$]"
+                        }
+                    },
+                    "FunctionName": "tesla_new_connection",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": true,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "tesla_ext.teslacmds",
+                        "__name": "tesla_list_vehicles",
+                        "conn_name": {
+                            "conn_name": "MYTESLA"
+                        },
+                        "result_var": {
+                            "result_var": "vehicles"
+                        }
+                    },
+                    "FunctionName": "tesla_list_vehicles",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "tesla_ext.teslacmds",
+                        "__name": "tesla_honk_horn",
+                        "conn_name": {
+                            "conn_name": "MYTESLA"
+                        },
+                        "result_var": {
+                            "result_var": ""
+                        },
+                        "vehicle": {
+                            "vehicle": "0"
+                        }
+                    },
+                    "FunctionName": "tesla_honk_horn",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "tesla_ext.teslacmds",
+                        "__name": "tesla_get_vehicle_status",
+                        "conn_name": {
+                            "conn_name": "MYTESLA"
+                        },
+                        "result_var": {
+                            "result_var": "v1status"
+                        },
+                        "vehicle": {
+                            "vehicle": "0"
+                        }
+                    },
+                    "FunctionName": "tesla_get_vehicle_status",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "log_msg",
+                        "message": {
+                            "message": "[$ v1status[\"drive_state\"].get(\"speed\", \"\") $]"
+                        }
+                    },
+                    "FunctionName": "log_msg",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "if",
+                        "tests": {
+                            "test": {
+                                "action": {
+                                    "function": {
+                                        "__name": "send_email",
+                                        "bcc": {
+                                            "bcc": ""
+                                        },
+                                        "body": {
+                                            "body": "Your car is not charging."
+                                        },
+                                        "cc": {
+                                            "cc": "shannon.cruey@versionone.com"
+                                        },
+                                        "subject": {
+                                            "subject": "NOT CHARGING"
+                                        },
+                                        "to": {
+                                            "to": "shannon.cruey@versionone.com"
+                                        }
+                                    }
+                                },
+                                "eval": {
+                                    "eval": "[$ v1status[\"drive_state\"].get(\"speed\", \"\") $] is None"
+                                }
+                            }
+                        }
+                    },
+                    "FunctionName": "if",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "Tesla Monitor",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.000"
+}

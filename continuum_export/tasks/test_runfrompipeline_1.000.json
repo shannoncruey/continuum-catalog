@@ -1,0 +1,157 @@
+{
+    "Category": null,
+    "Code": "test",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__name": "set_variable",
+                        "variables": {
+                            "Item::variable::0": {
+                                "modifier": {
+                                    "modifier": "DEFAULT"
+                                },
+                                "name": {
+                                    "name": "favorite_sandwich"
+                                },
+                                "value": {
+                                    "value": "egg-salad"
+                                }
+                            },
+                            "Item::variable::1": {
+                                "modifier": {
+                                    "modifier": "DEFAULT"
+                                },
+                                "name": {
+                                    "name": "favorite_sport"
+                                },
+                                "value": {
+                                    "value": "egg-salad eating contest"
+                                }
+                            },
+                            "__is_array": "true"
+                        }
+                    },
+                    "FunctionName": "set_variable",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "flow.flowcmds",
+                        "__name": "save_vars",
+                        "key_path": {
+                            "key_path": "task_vars"
+                        }
+                    },
+                    "FunctionName": "save_vars",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "flow.flowcmds",
+                        "__name": "set_data",
+                        "key_path": {
+                            "key_path": "back_from_task"
+                        },
+                        "value": {
+                            "value": "Hello Mr. Pipeline-who-invoked-me!"
+                        }
+                    },
+                    "FunctionName": "set_data",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "flow.flowcmds",
+                        "__name": "register_artifact",
+                        "artifact_location": {
+                            "artifact_location": "somelocation.com/yay"
+                        },
+                        "artifact_name": {
+                            "artifact_name": "another_artifact"
+                        },
+                        "artifact_version": {
+                            "artifact_version": "99"
+                        },
+                        "branch": {
+                            "branch": "woobranch"
+                        },
+                        "build_details": {
+                            "build_details": "{\"other\":\"details\"}"
+                        },
+                        "build_id": {
+                            "build_id": "bi"
+                        },
+                        "build_url": {
+                            "build_url": "burl"
+                        },
+                        "project_name": {
+                            "project_name": "test_project"
+                        }
+                    },
+                    "FunctionName": "register_artifact",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                },
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "__extension": "flow.flowcmds",
+                        "__name": "get_artifacts",
+                        "artifact_location": {
+                            "artifact_location": "loc_out"
+                        },
+                        "artifact_name": {
+                            "artifact_name": "flowcmds"
+                        },
+                        "artifact_name_out": {
+                            "artifact_name_out": "all_arts"
+                        },
+                        "rc_id": {
+                            "rc_id": ""
+                        }
+                    },
+                    "FunctionName": "get_artifacts",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "test_runfrompipeline",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.000"
+}

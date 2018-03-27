@@ -1,0 +1,159 @@
+{
+    "actions": [
+        {
+            "definition": "Deploy Flow Module",
+            "details": {
+                "a": "b"
+            },
+            "group": "master",
+            "icon": "46_48x48.png",
+            "instancename": "",
+            "name": "Deploy a Version",
+            "parameters": {},
+            "project": "flow",
+            "project_version": "",
+            "tags": [
+                "foo",
+                "bar",
+                "baz",
+                "hort"
+            ],
+            "type": "initiate_pipeline"
+        }
+    ],
+    "artifacts": [
+        {
+            "_id": "57616e95805479609578e346",
+            "created_dt": "2015-06-18T16:10:19.918000",
+            "last_revision": 15,
+            "last_revision_dt": "2015-06-22T20:22:49.499000",
+            "name": "Bob's Artifact",
+            "project_id": "53c043c55e14975b2f987f68",
+            "project_name": "flow"
+        },
+        {
+            "_id": "57616e95805479609578e335",
+            "created_dt": "2015-03-21T00:32:27.292000",
+            "last_revision": 98,
+            "last_revision_dt": "2016-06-07T22:06:47.137000",
+            "name": "automate",
+            "project_id": "53c043c55e14975b2f987f68",
+            "project_name": "flow"
+        },
+        {
+            "_id": "57616e95805479609578e345",
+            "created_dt": "2015-06-02T16:48:19.526000",
+            "last_revision": 17,
+            "last_revision_dt": "2015-06-02T21:17:53.451000",
+            "name": "fake_artie",
+            "project_id": "53c043c55e14975b2f987f68",
+            "project_name": "flow"
+        },
+        {
+            "_id": "57616e95805479609578e333",
+            "created_dt": "2015-03-19T20:07:21.323000",
+            "last_revision": 408,
+            "last_revision_dt": "2017-01-16T17:29:46.404000",
+            "name": "flow",
+            "project_id": "53c043c55e14975b2f987f68",
+            "project_name": "flow"
+        },
+        {
+            "_id": "57616e95805479609578e344",
+            "created_dt": "2016-03-17T19:20:13.825000",
+            "last_revision": 6,
+            "last_revision_dt": "2016-06-01T21:43:03.921000",
+            "name": "foo_bar",
+            "project_id": "53c043c55e14975b2f987f68",
+            "project_name": "flow"
+        },
+        {
+            "_id": "57616e95805479609578e348",
+            "created_dt": "2016-06-08T18:08:23.184000",
+            "last_revision": 13,
+            "last_revision_dt": "2016-06-08T21:08:43.058000",
+            "name": "jenkins-artifact",
+            "project_id": "53c043c55e14975b2f987f68",
+            "project_name": "flow"
+        },
+        {
+            "_id": "57616e95805479609578e347",
+            "created_dt": "2015-07-08T21:34:41.776000",
+            "last_revision": 85,
+            "last_revision_dt": "2015-11-04T16:08:11.691000",
+            "name": "myartie",
+            "project_id": "53c043c55e14975b2f987f68",
+            "project_name": "flow"
+        }
+    ],
+    "description": "",
+    "globals": {
+        "jenkins_job": "flow"
+    },
+    "mappings": [
+        {
+            "_id": "582cd17680547994157e4cfa",
+            "dn_definition": "56e02a6b3ed4d23ee2617e06",
+            "dn_group": "master",
+            "dn_project": "56e027b93ed4d23ee2617def",
+            "up_definition": "56e02fa63ed4d23ee2617e15",
+            "up_group": "master",
+            "up_project": "53c043c55e14975b2f987f68"
+        }
+    ],
+    "name": "flow",
+    "notifications": {
+        "email": {
+            "addresses": ""
+        },
+        "enable": false,
+        "hipchat": {
+            "room": ""
+        },
+        "http": {
+            "data": "",
+            "url": ""
+        },
+        "on_failure": [],
+        "on_start": [],
+        "on_success": [],
+        "on_wait": [],
+        "slack": {
+            "channel": ""
+        }
+    },
+    "source": {
+        "directives": [
+            {
+                "details": {
+                    "args": {},
+                    "instance_name": "",
+                    "on_error": "continue"
+                },
+                "type": "lifecycle_workitem_lookup",
+                "when": "always"
+            },
+            {
+                "details": {
+                    "definition": "Velocity Build",
+                    "group": "[$ branch $]",
+                    "includechanges": "",
+                    "instancename": "",
+                    "project": "",
+                    "project_version": ""
+                },
+                "type": "initiate_pipeline",
+                "when": "always"
+            }
+        ],
+        "enable_polling": false,
+        "group_source": "branch",
+        "interface": "webhook",
+        "notify_unmanaged": false,
+        "notify_unmanaged_addl": "",
+        "repo_name": "",
+        "repo_server": "",
+        "type": "github"
+    },
+    "type": "Source"
+}

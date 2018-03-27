@@ -1,0 +1,409 @@
+{
+    "__assembled": true,
+    "actions": [],
+    "category": "",
+    "dependencies": [],
+    "description": "",
+    "globals": {},
+    "interactive": false,
+    "name": "__test_pipeline",
+    "phases": [
+        {
+            "name": "__test_phase",
+            "stages": [
+                {
+                    "name": "__test_stage",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "status": "end-success"
+                                },
+                                "label": "Utility - End",
+                                "method": "end",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "label": "Click Me Please!",
+                                    "resource": "demos/api-examples/examples.layout"
+                                },
+                                "label": "Canvas - Show",
+                                "method": "show",
+                                "module": "main",
+                                "name": "canvas"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "foo",
+                                    "resource": "demos/minimal/minimal-data1.widget"
+                                },
+                                "label": "Canvas - Get",
+                                "method": "get",
+                                "module": "main",
+                                "name": "canvas"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "myreg",
+                                    "name": "myreg",
+                                    "required": "true"
+                                },
+                                "label": "Utility - Get Registry",
+                                "method": "get_registry",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "myreg.a.b.c",
+                                    "value": "woohoo!"
+                                },
+                                "label": "Flow - Pipeline - Set Data",
+                                "method": "set_data",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "action": "set",
+                                    "create": "true",
+                                    "name": "myreg",
+                                    "path": "",
+                                    "value": "[$ myreg $]"
+                                },
+                                "label": "Utility - Set Registry",
+                                "method": "set_registry",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "bucket": "",
+                                    "globals_key": "",
+                                    "package": "foo",
+                                    "required": "true"
+                                },
+                                "label": "Utility - Bucket - Load",
+                                "method": "load_bucket",
+                                "module": "bucket",
+                                "name": "utility"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "artifact_location": "hort",
+                                    "artifact_name": "foo.bar",
+                                    "artifact_version": "",
+                                    "branch": "",
+                                    "build_details": "",
+                                    "build_id": "",
+                                    "build_url": "",
+                                    "package_name": "",
+                                    "package_revision": "",
+                                    "project_name": ""
+                                },
+                                "label": "Flow - Artifact - Register Artifact",
+                                "method": "register_artifact",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "bucket": "",
+                                    "create": "true",
+                                    "globals_key": "",
+                                    "package": "foo"
+                                },
+                                "label": "Utility - Bucket - Add Manifest",
+                                "method": "add_to_bucket",
+                                "module": "bucket",
+                                "name": "utility"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "instance_name": "",
+                                    "key": "foo",
+                                    "query": "from: Story\nselect: \n  - Name\n  - Number\n  - Custom_Version.Name\nfilter: \n  - Number=$var\nwith:\n  $var: \"B-01024\""
+                                },
+                                "label": "VersionOne - Custom Query",
+                                "method": "custom_query",
+                                "module": "main",
+                                "name": "v1plugin"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "action": {
+                                        "args": {
+                                            "message": "IT IS 1.45"
+                                        },
+                                        "label": "Utility - Insert Log",
+                                        "method": "insert_log",
+                                        "module": "utility",
+                                        "name": "utility"
+                                    },
+                                    "else_action": {
+                                        "args": {
+                                            "message": "it is NOT 1.45"
+                                        },
+                                        "label": "Utility - Insert Log",
+                                        "method": "insert_log",
+                                        "module": "utility",
+                                        "name": "utility"
+                                    },
+                                    "expression": "foo[\"Custom_Version_Name\"] == \"1.45\""
+                                },
+                                "label": "Utility - Conditional",
+                                "method": "conditional",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "group": "",
+                                    "pipeline": "",
+                                    "project": "",
+                                    "start_now": "false"
+                                },
+                                "label": "Flow - Pipeline - Initiate",
+                                "method": "initiate",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "PHPUNIT"
+                                },
+                                "label": "Utility - jUnit Results",
+                                "method": "junit_results",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "seconds": "7"
+                                },
+                                "label": "Utility - Sleep",
+                                "method": "sleep",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "code": "import xmltodict\nxml = WORKSPACE[\"CUCUMBER\"]\nOUTPUT[\"CUCUMBER\"] = xmltodict.parse(xml)"
+                                },
+                                "label": "Utility - Python Script",
+                                "method": "exec_python",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "key": "CUCUMBER"
+                                },
+                                "label": "Utility - jUnit Results",
+                                "method": "junit_results",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "initial_data": {
+                                        "foo": "bar"
+                                    },
+                                    "task": "dummy",
+                                    "version": ""
+                                },
+                                "label": "Automate - Run Task",
+                                "method": "runtask",
+                                "module": "task",
+                                "name": "automate"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "artifact_name": "",
+                                    "artifact_regex": "",
+                                    "inherit": "true",
+                                    "instance_name": "",
+                                    "job": "continuum-test-job",
+                                    "params": {
+                                        "BRANCH": "foobranch",
+                                        "COMMIT": "foocommit"
+                                    },
+                                    "result_key": "",
+                                    "wait": "true"
+                                },
+                                "label": "Jenkins - Build",
+                                "method": "build",
+                                "module": "job",
+                                "name": "jenkins"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "instance_name": "",
+                                    "job": "continuum-test-job",
+                                    "path": "stuff.json",
+                                    "target": "jsonfromjenkins"
+                                },
+                                "label": "Jenkins - Read Workspace File",
+                                "method": "read_workspace_file",
+                                "module": "job",
+                                "name": "jenkins"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "initial_data": {
+                                        "foo": {
+                                            "Ref": "__WORKSPACE"
+                                        }
+                                    },
+                                    "parameters": "",
+                                    "task": "dummy",
+                                    "version": ""
+                                },
+                                "label": "Automate - Run Task",
+                                "method": "runtask",
+                                "module": "task",
+                                "name": "automate"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "branch": "",
+                                    "instance_name": "",
+                                    "path": "metrics/metrics.json",
+                                    "repository": "flow",
+                                    "response_key": "rawdata"
+                                },
+                                "label": "GitHub - Get File",
+                                "method": "get_file",
+                                "module": "main",
+                                "name": "github"
+                            },
+                            "when": "never"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "action": {
+                                        "args": {
+                                            "message": "woo"
+                                        },
+                                        "label": "Utility - Insert Log",
+                                        "method": "insert_log",
+                                        "module": "utility",
+                                        "name": "utility"
+                                    },
+                                    "else_action": {
+                                        "args": {
+                                            "message": "blah"
+                                        },
+                                        "label": "Utility - Insert Log",
+                                        "method": "insert_log",
+                                        "module": "utility",
+                                        "name": "utility"
+                                    },
+                                    "expression": "len(rawdata.get(\"modules\")) > 1"
+                                },
+                                "label": "Utility - Conditional",
+                                "method": "conditional",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "never"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "product_id": "542ef5ad5e1497307173c009",
+    "product_name": "Velocity",
+    "product_workflow_step": "Package",
+    "summary": [],
+    "tags": [
+        "Velocity"
+    ]
+}

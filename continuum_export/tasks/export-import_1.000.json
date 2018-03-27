@@ -1,0 +1,96 @@
+{
+    "Category": null,
+    "Code": "test",
+    "Codeblocks": [
+        {
+            "Name": "MAIN",
+            "Steps": [
+                {
+                    "Codeblock": "MAIN",
+                    "Commented": false,
+                    "Description": "",
+                    "FunctionDefinition": {
+                        "AutoScalingGroupName": {
+                            "AutoScalingGroupName": ""
+                        },
+                        "AvailabilityZones": {
+                            "member.N": {
+                                "Item::member::0": {
+                                    "member": "m1"
+                                },
+                                "Item::member::1": {
+                                    "member": "m2"
+                                },
+                                "Item::member::2": {
+                                    "member": "m3"
+                                },
+                                "__is_array": "true"
+                            }
+                        },
+                        "DefaultCooldown": {
+                            "DefaultCooldown": ""
+                        },
+                        "DesiredCapacity": {
+                            "DesiredCapacity": ""
+                        },
+                        "HealthCheckGracePeriod": {
+                            "HealthCheckGracePeriod": ""
+                        },
+                        "HealthCheckType": {
+                            "HealthCheckType": ""
+                        },
+                        "LaunchConfigurationName": {
+                            "LaunchConfigurationName": ""
+                        },
+                        "LoadBalancerNames": {
+                            "member.N": {
+                                "Item::member::0": {
+                                    "member": "LBm1"
+                                },
+                                "Item::member::1": {
+                                    "member": "LBm2"
+                                },
+                                "__is_array": "true"
+                            }
+                        },
+                        "MaxSize": {
+                            "MaxSize": ""
+                        },
+                        "MinSize": {
+                            "MinSize": ""
+                        },
+                        "PlacementGroup": {
+                            "PlacementGroup": ""
+                        },
+                        "VPCZoneIdentifier": {
+                            "VPCZoneIdentifier": ""
+                        },
+                        "__name": "aws_as_CreateAutoScalingGroup",
+                        "aws_region": {
+                            "aws_region": ""
+                        },
+                        "result_name": {
+                            "result_name": ""
+                        }
+                    },
+                    "FunctionName": "aws_as_CreateAutoScalingGroup",
+                    "OutputColumnDelimiter": 0,
+                    "OutputParseType": 0,
+                    "OutputRowDelimiter": 0
+                }
+            ]
+        }
+    ],
+    "ConcurrentInstances": null,
+    "Description": "",
+    "IsDefaultVersion": true,
+    "MaxVersion": "1.000",
+    "Name": "export-import",
+    "NextMajorVersion": "2.000",
+    "NextMinorVersion": "1.001",
+    "NumberOfApprovedVersions": 0,
+    "Parameters": [],
+    "QueueDepth": null,
+    "Status": "Development",
+    "Version": "1.000"
+}

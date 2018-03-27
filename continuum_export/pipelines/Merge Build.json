@@ -1,0 +1,130 @@
+{
+    "__assembled": true,
+    "actions": [
+        {
+            "definition": "Integration Testing",
+            "details": null,
+            "group": "[$ version $]",
+            "icon": "46_48x48.png",
+            "instancename": "",
+            "name": "Deploy and Test Integration",
+            "parameters": {},
+            "project": "stores integrated",
+            "project_version": "",
+            "type": "initiate_pipeline"
+        }
+    ],
+    "dependencies": [],
+    "description": "",
+    "globals": {
+        "end_state": "Ready for Test",
+        "initial_state": "Developing"
+    },
+    "interactive": false,
+    "name": "Merge Build",
+    "phases": [
+        {
+            "name": "Jenkins Merge Build",
+            "stages": [
+                {
+                    "name": "Jenkins Merge Build",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {},
+                                "label": "GitLab - Show Summary",
+                                "method": "show_summary",
+                                "module": "gitlab",
+                                "name": "gitlab"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "current_status": "",
+                                    "instance_name": "",
+                                    "status": "Build"
+                                },
+                                "label": "VersionOne - Set All Workitem Statuses",
+                                "method": "set_workitem_status_all",
+                                "module": "main",
+                                "name": "v1plugin"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "artifact_name": "",
+                                    "artifact_regex": "",
+                                    "inherit": "true",
+                                    "instance_name": "",
+                                    "job": "stores-ui",
+                                    "params": {
+                                        "BRANCH": "[$ initiator['package_revision']['promoted_by']['data']['ref'] $]",
+                                        "COMMIT": "[$ initiator['package_revision']['promoted_by']['data']['after'] $]"
+                                    },
+                                    "result_key": "",
+                                    "wait": "true"
+                                },
+                                "label": "Jenkins - Build",
+                                "method": "build",
+                                "module": "job",
+                                "name": "jenkins"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "instance_name": "",
+                                    "job": "stores-ui",
+                                    "path": "VERSION",
+                                    "target": "version"
+                                },
+                                "label": "Jenkins - Read Workspace File",
+                                "method": "read_workspace_file",
+                                "module": "job",
+                                "name": "jenkins"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "artifact_location": "http://artifactory.acme.demo:8082/artifactory/dev-builds/demo/acme/www/stores/stores-ui/build-__NEWREVISION/stores-ui.tz",
+                                    "artifact_name": "__PROJECTNAME",
+                                    "artifact_version": "5.0.__NEWREVISION",
+                                    "branch": "",
+                                    "build_details": "",
+                                    "build_id": "5.0.__NEWREVISION.__PINUMBER",
+                                    "build_url": "",
+                                    "package_name": "",
+                                    "package_revision": "",
+                                    "project_name": ""
+                                },
+                                "label": "Flow - Artifact - New Revision",
+                                "method": "register_artifact",
+                                "module": "pipeline",
+                                "name": "flow"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "product_id": "55b8e4402979932768c9a004",
+    "product_name": "Acme Products",
+    "product_workflow_step": "Merged",
+    "summary": [],
+    "tags": []
+}

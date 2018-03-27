@@ -1,0 +1,136 @@
+{
+    "actions": [],
+    "artifacts": [
+        {
+            "_id": "576aea123ed4d26d72ab763d",
+            "created_dt": "2016-02-09T15:32:21.686000",
+            "last_revision": 1,
+            "last_revision_dt": "2016-02-09T15:32:21.686000",
+            "name": "test",
+            "project_id": "53c6cd605e14976c043508db",
+            "project_name": "spring-petclinic"
+        }
+    ],
+    "dependencies": [],
+    "description": "",
+    "feeder_last_good_rcs": {
+        "petclinic-chef": {
+            "master": {
+                "name": "6c78969",
+                "pipeline": "Petclinic Chef",
+                "pipeline_id": "54206a645e149765da012d36",
+                "pipeline_inst_id": "54208ab15e14975fd5167916",
+                "project": "petclinic-chef",
+                "project_id": "542076235e149765da012d3d",
+                "rc_id": "54208c525e14975fd5167924",
+                "story": "master"
+            }
+        },
+        "petclinic-data": {
+            "master": {
+                "name": "dad6c6e",
+                "pipeline": "Petclinic Data",
+                "pipeline_id": "54206aef5e149765da012d38",
+                "pipeline_inst_id": "54208d0f5e14975fd5167929",
+                "project": "petclinic-data",
+                "project_id": "542076025e149765da012d39",
+                "rc_id": "54208d0f5e14975fd516792b",
+                "story": "master"
+            }
+        },
+        "petclinic-ddl": {
+            "master": {
+                "name": "63a58db",
+                "pipeline": "Petclinic DDL",
+                "pipeline_id": "54206ac35e149765da012d37",
+                "pipeline_inst_id": "54208f4a5e14975fd5167930",
+                "project": "petclinic-ddl",
+                "project_id": "54208f285e14975fdb17e786",
+                "rc_id": "54208f4a5e14975fd5167932",
+                "story": "master"
+            }
+        }
+    },
+    "globals": {
+        "jenkins_job": "petclinic"
+    },
+    "mappings": [
+        {
+            "_id": "585025008054791ce178532b",
+            "dn_definition": "53ee59345e149705dff19010",
+            "dn_group": "master",
+            "dn_project": "542093445e14975fdb17e788",
+            "up_definition": "537a4d232abe6d2c073870ff",
+            "up_group": "master",
+            "up_project": "53c6cd605e14976c043508db"
+        },
+        {
+            "_id": "585025008054791ce178532c",
+            "dn_definition": "53ee59345e149705dff19010",
+            "dn_group": "master",
+            "dn_project": "542093445e14975fdb17e788",
+            "up_definition": "537a4d232abe6d2c073870ff",
+            "up_group": "master",
+            "up_project": "53c6cd605e14976c043508db"
+        }
+    ],
+    "name": "spring-petclinic",
+    "notifications": {
+        "email": {
+            "addresses": ""
+        },
+        "enable": false,
+        "hipchat": {
+            "room": ""
+        },
+        "http": {
+            "data": "",
+            "url": ""
+        },
+        "on_failure": [],
+        "on_start": [],
+        "on_success": [],
+        "on_wait": [],
+        "slack": {
+            "channel": ""
+        }
+    },
+    "source": {
+        "directives": [
+            {
+                "details": {
+                    "args": {
+                        "expression": "PET-[0-9]{1,}"
+                    },
+                    "instance_name": "clearcode",
+                    "on_error": "continue"
+                },
+                "type": "jira_workitem_lookup",
+                "when": "always"
+            },
+            {
+                "details": {
+                    "definition": "Pre-merge Build and Unit Test",
+                    "group": "[$ branch $]",
+                    "includechanges": "",
+                    "instancename": "",
+                    "project": "",
+                    "project_version": ""
+                },
+                "type": "initiate_pipeline",
+                "when": "never"
+            }
+        ],
+        "enable_polling": false,
+        "group_source": "branch",
+        "interface": "webhook",
+        "notify_unmanaged": false,
+        "notify_unmanaged_addl": "",
+        "repo_name": "",
+        "repo_server": "",
+        "type": "github"
+    },
+    "type": "Source",
+    "version": "2.4",
+    "version_date": "2014-09-10 14:06:52"
+}

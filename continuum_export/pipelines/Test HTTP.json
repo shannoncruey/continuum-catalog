@@ -1,0 +1,71 @@
+{
+    "actions": "",
+    "category": "General",
+    "dependencies": [],
+    "description": "Test the Utility plugin - HTTP function",
+    "globals": {},
+    "interactive": false,
+    "name": "Test HTTP",
+    "phases": [
+        {
+            "name": "",
+            "stages": [
+                {
+                    "name": "",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "data": "",
+                                    "headers": {
+                                        "User-Agent": "CONTINUUM"
+                                    },
+                                    "key": "RESULT",
+                                    "url": "https://httpbin.org/user-agent",
+                                    "verb": "GET"
+                                },
+                                "label": "Utility - HTTP",
+                                "method": "http",
+                                "module": "utility",
+                                "name": "utility",
+                                "type": "external"
+                            },
+                            "when": "always"
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "action": {
+                                        "label": "Utility - End",
+                                        "method": "end",
+                                        "module": "utility",
+                                        "name": "utility"
+                                    },
+                                    "else_action": {
+                                        "args": {
+                                            "status": "end-failure"
+                                        },
+                                        "label": "Utility - End",
+                                        "method": "end",
+                                        "module": "utility",
+                                        "name": "utility"
+                                    },
+                                    "expression": "RESULT.get('user-agent') == 'CONTINUUM'"
+                                },
+                                "label": "Utility - Conditional",
+                                "method": "conditional",
+                                "module": "utility",
+                                "name": "utility"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "summary": []
+}

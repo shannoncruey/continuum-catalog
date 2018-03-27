@@ -1,0 +1,38 @@
+{
+    "__assembled": true,
+    "actions": [],
+    "description": "For Dealersocket Proof",
+    "globals": "",
+    "name": "TESTPIPELINE",
+    "phases": [
+        {
+            "name": "TESTPHASE",
+            "stages": [
+                {
+                    "description": "",
+                    "name": "TESTSTAGE",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "initial_data": {
+                                        "STORYNUMBER": "[$ storynumber $]"
+                                    },
+                                    "task": "Sarahs Dont Touch"
+                                },
+                                "label": "Automate - Run Task",
+                                "method": "runtask",
+                                "module": "task",
+                                "name": "automate"
+                            },
+                            "when": "always"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelineglobals": {},
+    "summary": []
+}

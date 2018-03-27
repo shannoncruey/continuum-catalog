@@ -1,0 +1,117 @@
+{
+    "actions": [
+        {
+            "definition": "f",
+            "group": "g",
+            "icon": "s",
+            "initialWorkspace": {},
+            "instancename": "kk",
+            "name": "a",
+            "parameters": [],
+            "project": "h",
+            "project_version": "j",
+            "tags": [
+                "d"
+            ],
+            "type": "initiate_pipeline"
+        }
+    ],
+    "artifacts": [
+        {
+            "_id": "576aea123ed4d26d72ab763b",
+            "created_dt": "2015-11-16T18:37:49.375000",
+            "last_revision": 9,
+            "last_revision_dt": "2015-12-17T00:50:07.132000",
+            "name": "foo.txt",
+            "project_id": "562829fd3ed4d25a560a7ece",
+            "project_name": "bittest"
+        },
+        {
+            "_id": "576aea123ed4d26d72ab763c",
+            "created_dt": "2015-11-16T18:37:49.418000",
+            "last_revision": 9,
+            "last_revision_dt": "2015-12-17T00:50:07.162000",
+            "name": "hello.txt",
+            "project_id": "562829fd3ed4d25a560a7ece",
+            "project_name": "bittest"
+        }
+    ],
+    "description": "",
+    "globals": {},
+    "lifecycle": "",
+    "mappings": [],
+    "name": "bittest",
+    "notifications": {
+        "email": {
+            "addresses": ""
+        },
+        "enable": false,
+        "hipchat": {
+            "room": ""
+        },
+        "http": {
+            "data": "",
+            "url": ""
+        },
+        "on_failure": [],
+        "on_start": [],
+        "on_success": [],
+        "on_wait": [],
+        "slack": {
+            "channel": ""
+        }
+    },
+    "source": {
+        "directives": [
+            {
+                "details": {
+                    "args": {
+                        "fields": [
+                            "message"
+                        ]
+                    },
+                    "method": "identify_workitems",
+                    "on_error": "continue",
+                    "plugin": "v1plugin.main"
+                },
+                "type": "plugin_function",
+                "when": "always"
+            },
+            {
+                "details": {
+                    "definition": "bittest",
+                    "group": "[$ branch $]",
+                    "includechanges": "",
+                    "instancename": "",
+                    "project": "",
+                    "project_version": ""
+                },
+                "evaluate": "re.match(\"hotfix/[0-9]{1}\\.[0-9]{1,5}\", branch)",
+                "type": "initiate_pipeline",
+                "when": "evaluate"
+            },
+            {
+                "details": {
+                    "definition": "bittest",
+                    "group": "[$ branch $]",
+                    "includechanges": "",
+                    "instancename": "",
+                    "project": "",
+                    "project_version": ""
+                },
+                "group": "master",
+                "type": "initiate_pipeline",
+                "when": "group"
+            }
+        ],
+        "enable_polling": false,
+        "group_source": "branch",
+        "interface": "webhook",
+        "notify_unmanaged": false,
+        "notify_unmanaged_addl": "",
+        "repo_name": "",
+        "repo_server": "",
+        "type": "bitbucket"
+    },
+    "type": "Source"
+}

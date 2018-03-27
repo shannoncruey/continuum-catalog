@@ -1,0 +1,75 @@
+{
+    "__assembled": true,
+    "desc": "wwwww",
+    "description": "Doesn't actually deploy code, just makes relationships.\n",
+    "globals": {},
+    "name": "Deploy To DevServer",
+    "phases": [
+        {
+            "name": "Deploy to DevServer",
+            "stages": [
+                {
+                    "description": "Deploy an Artifact",
+                    "name": "Deploy Project + Artifact",
+                    "steps": [
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "asset": "dev.clearcodelabs.com",
+                                    "description": "",
+                                    "environment": "",
+                                    "host": "some host",
+                                    "instance": "",
+                                    "name": "some name",
+                                    "path": "/foo/bar",
+                                    "service": "",
+                                    "target_type": "asset",
+                                    "url": "http://docs.clearcodelabs.com"
+                                },
+                                "label": "Flow - Pipeline - Deploy Project",
+                                "method": "deploy_project",
+                                "module": "pipeline",
+                                "name": "flow"
+                            }
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "artifact_name": "velocityapp"
+                                },
+                                "label": "Flow - Input Artifact to Output",
+                                "method": "artifact_in_to_out",
+                                "module": "pipeline",
+                                "name": "flow"
+                            }
+                        },
+                        {
+                            "name": "",
+                            "plugin": {
+                                "args": {
+                                    "artifact": "velocityapp",
+                                    "asset": "",
+                                    "description": "Package Build: [$ package_build $]",
+                                    "environment": "",
+                                    "host": "",
+                                    "instance": "",
+                                    "name": "dev.clearcodelabs.com",
+                                    "path": "",
+                                    "service": "",
+                                    "target_type": "custom",
+                                    "url": "http://dev.clearcodelabs.com:8080/"
+                                },
+                                "label": "Flow - Deploy Artifact",
+                                "method": "deploy_artifact",
+                                "module": "pipeline",
+                                "name": "flow"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,99 @@
+{
+    "actions": [],
+    "artifacts": [
+        {
+            "_id": "5915ca8b80547984818f58cd",
+            "created_dt": "2017-05-12T14:45:31.461000",
+            "name": "stores",
+            "project_id": "578d4e2f80547901e2aa4df8",
+            "project_name": "stores-ui"
+        },
+        {
+            "_id": "5915ca8b80547984818f58ce",
+            "created_dt": "2017-05-12T14:45:31.463000",
+            "name": "stores-docker",
+            "project_id": "578d4e2f80547901e2aa4df8",
+            "project_name": "stores-ui"
+        },
+        {
+            "_id": "578d575b80547901e2aa4eb7",
+            "created_dt": "2016-07-18T22:25:31.636000",
+            "last_revision": 0,
+            "last_revision_dt": "2017-03-01T18:50:35.728000",
+            "name": "stores-ui",
+            "project_id": "578d4e2f80547901e2aa4df8",
+            "project_name": "stores-ui"
+        }
+    ],
+    "description": "",
+    "globals": {
+        "jenkins_job": "stores-ui"
+    },
+    "lifecycle": "demo progression",
+    "mappings": [],
+    "name": "stores-ui",
+    "notifications": {
+        "email": {
+            "addresses": ""
+        },
+        "enable": false,
+        "hipchat": {
+            "room": ""
+        },
+        "http": {
+            "data": "",
+            "url": ""
+        },
+        "on_failure": [],
+        "on_start": [],
+        "on_success": [],
+        "on_wait": [],
+        "slack": {
+            "channel": ""
+        }
+    },
+    "source": {
+        "directives": [
+            {
+                "details": {
+                    "args": {},
+                    "instance_name": "",
+                    "on_error": "continue"
+                },
+                "type": "lifecycle_workitem_lookup",
+                "when": "always"
+            },
+            {
+                "details": {
+                    "package_name": "webstore",
+                    "phase": "Acceptance Test",
+                    "use_as_version": "lookup",
+                    "use_as_version_lookup": "[$ _package_version $]"
+                },
+                "evaluate": "\"_fake\" in __DATA",
+                "type": "package_revision",
+                "when": "evaluate"
+            },
+            {
+                "details": {
+                    "package_name": "webstore",
+                    "phase": "Build",
+                    "use_as_version": "branch",
+                    "use_as_version_lookup": ""
+                },
+                "evaluate": "\"_fake\" not in __DATA",
+                "type": "package_revision",
+                "when": "evaluate"
+            }
+        ],
+        "enable_polling": false,
+        "group_source": "branch",
+        "interface": "webhook",
+        "notify_unmanaged": false,
+        "notify_unmanaged_addl": "",
+        "repo_name": "",
+        "repo_server": "",
+        "type": "gitlab"
+    },
+    "type": "Source"
+}

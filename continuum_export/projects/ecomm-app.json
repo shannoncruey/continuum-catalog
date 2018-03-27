@@ -1,0 +1,28 @@
+{
+    "artifacts": [],
+    "description": "",
+    "mappings": [],
+    "name": "ecomm-app",
+    "notifications": {
+        "email": {
+            "addresses": ""
+        },
+        "enable": "",
+        "hipchat": {
+            "room": ""
+        },
+        "on_failure": [],
+        "on_start": [],
+        "on_success": [],
+        "on_wait": []
+    },
+    "source": {
+        "directives": [],
+        "group_source": "branch",
+        "interface": "webhook",
+        "type": "github"
+    },
+    "type": "Source",
+    "version": ".65",
+    "version_date": "2014-09-24 13:42:03"
+}
